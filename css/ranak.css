@@ -1,0 +1,41 @@
+.nbar {
+  	min-height: 68px;
+	padding-top: 10px;
+	color: white;
+	font-size: 15px;
+    font-weight: bold;
+}
+.lspace {
+    padding-left: 50px;
+    padding-right: 30px;
+}
+.lspace:hover{
+	color: yellow !important;
+}
+
+.ispace {
+    padding-right: 8px;
+    font-size: 10px;
+}
+.space {
+    padding-left: 10px;
+    padding-right: 15px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    color: white;
+}
+.main {
+    margin-left: 30px;
+    margin-right: 20px;
+    margin-bottom: 100px;
+}
+.mytop{
+	
+    top: 0;
+    border-width: 0 0 1px important;
+    position: fixed;
+    right: 0;
+    left: 0;
+   z-index: 1030;
+
+}
