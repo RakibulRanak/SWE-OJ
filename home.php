@@ -43,6 +43,12 @@ if(isset($_SESSION['un']))
 <div class="main">
 
  <?php require 'nav2.php'; ?>
+ 
+ 	<img src="Images/sust.jpg" alt="Italian Trulli" width="1024px" height="400px">
+ 	<a href="https://codeforces.com/">Codeforces</a>
+ </br>
+ 	<a href="https://uva.onlinejudge.org">UVa</a>
+
 
 
 
