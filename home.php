@@ -44,7 +44,7 @@ if(isset($_SESSION['un']))
 
  <?php require 'nav2.php'; ?>
  
- 	<img src="Images/sust.jpg" alt="Italian Trulli" width="1024px" height="400px">
+ 	<img src="Images/sust.jpg" alt="IICT SUST" width="1024px" height="600px">
  	<a href="https://codeforces.com/">Codeforces</a>
  </br>
  	<a href="https://uva.onlinejudge.org">UVa</a>
