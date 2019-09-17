@@ -202,6 +202,7 @@ $row=mysqli_fetch_array($send);
   
    
    <ul class=\"nav nav-pills nav-stacked\">
+
     <li role=\"presentation\" class=\"active\"><a href=\"setcontest.php\">Create Contest</a></li>
     <li role=\"presentation\"><a href=\"setcontestproblem.php\">Create Contest Problem</a></li>
     <li role=\"presentation\"><a href=\"setproblem.php\">Create Archive Problem</a></li>
