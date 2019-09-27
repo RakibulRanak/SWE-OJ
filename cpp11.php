@@ -25,18 +25,7 @@ if(isset($_SESSION['un']))
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Run Code</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="icon" type="image/png" href="img/ruet.png">
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-        <script src="js/vendor/jquery-1.12.0.min.js"></script>
-        <script src="bootstrap-3.3.7/js/bootstrap.min.js" </script>
-        <script src="bootstrap-3.3.7/js/bootstrap.js" </script>
+      <?php include 'linkers.php';?>
 
 
 
@@ -47,28 +36,7 @@ if(isset($_SESSION['un']))
 </head>
 <body>
 <div class="main">
- <div class="row">
-  <div class="col-sm-12">
-  <nav class="shadow navbar navbar-inverse navbar-fixed-top nbar">
-    <div class="navbar-header">
-      <a class="navbar-brand lspace" href="home.php">RUET OJ</a>
-       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-            </button>
-    </div>
-    <div class="collapse navbar-collapse navbar-menubuilder">
-    <ul class="nav navbar-nav">
-      <li class="space"><a href="compiler.php"><i class="fa fa-code ispace"></i>Compiler</a></li>
-      <li class="space"><a href="archive.php"><i class="fa fa-archive ispace"></i>Problem Archive</a></li>
-      <li class="space"><a href="contest.php"><i class="fa fa-cogs ispace"></i>Contests</a></li>
-      <li class="space"><a href="#"><i class="fa fa-check-square ispace"></i>Debug</a></li>
-      <li class="lgspace space"><a href="profile.php?user=<?php echo("$username"); ?>"><i class="fa fa-user ispace"></i><?php echo("$username"); ?></a></li>
-      <li class="space"><a href="logout.php"><i class="fa fa-power-off ispace"></i>Logout</a></li>
-      
-    </ul>
-    </div>
-</nav>
-</div>
-</div>
+  <?php require 'nav2.php'; ?>
 
 <div class="row log">
 <div class="col-sm-2">
@@ -247,7 +215,7 @@ $limit=$r4['tlimit'];
 	}
 	//echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-5\"><form action=\"allsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"vd\" value=\"$fr\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"> </div><div class=\"col-sm-3\"></div></div>";
 
-    echo "<center><div class=\"row\"><form action=\"allsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"vd\" value=\"$fr\"><input type=\"hidden\" name=\"il\" value=\"$seconds\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"></div></center>";
+    echo "<center><div class=\"row\" style=\"padding-left: 150px\";><form action=\"allsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"vd\" value=\"$fr\"><input type=\"hidden\" name=\"il\" value=\"$seconds\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"></div><h3></center>";
    
 
 }
@@ -256,7 +224,7 @@ else if($_POST['src'])
 {
 
 
-    require_once("connection.php");
+    require_once("config.php");
     
 	$lang=$_POST['language'];
 	$source=$_POST['src'];
@@ -407,10 +375,7 @@ else if($_POST['src'])
 
     }
 
-    //echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-5\"><form action=\"contestsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"> </div><div class=\"col-sm-2\"></div></div>";
-
-  
-   //echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-5\"><form action=\"contestsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"il\" value=\"$tle\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"> </div><div class=\"col-sm-2\"></div></div>";
+    
      echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-5\"><form action=\"contestsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"vd\" value=\"$fr\"><input type=\"hidden\" name=\"il\" value=\"$seconds\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"> </div><div class=\"col-sm-3\"></div></div>";
 }
 
@@ -435,8 +400,8 @@ else if($_POST['src'])
 
 <div class="fm">
 
-<b>Beta Version-2016</b><br>
-<b>Developed By Ashadullah Shawon</b>
+<b>Beta Version-2019</b><br>
+<b>Developed By Ranak</b>
 
 </div>
 </div>
