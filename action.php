@@ -13,12 +13,12 @@ $sq=mysqli_query($con,$query);
 
 if($sq)
 {
-	header("Location:login.php");
+	header("Location:blogin.php");
 }
 else
 {
 
-  header("Location:sign.php?value=fail");
+  header("Location:bsignup.php?value=fail");
 	echo("Username already exists. Failed<br>");
 }
 

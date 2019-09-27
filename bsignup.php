@@ -1,26 +1,4 @@
-<?php
 
-session_start();
-
-if(isset($_SESSION["un"]))
-{
-  header("Location:home.php");
-}
-
-if(isset($_SESSION['url']))
-{
-     $url=$_SESSION['url'];
-               
-}
-else
-{
-      $url="home.php";
-               
-}      
-
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +12,7 @@ else
  }
  .aa{
   width: 300px;
-  height: 260px;
+  height: 280px;
   background-color: rgba(0,0,0,0.5);
   margin: 0 auto;
   margin-top: 200px;
@@ -64,10 +42,10 @@ else
   padding-left: 10px;
   text-align: left;
  }
- .aa input[type="password"]{
+  .aa input[type="email"]{
   width: 200px;
   height: 35px;
-  border:0px;
+  border:10px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -76,10 +54,23 @@ else
   padding-left: 10px;
   text-align: left;
  }
+ .aa input[type="password"]{
+  width: 200px;
+  height: 35px;
+  border:10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  padding-left: 10px;
+  text-align: left;
+
+ }
  .aa input[type="submit"]{
   width: 100px;
   height: 35px;
-  border:0px;
+  border:px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -98,6 +89,7 @@ else
   .cc{
   padding-left: 50px;
   padding-right:30px;
+  padding-top: 10px;
 }
 
   }
@@ -107,30 +99,34 @@ else
  
  <div class="aa">
   <div class="bb">
- <h2 style="color: skyblue">Login</h2>
-</div>
-  <form action="process.php" name="f1" method="POST">
-   <input type="text" name="un" class="form-control" placeholder="Enter Username" required><br> <br>
-<!-- <label for="password">Password</label> -->
-<input type="password" class="form-control"  name="ps" placeholder="Enter Password"> <br><br>
-  <div class="cc">
-    <input type="hidden" class="form-control"  name="uri" value="<?php echo("$url");?>">
-  <input type="submit"  value="Login"><br>
-  <br>
-  <li> <a href="bsignup.php"> Sign Up</a></li>
-</div>
-  </form><!-- close form -->
-  <?php
+ <h2 style="color: skyblue">Sign-Up</h2>
 
+</div>
+  <form action="action.php" name="f1" method="POST">
+
+<input type="email" name="email" placeholder="Email" required><br>
+
+<input type="text" name="uname" placeholder="Username" required><br>
+
+<input type="password" name="password" placeholder="Password" required><br>
+
+<div class="cc">
+  
+  <input type="submit"  value="Sign Up"><br>
+  <br>
+  <li> <a href="blogin.php"> Login</a></li>
+</div>
+</form>
+
+<?php
 if(isset($_GET['value']))
 {
    
    echo "<div class=\"alert alert-danger\">
-  <strong>Sign in Failed!</strong>  Wrong Username And Password
+  <strong>Sign up Failed!</strong>  Username already exists!!
    </div><br>";
     
 }
-
 
 ?>
  </div><!-- close aa -->

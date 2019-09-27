@@ -47,8 +47,6 @@ if(!empty($row))
 	else
 	{
 		 header("Location:login.php?value=fail");
-		 //echo "<script>window.alert(\"Wrong Username And Password\");</script>";
-         //echo("Wrong Username And Password");
          echo '<script language="javascript">';
 		 echo 'alert("Wrong Username And Password")';
 		  echo '</script>';
@@ -58,10 +56,8 @@ if(!empty($row))
 }
 else
 {
-	 header("Location:login.php?value=fail");
-	 //echo "<script>window.alert(\"Wrong Username And Password\");</script>";
-	// echo("Wrong Username And Password");
-	  echo '<script language="javascript">';
+	 header("Location:blogin.php?value=fail");
+		  echo '<script language="javascript">';
 		 echo 'alert("Wrong Username And Password")';
 		  echo '</script>';
 }
