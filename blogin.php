@@ -37,7 +37,7 @@ else
   height: 260px;
   background-color: rgba(0,0,0,0.5);
   margin: 0 auto;
-  margin-top: 200px;
+  margin-top: 120px;
   padding-top: 10px;
   padding-left: 100px;
   padding-bottom: 10px;

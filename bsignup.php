@@ -12,11 +12,11 @@
  }
  .aa{
   width: 300px;
-  height: 280px;
+  height: 300px;
   background-color: rgba(0,0,0,0.5);
   margin: 0 auto;
-  margin-top: 200px;
-  padding-top: 10px;
+  margin-top: 100px;
+  padding-top: 0px;
   padding-left: 100px;
   padding-bottom: 10px;
   -webkit-border-color: 15px;
@@ -104,16 +104,16 @@
 </div>
   <form action="action.php" name="f1" method="POST">
 
-<input type="email" name="email" placeholder="Email" required><br>
+<input type="email" name="email" placeholder="Email" required><br> <br>
 
-<input type="text" name="uname" placeholder="Username" required><br>
+<input type="text" name="uname" placeholder="Username" required><br><br>
 
-<input type="password" name="password" placeholder="Password" required><br>
+<input type="password" name="password" placeholder="Password" required><br><br>
 
 <div class="cc">
   
   <input type="submit"  value="Sign Up"><br>
-  <br>
+  
   <li> <a href="blogin.php"> Login</a></li>
 </div>
 </form>

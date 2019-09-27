@@ -4,7 +4,7 @@
 $host="localhost";
 $user="root";
 $pass="";
-$db="db";
+$db="sweoj";
 
 $con=mysqli_connect($host,$user,$pass,$db);
 
