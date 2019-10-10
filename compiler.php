@@ -16,10 +16,6 @@ if(isset($_SESSION['un']))
 	$username=$_SESSION['un'];
 }
 
-
-
-
-
 ?>
 
 
@@ -90,32 +86,10 @@ if(isset($_SESSION['un']))
 </div>
 </div>
 
-
-  
-
 </div>
-
-<div class="col-sm-5">
-
-
-<div class="">
-
-<b>Beta Version-2019</b><br>
-<b>Developed By Ranak and Bala</b>
-
-</div>
-</div>
+  <?php require 'footer.php'; ?>
 
 
-<div class="col-sm-4">
-<?php
-
-
-require_once("time.php");
-
-
-?>
-</div>
 </div>
 </div>
 </div>

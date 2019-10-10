@@ -223,30 +223,6 @@ $row=mysqli_fetch_array($send);
 </div>
 </div><br><br><br>
 
-<div class="area">
-<div class="well foot">
-<div class="row area">
-<div class="col-sm-3">
-</div>
-
-<div class="col-sm-5">
-<div class="">
-
-<b>Beta Version-2019</b><br>
-<b>Developed By Ranak</b>
-
-</div>
-</div>
-
-<div class="col-sm-4">
-<?php
-
-require_once("time.php");
-
-?>
-</div>
-</div>
-</div>
-</div>
+<?php require 'footer.php'; ?>
 </body>
 </html>

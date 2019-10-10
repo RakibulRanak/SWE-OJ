@@ -13,10 +13,6 @@ if(isset($_SESSION['un']))
   $username=$_SESSION['un'];
 }
 
-
-
-
-
 ?>
 
 
@@ -29,53 +25,22 @@ if(isset($_SESSION['un']))
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Home</title>
           <?php include 'linkers.php';?>
-       
-
-
-        
-
 
 </head>
 <body onload="set()">
-
-
-<!--<script type="text/javascript">var hour=<?php print json_encode(date("H"));?>; call(hour); </script>-->
 <div class="main">
 
  <?php require 'nav2.php'; ?>
  
- 	<img src="Images/sust.jpg" alt="IICT SUST" width="1024px" height="600px">
+ 	<img src="Images/sust.jpg" alt="IICT SUST" width="1450px" height="800px">
  	<a href="https://codeforces.com/">Codeforces</a>
  </br>
  	<a href="https://uva.onlinejudge.org">UVa</a>
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 
 
+<?php require 'footer.php'; ?>
 
-
-<div class="col-sm-4">
-    
-
-
-<!-- <?php include 'myfooter.php';?> -->
-<div id="tx"></div>
-
-</div>
-</div>
-</div>
-</div>
 </body>
 </html>
 
