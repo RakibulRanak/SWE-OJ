@@ -56,7 +56,7 @@ if(!empty($row))
 }
 else
 {
-	 header("Location:blogin.php?value=fail");
+	 header("Location:login.php?value=fail");
 		  echo '<script language="javascript">';
 		 echo 'alert("Wrong Username And Password")';
 		  echo '</script>';

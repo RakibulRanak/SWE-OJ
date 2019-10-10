@@ -66,7 +66,6 @@ if(isset($_SESSION['un']))
 <option value="c">C</option>
 <option value="cpp">C++</option>
 <option value="cpp11">C++11</option>
-<option value="java">Java</option>
 
 	
 

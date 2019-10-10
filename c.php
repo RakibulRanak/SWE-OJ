@@ -390,31 +390,7 @@ else if($_POST['src'])
 </div>
 </div>
 </div><br><br><br>
-
-<div class="area">
-<div class="well foot">
-<div class="row area">
-<div class="col-sm-3">
-</div>
-
-<div class="col-sm-5">
-
-
-<div class="fm">
-
-<b>Beta Version-2016</b><br>
-<b>Developed By Bala</b>
-
-</div>
-</div>
-
-
-<div class="col-sm-4">
-
-</div>
-</div>
-</div>
-</div>
+<?php require 'footer.php'; ?>
 
 
 

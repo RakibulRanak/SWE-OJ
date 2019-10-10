@@ -93,8 +93,6 @@ echo "
 
 echo "<b>Problem Setter : <a href=\"profile.php?user=$row[pbauthor]\">$row[pbauthor]</a></b><br><br>";
 
-//echo "<form action=\"submit.php\" method=\"POST\"><textarea style=\"display:none\" name=\"tcase\">$row[tc]</textarea><br><br><textarea style=\"display:none\" name=\"out\">$row[output]</textarea><br><br></form>";
-
 
 echo "<a class=\"btn btn-success\" href=\"submit.php?id=$row[id]\">Submit Your Code</a></div>";
 
@@ -111,34 +109,7 @@ echo "<a class=\"btn btn-success\" href=\"submit.php?id=$row[id]\">Submit Your C
 </div>
 </div><br><br><br>
 
-<div class="area">
-<div class="well foot">
-<div class="row area">
-<div class="col-sm-3">
-</div>
-
-<div class="col-sm-5">
-
-
-<div class="">
-
-<b>Beta Version-2019</b><br>
-<b>Developed By Ranak</b>
-
-</div>
-</div>
-
-
-<div class="col-sm-4">
-<?php
-
-require_once("time.php");
-
-?>
-</div>
-</div>
-</div>
-</div>
+<?php require 'footer.php'; ?>
 
 
 
