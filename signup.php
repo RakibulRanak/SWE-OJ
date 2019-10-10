@@ -1,38 +1,10 @@
-<?php
 
-session_start();
-
-if(isset($_SESSION["un"]))
-{
-  header("Location:home.php");
-}
-
-if(isset($_SESSION['url']))
-{
-     $url=$_SESSION['url'];
-               
-}
-else
-{
-      $url="home.php";
-               
-}      
-
-
-
-?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  
-    
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Sign In</title>
-         <?php
-       require 'linkers.php';
-        ?> 
+ <meta charset="UTF-8">
+ <title>Login Form with Glass Effect</title>
  <style type="text/css">
  body{
   background-image: url('bg1.jpg');
@@ -40,11 +12,11 @@ else
  }
  .aa{
   width: 300px;
-  height: 260px;
+  height: 300px;
   background-color: rgba(0,0,0,0.5);
   margin: 0 auto;
-  margin-top: 200px;
-  padding-top: 10px;
+  margin-top: 100px;
+  padding-top: 0px;
   padding-left: 100px;
   padding-bottom: 10px;
   -webkit-border-color: 15px;
@@ -70,10 +42,10 @@ else
   padding-left: 10px;
   text-align: left;
  }
- .aa input[type="password"]{
+  .aa input[type="email"]{
   width: 200px;
   height: 35px;
-  border:0px;
+  border:10px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -82,10 +54,23 @@ else
   padding-left: 10px;
   text-align: left;
  }
+ .aa input[type="password"]{
+  width: 200px;
+  height: 35px;
+  border:10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  padding-left: 10px;
+  text-align: left;
+
+ }
  .aa input[type="submit"]{
   width: 100px;
   height: 35px;
-  border:0px;
+  border:px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -104,98 +89,46 @@ else
   .cc{
   padding-left: 50px;
   padding-right:30px;
+  padding-top: 10px;
 }
 
   }
 </style>
-
-        
 </head>
-
 <body>
-<div class="main">
-  <?php require 'nav1.php'; ?>
+ 
+ <div class="aa">
+  <div class="bb">
+ <h2 style="color: skyblue">Sign-Up</h2>
 
-<br><br>
+</div>
+  <form action="action.php" name="f1" method="POST">
 
-<div class="row mu">
-<div class="col-sm-1">
+<input type="email" name="email" placeholder="Email" required><br> <br>
+
+<input type="text" name="uname" placeholder="Username" required><br><br>
+
+<input type="password" name="password" placeholder="Password" required><br><br>
+
+<div class="cc">
+  
+  <input type="submit"  value="Sign Up"><br>
+  
+  <li> <a href="login.php"> Login</a></li>
 </div>
-<div class="col-sm-9">
-<center>
-<div class="form-group log">
-<div class="xmm">
-<h2 style=""><u>Log In</u></h2><br><br>
-<form>
-   <input type="text" placeholder="Enter Your Username"><br><br>
-   <input type="password" placeholder="Enter Your password"><br><br>
-  <div class="cc">
-  <input type="submit" value="Submit"><br>
-</div>
-  </form>
+</form>
+
 <?php
-
 if(isset($_GET['value']))
 {
    
    echo "<div class=\"alert alert-danger\">
-  <strong>Sign in Failed!</strong>  Wrong Username And Password
+  <strong>Sign up Failed!</strong>  Username already exists!!
    </div><br>";
     
 }
 
-
 ?>
-
-</div>
-</div>
-</center>
-</div>
-
-<div class="col-sm-2">
-</div>
-</div>
-</div><br><br><br><br>
-
-<div class="container">
-<div class="row">
-<div class="col-sm-9">
-
-</div>
-<div class="col-sm-3">
-</div>
-</div>
-</div><br><br><br>
-
-
-<div class="area sign">
-<div class="well foot">
-<div class="row area">
-<div class="col-sm-3">
-</div>
-
-<div class="col-sm-5">
-
-
-<div class="fm">
-
-<b>Beta Version-2019</b><br>
-<b>Developed By Ranak and Bala</b>
-
-</div>
-</div>
-
-
-<div class="col-sm-4">
-
-</div>
-</div>
-</div>
-</div>
-
-
-
+ </div><!-- close aa -->
 </body>
 </html>
-
-

@@ -23,45 +23,104 @@ else
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  
-    
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Sign In</title>
-         <?php
-       require 'linkers.php';
-        ?> 
+ <meta charset="UTF-8">
+ <title>Login Form with Glass Effect</title>
+ <style type="text/css">
+ body{
+  background-image: url('bg1.jpg');
+  background-size: cover;
+ }
+ .aa{
+  width: 300px;
+  height: 260px;
+  background-color: rgba(0,0,0,0.5);
+  margin: 0 auto;
+  margin-top: 120px;
+  padding-top: 10px;
+  padding-left: 100px;
+  padding-bottom: 10px;
+  -webkit-border-color: 15px;
+  -moz-border-color: 15px;
+  -ms-border-color: 15px;
+  -o-border-color: 15px;
+  border-color: 15px;
+  color:white;
+  font-weight: bolder;
+  -webkit-box-shadow: inset -4px -4px rgba(0,0,0,0.5);
+  box-shadow: inset -4px -4px rgba(0,0,0,0.5);
+  font-size: 18px;
+ }
+ .aa input[type="text"]{
+  width: 200px;
+  height: 35px;
+  border:0px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  padding-left: 10px;
+  text-align: left;
+ }
+ .aa input[type="password"]{
+  width: 200px;
+  height: 35px;
+  border:0px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  padding-left: 10px;
+  text-align: left;
+ }
+ .aa input[type="submit"]{
+  width: 100px;
+  height: 35px;
+  border:0px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background-color: skyblue;
+  text-align: center;
+ }
+  .bb{
+  width: 200px;
+  height: 50px;
+  text-align: center;
+   text-decoration-line: underline;
+  text-decoration-style: bold;
+  }
+  .cc{
+  padding-left: 50px;
+  padding-right:30px;
+}
+
+  }
+</style>
 </head>
-
 <body>
-<div class="main">
-  <?php require 'nav1.php'; ?>
-
-<br><br>
-
-<div class="row mu">
-<div class="col-sm-1">
+ 
+ <div class="aa">
+  <div class="bb">
+ <h2 style="color: skyblue">Login</h2>
 </div>
-<div class="col-sm-9">
-<center>
-<div class="form-group log">
-<div class="xmm">
-<h2 style=""><u>Log In</u></h2><br><br>
-<form action="process.php" name="f1" method="POST">
-
-<label for="username">Username</label>
-<input type="text" name="un" class="form-control" placeholder="Enter Username" required><br>
-<label for="password">Password</label>
-<input type="password" class="form-control"  name="ps" placeholder="Enter Password" required><br>
-<input type="hidden" class="form-control"  name="uri" value="<?php echo("$url");?>">
-
-<button type="submit" class="btn btn-success">Sign In</button><br><br>
-  
-
-</form>
-<?php
+  <form action="process.php" name="f1" method="POST">
+   <input type="text" name="un" class="form-control" placeholder="Enter Username" required><br> <br>
+<!-- <label for="password">Password</label> -->
+<input type="password" class="form-control"  name="ps" placeholder="Enter Password"> <br><br>
+  <div class="cc">
+    <input type="hidden" class="form-control"  name="uri" value="<?php echo("$url");?>">
+  <input type="submit"  value="Login"><br>
+  <br>
+  <li> <a href="signup.php"> Sign Up</a></li>
+</div>
+  </form><!-- close form -->
+  <?php
 
 if(isset($_GET['value']))
 {
@@ -74,56 +133,6 @@ if(isset($_GET['value']))
 
 
 ?>
-
-</div>
-</div>
-</center>
-</div>
-
-<div class="col-sm-2">
-</div>
-</div>
-</div><br><br><br><br>
-
-<div class="container">
-<div class="row">
-<div class="col-sm-9">
-
-</div>
-<div class="col-sm-3">
-</div>
-</div>
-</div><br><br><br>
-
-
-<div class="area sign">
-<div class="well foot">
-<div class="row area">
-<div class="col-sm-3">
-</div>
-
-<div class="col-sm-5">
-
-
-<div class="fm">
-
-<b>Beta Version-2019</b><br>
-<b>Developed By Ranak and Bala</b>
-
-</div>
-</div>
-
-
-<div class="col-sm-4">
-
-</div>
-</div>
-</div>
-</div>
-
-
-
+ </div><!-- close aa -->
 </body>
 </html>
-
-
