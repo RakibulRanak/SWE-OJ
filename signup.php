@@ -79,6 +79,19 @@
   background-color: skyblue;
   text-align: center;
  }
+   .Ranak{
+  width: 100px;
+  height: 30px;
+  border:0px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background-color: skyblue;
+  text-align: center;
+  margin-top: 10px;
+ }
   .bb{
   width: 200px;
   height: 50px;
@@ -114,7 +127,7 @@
   
   <input type="submit"  value="Sign Up"><br>
   
-  <li> <a href="login.php"> Login</a></li>
+  <li class="Ranak"> <a href="login.php"> Login</a></li>
 </div>
 </form>
 

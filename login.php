@@ -78,7 +78,7 @@ else
  }
  .aa input[type="submit"]{
   width: 100px;
-  height: 35px;
+  height: 30px;
   border:0px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -87,6 +87,19 @@ else
   border-radius: 5px;
   background-color: skyblue;
   text-align: center;
+ }
+  .Ranak{
+  width: 100px;
+  height: 30px;
+  border:0px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background-color: skyblue;
+  text-align: center;
+  margin-top: 10px;
  }
   .bb{
   width: 200px;
@@ -116,8 +129,7 @@ else
   <div class="cc">
     <input type="hidden" class="form-control"  name="uri" value="<?php echo("$url");?>">
   <input type="submit"  value="Login"><br>
-  <br>
-  <li> <a href="signup.php"> Sign Up</a></li>
+  <li class="Ranak"> <a href="signup.php"> Sign Up</a></li>
 </div>
   </form><!-- close form -->
   <?php
