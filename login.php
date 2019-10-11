@@ -37,7 +37,7 @@ else
   height: 260px;
   background-color: rgba(0,0,0,0.5);
   margin: 0 auto;
-  margin-top: 120px;
+  margin-top: 20px;
   padding-top: 10px;
   padding-left: 100px;
   padding-bottom: 10px;
@@ -112,11 +112,18 @@ else
   padding-left: 50px;
   padding-right:30px;
 }
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 
   }
 </style>
 </head>
 <body>
+  <div class="col-md-6"> <img src="Images/cover2.png" width="200px" height="300px"alt="" class="center"> </div>
  
  <div class="aa">
   <div class="bb">

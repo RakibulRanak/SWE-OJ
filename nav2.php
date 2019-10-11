@@ -3,7 +3,8 @@
         <div class="col-md-12">
            <nav class="shadow navbar navbar-dark bg-dark navbar-expand-md mytop nbar">
                    <div class="navbar-header ">
-                       <a class="navbar-brand lspace" href="home.php">SWE OJ</a>
+                       <!--a class="navbar-brand lspace" href="home.php">SWE OJ</a-->
+                       <a class="navbar-brand lspace" href="home.php"> <img class="navbar-img" src="Images/Name.png" width="120px" height="50px"> </a>
 
                         <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target"><span class="navbar-toggler-icon"></span>
                         </button>
