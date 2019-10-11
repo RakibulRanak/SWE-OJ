@@ -33,6 +33,37 @@ if(isset($_SESSION['un']))
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Archive</title>
    	    <?php include 'linkers.php';?>
+   	    <style>
+.paginationr {
+  display: inline-block;
+}
+
+.paginationr a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+}
+
+.paginationr a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.paginationr a:hover:not(.active) {background-color: #ddd;}
+
+.paginationr a:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.paginationr a:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+</style>
        
 </head>
 <body>
@@ -41,9 +72,10 @@ if(isset($_SESSION['un']))
 
 
 <div class="row log">
-<div><h3 style="padding-left: 350px";>Problem Archive</h3></div>
+
 
 </div>
+<div style="text-align:center";><h3>Problem Archive</h3></div>
 
 <div class="row cspace">
 <div class="col-sm-1">
@@ -89,7 +121,7 @@ $sql="INSERT INTO archieve VALUES(NULL,'$pn','$pd','$author','$tc','$ac','','$pt
 
 $sq=mysqli_query($con,$sql);
 
-$per_page=10;
+$per_page=3;
 
 if(isset($_GET['page']))
 {
@@ -167,7 +199,7 @@ $total_page=ceil($total_rows/$per_page);
 
     $c="active";
 
-	echo "<div style=\"text-align:center\"><ul class=\"pagination\"><li><a href=\"archive.php?page=1\">First Page</a></li>";
+	echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"archive.php?page=1\">First Page </a>";
 
 	for ($i=1; $i <$total_page ; $i++) {
 	    
@@ -179,17 +211,17 @@ $total_page=ceil($total_rows/$per_page);
         {
         	$c="";
         }
-		echo "<li class=\"$c\"><a href=\"archive.php?page=$i\">$i</a></li>";
+		echo "<a class=\"$c\" href=\"archive.php?page=$i\">$i</a>";
 	}
 
 
-	echo "<li><a href=\"archive.php?page=$total_page\">Last Page</a></li></ul></div>";
+	echo "<a href=\"archive.php?page=$total_page\">Last Page</a></div></div>";
 
 }
 
 if(!isset($pn))
 {
-    $per_page=10;
+    $per_page=3;
 
 	if(isset($_GET['page']))
 	{
@@ -259,7 +291,7 @@ if(!isset($pn))
 	$total_page=ceil($total_rows/$per_page);
 	$c="active";
 
-	echo "<div style=\"text-align:center\"><ul class=\"pagination\"><li><a href=\"archive.php?page=1\">First Page</a></li>";
+	echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"archive.php?page=1\">First Page </a>";
 
 	for ($i=1; $i <$total_page ; $i++) {
 	    
@@ -271,11 +303,11 @@ if(!isset($pn))
         {
         	$c="";
         }
-		echo "<li class=\"$c\"><a href=\"archive.php?page=$i\">$i</a></li>";
+		echo "<a class=\"$c\" href=\"archive.php?page=$i\">$i</a>";
 	}
 
 
-	echo "<li><a href=\"archive.php?page=$total_page\">Last Page</a></li></ul></div>";
+	echo "<a href=\"archive.php?page=$total_page\">Last Page</a></div></div>";
 
 	
 }
@@ -289,7 +321,6 @@ if(!isset($pn))
 </div>
 
 	<div class="col-sm-2">
-     <!--<a href="allsubmission.php"><div class="btn btn-primary">Submissions</div></a><br><br>-->
 	</div>
 	</div>
 	</div><br><br><br><br>
