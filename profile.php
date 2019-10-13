@@ -130,7 +130,7 @@ $row=mysqli_fetch_array($send);
  <div class="pc">Information</div>
   
    
-   <table class="table">
+   <table class="table table-striped table-hover">
     <tr class="success"><td>Name : <?php echo("$row[name]") ?></td></tr>
     <tr class="info"><td>Email : <?php echo("$row[email]") ?></td></tr>
     <tr class="danger"><td>Occupation : <?php echo("$row[status]") ?></td></tr>
@@ -196,20 +196,24 @@ $row=mysqli_fetch_array($send);
 
      if($data==$_SESSION['un']  && $admin==1)
      {
-          echo " 
-          <div class=\"ym\">
-    <div class=\"pc\">Dashboard</div>
+
+    echo "  <div class=\"ym\">
+ <div class=\"pc\">Dashboard</div>
   
    
-   <ul class=\"nav nav-pills nav-stacked\">
-
-    <li role=\"presentation\" class=\"active\"><a href=\"setcontest.php\">Create Contest</a></li>
-    <li role=\"presentation\"><a href=\"setcontestproblem.php\">Create Contest Problem</a></li>
-    <li role=\"presentation\"><a href=\"setproblem.php\">Create Archive Problem</a></li>
-    <li role=\"presentation\"><a href=\"allsubmission.php?name=$username\">My Submission</a></li>
-    <li role=\"presentation\"><a href=\"announcement.php\">Announcement</a></li>
-     <li role=\"presentation\"><a href=\"createadmin.php\">Create Admin</a></li>
-  </ul></div>";
+   <table class=\"table table-striped table-hover\" >
+    
+   
+     <tr><td><a href=\"home.php\">Create Contest</a></td></tr>
+     <tr><td><a href=\"home.php\">Create Contest Problem</a></td></tr> 
+     <tr><td><a href=\"home.php\">Create Archive Problem</a></td></tr> 
+     <tr><td><a href=\"home.php\">My Submission</a></td></tr> 
+     <tr><td><a href=\"home.php\">Announcement</a></td></tr>
+    <tr><td><a href=\"home.php\">Create Admin</a></td></tr>
+    
+    
+    </table>
+  </div>";
           
      }
    ?>
