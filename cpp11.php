@@ -400,10 +400,6 @@ else if($_POST['src'])
 
 <div class="fm">
 
-<b>Beta Version-2019</b><br>
-<b>Developed By Ranak</b>
-
-</div>
 </div>
 
 
@@ -413,6 +409,7 @@ else if($_POST['src'])
 </div>
 </div>
 </div>
+<?php require 'footer.php'; ?>
 
 
 

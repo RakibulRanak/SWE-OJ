@@ -100,6 +100,7 @@ else
   background-color: skyblue;
   text-align: center;
   margin-top: 10px;
+  list-style: none;
  }
   .bb{
   width: 200px;
@@ -136,7 +137,7 @@ else
   <div class="cc">
     <input type="hidden" class="form-control"  name="uri" value="<?php echo("$url");?>">
   <input type="submit"  value="Login"><br>
-  <li class="Ranak"> <a href="signup.php"> Sign Up</a></li>
+  <li class="Ranak"> <a href="signup.php" style="text-decoration: none"> Sign Up</a></li>
 </div>
   </form><!-- close form -->
   <?php

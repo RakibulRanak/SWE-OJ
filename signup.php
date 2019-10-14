@@ -91,6 +91,7 @@
   background-color: skyblue;
   text-align: center;
   margin-top: 10px;
+  list-style: none;
  }
   .bb{
   width: 200px;
@@ -135,7 +136,7 @@
   
   <input type="submit"  value="Sign Up"><br>
   
-  <li class="Ranak"> <a href="login.php"> Login</a></li>
+  <li class="Ranak"> <a href="login.php"style="text-decoration: none"> Login</a></li>
 </div>
 </form>
 

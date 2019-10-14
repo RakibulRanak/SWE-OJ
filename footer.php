@@ -1,4 +1,4 @@
-<nav class="navbar fixed-bottom navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark">
   <!-- BEGIN: Powered by Supercounters.com -->
 <center><script type="text/javascript" src="http://widget.supercounters.com/online_i.js"></script><script type="text/javascript">sc_online_i(1360839,"ffffff","e61c1c");</script><br><noscript><a href="http://www.supercounters.com/">Free Online Counter</a></noscript>
 </center>
@@ -25,5 +25,5 @@ require_once("time.php");
 
 
 ?>
-</div>
+
 </nav>
