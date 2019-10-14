@@ -34,35 +34,7 @@ if(isset($_SESSION['un']))
         <title>Archive</title>
    	    <?php include 'linkers.php';?>
    	    <style>
-.paginationr {
-  display: inline-block;
-}
 
-.paginationr a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  border: 1px solid #ddd;
-}
-
-.paginationr a.active {
-  background-color: #4CAF50;
-  color: white;
-  border: 1px solid #4CAF50;
-}
-
-.paginationr a:hover:not(.active) {background-color: #ddd;}
-
-.paginationr a:first-child {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
-.paginationr a:last-child {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
 </style>
        
 </head>

@@ -41,7 +41,7 @@ if(isset($_SESSION['un']))
 
 <div class="row log">
 
-<div class=""><h3 style="padding-left: 350px";>All Submission</h3></div>
+<div class=""><h3 style="padding-left: 550px";>All Submission</h3></div>
 
 </div>
 
@@ -88,7 +88,7 @@ if(!isset($_POST['id']) && !isset($_GET['name']))
 {
    $ch=0;
    error_reporting(0);
-   $per_page=30;
+   $per_page=10;
 
   if(isset($_GET['page']))
   {
@@ -143,7 +143,7 @@ while($row=mysqli_fetch_array($sts))
   $total_page=ceil($total_rows/$per_page);
   $c="active";
 
-  echo "<div class=\"contain con\"><ul class=\"pagination\"><li><a href=\"allsubmission.php?page=1\">First Page</a></li>";
+    echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"allsubmission.php?page=1\">First Page</a>";
 
   for ($i=1; $i <$total_page ; $i++) {
       
@@ -155,11 +155,9 @@ while($row=mysqli_fetch_array($sts))
         {
           $c="";
         }
-    echo "<li class=\"$c\"><a href=\"allsubmission.php?page=$i\">$i</a></li>";
+    echo "<a class=\"$c\" href=\"allsubmission.php?page=$i\">$i</a>";
   }
-
-
-  echo "<li><a href=\"allsubmission.php?page=$total_page\">Last Page</a></li></ul></div>";
+   echo "<a href=\"allsubmission.php?page=$total_page\">Last Page</a></li></div>";
 
 
 }
@@ -169,7 +167,7 @@ if(isset($_GET['name']))
    $name=$_GET['name'];
    $ch=0;
    error_reporting(0);
-   $per_page=30;
+   $per_page=10;
 
   if(isset($_GET['page']))
   {
@@ -222,8 +220,7 @@ while($row=mysqli_fetch_array($sts))
   $total_rows=mysqli_num_rows($sn);
   $total_page=ceil($total_rows/$per_page);
   $c="active";
-
-  echo "<div class=\"contain con\"><ul class=\"pagination\"><li><a href=\"allsubmission.php?page=1&name=$name\">First Page</a></li>";
+  echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"allsubmission.php?page=1&name=$name\">First Page</a>";
 
   for ($i=1; $i <$total_page ; $i++) {
       
@@ -235,11 +232,9 @@ while($row=mysqli_fetch_array($sts))
         {
           $c="";
         }
-    echo "<li class=\"$c\"><a href=\"allsubmission.php?page=$i&name=$name\">$i</a></li>";
+    echo "<a class=\"$c\" href=\"allsubmission.php?page=$i&name=$name\">$i</a>";
   }
-
-
-  echo "<li><a href=\"allsubmission.php?page=$total_page&name=$name\">Last Page</a></li></ul></div>";
+   echo "<a href=\"allsubmission.php?page=$total_page&name=$name\">Last Page</a></li></div>";
 
 
 }
@@ -311,7 +306,7 @@ $ao=$r3['output'];
 
 
 
-   $per_page=30;
+   $per_page=10;
 
   if(isset($_GET['page']))
   {
@@ -371,7 +366,7 @@ while($row=mysqli_fetch_array($sts))
   $total_page=ceil($total_rows/$per_page);
   $c="active";
 
-  echo "<div class=\"contain con\"><ul class=\"pagination\"><li><a href=\"allsubmission.php?page=1\">First Page</a></li>";
+  echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"allsubmission.php?page=1\">First Page</a>";
 
   for ($i=1; $i <$total_page ; $i++) {
       
@@ -383,11 +378,9 @@ while($row=mysqli_fetch_array($sts))
         {
           $c="";
         }
-    echo "<li class=\"$c\"><a href=\"allsubmission.php?page=$i\">$i</a></li>";
+    echo "<a class=\"$c\" href=\"allsubmission.php?page=$i\">$i</a>";
   }
-
-
-  echo "<li><a href=\"allsubmission.php?page=$total_page\">Last Page</a></li></ul></div>";
+   echo "<a href=\"allsubmission.php?page=$total_page\">Last Page</a></li></div>";
 
 }
 ?>
