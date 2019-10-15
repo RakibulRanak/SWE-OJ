@@ -108,6 +108,7 @@ if(!isset($_POST['id']) && !isset($_GET['name']))
 
    
    $sts=mysqli_query($con,$show);
+   // echo ($sts=="");
 
 
 
@@ -326,6 +327,10 @@ $ao=$r3['output'];
 
 
 $sql="INSERT INTO submissions VALUES('$nid','$username','$result','$pname','$cpu') ";
+// echo $result;
+// echo $nid;
+// echo $nid;
+
 $show="SELECT * FROM submissions ORDER BY sid DESC limit $start,$per_page";
 
 

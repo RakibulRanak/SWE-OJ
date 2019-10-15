@@ -28,11 +28,11 @@ if(isset($_SESSION['un']))
 
 </head>
 <body onload="set()">
-<div class="main">
+<div>
 
  <?php require 'nav2.php'; ?>
  
- 	<img src="Images/sust.jpg" alt="IICT SUST" width="1450px" height="800px">
+ 	<img src="Images/sust.jpg" alt="IICT SUST" style="width: 100%; height: 90vh; object-fit: cover;">
  	<a href="https://codeforces.com/">Codeforces</a>
  </br>
  	<a href="https://uva.onlinejudge.org">UVa</a>

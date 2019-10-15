@@ -25,18 +25,14 @@ if(isset($_SESSION['un']))
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Run Code</title>
-      <?php include 'linkers.php';?>
-
-
-
-
+        <?php include 'linkers.php';?>
 
 
 
 </head>
 <body>
 <div class="main">
-  <?php require 'nav2.php'; ?>
+ <?php require 'nav2.php'; ?>
 
 <div class="row log">
 <div class="col-sm-2">
@@ -184,24 +180,45 @@ $limit=$r4['tlimit'];
 
 	if($check==0 || $check==1)
 	{
-
+		//echo "hereeeeee    ";
+		///echo $us;
+		//echo $source;
+		//echo $output;
+		//echo '<br>';
+		$source=str_replace("'", "\n", $source);
         $nsql="INSERT into codes VALUES('$us','$source',NULL)";
+
+        $snq=mysqli_query($con,$nsql);
+
+		if($snq) {
+			//echo " Kaam Korse ";
+		}
+
+
 		$usql="UPDATE archieve SET uoutput='$output' WHERE id='$pid'";
+
 		$csql="SELECT uoutput FROM archieve WHERE id='$pid'";
+
 		$q3="SELECT id FROM codes ORDER BY id DESC ";
-		$snq=mysqli_query($con,$nsql);
-		$snd=mysqli_query($con,$usql);
-		$cnd=mysqli_query($con,$csql);
+
+	
+		$snd=mysqli_query($con,$usql); //updating ooutput in database
+		$cnd=mysqli_query($con,$csql); 
 		$sq3=mysqli_query($con,$q3);
 		$r2=mysqli_fetch_array($cnd);
-		$r4=mysqli_fetch_array($sq3);
+		$r4=mysqli_fetch_array($sq3); 
 
 
 
 
 		$uo=$r2['uoutput'];
 		$ac=$row['output'];
+
+		//echo $uo;
+		//echo $ac;
+
 		$nid=$r4['id'];
+		//echo $nid;
 
 		//var_dump($uo);
 		//echo "<br><br>";
@@ -213,9 +230,9 @@ $limit=$r4['tlimit'];
 
 
 	}
-	//echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-5\"><form action=\"allsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"vd\" value=\"$fr\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"> </div><div class=\"col-sm-3\"></div></div>";
+	
 
-    echo "<center><div class=\"row\" style=\"padding-left: 150px\";><form action=\"allsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"vd\" value=\"$fr\"><input type=\"hidden\" name=\"il\" value=\"$seconds\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"></div><h3></center>";
+    echo "<center><div class=\"row\"><form action=\"allsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"vd\" value=\"$fr\"><input type=\"hidden\" name=\"il\" value=\"$seconds\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"></div></center>";
    
 
 }
@@ -224,7 +241,7 @@ else if($_POST['src'])
 {
 
 
-    require_once("config.php");
+    require_once("connection.php");
     
 	$lang=$_POST['language'];
 	$source=$_POST['src'];
@@ -375,8 +392,7 @@ else if($_POST['src'])
 
     }
 
-    
-     echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-5\"><form action=\"contestsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"vd\" value=\"$fr\"><input type=\"hidden\" name=\"il\" value=\"$seconds\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"> </div><div class=\"col-sm-3\"></div></div>";
+        echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-5\"><form action=\"contestsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"vd\" value=\"$fr\"><input type=\"hidden\" name=\"il\" value=\"$seconds\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"> </div><div class=\"col-sm-3\"></div></div>";
 }
 
 ?>
@@ -387,30 +403,10 @@ else if($_POST['src'])
 </div>
 </div>
 </div>
-</div><br><br><br>
-
-<div class="area">
-<div class="well foot">
-<div class="row area">
-<div class="col-sm-3">
-</div>
-
-<div class="col-sm-5">
+</div><br><br><br><br><br><br>
 
 
-<div class="fm">
-
-</div>
-
-
-<div class="col-sm-4">
-
-</div>
-</div>
-</div>
-</div>
 <?php require 'footer.php'; ?>
-
 
 
 </body>

@@ -32,7 +32,8 @@ $sql="SELECT * FROM archieve WHERE id='$problemid' ";
 $sq=mysqli_query($con,$sql);
 
 $row=mysqli_fetch_array($sq);
-
+//echo $row['output'];
+// sleep(10);
 
 
 
