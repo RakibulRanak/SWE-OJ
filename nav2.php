@@ -14,7 +14,7 @@
                         <ul class="nav navbar-nav">
                                 <li class="space ranak"><a href="compiler.php"><i class="fa fa-code ispace"></i>Compiler</a></li>
                                 <li class="space"><a href="archive.php"><i class="fa fa-archive ispace"></i>Problem Archive</a></li>
-                                <li class="space"><a href=""><i class="fa fa-cogs ispace"></i>Contests</a></li>
+                                <li class="space"><a href="contest.php"><i class="fa fa-cogs ispace"></i>Contests</a></li>
                              <!--    <li class="space"><a href="#"><i class="fa fa-check-square ispace"></i>Debug</a></li> -->
                                 <li class="lgspace space"><a href="profile.php?user=<?php echo("$username"); ?>"><i class="fa fa-user ispace"></i><?php echo("$username"); ?></a></li>
                                 <li class="space"><a href="logout.php"><i class="fa fa-power-off ispace"></i>Logout</a></li>
