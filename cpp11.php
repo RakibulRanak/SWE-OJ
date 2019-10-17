@@ -185,8 +185,9 @@ $limit=$r4['tlimit'];
 		//echo $source;
 		//echo $output;
 		//echo '<br>';
-		//$source=str_replace("'", "\n", $source);
-        $nsql='INSERT into codes VALUES("$us","$source",NULL)';
+		$source=str_replace("'", "''", $source);
+        //$nsql='INSERT into codes VALUES("$us","$source",NULL)';
+        $nsql="INSERT into codes VALUES('$us','$source',NULL)";
 
         $snq=mysqli_query($con,$nsql);
 

@@ -19,10 +19,6 @@ $row=mysqli_fetch_array($sq);
 
 
 
-
-
-
-
 if(!empty($row))
 {
 	
