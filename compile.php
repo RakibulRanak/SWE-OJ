@@ -102,8 +102,5 @@ if(isset($_SESSION['un']))
 </div><br><br><br><br><br><br><br><br>
 
 <?php require 'footer.php'; ?>
-
-
-
 </body>
 </html>

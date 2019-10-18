@@ -34,35 +34,34 @@ require_once("config.php");
 
 <!DOCTYPE html>
 <html>
+
 <head>
-  
-    
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>All Submission</title>
-  
-           <?php include 'linkers.php';?>
 
 
-        <style>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>All Submission</title>
 
-            .deactive
-            {
-               pointer-events:none;
-               color:gray;
-            }
+    <?php include 'linkers.php';?>
 
-        </style>
+
+    <style>
+    .deactive {
+        pointer-events: none;
+        color: gray;
+    }
+    </style>
 
 </head>
+
 <body>
-<div class="main">
-  <?php require 'nav2.php'; ?>
+    <div class="main">
+        <?php require 'nav2.php'; ?>
 
-<div class="row log">
-<h3 style="text-align:center;">Contest Submission</h3><br>
+        <div class="row log">
+            <h3 style="text-align:center;">Contest Submission</h3><br>
 
-<?php
+            <?php
 
 if(isset($_GET['id']))
 {
@@ -80,10 +79,10 @@ if(isset($_GET['id']))
 
 ?>
 
-</div>
+        </div>
 
 
-<?php
+        <?php
 
  if(isset($_POST['id']))
  {
@@ -160,24 +159,24 @@ if(isset($_GET['id']))
 
 ?>
 
-<div class="row cspace">
-<div class="col-sm-1">
-</div>
-<div class="col-sm-9">
-  <div class="table-responsive">
-    <table class="table">
-    <thead>
-    <tr>
-     <th>ID</th>
-     <th>Name</th>
-     <th>Problem Name</th>
-     <th>Verdict</th>
-     <th>Points</th>
-    </tr>
-    </thead>
-    <tbody>
+        <div class="row cspace">
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-9">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Problem Name</th>
+                                <th>Verdict</th>
+                                <th>Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-<?php
+                            <?php
 
 
 error_reporting(0);
@@ -667,14 +666,14 @@ while($row=mysqli_fetch_array($sts))
 
 
 
-</div>
+                </div>
 
 
-</div>
-</div>
-</div><br><br><br>
+            </div>
+        </div>
+    </div><br><br><br>
 
-<?php
+    <?php
 
 require_once("footer.php");
 
@@ -683,4 +682,5 @@ require_once("footer.php");
 
 
 </body>
+
 </html>

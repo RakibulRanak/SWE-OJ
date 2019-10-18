@@ -32,66 +32,65 @@ if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
 
 <!DOCTYPE html>
 <html>
+
 <head>
-  
-    
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Contest</title>
-    
-          <?php include 'linkers.php';?>
 
 
-        <script>
-        // Set the date we're counting down to
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Contest</title>
 
-        function call(d,val,st){
+    <?php include 'linkers.php';?>
+
+
+    <script>
+    // Set the date we're counting down to
+
+    function call(d, val, st) {
 
         //console.log(d);
         //console.log(val);
         //console.log(st);
         var countDownDate = new Date(d).getTime();
-        var start =new Date(st).getTime();
+        var start = new Date(st).getTime();
 
         //console.log(start);
 
         var result;
-       
+
 
         // Update the count down every 1 second
         var x = setInterval(function() {
 
             // Get todays date and time
             var now = new Date().getTime();
-            
+
             // Find the distance between now an the count down date
-            
-            
-           
-           
 
-            if(start>now)
-            {
 
-               var distance = start - now;
+
+
+
+            if (start > now) {
+
+                var distance = start - now;
 
                 // Time calculations for days, hours, minutes and seconds
-              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 
-              // Output the result in an element with id="demo"
-              var result=days + "d " + hours + "h "
-              + minutes + "m " + seconds + "s ";
+                // Output the result in an element with id="demo"
+                var result = days + "d " + hours + "h " +
+                    minutes + "m " + seconds + "s ";
 
-              //console.log(result);
+                //console.log(result);
 
-               document.getElementById(val).innerHTML = "Contest Countdown : "+ days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-            }
-            else if(countDownDate>=now)
-            {
+                document.getElementById(val).innerHTML = "Contest Countdown : " + days + "d " + hours + "h " +
+                    minutes + "m " + seconds + "s ";
+            } else if (countDownDate >= now) {
                 var distance = countDownDate - now;
 
                 // Time calculations for days, hours, minutes and seconds
@@ -100,63 +99,64 @@ if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
                 var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                 
-                // Output the result in an element with id="demo"
-                var result=days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
 
-              //console.log(result);
-                document.getElementById(val).innerHTML = "Running : "+ days + "d " + hours + "h "
-               + minutes + "m " + seconds + "s " +" ";
+                // Output the result in an element with id="demo"
+                var result = days + "d " + hours + "h " +
+                    minutes + "m " + seconds + "s ";
+
+                //console.log(result);
+                document.getElementById(val).innerHTML = "Running : " + days + "d " + hours + "h " +
+                    minutes + "m " + seconds + "s " + " ";
             }
-            
+
             // If the count down is over, write some text 
-            else if (now>countDownDate) {
+            else if (now > countDownDate) {
                 clearInterval(x);
                 document.getElementById(val).innerHTML = "Status : Finished";
             }
 
 
-            
+
         }, 1000);
 
-          return x;
-        }
-
-
-        </script>
+        return x;
+    }
+    </script>
 
 
 
 
 
 </head>
+
 <body>
-<div class="main">
- <?php require 'nav2.php'; ?>
+    <div class="main">
+        <?php require 'nav2.php'; ?>
 
 
-<div class="row log">
-<div class="col-sm-10">
-<div class="ctm"><h3 style="text-align:center;">All Contest</h3></div>
-</div>
+        <div class="row log">
+            <div class="col-sm-10">
+                <div class="ctm">
+                    <h3 style="text-align:center;">All Contest</h3>
+                </div>
+            </div>
 
-<div class="col-sm-1">
+            <div class="col-sm-1">
 
-</div>
+            </div>
 
-<div class="col-sm-1">
-  
-</div>
+            <div class="col-sm-1">
 
-</div>
+            </div>
 
-<div class="row cspace">
-<div class="col-sm-2">
-</div>
-<div class="col-sm-6 pbs">
+        </div>
 
-<?php
+        <div class="row cspace">
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-6 pbs">
+
+                <?php
 
 require_once("config.php");
 
@@ -254,20 +254,18 @@ $sq3=mysqli_query($con,$q3);
       $m=intval($min%60);
 
    ?>
-      
-    <script type="text/javascript">
-    var end=<?php print json_encode($en);?>; 
-    var val=<?php print json_encode($i);?>; 
-    var nv=<?php print json_encode($nv);?>; 
 
-    //console.log("Start" +nv);
+                <script type="text/javascript">
+                var end = < ? php print json_encode($en); ? > ;
+                var val = < ? php print json_encode($i); ? > ;
+                var nv = < ? php print json_encode($nv); ? > ;
 
-    call(end,val,nv);
+                //console.log("Start" +nv);
 
+                call(end, val, nv);
+                </script>
 
-   </script>
-      
-    <?php
+                <?php
 
      if($access==1)
      {
@@ -376,20 +374,18 @@ if(isset($_POST['update']))
       $m=intval($min%60);
 
    ?>
-      
-    <script type="text/javascript">
-    var end=<?php print json_encode($en);?>; 
-    var val=<?php print json_encode($i);?>; 
-    var nv=<?php print json_encode($nv);?>; 
 
-    //console.log("Start" +nv);
+                <script type="text/javascript">
+                var end = < ? php print json_encode($en); ? > ;
+                var val = < ? php print json_encode($i); ? > ;
+                var nv = < ? php print json_encode($nv); ? > ;
 
-    call(end,val,nv);
+                //console.log("Start" +nv);
 
+                call(end, val, nv);
+                </script>
 
-   </script>
-      
-    <?php
+                <?php
     
 
      if($access==1)
@@ -503,20 +499,18 @@ if(isset($_POST['delete']))
       $m=intval($min%60);
 
    ?>
-      
-    <script type="text/javascript">
-    var end=<?php print json_encode($en);?>; 
-    var val=<?php print json_encode($i);?>; 
-    var nv=<?php print json_encode($nv);?>; 
 
-    //console.log("Start" +nv);
+                <script type="text/javascript">
+                var end = < ? php print json_encode($en); ? > ;
+                var val = < ? php print json_encode($i); ? > ;
+                var nv = < ? php print json_encode($nv); ? > ;
 
-    call(end,val,nv);
+                //console.log("Start" +nv);
 
+                call(end, val, nv);
+                </script>
 
-   </script>
-      
-    <?php
+                <?php
     
 
      if($access==1)
@@ -620,20 +614,18 @@ if(!isset($_POST['cn']) && !isset($_POST['update']) && !isset($_POST['delete']))
       $m=intval($min%60);
 
    ?>
-      
-    <script type="text/javascript">
-    var end=<?php print json_encode($en);?>; 
-    var val=<?php print json_encode($i);?>; 
-    var nv=<?php print json_encode($nv);?>; 
 
-    //console.log("Start" +nv);
+                <script type="text/javascript">
+                var end = < ? php print json_encode($en); ? > ;
+                var val = < ? php print json_encode($i); ? > ;
+                var nv = < ? php print json_encode($nv); ? > ;
 
-    call(end,val,nv);
+                //console.log("Start" +nv);
 
+                call(end, val, nv);
+                </script>
 
-   </script>
-      
-    <?php
+                <?php
     
 
      if($access==1)
@@ -660,16 +652,17 @@ if(!isset($_POST['cn']) && !isset($_POST['update']) && !isset($_POST['delete']))
 
 ?>
 
-</div>
-<div class="col-sm-4">
+            </div>
+            <div class="col-sm-4">
 
-</div>
-</div>
-</div>
-</div><br><br><br>
+            </div>
+        </div>
+    </div>
+    </div><br><br><br>
 
-<?php require 'footer.php'; ?>
+    <?php require 'footer.php'; ?>
 
 
 </body>
+
 </html>

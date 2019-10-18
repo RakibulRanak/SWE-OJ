@@ -20,33 +20,32 @@ if(isset($_SESSION['un']))
 
 <!DOCTYPE html>
 <html>
+
 <head>
-  
-    
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Home</title>
-   
-           <?php include 'linkers.php';?>
-  <style>
-          code {
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Home</title>
+
+    <?php include 'linkers.php';?>
+    <style>
+    code {
         background-color: #EEEEEE;
-        font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
-         white-space: pre;
-       }
-      pre {
+        font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+        white-space: pre;
+    }
+
+    pre {
         background-color: #EEEEEE;
-        font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
+        font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
         margin-bottom: 10px;
         max-height: 600px;
         overflow: auto;
         padding: 5px;
         width: auto;
         white-space: pre;
-      }
-
-
-
+    }
     </style>
 
 
@@ -55,32 +54,35 @@ if(isset($_SESSION['un']))
 
 
 </head>
+
 <body>
-<div class="main">
-  <?php require 'nav2.php'; ?>
+    <div class="main">
+        <?php require 'nav2.php'; ?>
 
-<div class="row log">
-<div class="col-sm-10">
-<div class=""><h3 style="text-align:center;">Show Code</h3></div>
-</div>
+        <div class="row log">
+            <div class="col-sm-10">
+                <div class="">
+                    <h3 style="text-align:center;">Show Code</h3>
+                </div>
+            </div>
 
-<div class="col-sm-1">
+            <div class="col-sm-1">
 
-</div>
+            </div>
 
-<div class="col-sm-1">
-  
-</div>
+            <div class="col-sm-1">
 
-</div>
+            </div>
 
-
+        </div>
 
 
-<div class="row cspace">
-<div class="col-sm-8">
 
-<?php
+
+        <div class="row cspace">
+            <div class="col-sm-8">
+
+                <?php
 
 
 
@@ -110,18 +112,19 @@ while($row=mysqli_fetch_array($sq))
 ?>
 
 
-</div>
+            </div>
 
-<div class="col-sm-4">
+            <div class="col-sm-4">
 
-</div>
-</div>
-</div>
-</div><br><br><br>
+            </div>
+        </div>
+    </div>
+    </div><br><br><br>
 
-<?php require 'footer.php'; ?>
+    <?php require 'footer.php'; ?>
 
 
 
 </body>
+
 </html>

@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -20,43 +19,47 @@ if(isset($_SESSION['un']))
 
 <!DOCTYPE html>
 <html>
+
 <head>
-  
-    
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Run Code</title>
-        <?php include 'linkers.php';?>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Run Code</title>
+    <?php include 'linkers.php';?>
 
 
 
 
 
 </head>
+
 <body>
-<div class="main">
-  <?php require 'nav2.php'; ?>
+    <div class="main">
+        <?php require 'nav2.php'; ?>
 
-<div class="row log">
-<div class="col-sm-2">
+        <div class="row log">
+            <div class="col-sm-2">
 
-</div>
+            </div>
 
-<div class="col-sm-7">
-<div class=""><h3 style="text-align:center;">Code Compiler</h3></div>
-</div>
+            <div class="col-sm-7">
+                <div class="">
+                    <h3 style="text-align:center;">Code Compiler</h3>
+                </div>
+            </div>
 
-<div class="col-sm-3">
-  
-</div>
+            <div class="col-sm-3">
 
-</div>
+            </div>
 
-<div class="row cspace">
-<div class="col-sm-8">
+        </div>
+
+        <div class="row cspace">
+            <div class="col-sm-8">
 
 
-<?php
+                <?php
 
 if($_POST['code'])
 {
@@ -380,16 +383,17 @@ else if($_POST['src'])
 
 ?>
 
-</div>
-<div class="col-sm-4">
+            </div>
+            <div class="col-sm-4">
 
-</div>
-</div>
-</div>
-</div><br><br><br>
-<?php require 'footer.php'; ?>
+            </div>
+        </div>
+    </div>
+    </div><br><br><br>
+    <?php require 'footer.php'; ?>
 
 
 
 </body>
+
 </html>

@@ -21,13 +21,14 @@ if(isset($_SESSION['un']))
 
 <!DOCTYPE html>
 <html>
+
 <head>
-  
-    
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>All Submission</title>
-        <?php include 'linkers.php';?>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>All Submission</title>
+    <?php include 'linkers.php';?>
 
 
 
@@ -35,39 +36,42 @@ if(isset($_SESSION['un']))
 
 
 </head>
+
 <body>
-<div class="main">
- <?php require 'nav2.php'; ?>
+    <div class="main">
+        <?php require 'nav2.php'; ?>
 
-<div class="row log">
+        <div class="row log">
 
-<div class=""><h3 style="padding-left: 550px";>All Submission</h3></div>
+            <div class="">
+                <h3 style="padding-left: 550px" ;>All Submission</h3>
+            </div>
 
-</div>
-
-
-
-
-<div class="row cspace">
-<div class="col-sm-1">
-</div>
-<div class="col-sm-9">
-  <div class="table-responsive">
-    <table class="table">
-    <thead>
-    <tr>
-     <th>ID</th>
-     <th>Name</th>
-     <th>Problem Name</th>
-     <th>Verdict</th>
-     <th>CPU TIME</th>
-    </tr>
-    </thead>
-    <tbody>
+        </div>
 
 
 
-<?php
+
+        <div class="row cspace">
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-9">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Problem Name</th>
+                                <th>Verdict</th>
+                                <th>CPU TIME</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+
+                            <?php
 
 
 error_reporting(0);
@@ -393,18 +397,19 @@ while($row=mysqli_fetch_array($sts))
 
 
 
-</div>
+                </div>
 
-<div class="col-sm-2">
+                <div class="col-sm-2">
 
-</div>
-</div>
-</div>
-</div><br><br><br>
+                </div>
+            </div>
+        </div>
+    </div><br><br><br>
 
-<?php require 'footer.php'; ?>
+    <?php require 'footer.php'; ?>
 
 
 
 </body>
+
 </html>

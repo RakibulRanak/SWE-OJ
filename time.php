@@ -1,29 +1,22 @@
-
 <script src="js/vendor/moment.min.js"></script>
-<script> 
-     function set(){
+<script>
+function set() {
 
-         document.getElementById('tx').innerHTML="<b>Server Time : "+ moment().format('h:mm:ss a') +"</b>";
-         var t=setTimeout(set,1000);
-      }
-      
-
-     
+    document.getElementById('tx').innerHTML = "<b>Server Time : " + moment().format('h:mm:ss a') + "</b>";
+    var t = setTimeout(set, 1000);
+}
 </script>
 
 
 <body onload="set()">
 
-<script> 
-     function set(){
+    <script>
+    function set() {
 
-         document.getElementById('tx').innerHTML="<b>Server Time : "+ moment().format('h:mm:ss a') +"</b>";
-         var t=setTimeout(set,1000);
-      }
-      
+        document.getElementById('tx').innerHTML = "<b>Server Time : " + moment().format('h:mm:ss a') + "</b>";
+        var t = setTimeout(set, 1000);
+    }
+    </script>
 
-     
-</script>
-
-<div id="tx"></div>
+    <div id="tx"></div>
 </body>

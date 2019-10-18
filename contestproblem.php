@@ -65,102 +65,99 @@ if(isset($_GET['name']))
 
 <!DOCTYPE html>
 <html>
+
 <head>
-  
-    
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Contest Problems</title>
-      
-              <?php include 'linkers.php';?>
-
-      <script>
-      // Set the date we're counting down to
-
-      function call(d,val,st){
-
-      //console.log(d);
-      //console.log(val);
-      //console.log(st);
-      var countDownDate = new Date(d).getTime();
-      var start =new Date(st).getTime();
-
-      //console.log(start);
-
-      var result;
-
-      // Update the count down every 1 second
-      var x = setInterval(function() {
-
-          // Get todays date and time
-          var now = new Date().getTime();
-          
-          // Find the distance between now an the count down date
-          
-          
-         
-         
-
-          if(start>now)
-          {
-
-             var distance = start - now;
-
-             console.log(distance);
-
-              // Time calculations for days, hours, minutes and seconds
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 
-            // Output the result in an element with id="demo"
-            var result=days + "d " + hours + "h "
-            + minutes + "m " + seconds + "s ";
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Contest Problems</title>
 
-            //console.log(result);
+    <?php include 'linkers.php';?>
 
-             document.getElementById(val).innerHTML = "Contest Countdown : "+ days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-          }
-          else if(countDownDate>=now)
-          {
-              var distance = countDownDate - now;
+    <script>
+    // Set the date we're counting down to
 
-              // Time calculations for days, hours, minutes and seconds
-              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    function call(d, val, st) {
 
-               
-              // Output the result in an element with id="demo"
-              var result=days + "d " + hours + "h "
-              + minutes + "m " + seconds + "s ";
+        //console.log(d);
+        //console.log(val);
+        //console.log(st);
+        var countDownDate = new Date(d).getTime();
+        var start = new Date(st).getTime();
 
-            //console.log(result);
-              document.getElementById(val).innerHTML = "Running : "+ days + "d " + hours + "h "
-             + minutes + "m " + seconds + "s ";
-              document.getElementById("demo").innerHTML = "Running : "+ days + "d " + hours + "h "
-             + minutes + "m " + seconds + "s ";
-          }
-          
-          // If the count down is over, write some text 
-          else if (now>countDownDate) {
-              clearInterval(x);
-              document.getElementById(val).innerHTML = "Status : Finished";
-              document.getElementById("demo").innerHTML = "Finished";
-          }
+        //console.log(start);
+
+        var result;
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+            // Get todays date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now an the count down date
 
 
-          
-      }, 1000);
+
+
+
+            if (start > now) {
+
+                var distance = start - now;
+
+                console.log(distance);
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+                // Output the result in an element with id="demo"
+                var result = days + "d " + hours + "h " +
+                    minutes + "m " + seconds + "s ";
+
+                //console.log(result);
+
+                document.getElementById(val).innerHTML = "Contest Countdown : " + days + "d " + hours + "h " +
+                    minutes + "m " + seconds + "s ";
+            } else if (countDownDate >= now) {
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+                // Output the result in an element with id="demo"
+                var result = days + "d " + hours + "h " +
+                    minutes + "m " + seconds + "s ";
+
+                //console.log(result);
+                document.getElementById(val).innerHTML = "Running : " + days + "d " + hours + "h " +
+                    minutes + "m " + seconds + "s ";
+                document.getElementById("demo").innerHTML = "Running : " + days + "d " + hours + "h " +
+                    minutes + "m " + seconds + "s ";
+            }
+
+            // If the count down is over, write some text 
+            else if (now > countDownDate) {
+                clearInterval(x);
+                document.getElementById(val).innerHTML = "Status : Finished";
+                document.getElementById("demo").innerHTML = "Finished";
+            }
+
+
+
+        }, 1000);
 
         return x;
-      }
-
-
-      </script>
+    }
+    </script>
 
 
 
@@ -168,45 +165,50 @@ if(isset($_GET['name']))
 
 
 </head>
+
 <body>
-<div class="main">
-<?php require 'nav2.php'; ?>
-<div class="container-fluid log">
+    <div class="main">
+        <?php require 'nav2.php'; ?>
+        <div class="container-fluid log">
 
-<div class="alert alert-info">
-  <button id="an" class="btn btn-success">
-   <script type="text/javascript">
-        
-        $("#an").click(function() {
-           $('html,body').animate({
-        scrollTop: $("#fn").offset().top},
-        'slow');
-});
-</script>
-</button>
-</div>
-<div class="row">
-<div class="col-sm-8">
-<div class=""><h3 style="text-align:center;">Contest Problems</h3></div><br><br>
+            <div class="alert alert-info">
+                <button id="an" class="btn btn-success">
+                    <script type="text/javascript">
+                    $("#an").click(function() {
+                        $('html,body').animate({
+                                scrollTop: $("#fn").offset().top
+                            },
+                            'slow');
+                    });
+                    </script>
+                </button>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="">
+                        <h3 style="text-align:center;">Contest Problems</h3>
+                    </div><br><br>
 
-<h2><div id="tc"></div></h2>
+                    <h2>
+                        <div id="tc"></div>
+                    </h2>
 
-<div class="table-responsive">
-    <table class="table">
-    <thead>
-    <tr>
-     <th>ID</th>
-     <th>Problem Name</th>
-     <th>Status</th>
-     <th>Accepted/Submission</th>
-     <th>Problem Setter</th>
-    </tr>
-    </thead>
-    <tbody>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Problem Name</th>
+                                    <th>Status</th>
+                                    <th>Accepted/Submission</th>
+                                    <th>Problem Setter</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
 
 
-<?php
+                                <?php
 require_once("config.php");
 
 date_default_timezone_set("Asia/Dhaka");
@@ -568,22 +570,22 @@ while($row=mysqli_fetch_array($res))
 
 
 
-</div>
+                    </div>
 
 
 
 
-<div class="col-sm-4">
+                    <div class="col-sm-4">
 
-<br><br>
+                        <br><br>
 
-<div class="sidebar">
+                        <div class="sidebar">
 
-<div class="menu">
-<b>Dashboard</b>
-<?php echo("<center><h2 id=\"demo\" class=\"btn btn-primary btn-lg\"></h2></center><br>");?>
-</div>
-<?php
+                            <div class="menu">
+                                <b>Dashboard</b>
+                                <?php echo("<center><h2 id=\"demo\" class=\"btn btn-primary btn-lg\"></h2></center><br>");?>
+                            </div>
+                            <?php
 
 
 if(isset($_GET['name']))
@@ -691,20 +693,18 @@ if(isset($_GET['name']))
 
 
    ?>
-      
-    <script type="text/javascript">
-    var end=<?php print json_encode($en);?>; 
-    var val=<?php print json_encode($i);?>; 
-    var nv=<?php print json_encode($nv);?>; 
 
-    //console.log("Start" +nv);
+                            <script type="text/javascript">
+                            var end = < ? php print json_encode($en); ? > ;
+                            var val = < ? php print json_encode($i); ? > ;
+                            var nv = < ? php print json_encode($nv); ? > ;
 
-    call(end,val,nv);
+                            //console.log("Start" +nv);
 
+                            call(end, val, nv);
+                            </script>
 
-   </script>
-      
-    <?php
+                            <?php
 
      $diff=strtotime($nv)-strtotime($current);
      $current=strtotime($current);
@@ -736,15 +736,15 @@ if(isset($_GET['name']))
 
 ?>
 
-</div>
-</div>
-</div>
-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
-</div><br><br><br><br><br><br>
+        </div><br><br><br><br><br><br>
 
-<?php
+        <?php
 
 require_once("footer.php");
 
@@ -752,4 +752,5 @@ require_once("footer.php");
 
 
 </body>
+
 </html>

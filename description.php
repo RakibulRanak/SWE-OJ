@@ -21,13 +21,14 @@ if(isset($_SESSION['un']))
 
 <!DOCTYPE html>
 <html>
+
 <head>
-  
-    
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Description</title>
-                 <?php include 'linkers.php';?>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Description</title>
+    <?php include 'linkers.php';?>
 
 
 
@@ -36,11 +37,12 @@ if(isset($_SESSION['un']))
 
 
 </head>
-<body>
-<div class="main">
- <?php require 'nav2.php'; ?>
 
-<?php
+<body>
+    <div class="main">
+        <?php require 'nav2.php'; ?>
+
+        <?php
 
 require_once("config.php");
 
@@ -102,16 +104,17 @@ echo "<a class=\"btn btn-success\" href=\"submit.php?id=$row[id]\">Submit Your C
 
 ?>
 
-<div class="col-sm-2">
+        <div class="col-sm-2">
 
-</div>
-</div>
-</div>
-</div><br><br><br>
+        </div>
+    </div>
+    </div>
+    </div><br><br><br>
 
-<?php require 'footer.php'; ?>
+    <?php require 'footer.php'; ?>
 
 
 
 </body>
+
 </html>

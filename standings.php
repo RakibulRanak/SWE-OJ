@@ -23,25 +23,27 @@ if(isset($_SESSION['un']))
 
 <!DOCTYPE html>
 <html>
+
 <head>
-  
-    
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Standings</title>
 
 
-<?php include 'linkers.php';?>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Standings</title>
+
+
+    <?php include 'linkers.php';?>
 
 
 
 
 </head>
-<body>
-<div class="main">
-<?php require 'nav2.php'; ?>
 
-<?php
+<body>
+    <div class="main">
+        <?php require 'nav2.php'; ?>
+
+        <?php
 
 if(isset($_GET['id']))
 {
@@ -56,35 +58,39 @@ if(isset($_GET['id']))
 
 ?>
 
-<div class="row log">
+        <div class="row log">
 
-<div class=""><h3 style="text-align:center;">Standings</h3></div><br>
-<h3 style="text-align:center;"><?php echo "<a class=\"btn btn-primary\" href=\"contestproblem.php?name=$rhis[cname]\">$rhis[cname]</a>"; ?></h3>
-</div>
-
-
-
-
-<div class="row cspace">
-<div class="col-sm-1">
-</div>
-<div class="col-sm-9">
-  <div class="table-responsive">
-    <table class="table">
-    <thead>
-    <tr>
-     <th>Rank</th>
-     <th>Name</th>
-     <th>Total Solved</th>
-     <th>Total Points</th>
-     <th>Submission</th>
-    </tr>
-    </thead>
-    <tbody>
+            <div class="">
+                <h3 style="text-align:center;">Standings</h3>
+            </div><br>
+            <h3 style="text-align:center;">
+                <?php echo "<a class=\"btn btn-primary\" href=\"contestproblem.php?name=$rhis[cname]\">$rhis[cname]</a>"; ?>
+            </h3>
+        </div>
 
 
 
-<?php
+
+        <div class="row cspace">
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-9">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Name</th>
+                                <th>Total Solved</th>
+                                <th>Total Points</th>
+                                <th>Submission</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+
+                            <?php
 
 
 if(isset($_GET['id']))
@@ -117,16 +123,16 @@ while($row=mysqli_fetch_array($send))
 
 }
 ?>
-</div>
+                </div>
 
-<div class="col-sm-2">
+                <div class="col-sm-2">
 
-</div>
-</div>
-</div>
-</div><br><br><br>
+                </div>
+            </div>
+        </div>
+    </div><br><br><br>
 
-<?php
+    <?php
 
 require_once("footer.php");
 
@@ -135,16 +141,5 @@ require_once("footer.php");
 
 
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

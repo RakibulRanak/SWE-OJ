@@ -43,23 +43,25 @@ if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
 
 <!DOCTYPE html>
 <html>
+
 <head>
-  
-    
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Profile</title>
-        <?php include 'linkers.php';?>
-  
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Profile</title>
+    <?php include 'linkers.php';?>
+
 </head>
+
 <body>
-<div class="main">
- <?php require 'nav2.php'; ?>
+    <div class="main">
+        <?php require 'nav2.php'; ?>
 
 
-<div class="row log">
+        <div class="row log">
 
-<?php
+            <?php
 
 if(isset($_GET['user']))
 {
@@ -110,10 +112,12 @@ $dd=$d;
 
 
 
-</div>
-<div class=""><h3 style="text-align:center;"><?php  echo"$username's  Profile"; ?></h3></div>
+        </div>
+        <div class="">
+            <h3 style="text-align:center;"><?php  echo"$username's  Profile"; ?></h3>
+        </div>
 
-<?php
+        <?php
 
 $sql="SELECT * FROM user WHERE name='$username'";
 $send=mysqli_query($con,$sql);
@@ -121,20 +125,26 @@ $row=mysqli_fetch_array($send);
 
 ?>
 
-<div class="row cspace">
-<div class="col-sm-2">
-</div>
-<div class="col-sm-6 pbs">
+        <div class="row cspace">
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-6 pbs">
 
-<div class="ym">
- <div class="pc">Information</div>
-  
-   
-   <table class="table table-striped table-hover">
-    <tr class="success"><td>Name : <?php echo("$row[name]") ?></td></tr>
-    <tr class="info"><td>Email : <?php echo("$row[email]") ?></td></tr>
-    <tr class="danger"><td>Occupation : <?php echo("$row[status]") ?></td></tr>
-    <?php
+                <div class="ym">
+                    <div class="pc">Information</div>
+
+
+                    <table class="table table-striped table-hover">
+                        <tr class="success">
+                            <td>Name : <?php echo("$row[name]") ?></td>
+                        </tr>
+                        <tr class="info">
+                            <td>Email : <?php echo("$row[email]") ?></td>
+                        </tr>
+                        <tr class="danger">
+                            <td>Occupation : <?php echo("$row[status]") ?></td>
+                        </tr>
+                        <?php
 
      if($data==$_SESSION['un'])
      {
@@ -142,35 +152,37 @@ $row=mysqli_fetch_array($send);
      }
 
     ?>
-    <tr class="info"><td><?php echo("<a href=\"allsubmission.php?name=$username\">Submissions</a>") ?></td></tr>
-    
-    </table>
-  </div>
-  <br><br>
+                        <tr class="info">
+                            <td><?php echo("<a href=\"allsubmission.php?name=$username\">Submissions</a>") ?></td>
+                        </tr>
 
-  <h3 style="text-align:center;"><?php  echo"$username's Statistics"?></h3><br><br>
-  <div id="chart-container">
-  <canvas id="mycanvas"></canvas>
+                    </table>
+                </div>
+                <br><br>
 
-  </div><br>
+                <h3 style="text-align:center;"><?php  echo"$username's Statistics"?></h3><br><br>
+                <div id="chart-container">
+                    <canvas id="mycanvas"></canvas>
 
-  <!--<div class="alert alert-success"><?php echo "<b>$username's Total Solved Problem = $tsolved</b>" ;?></div><br>--><br><br>
-  
-  <h3 style="text-align:center;"><?php  echo"$username's Contest History"?></h3><br><br>
+                </div><br>
 
-  <div class="table-responsive">
-    <table class="table">
-    <thead>
-    <tr>
-     <th>ID</th>
-     <th>Contest Name</th>
-     <th>Date</th>
-     <th>User's Activity</th>
-    </tr>
-    </thead>
-    <tbody>
+                <!--<div class="alert alert-success"><?php echo "<b>$username's Total Solved Problem = $tsolved</b>" ;?></div><br>--><br><br>
 
-    <?php
+                <h3 style="text-align:center;"><?php  echo"$username's Contest History"?></h3><br><br>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Contest Name</th>
+                                <th>Date</th>
+                                <th>User's Activity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <?php
     
     require_once("config.php");
 
@@ -192,7 +204,7 @@ $row=mysqli_fetch_array($send);
 
     ?>
 
-    <?php
+                            <?php
 
      if($data==$_SESSION['un']  && $admin==1)
      {
@@ -204,9 +216,9 @@ $row=mysqli_fetch_array($send);
    <table class=\"table table-striped table-hover\" >
     
    
-     <tr><td><a href=\"home.php\">Create Contest</a></td></tr>
-     <tr><td><a href=\"home.php\">Create Contest Problem</a></td></tr> 
-     <tr><td><a href=\"home.php\">Create Archive Problem</a></td></tr> 
+     <tr><td><a href=\"setcontest.php\">Create Contest</a></td></tr>
+     <tr><td><a href=\"setcontestproblem.php\">Create Contest Problem</a></td></tr> 
+     <tr><td><a href=\"setproblem.php\">Create Archive Problem</a></td></tr> 
      <tr><td><a href=\"home.php\">My Submission</a></td></tr> 
      <tr><td><a href=\"home.php\">Announcement</a></td></tr>
     <tr><td><a href=\"home.php\">Create Admin</a></td></tr>
@@ -218,15 +230,16 @@ $row=mysqli_fetch_array($send);
      }
    ?>
 
-</div>
+                </div>
 
-<div class="col-sm-4">
+                <div class="col-sm-4">
 
-</div>
-</div>
-</div>
-</div><br><br><br>
+                </div>
+            </div>
+        </div>
+    </div><br><br><br>
 
-<?php require 'footer.php'; ?>
+    <?php require 'footer.php'; ?>
 </body>
+
 </html>

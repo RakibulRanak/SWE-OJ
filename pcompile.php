@@ -1,4 +1,3 @@
-
 <?php
 
 	$languageID=$_POST["language"];
@@ -44,5 +43,3 @@
 			}
 	}
 ?>
-
-
