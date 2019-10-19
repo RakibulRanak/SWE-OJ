@@ -116,6 +116,28 @@ $dd=$d;
         <div class="">
             <h3 style="text-align:center;"><?php  echo"$username's  Profile"; ?></h3>
         </div>
+        <div style="padding-left: 42%">
+
+          <?php
+            $sql = "SELECT * FROM `user` WHERE name = '$username'";
+            $var=mysqli_query($con,$sql);
+            $row=mysqli_fetch_array($var);
+
+            
+              $image_name=$row['photo'];
+            //echo $image_name;
+              if($image_name==""){
+               // echo "<img src='images/".$row['photo']."'width=\"400\" height=\"400\">";
+                echo "<img src=\"profile.jpg\"width=\"200\" height=\"200\">";
+              }
+              else
+              {
+                 echo "<img src='images/".$row['photo']."'width=\"400\" height=\"400\">";
+            //echo "<img src=\"images/".$row['photo'].\"  width=\"100\" height=\"100\">";
+              }
+          
+          ?>
+        </div>
 
         <?php
 
