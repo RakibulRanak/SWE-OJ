@@ -65,125 +65,128 @@ if(isset($_GET['id']))
 
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html>
-
 <head>
+  
+    
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Contest</title>
+       <!--  <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" type="image/png" href="img/ruet.png">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="bootstrap-3.3.7/js/bootstrap.min.js" </script>
+        <script src="bootstrap-3.3.7/js/bootstrap.js" </script> -->
+        <?php require 'linkers.php'; ?>
 
 
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Contest</title>
-    <!-- <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/style.css">
+         <script>
+// Set the date we're counting down to
 
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="js/vendor/jquery-1.12.0.min.js"></script>
-    <script src="bootstrap-3.3.7/js/bootstrap.min.js" </script> <script src="bootstrap-3.3.7/js/bootstrap.js" </script> -->
+function call(d,val,st){
 
-    <?php include 'linkers.php';?>
-    <script>
-    // Set the date we're counting down to
+console.log(d);
+console.log(val);
+console.log(st);
+var countDownDate = new Date(d).getTime();
+var start =new Date(st).getTime();
 
-    function call(d, val, st) {
+//console.log(start);
 
-        //console.log(d);
-        //console.log(val);
-        //console.log(st);
-        var countDownDate = new Date(d).getTime();
-        var start = new Date(st).getTime();
+var result;
 
-        //console.log(start);
+// Update the count down every 1 second
+var x = setInterval(function() {
 
-        var result;
+    // Get todays date and time
+    var now = new Date().getTime();
+    console.log(now);
+    
+    // Find the distance between now an the count down date
+    
+    
+   
+   
 
-        // Update the count down every 1 second
-        var x = setInterval(function() {
+    if(start>now)
+    {
 
-            // Get todays date and time
-            var now = new Date().getTime();
+       var distance = start - now;
 
-            // Find the distance between now an the count down date
-
-
+        // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 
+      // Output the result in an element with id="demo"
+      var result=days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
 
-            if (start > now) {
+      //console.log(result);
 
-                var distance = start - now;
-
-                // Time calculations for days, hours, minutes and seconds
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-
-                // Output the result in an element with id="demo"
-                var result = days + "d " + hours + "h " +
-                    minutes + "m " + seconds + "s ";
-
-                //console.log(result);
-
-                document.getElementById(val).innerHTML = "Countdown : " + days + "d " + hours + "h " + minutes +
-                    "m " + seconds + "s ";
-            } else if (countDownDate >= now) {
-
-
-                var distance = countDownDate - now;
-
-                // Time calculations for days, hours, minutes and seconds
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-
-                // Output the result in an element with id="demo"
-                var result = days + "d " + hours + "h " +
-                    minutes + "m " + seconds + "s ";
-
-                //console.log(result);
-                document.getElementById("demo").innerHTML = "Running : " + days + "d " + hours + "h " +
-                    minutes + "m " + seconds + "s ";
-
-                // document.getElementById("dem").innerHTML = " Running.... : "+ days + "d " + hours + "h "
-                //+ minutes + "m " + seconds + "s ";
-
-                document.getElementById("show").style.display = "block";
-
-
-
-
-            }
-
-            // If the count down is over, write some text 
-            else if (now > countDownDate) {
-                clearInterval(x);
-
-                document.getElementById("demo").innerHTML = "Status : Finished";
-
-                document.getElementById("fin").innerHTML = "Contest has Finished";
-
-
-            }
-
-
-
-        }, 1000);
-
-        return x;
+       document.getElementById("demo").innerHTML = "Countdown : " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
     }
-    </script>
+    else if(countDownDate>=now)
+    {
+
+       
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+         
+        // Output the result in an element with id="demo"
+        var result=days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+      //console.log(result);
+       document.getElementById("demo").innerHTML = "Running : "+ days + "d " + hours + "h "
+       + minutes + "m " + seconds + "s ";
+
+      // document.getElementById("dem").innerHTML = " Running.... : "+ days + "d " + hours + "h "
+       //+ minutes + "m " + seconds + "s ";
+
+       document.getElementById("show").style.display="block";
+
+
+
+
+    }
+    
+    // If the count down is over, write some text 
+    else if (now>countDownDate) {
+        clearInterval(x);
+
+        document.getElementById("demo").innerHTML = "Status : Finished";
+
+        document.getElementById("fin").innerHTML = "Contest has Finished";
+
+
+    }
+
+
+    
+}, 1000);
+
+  return x;
+}
+
+
+</script>
 
 
 
@@ -191,34 +194,31 @@ if(isset($_GET['id']))
 
 
 </head>
-
 <body>
-    <div class="main">
-        <?php require 'nav2.php'; ?>
+<div class="main">
+<?php require 'nav2.php'; ?>
 
 
-        <div class="row log">
-            <div class="col-sm-10">
-                <div class="">
-                    <h3 style="text-align:center;">Problem Details</h3>
-                </div>
-            </div>
+<div class="row log">
+<div class="col-sm-10">
+<div class=""><h3 style="text-align:center;">Problem Details</h3></div>
+</div>
 
-            <div class="col-sm-1">
+<div class="col-sm-1">
 
-            </div>
+</div>
 
-            <div class="col-sm-1">
+<div class="col-sm-1">
+  
+</div>
 
-            </div>
+</div>
 
-        </div>
-
-        <div class="row cspace">
-            <div class="col-sm-8">
+<div class="row cspace">
+<div class="col-sm-8">
 
 
-                <?php
+<?php
 
 require_once("config.php");
 
@@ -227,6 +227,7 @@ date_default_timezone_set("Asia/Dhaka");
 if(isset($_GET['id']))
 {
    $des=$_GET['id'];
+   //echo $des;
 
 
 $q3="SELECT * FROM element WHERE pbid='$des'";
@@ -240,14 +241,14 @@ $r1=mysqli_fetch_array($sq3);
 
 echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit: $r1[tlimit] Seconds<br><br> Problem Details<br><br><textarea class=\"form-control\" rows=\"30\" cols=\"95\" readonly>$r1[pbdes]</textarea><br><br>Problem Setter: $r1[pbauthor]<br><br>");
 
-  $conid=$r1['id'];
+      $conid=$r1['id'];
 
-   $q3="SELECT * FROM rapl_oj_contest WHERE id='$conid'";
-    $sq3=mysqli_query($con,$q3);
+      $q3="SELECT * FROM rapl_oj_contest WHERE id='$conid'";
+      $sq3=mysqli_query($con,$q3);
 
       $q4="SELECT TIME_FORMAT(end_at,'%H') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-       $q5="SELECT TIME_FORMAT(end_at,'%i') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-        $q6="SELECT TIME_FORMAT(end_at,'%s') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
+      $q5="SELECT TIME_FORMAT(end_at,'%i') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
+      $q6="SELECT TIME_FORMAT(end_at,'%s') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
 
 
       $sq4=mysqli_query($con,$q4);
@@ -255,7 +256,7 @@ echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit:
       $sq6=mysqli_query($con,$q6);
       
       
-       $i=0;
+      $i=0;
 
 
       
@@ -263,15 +264,23 @@ echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit:
   while($row=mysqli_fetch_array($sq3))
     {
       $d=date("Y-m-d");
+     // var_dump($d);
       $t=date("H:i:s");
+      echo "hi1";
+      var_dump($t);
       $current=date("Y-m-d H:i:s ");
+      ///var_dump($current);
 
       $m=$row['start_at'];
       $nv=$row['start_at'];
+      var_dump($m);
+      //var_dump($nv);
 
 
       $i++;
       $demo="demo".$i;
+      //var_dump($demo);
+      
       $nr=mysqli_fetch_array($sq4);
       $nm=mysqli_fetch_array($sq5);
       $ns=mysqli_fetch_array($sq6);
@@ -305,6 +314,9 @@ echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit:
       }
       
       $en=$row['end_at'];
+      var_dump($en);
+      var_dump(strtotime($t));
+      var_dump(strtotime($m));
 
       $seconds = strtotime($t) - strtotime($m);
       $ss= strtotime($en) - strtotime($t);
@@ -316,18 +328,20 @@ echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit:
 
 
    ?>
+      
+    <script type="text/javascript">
+    var end=<?php print json_encode($en);?>; 
+    var val=<?php print json_encode($i);?>; 
+    var nv=<?php print json_encode($nv);?>; 
 
-                <script type="text/javascript">
-                var end = < ? php print json_encode($en); ? > ;
-                var val = < ? php print json_encode($i); ? > ;
-                var nv = < ? php print json_encode($nv); ? > ;
+    //console.log("Start" +nv);
 
-                //console.log("Start" +nv);
+    call(end,val,nv);
 
-                call(end, val, nv);
-                </script>
 
-                <?php
+   </script>
+      
+    <?php
 
      $diff=strtotime($nv)-strtotime($current);
      $current=strtotime($current);
@@ -347,40 +361,15 @@ echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit:
      
      echo "<div id=\"fin\"></div><br><br>";
      
-      
 
-     
-
-     
-
-
-      
-
-     
-      
-
-
-     
-      /*echo(" <a href=\"save.php?name=$row[table_name]\">$row[table_name]</a><br><br>");
-        if($row['date_on']==$d && $seconds>=0 && $ss>=0 )
-        {
-             echo "<a class=\"btn btn-success\" href=\"contestsubmit.php?id=$r1[pbid]\">Submit Your Code</a>";
-         }
-         else if($d>$row['date_on'] || ($d==$row['date_on'] && $t>$en))
-         {
-            echo "Contest Has Finished<br><br>";
-         }
-         else
-         {
-            echo " Contest Has Not Started Yet<br><br> ";
-            header("Location:contest.php");
-         }*/
 
     }
 
 
 
 }
+
+//sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss////////////////////////////
 
 if(isset($_GET['name']) && isset($_GET['cod']))
 {
@@ -476,18 +465,20 @@ echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit:
 
 
    ?>
+      
+    <script type="text/javascript">
+    var end=<?php print json_encode($en);?>; 
+    var val=<?php print json_encode($i);?>; 
+    var nv=<?php print json_encode($nv);?>; 
 
-                <script type="text/javascript">
-                var end = < ? php print json_encode($en); ? > ;
-                var val = < ? php print json_encode($i); ? > ;
-                var nv = < ? php print json_encode($nv); ? > ;
+    //console.log("Start" +nv);
 
-                //console.log("Start" +nv);
+    call(end,val,nv);
 
-                call(end, val, nv);
-                </script>
 
-                <?php
+   </script>
+      
+    <?php
 
      $diff=strtotime($nv)-strtotime($current);
      $current=strtotime($current);
@@ -507,37 +498,20 @@ echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit:
      
      echo "<div id=\"fin\"></div><br><br>";
      
-      
 
-
-     
-      /*echo(" <a href=\"save.php?name=$row[table_name]\">$row[table_name]</a><br><br>");
-        if($row['date_on']==$d && $seconds>=0 && $ss>=0 )
-        {
-             echo "<a class=\"btn btn-success\" href=\"contestsubmit.php?id=$r1[pbid]\">Submit Your Code</a>";
-         }
-         else if($d>$row['date_on'] || ($d==$row['date_on'] && $t>$en))
-         {
-            echo "Contest Has Finished<br><br>";
-         }
-         else
-         {
-            echo " Contest Has Not Started Yet<br><br> ";
-            header("Location:contest.php");
-         }*/
     }
 
      
      
 
 }
-
+//////////////////////////ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss//////
 ?>
 
-            </div>
-            <div class="col-sm-4">
+</div>
+<div class="col-sm-4">
 
-                <?php
+<?php
 
 if(isset($_GET['id']))
 {
@@ -555,12 +529,12 @@ $cnt=$r1['cname'];
   $conid=$r1['id'];
 
   
- $q3="SELECT * FROM rapl_oj_contest WHERE id='$conid'";
-    $sq3=mysqli_query($con,$q3);
+     $q3="SELECT * FROM rapl_oj_contest WHERE id='$conid'";
+      $sq3=mysqli_query($con,$q3);
 
       $q4="SELECT TIME_FORMAT(end_at,'%H') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-       $q5="SELECT TIME_FORMAT(end_at,'%i') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-        $q6="SELECT TIME_FORMAT(end_at,'%s') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
+      $q5="SELECT TIME_FORMAT(end_at,'%i') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
+      $q6="SELECT TIME_FORMAT(end_at,'%s') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
 
 
       $sq4=mysqli_query($con,$q4);
@@ -631,18 +605,20 @@ $cnt=$r1['cname'];
 
 
    ?>
+      
+    <script type="text/javascript">
+    var end=<?php print json_encode($en);?>; 
+    var val=<?php print json_encode($i);?>; 
+    var nv=<?php print json_encode($nv);?>; 
 
-                <script type="text/javascript">
-                var end = < ? php print json_encode($en); ? > ;
-                var val = < ? php print json_encode($i); ? > ;
-                var nv = < ? php print json_encode($nv); ? > ;
+    //console.log("Start" +nv);
 
-                //console.log("Start" +nv);
+    call(end,val,nv);
 
-                call(end, val, nv);
-                </script>
 
-                <?php
+   </script>
+      
+    <?php
 
      $diff=strtotime($nv)-strtotime($current);
      $current=strtotime($current);
@@ -668,24 +644,7 @@ $cnt=$r1['cname'];
      
     echo("<div class=\"xmm\">Contest Name: <a href=\"contestproblem.php?name=$row[cname]\">$row[cname]</a><br><br>Contest Date: $row[date_on] <br><br>Start Time: $row[start_at]<br><br>End Time: $row[end_at] <br><br><br><br></div>");
 
-     
-     
-     
 
-     
-      /*echo(" <a href=\"save.php?name=$row[table_name]\">$row[table_name]</a><br><br>");
-        if($row['date_on']==$d && $seconds>=0 && $ss>=0 )
-        {
-             echo("<div class=\"xmm\">Contest Name: <a href=\"contestproblem.php?name=$row[cname]\">$row[cname]</a><br><br>Contest Date: $row[date_on] <br><br>Start Time: $row[start_at]<br><br>End Time: $row[end_at] <br><br> Status: <b>Running</b> <br><br>Time Remaining:  $h hour $mt miniute $scnd second <br><br></div>");
-         }
-         else if($d>$row['date_on'] || ($d==$row['date_on'] && $t>$en))
-         {
-            echo("<div class=\"xmm\">Contest Name: <a href=\"contestproblem.php?name=$row[cname]\">$row[cname]</a><br><br>Contest Date:  $row[date_on] <br><br>Start Time: $row[start_at]<br><br>End Time: $row[end_at] <br><br>Status: <b>Finished</b><br><br></div>");
-         }
-         else
-         {
-            echo("<div class=\"xmm\">Contest Name: $row[cname]<br><br>Contest Date:  $row[date_on] <br><br>Start Time: $row[start_at]<br><br>End Time: $row[end_at] <br><br>Status: <b>Not Started Yet</b><br><br></div>");
-         }*/
     }
 
 
@@ -725,12 +684,17 @@ else
 
 
 ?>
-            </div>
-        </div>
-    </div>
-    </div><br><br><br>
+</div>
+</div>
+</div>
+</div><br><br><br>
 
-    <?php require 'footer.php'; ?>
+<?php
+
+require_once("footer.php");
+
+?>
+
+
 </body>
-
 </html>
