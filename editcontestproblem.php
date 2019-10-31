@@ -28,10 +28,6 @@ if(isset($_GET['id']))
 }
 
 
-
-
-
-
 ?>
 
 <?php
@@ -70,8 +66,6 @@ if(isset($_GET['id']))
 ?>
 
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,10 +75,6 @@ if(isset($_GET['id']))
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Set Problem</title>
         <?php include 'linkers.php';?>
-
-
-
-
 
 
 </head>
@@ -127,14 +117,7 @@ $uoutput=$erow['uoutput'];
 $tlimit=$erow['tlimit'];
 $pbid=$erow['pbid'];
 
-
-
-
-
-
 ?>
-
-
 
 <div class="row cspace">
 <div class="col-sm-8">

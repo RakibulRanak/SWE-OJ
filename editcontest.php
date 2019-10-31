@@ -155,7 +155,7 @@ $date=$erow['date_on'];
                         <!--<input type="text" name="ct" class="form-control"><br><br>-->
 
                         <div class="input-group date form_datetime col-md-5" data-date="2017-06-15T05:25:07Z"
-                            data-date-format=" yyyy-mm-dd hh:ii " data-link-field="dtp_input1">
+                            data-date-format=" yyyy-mm-dd hh:ii:ss " data-link-field="dtp_input1">
                             <input type='text' name="uct" class="form-control" value="<?php echo "$start"; ?>" readonly
                                 class="form_datetime" />
 
@@ -168,7 +168,7 @@ $date=$erow['date_on'];
 
 
                         <div class="input-group date form_datetime1 col-md-5" data-date="2017-06-15T05:25:07Z"
-                            data-date-format=" yyyy-mm-dd hh:ii " data-link-field="dtp_input1">
+                            data-date-format=" yyyy-mm-dd hh:ii:ss " data-link-field="dtp_input1">
                             <input type='text' name="uce" class="form-control" value="<?php echo "$end"; ?>" readonly
                                 class="form_datetime1" />
 

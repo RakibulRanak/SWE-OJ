@@ -21,9 +21,4 @@ else
 	//echo("Connected");
 }
 
-
-
-
-
-
 ?>
