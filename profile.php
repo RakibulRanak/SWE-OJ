@@ -125,18 +125,49 @@ $dd=$d;
 
             
               $image_name=$row['photo'];
-            //echo $image_name;
+          
               if($image_name==""){
-               // echo "<img src='images/".$row['photo']."'width=\"400\" height=\"400\">";
-                echo "<img src=\"profile.jpg\"width=\"200\" height=\"200\">";
+        
+                echo "<img src=\"profile2.jpg\"width=\"200\" height=\"200\">";
               }
               else
               {
-                 echo "<img src='images/".$row['photo']."'width=\"400\" height=\"400\">";
-            //echo "<img src=\"images/".$row['photo'].\"  width=\"100\" height=\"100\">";
+                        echo "<img src='users/".$row['photo']."'width=\"200\" height=\"200\">";                  
+
               }
           
           ?>
+          <div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Change Photo</button>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Select photo less than 2 MB</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form method="POST" action="photoupload.php" enctype="multipart/form-data">
+                      <div class="form-group">
+                       
+                       <!--   <form method="POST" action="photoupload.php" enctype="multipart/form-data"> -->
+                           <input type="file" name="myimage">
+        
+                        <input type="submit" name="submit_image" value="Upload">
+                          <!--  </form> -->
+                      </div>
+                      
+                    </form>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
 
         <?php
