@@ -69,3 +69,20 @@
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
+.nbar a {
+    color:white;
+    text-decoration: none;
+}
+
+.nbar a:hover 
+{
+    
+    color: grey;
+     text-decoration:none; 
+     cursor:pointer;  
+}
+.changeFont
+    {
+       font-family: "Courier New", Courier, monospace !important;
+    }

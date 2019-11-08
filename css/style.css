@@ -79,19 +79,19 @@
 	margin-bottom:0px;
 	padding-bottom: 0px;
 }
-.space
+/*.space
 {
 	padding-left:10px;
 	padding-right: 15px;
 	padding-bottom: 0px;
 	margin-bottom: 0px;
 	color:white;
-}
-.space:hover
+}*/
+/*.space:hover
 {
 	border-bottom: 5px solid #2EC866;
 	
-}
+}*/
 .lspace
 {
 	padding-left: 50px;
@@ -230,10 +230,7 @@
 {
 	text-decoration: none;
 }
-a:hover
-{
-	text-decoration: none;
-}
+
 
 .pc
 {
@@ -420,11 +417,11 @@ pre {
 	padding-top:100px;
 	padding-right:20px;
 }
-.space
+/*.space
 {
 
 	color:white;
-}
+}*/
 
 
 .lgspace
@@ -501,8 +498,8 @@ pre {
 }
 .space
 {
-    padding:0px;
-	color:white;
+    margin-left:50px;
+	
 }
 .xm
 {
@@ -545,11 +542,11 @@ pre {
 	padding-top:100px;
 	padding-right:20px;
 }
-.space
+/*.space
 {
     padding-right:5px;
 	color:white;
-}
+}*/
 .ispace
 {
 	padding-right:2px;
@@ -608,11 +605,11 @@ pre {
 	text-align: center;
 }
 
-.space
+/*.space
 {
     padding-right:0px;
 	color:white;
-}
+}*/
 .log
 {
 	margin-left:8px;
@@ -671,11 +668,11 @@ pre {
 	text-align: center;
 }
 
-.space
+/*.space
 {
     padding-right:0px;
 	color:white;
-}
+}*/
 .log
 {
 	padding-left:50px;
@@ -755,12 +752,12 @@ pre {
 	text-align: center;
 }
 
-.space
+/*.space
 {
     padding-right:0px;
 	color:white;
 }
-
+*/
 .lgspace
 {
 	margin-left:0px;
