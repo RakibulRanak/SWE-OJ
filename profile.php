@@ -274,7 +274,7 @@ $row=mysqli_fetch_array($send);
      <tr><td><a href=\"setproblem.php\">Create Archive Problem</a></td></tr> 
      <tr><td><a href=\"home.php\">My Submission</a></td></tr> 
      <tr><td><a href=\"home.php\">Announcement</a></td></tr>
-    <tr><td><a href=\"home.php\">Create Admin</a></td></tr>
+    <tr><td><a href=\"createadmin.php\">Create Admin</a></td></tr>
     
     
     </table>
