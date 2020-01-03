@@ -90,7 +90,7 @@ if(isset($_POST['name']) || isset($_POST['email'])||isset($_POST['status']))
    if($send)
    {
        echo "<div style=\"margin-left:250px;\" class=\"alert alert-success\">
-  <strong>Admin Panel Has Been Updated! Go To Your <a href=\"profile.php?user=$name\">Profile</a></strong>
+  <strong>Admin Panel Has Been Updated! Go To his <a href=\"profile.php?user=$name\">Profile</a></strong>
    </div><br><br><br><br>";
    }
    else
