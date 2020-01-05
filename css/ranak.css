@@ -86,3 +86,44 @@
     {
        font-family: "Courier New", Courier, monospace !important;
     }
+
+.developper {
+    margin: 80px 150px 200px 150px;
+    background: #d2dfd9;
+    height: auto;
+}
+.rowbts{
+  margin-right: -25px;
+  margin-left: -25px;
+}
+.image-box {
+    height: 150px;
+    text-align: center;
+    margin: 25px 100px 5px;
+    padding: 3px;
+    border: 2px solid grey;
+}
+.list-group {
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+.text-center {
+    text-align: center;
+}
+.credit-header {
+    text-align: center;
+    font-size: 25px;
+    margin: 20px 0 10px;
+}
+.titlebts {
+    text-align: center;
+    padding: 8px;
+    padding-top: 0;
+    color: grey;
+}
+.home-img {
+    max-height: 60px;
+    align-content: center;
+    margin-bottom: 20px;
+    margin-top: 8px;
+}

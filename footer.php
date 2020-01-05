@@ -14,7 +14,7 @@
         <div style="color: white;margin-left: 60px">
 
             <b style="margin-left:0px">Beta Version-2019</b><br>
-            <a href="www.codeforces.com">Behind The Scene</a>
+            <a href="bts.php">Behind The Scene</a>
 
 
 
