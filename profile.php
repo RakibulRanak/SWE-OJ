@@ -110,8 +110,6 @@ $dd=$d;
 
 ?>
 
-
-
         </div>
         <div class="">
             <h3 style="text-align:center;"><?php  echo"$username's  Profile"; ?></h3>
@@ -199,85 +197,45 @@ $row=mysqli_fetch_array($send);
                         </tr>
                         <?php
 
-     if($data==$_SESSION['un'])
-     {
-        echo "<tr class=\"warning\"><td><a href=\"edit.php?name=$username\">Edit Profile</a></td></tr>";
-     }
+                       if($data==$_SESSION['un'])
+                       {
+                          echo "<tr class=\"warning\"><td><a href=\"edit.php?name=$username\">Edit Profile</a></td></tr>";
+                       }
 
-    ?>
+                        ?>
                         <tr class="info">
-                            <td><?php echo("<a href=\"allsubmission.php?name=$username\">Submissions</a>") ?></td>
+                            <td><?php echo("<a href=\"allsubmission.php?name=$username\">My Submissions</a>") ?></td>
                         </tr>
 
                     </table>
                 </div>
+               
+
                 <br><br>
 
-                <h3 style="text-align:center;"><?php  echo"$username's Statistics"?></h3><br><br>
-                <div id="chart-container">
-                    <canvas id="mycanvas"></canvas>
+                
 
-                </div><br>
-
-                <!--<div class="alert alert-success"><?php echo "<b>$username's Total Solved Problem = $tsolved</b>" ;?></div><br>--><br><br>
-
-                <h3 style="text-align:center;"><?php  echo"$username's Contest History"?></h3><br><br>
-
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Contest Name</th>
-                                <th>Date</th>
-                                <th>User's Activity</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <?php
-    
-    require_once("config.php");
-
-    $his="SELECT DISTINCT cid FROM `submission` WHERE sname='$username'";
-    $shis=mysqli_query($con,$his);
-    while($chis=mysqli_fetch_array($shis))
-    {
-        $conid=$chis['cid'];
-        $mycon="SELECT * from rapl_oj_contest WHERE id='$conid'";
-        $sendcon=mysqli_query($con,$mycon);
-        $rhis=mysqli_fetch_array($sendcon);
-
-        echo "<tr><td>$rhis[id]</td><td><a href=\"contestproblem.php?name=$rhis[cname]\">$rhis[cname]</a></td><td>$rhis[date_on]</td><td><a class=\"btn btn-primary btn-xs \" href=\"contestsubmission.php?id=$rhis[id]&show=$username\">Show</a></td></tr>";
-
-    }
-      echo "</tbody>
-           </table>
-           </div><br><br>";
-
-    ?>
-
-                            <?php
+        <?php
 
      if($data==$_SESSION['un']  && $admin==1)
      {
 
     echo "  <div class=\"ym\">
- <div class=\"pc\">Dashboard</div>
+        <div class=\"pc\">Dashboard</div>
   
    
-   <table class=\"table table-striped table-hover\" >
-    
-   
-     <tr><td><a href=\"setcontest.php\">Create Contest</a></td></tr>
-     <tr><td><a href=\"setcontestproblem.php\">Create Contest Problem</a></td></tr> 
-     <tr><td><a href=\"setproblem.php\">Create Archive Problem</a></td></tr> 
-     <tr><td><a href=\"home.php\">My Submission</a></td></tr> 
-     <tr><td><a href=\"home.php\">Announcement</a></td></tr>
-    <tr><td><a href=\"createadmin.php\">Create Admin</a></td></tr>
-    
-    
-    </table>
+           <table class=\"table table-striped table-hover\" >
+            
+           
+             <tr><td><a href=\"setcontest.php\">Create Contest</a></td></tr>
+             <tr><td><a href=\"setcontestproblem.php\">Create Contest Problem</a></td></tr> 
+             <tr><td><a href=\"setproblem.php\">Create Archive Problem</a></td></tr> 
+             
+             <tr><td><a href=\"announcement.php\">Announcement</a></td></tr>
+            <tr><td><a href=\"createadmin.php\">Create Admin</a></td></tr>
+            
+            
+            </table>
   </div>";
           
      }

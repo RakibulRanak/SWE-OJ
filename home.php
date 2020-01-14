@@ -24,6 +24,14 @@ if(isset($_SESSION['un']))
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Home</title>
+            <style>
+      marquee{
+      font-size: 30px;
+      font-weight: 800;
+      color: #DA310D;
+      font-family: sans-serif;
+      }
+    </style>
           <?php include 'linkers.php';?>
 
 </head>
@@ -32,10 +40,25 @@ if(isset($_SESSION['un']))
 
  <?php require 'nav2.php'; ?>
  
- 	<img src="Images/sust.jpg" alt="IICT SUST" style="width: 100%; height: 90vh; object-fit: cover;">
- 	<a href="https://codeforces.com/">Codeforces</a>
+ 	<!-- <img src="Images/sust.jpg" alt="IICT SUST" style="width: 100%; height: 90vh; object-fit: cover;"> -->
+ 	<div style="background-image: url('Images/sust.jpg');  background-size: 100% 100%; height: 800px">
+ 		<br>
+ 		<br>
+ 		<br>
+ 		<br>
+ 		    <marquee direction="left">Upcoming contest on 28th January 2020!!</marquee>
+ 			<br>
+ 		<br>
+ 		<br>
+ 		<br>
+ 			<br>
+ 		<br>
+ 		
+ <h1 align="center">Welcome to SWE OJ !</h1>
+ 	<!-- <a href="https://codeforces.com/">Codeforces</a>
  </br>
- 	<a href="https://uva.onlinejudge.org">UVa</a>
+ 	<a href="https://uva.onlinejudge.org">UVa</a> -->
+
 </div>
 
 
