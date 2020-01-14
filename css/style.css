@@ -118,7 +118,7 @@
 .log
 {
 	padding-left:50px;
-	padding-top:150px;
+	padding-top:20px;
 	padding-right:20px;
 }
 .mu
@@ -414,7 +414,7 @@ pre {
 .log
 {
 	padding-left:50px;
-	padding-top:100px;
+	padding-top:10px;
 	padding-right:20px;
 }
 /*.space
@@ -466,7 +466,7 @@ pre {
 .log
 {
 	padding-left:20px;
-	padding-top:100px;
+	padding-top:10px;
 	padding-right:20px;
 }
 
@@ -496,11 +496,7 @@ pre {
 	padding-right:1px;
 	text-align: center;
 }
-.space
-{
-    margin-left:50px;
-	
-}
+
 .xm
 {
 	
@@ -539,7 +535,7 @@ pre {
 .log
 {
 	margin-left:20px;
-	padding-top:100px;
+	padding-top:10px;
 	padding-right:20px;
 }
 /*.space
@@ -613,7 +609,7 @@ pre {
 .log
 {
 	margin-left:8px;
-	padding-top:100px;
+	padding-top:10px;
 	margin-right:20px;
 
 }
@@ -675,7 +671,7 @@ pre {
 }*/
 .log
 {
-	padding-left:50px;
+	padding-left:10px;
 	padding-top:100px;
 	padding-right:10px;
 }
@@ -777,7 +773,7 @@ pre {
 .log
 {
 	padding-left:10px;
-	padding-top:20px;
+	padding-top:10px;
 	padding-right:10px;
 }
 .xm

@@ -32,10 +32,7 @@ if(isset($_SESSION['un']))
 <body>
     <div class="main">
         <?php require 'nav2.php'; ?>
-
-
-        <div class="row log">
-        </div>
+<br>
         <div style="text-align:center" ;>
             <h3>Problem Archive</h3>
         </div>
@@ -82,7 +79,7 @@ $sql="INSERT INTO archieve VALUES(NULL,'$pn','$pd','$author','$tc','$ac','','$pt
 $sq=mysqli_query($con,$sql);
 }
 
-$per_page=3;
+$per_page=12;
 
 if(isset($_GET['page']))
 {

@@ -158,7 +158,7 @@ while($row=mysqli_fetch_array($sq3))
 
      if($access==1)
      {
-         echo("<div class=\"xmm\">Contest Name: <a href=\"contestproblem.php?name=$row[cname]\">$row[cname]</a><br><br>Contest ID: $row[id]<br><br>Contest Date: $row[date_on] <br><br>Start Time: $row[start_at]<br><br>End Time: $row[end_at] <br><br><div id=$demo></div> <br><br><a href=\"editcontest.php?name=$row[cname]\">Edit</a><br><br></div>");
+         echo("<div class=\"xmm\">Contest Name: <a href=\"contestproblem.php?name=$row[cname]\">$row[cname]</a><br><br>Contest ID: $row[id]<br>Start Time: $row[start_at]<br>End Time: $row[end_at] <br><div id=$demo></div> <br><a href=\"editcontest.php?name=$row[cname]\">Edit</a><br></div>");
      }
      else
      {
