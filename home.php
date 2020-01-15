@@ -67,7 +67,7 @@ while($row=mysqli_fetch_array($sts))
  			<br>
  		<br>
  		
- <h1 align="center">Welcome to SWE OJ !</h1>
+ <h1 align="center"><b>Welcome to SWE OJ !</b></h1>
 
 
 </div>

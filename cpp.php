@@ -187,6 +187,8 @@ $limit=$r4['tlimit'];
 	if($check==0 || $check==1)
 	{
 
+
+		$source=str_replace("'", "''", $source);
         $nsql="INSERT into codes VALUES('$us','$source',NULL)";
 		$usql="UPDATE archieve SET uoutput='$output' WHERE id='$pid'";
 		$csql="SELECT uoutput FROM archieve WHERE id='$pid'";

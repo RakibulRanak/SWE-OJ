@@ -99,7 +99,7 @@ else
                         <label for="ta">Enter Your Contest Name</label>
                         <input type="text" name="cn" class="form-control"><br><br>
                         <label for="ta">Enter Contest Date</label>
-                        <div class="input-group date form_datetime2 col-md-5" data-date="2017-06-15T05:25:07Z"
+                        <div class="input-group date form_datetime2 " data-date="2017-06-15T05:25:07Z"
                             data-date-format=" yyyy-mm-dd " data-link-field="dtp_input1">
                             <input type='text' name="cd" class="form-control" readonly class="form_datetime2" />
 
@@ -109,7 +109,7 @@ else
                         <label for="ta">Enter Contest Start Time</label>
                         <!--<input type="text" name="ct" class="form-control"><br><br>-->
 
-                        <div class="input-group date form_datetime col-md-5" data-date="2017-06-15T05:25:07Z"
+                        <div class="input-group date form_datetime" data-date="2017-06-15T05:25:07Z"
                             data-date-format=" yyyy-mm-dd hh:ii:ss " data-link-field="dtp_input1">
                             <input type='text' name="ct" class="form-control" readonly class="form_datetime" />
 
@@ -121,7 +121,7 @@ else
                         <!--<input type="text" name="ce" class="form-control"><br><br>-->
 
 
-                        <div class="input-group date form_datetime1 col-md-5" data-date="2017-06-15T05:25:07Z"
+                        <div class="input-group date form_datetime1" data-date="2017-06-15T05:25:07Z"
                             data-date-format=" yyyy-mm-dd hh:ii:ss " data-link-field="dtp_input1">
                             <input type='text' name="ce" class="form-control" readonly class="form_datetime1" />
 

@@ -183,11 +183,7 @@ $limit=$r4['tlimit'];
 
 	if($check==0 || $check==1)
 	{
-		//echo "hereeeeee    ";
-		///echo $us;
-		//echo $source;
-		//echo $output;
-		//echo '<br>';
+		
 		$source=str_replace("'", "''", $source);
         //$nsql='INSERT into codes VALUES("$us","$source",NULL)';
         $nsql="INSERT into codes VALUES('$us','$source',NULL)";

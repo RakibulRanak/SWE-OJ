@@ -29,11 +29,6 @@ if(isset($_SESSION['un']))
     <?php include 'linkers.php';?>
 
 
-
-
-
-
-
 </head>
 
 <body>
@@ -97,11 +92,6 @@ $limit=$r4['tlimit'];
 	$tle=0;
 	$ce=0;
 
-
-
-	//if(trim($code)=="")
-	//die("The code area is empty");
-	
 	$file_code=fopen($filename_code,"w+");
 	fwrite($file_code,$code);
 	fclose($file_code);
@@ -133,10 +123,6 @@ $limit=$r4['tlimit'];
 			$output=shell_exec($out);
 		}
 
-
-		
-		//echo "<pre>$output</pre>";
-        //echo "<textarea id='div' class=\"form-control\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
 		         echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-6\"><div class=\"alert alert-success\"><strong>Successfully Compiled!</strong> Click Below Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
 	}
 	else if(!strpos($error,"error"))
@@ -152,10 +138,6 @@ $limit=$r4['tlimit'];
 			$output=shell_exec($out);
 		}
 
-
-
-		//echo "<pre>$output</pre>";
-                //echo "<textarea id='div' class=\"form-control\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
 				 echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-6\"><div class=\"alert alert-success\"><strong>Successfully Compiled!</strong> Click Below Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
 	}
 	else
@@ -191,7 +173,9 @@ $limit=$r4['tlimit'];
 	exec("rm $executable");
 
 	if($check==0 || $check==1)
-	{
+	{	
+
+		$source=str_replace("'", "''", $source);
 
         $nsql="INSERT into codes VALUES('$us','$source',NULL)";
 		$usql="UPDATE archieve SET uoutput='$output' WHERE id='$pid'";
@@ -205,24 +189,12 @@ $limit=$r4['tlimit'];
 		$r4=mysqli_fetch_array($sq3);
 
 
-
-
 		$uo=$r2['uoutput'];
 		$ac=$row['output'];
 		$nid=$r4['id'];
 
-		//var_dump($uo);
-		//echo "<br><br>";
-		//var_dump($ac);
-
-
-		//echo "$uo<br>";
-
-	
-
-
 	}
-	//echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-5\"><form action=\"allsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"vd\" value=\"$fr\"><input type=\"hidden\" name=\"il\" value=\"$tle\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"> </div><div class=\"col-sm-2\"></div></div>";
+
 
   echo "<center><div class=\"row\"><form action=\"allsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"vd\" value=\"$fr\"><input type=\"hidden\" name=\"il\" value=\"$seconds\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"></div></center>";
 
@@ -251,9 +223,6 @@ else if($_POST['src'])
 	$limit=$r4['tlimit'];
 
 
-
-
-
 	$CC="gcc";
 	$out="timeout 5s ./a.out";
 	$code=$_POST["src"];
@@ -267,8 +236,7 @@ else if($_POST['src'])
 
 	
 
-	//if(trim($code)=="")
-	//die("The code area is empty");
+
 	
 	$file_code=fopen($filename_code,"w+");
 	fwrite($file_code,$code);
@@ -302,8 +270,7 @@ else if($_POST['src'])
 			$out=$out." < ".$filename_in;
 			$output=shell_exec($out);
 		}
-		//echo "<pre>$output</pre>";
-        //echo "<textarea id='div' class=\"form-control\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
+	
          echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-5\"><div class=\"alert alert-success\"><strong>Successfully Compiled!</strong> Click  Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
 	}
 	else if(!strpos($error,"error"))
@@ -318,8 +285,7 @@ else if($_POST['src'])
 			$out=$out." < ".$filename_in;
 			$output=shell_exec($out);
 		}
-		//echo "<pre>$output</pre>";
-                //echo "<textarea id='div' class=\"form-control\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
+		
 		 echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-5\"><div class=\"alert alert-success\"><strong>Successfully Compiled!</strong> Click  Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
 	}
 	else
@@ -380,7 +346,7 @@ else if($_POST['src'])
 
     }
 
-    //echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-5\"><form action=\"contestsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"il\" value=\"$tle\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"> </div><div class=\"col-sm-2\"></div></div>";
+  
 
   echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-5\"><form action=\"contestsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"vd\" value=\"$fr\"><input type=\"hidden\" name=\"il\" value=\"$seconds\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"> </div><div class=\"col-sm-3\"></div></div>";
 }

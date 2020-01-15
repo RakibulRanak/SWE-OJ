@@ -46,7 +46,7 @@ if(isset($_SESSION['un']))
 
 require_once("config.php");
 
-if($_GET['id'])
+if(isset($_GET['id']))
 {
   $problemid=$_GET['id'];
 }
