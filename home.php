@@ -38,15 +38,28 @@ if(isset($_SESSION['un']))
 <body onload="set()">
 <div>
 
- <?php require 'nav2.php'; ?>
+ <?php require 'nav2.php'; 
+
+require_once("config.php");
+$show="SELECT * FROM announcement ORDER BY exdate ASC";
+
+$sts=mysqli_query($con,$show);
+$ann="";
+while($row=mysqli_fetch_array($sts))
+{
+	$ann.=$row['des'];
+	$ann.=str_repeat("&nbsp;", 10);
+
+}
+?>
  
- 	<!-- <img src="Images/sust.jpg" alt="IICT SUST" style="width: 100%; height: 90vh; object-fit: cover;"> -->
+ 
  	<div style="background-image: url('Images/sust.jpg');  background-size: 100% 100%; height: 800px">
  		<br>
  		<br>
  		<br>
  		<br>
- 		    <marquee direction="left">Upcoming contest on 28th January 2020!!</marquee>
+ 		    <marquee direction="left" scrollamount="12"><?php echo $ann ; ?></marquee>
  			<br>
  		<br>
  		<br>
@@ -55,9 +68,7 @@ if(isset($_SESSION['un']))
  		<br>
  		
  <h1 align="center">Welcome to SWE OJ !</h1>
- 	<!-- <a href="https://codeforces.com/">Codeforces</a>
- </br>
- 	<a href="https://uva.onlinejudge.org">UVa</a> -->
+
 
 </div>
 

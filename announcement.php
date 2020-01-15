@@ -5,6 +5,7 @@ require_once("config.php");
 
 
 $_SESSION['url'] = $_SERVER['REQUEST_URI'];
+
 if(!isset($_SESSION["un"]))
 {
   header("Location:login.php");
@@ -83,28 +84,80 @@ $access=0;
 
 require_once("config.php");
 
+if(isset($_POST['up2']))
+{
 
+    if($st=="Teacher" || $st=="Developer")
+   {   
+        $access=1;
+   }
+
+
+   if($access==1)
+   {
+     $query="truncate announcement";
+     $send=mysqli_query($con,$query);
+
+     if($send)
+     {
+       echo "Deleted All Successfully.</a>";
+     }
+    }
+   else
+   {
+      header("Location:announcement.php?fail=1");
+   }
+
+
+}
+
+
+
+
+//uppppp
+
+if(isset($_POST['up']))
+{
+
+  
+
+   $id=$_POST['id'];
+   
+    if($st=="Teacher" || $st=="Developer")
+   {   
+        $access=1;
+   }
+
+
+   if($access==1)
+   {
+     $query="DELETE FROM announcement WHERE id='$id'";
+     $send=mysqli_query($con,$query);
+
+     if($send)
+     {
+       echo "Deleted Successfully.";
+        echo "<br>";
+         echo "<br>";
+     }
+    }
+   else
+   {
+      header("Location:announcement.php?fail=1");
+   }
+}
+
+
+
+//crrrrrrrrrr
 
 if(isset($_POST['cr']))
 {
-
-   
-
-   $cid=$_POST['ci'];
-   $cname=$_POST['cn'];
+   $ced=$_POST['ced'];
+  
    $announcement=$_POST['an'];
-
-
- $fowner="SELECT  owner from rapl_oj_contest where cname='$cname'";
- $sendit=mysqli_query($con,$fowner);
- $frow=mysqli_fetch_array($sendit);
- $owner=$frow['owner'];
-
- if($username==$owner)
- {
-      $access=1;
- }
- else if($st=="Teacher" || $st=="Developer")
+   
+ if($st=="Teacher" || $st=="Developer")
  {   
       $access=1;
  }
@@ -113,12 +166,14 @@ if(isset($_POST['cr']))
    if($access==1)
    {
 
-     $query="INSERT INTO announcement(des,exdate) VALUES($announcement','')";
+     $query="INSERT INTO announcement(des,exdate) VALUES('$announcement','$ced')";
      $send=mysqli_query($con,$query);
 
      if($send)
      {
-       echo "Submitted Successfully. <a href=\"announcement.php\">Check Here</a>";
+       echo "Submitted Successfully.";
+       echo "<br>";
+        echo "<br>";
      }
    }
    else
@@ -126,73 +181,26 @@ if(isset($_POST['cr']))
       header("Location:announcement.php?fail=1");
    }
 
-
-   
-   
-  
- 
-
 }
-else
-{
+
+
+
    $query="SELECT * from announcement";
    $send=mysqli_query($con,$query);
-  
+  echo "<button class=\"btn btn-primary\";>ID</button> <div class=\"alert alert-info col-sm-9\" style=\"display: inline-block\"><b>Details</b></div> <div class=\"alert alert-info col-sm-2\" style=\"display: inline-block\"><b>Expire Date</b></div><br>";
+
    while($row=mysqli_fetch_array($send))
    {
        $aid=$row['id'];
-       echo "<button class=\"btn btn-success\">$aid</button><button class=\"btn btn-primary\">$row[id]</button> <div class=\"alert alert-info\">$row[des]</div><br>";
+       echo "<button class=\"btn btn-primary\";>$row[id]</button> <div class=\"alert alert-info col-sm-9\" style=\"display: inline-block\">$row[des]</div> <div class=\"alert alert-info col-sm-2\" style=\"display: inline-block\">$row[exdate]</div><br>";
    }
-
-}
-
-
-if(isset($_POST['up']))
-{
-
-  
-
-   $aid=$_POST['ann'];
-   $cont=$_POST['con'];
-   
-
- $fowner="SELECT  owner from rapl_oj_contest where cname='$cont'";
- $sendit=mysqli_query($con,$fowner);
- $frow=mysqli_fetch_array($sendit);
- $owner=$frow['owner'];
-
- if($username==$owner)
- {
-      $access=1;
- }
- else if($st=="Teacher" || $st=="Developer")
- {   
-      $access=1;
- }
-
-
-   if($access==1)
-   {
-     $query="DELETE FROM announcement WHERE aid='$aid'";
-     $send=mysqli_query($con,$query);
-
-     if($send)
-     {
-       echo "Deleted Successfully. <a href=\"announcement.php\">Check Here</a>";
-     }
-  }
- else
- {
-    header("Location:announcement.php?fail=1");
- }
-}
-
-
 
 ?>
 
 
 </div>
+
+
 
 <?php
 
@@ -208,14 +216,7 @@ if($st=="Teacher" || $st=="Developer" || $st=="Problem Setter")
 
 <label for="ta">Enter Expire Date</label>
 
-                        <!-- <div class="input-group date form_datetime2 col-md-5" data-date="2017-06-15T05:25:07Z"
-                            data-date-format=" yyyy-mm-dd " data-link-field="dtp_input1">
-                            <input type='text' name="cd" class="form-control" readonly class="form_datetime2" />
-
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                        </div><br><br> -->
-                        <input id="datepicker" width="276" />
+                         <input name="ced" id="datepicker" width="276" />
                         <br>
     <script>
         $('#datepicker').datepicker({
@@ -234,7 +235,7 @@ if($st=="Teacher" || $st=="Developer" || $st=="Problem Setter")
   
 <legend>Delete Announcement</legend>
 <label for="ta">Enter Announcement id</label>
-<input type="text" name="ann" class="form-control"><br><br>
+<input type="number" name="id" class="form-control"><br><br>
 <input type="submit" name="up" class="btn btn-danger" value="Delete">
 <input type="submit" name="up2" class="btn btn-danger" value="Delete All">
 
@@ -248,8 +249,11 @@ if($st=="Teacher" || $st=="Developer" || $st=="Problem Setter")
 
 </div>
 
+
 <?php
 }
+
+
 
 if(isset($_GET['fail']))
 {
@@ -260,50 +264,11 @@ if(isset($_GET['fail']))
 
 </div>
 </div><br><br><br>
-<script type="text/javascript" src="djquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<!-- <script type="text/javascript" src="djquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
     <script type="text/javascript" src="dboot/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="djs/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="djs/bootstrap-datetimepicker.js" charset="UTF-8"></script> -->
 
-    <script type="text/javascript">
-    $('.form_datetime').datetimepicker({
-        //language:  'fr',
-        weekStart: 1,
-        todayBtn: 1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        forceParse: 0,
-        showMeridian: 1
-    });
-    </script>
-
-    <script type="text/javascript">
-    $('.form_datetime1').datetimepicker({
-        //language:  'fr',
-        weekStart: 1,
-        todayBtn: 1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        forceParse: 0,
-        showMeridian: 1
-    });
-    </script>
-
-    <script type="text/javascript">
-    $('.form_datetime2').datetimepicker({
-        //language:  'fr',
-        weekStart: 1,
-        todayBtn: 1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        forceParse: 0,
-        showMeridian: 1
-    });
-    </script>
-
-
+   
 
 <?php require 'footer.php'; ?>
 

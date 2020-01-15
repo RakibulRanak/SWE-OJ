@@ -16,6 +16,8 @@
                     <li class="space ranak"><a href="compiler.php"><i class="fa fa-code ispace"></i>Compiler</a></li>
                     <li class="space"><a href="archive.php"><i class="fa fa-archive ispace"></i>Problem Archive</a></li>
                     <li class="space"><a href="contest.php"><i class="fa fa-cogs ispace"></i>Contests</a></li>
+                    <li class="space"><a href="contest.php"><i class="fa fa-cogs ispace"></i>Submissions</a></li>
+
 
                     <li class="lgspace space"><a href="login.php"><i class="fa fa-sign-in ispace"></i>Login</a></li>
                     <li class="space"><a href="sign.php"><i class="fa fa-chevron-circle-up ispace"></i>Sign Up</a></li>

@@ -32,12 +32,10 @@ if(isset($_SESSION['un']))
 <body onload="set()">
     <div class="main">
 
-        <?php require 'nav2.php'; ?>
+        <?php require 'nav2.php'; 
 
-        <img src="Images/sust.jpg" alt="IICT SUST" width="1450px" height="800px">
-        <a href="https://codeforces.com/">Codeforces</a>
-        </br>
-        <a href="https://uva.onlinejudge.org">UVa</a>
+      header("Location:home.php");
+      ?>
     </div>
 
 
