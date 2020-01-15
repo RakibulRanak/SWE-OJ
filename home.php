@@ -41,7 +41,7 @@ if(isset($_SESSION['un']))
  <?php require 'nav2.php'; 
 
 require_once("config.php");
-$show="SELECT * FROM announcement ORDER BY exdate ASC";
+$show="SELECT * FROM notice ORDER BY exdate ASC";
 
 $sts=mysqli_query($con,$show);
 $ann="";

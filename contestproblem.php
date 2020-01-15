@@ -72,19 +72,7 @@ if(isset($_GET['name']))
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Contest Problems</title>
-        <!--  <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="icon" type="image/png" href="img/ruet.png">
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-        <script src="js/vendor/jquery-1.12.0.min.js"></script>
-        <script src="bootstrap-3.3.7/js/bootstrap.min.js" </script>
-        <script src="bootstrap-3.3.7/js/bootstrap.js" </script>
- -->
+
  <?php require 'linkers.php'; ?>
       <script>
       // Set the date we're counting down to
@@ -223,6 +211,7 @@ require_once("config.php");
 
 date_default_timezone_set("Asia/Dhaka");
 
+//updateeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 
 if(isset($_POST['up']))
 {
@@ -302,6 +291,8 @@ echo "</tbody>
 
 
 }
+
+//delllllllllllllllllllllllllllllllllll
 
 
 if(isset($_POST['del']))
@@ -389,6 +380,7 @@ $au=$_POST['c2'];
 $tc=$_POST['c3'];
 $out=$_POST['c4'];
 $ptl=$_POST['tll'];
+echo "hii";
 
    $fowner="SELECT  owner from rapl_oj_contest where id='$cid'";
    $sendit=mysqli_query($con,$fowner);
@@ -447,6 +439,7 @@ while($row=mysqli_fetch_array($sq3))
    
   <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-success btn-xs\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td></tr>";
 
+
   }
   else
   {
@@ -455,6 +448,7 @@ while($row=mysqli_fetch_array($sq3))
 
    
   <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-danger btn-xs\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td></tr>";
+  echo "hii";
   }
 }
 
@@ -472,6 +466,9 @@ else
 
 
 }
+
+//contestproblems
+
 if(isset($_GET['name']))
 {
   $n=$_GET['name'];
@@ -515,6 +512,7 @@ if(isset($_GET['name']))
       else
       {
              $ver="Unsolved";
+
              echo "
 
        
@@ -530,6 +528,7 @@ echo "<h3 style=\"text-align:center;\">Announcement</h3><br>";
    $query="SELECT des from announcement where cname='$n'";
    $send=mysqli_query($con,$query);
    $nrow=mysqli_num_rows($send);
+   var_dump($nrow);
    
    if($nrow>0)
    {
@@ -556,22 +555,6 @@ echo "<h3 style=\"text-align:center;\">Announcement</h3><br>";
 
 }
 
-
-
-
-
-/*require_once("connection.php");
-
-$q6="SELECT table_name FROM information_schema.tables where table_schema='problem' ";
-
-$res=mysqli_query($con,$q6);
-
-while($row=mysqli_fetch_array($res))
-{
-  error_reporting(0);
-  echo '<form action="test.php" method="POST"> <input type="hidden" name="pb" value="' . htmlspecialchars($row[table_name]) . '" /><input type="submit" value=" ' . htmlspecialchars($row[table_name]) .'  "/></form>'."<br>";
-}
-*/
 
  
 ?>

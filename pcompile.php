@@ -4,7 +4,7 @@
         error_reporting(0);
 	if($_FILES["file"]["name"]!="")
 	{
-		//include "compilers/make.php";
+		include "compilers/make.php";
 	}
 	else
 	{

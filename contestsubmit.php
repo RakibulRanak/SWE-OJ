@@ -1,25 +1,45 @@
 <?php
 
 session_start();
-
+date_default_timezone_set("Asia/Dhaka");
 require_once("config.php");
 
-if(!isset($_SESSION["un"]))
+$_SESSION['url'] = $_SERVER['REQUEST_URI'];
+
+if(!isset($_SESSION['un']))
 {
   header("Location:login.php");
 }
-
 if(isset($_SESSION['un']))
 {
   $username=$_SESSION['un'];
 }
-
-
-
-
-
 ?>
 
+
+
+<?php
+
+$c=0;
+
+if(isset($_GET['id']))
+{
+   $problemid=$_GET['id'];
+   $c=1;
+}
+
+$sql="SELECT * FROM element WHERE pbid='$problemid' ";
+
+$sq=mysqli_query($con,$sql);
+
+$r1=mysqli_fetch_array($sq);
+
+
+
+
+//echo "<textarea  style=\"display:none;\" name=\"in\" 
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -28,14 +48,10 @@ if(isset($_SESSION['un']))
     
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Home</title>
-
-        <?php require 'linkers.php'; ?>
-
-
-
-
- <script>
+        <title>Submit</title>
+       <?php include 'linkers.php';?>
+        
+    <script>
 // Set the date we're counting down to
 
 function call(d,val,st){
@@ -80,7 +96,7 @@ var x = setInterval(function() {
 
       //console.log(result);
 
-       document.getElementById(val).innerHTML = "Countdown : " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+       //document.getElementById(val).innerHTML = "Countdown : " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
     }
     else if(countDownDate>=now)
     {
@@ -100,8 +116,8 @@ var x = setInterval(function() {
         + minutes + "m " + seconds + "s ";
 
       //console.log(result);
-        document.getElementById(val).innerHTML = " Running.... : "+ days + "d " + hours + "h "
-       + minutes + "m " + seconds + "s ";
+        //document.getElementById(val).innerHTML = " Running.... : "+ days + "d " + hours + "h "
+       //+ minutes + "m " + seconds + "s ";
 
        document.getElementById("show").style.display="block";
 
@@ -114,7 +130,10 @@ var x = setInterval(function() {
     else if (now>countDownDate) {
         clearInterval(x);
 
-        document.getElementById(val).innerHTML = "Status : Finished";
+
+        document.getElementById("fin").innerHTML = "Contest has Finished";
+
+
     }
 
 
@@ -127,27 +146,27 @@ var x = setInterval(function() {
 
 </script>
 
-        
+
+
+
 
 
 </head>
-<body onload="set()">
-
-
-
+<body>
 <div class="main">
+  <?php require 'nav2.php'; ?>
 
-<?php require 'nav2.php'; ?>
 
 <div class="row log">
-<div class="col-sm-2">
+<div class="col-sm-10">
+<div class=""><h3 style="text-align:center;">Submit Code</h3></div>
 </div>
 
-<div class="col-sm-7">
-<div class=""><h3 style="text-align: center;">Contest Countdown</h3></div>
+<div class="col-sm-1">
+
 </div>
 
-<div class="col-sm-3">
+<div class="col-sm-1">
   
 </div>
 
@@ -157,33 +176,62 @@ var x = setInterval(function() {
 
 
 <div class="row cspace">
-<div class="col-sm-3">
+<div class="col-sm-8">
+<div class="form-group">
+<form action="pcompile.php" name="f2" method="POST">
+<label for="language">Choose Language</label>
 
-</div>
 
+<select class="form-control" name="language">
+<option value="c">C</option>
+<option value="cpp">C++</option>
+<option value="cpp11">C++11</option>
 
-<div class="col-sm-7">
-    
+<!--<option value="python2.7">Python2</option>
+<option value="python3.2">Python2</option>-->
+
+</select><br><br>
 
 <?php
 
-require_once("config.php");
-date_default_timezone_set("Asia/Dhaka");
+    if($c==1)
+    {
+       //echo "<input type=\"hidden\" name=\"pbn\" value=\"$problem\">";
+      echo "<input type=\"hidden\" name=\"id\" value=\"$problemid\">";
+    }
+    else
+    {
+      echo"<label for=\"pp\">Enter Problem ID</label><br>";
+      //echo "<input class=\"form-control\" type=\"text\" name=\"pbn\">";
+      echo "<input class=\"form-control\" type=\"text\" name=\"id\">";
+    }
 
-$nam = $_GET['name'];
+ ?>
 
-$q3="SELECT * FROM rapl_oj_contest where cname='$nam' ORDER BY date_on DESC LIMIT 0,1";
+<label for="ta">Write Your Code</label>
+<textarea class="form-control" name="src" rows="10" cols="50"></textarea><br><br>
+<input type="hidden" name='pbn' value="<?php echo $r1['pbname']; ?>">
+<!--<input type="submit" class="btn btn-success" value="Submit"><br><br><br>-->
+
+<?php
+
+$conid=$r1['id'];
+
+   $q3="SELECT * FROM rapl_oj_contest WHERE id='$conid'";
     $sq3=mysqli_query($con,$q3);
 
-        $q4="SELECT TIME_FORMAT(end_at,'%H') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
+      $q4="SELECT TIME_FORMAT(end_at,'%H') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
        $q5="SELECT TIME_FORMAT(end_at,'%i') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
         $q6="SELECT TIME_FORMAT(end_at,'%s') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
+
 
       $sq4=mysqli_query($con,$q4);
       $sq5=mysqli_query($con,$q5);
       $sq6=mysqli_query($con,$q6);
       
-      $i=0;
+
+       
+       $i=0;
 
 
       
@@ -192,13 +240,14 @@ $q3="SELECT * FROM rapl_oj_contest where cname='$nam' ORDER BY date_on DESC LIMI
     {
       $d=date("Y-m-d");
       $t=date("H:i:s");
+      $current=date("Y-m-d H:i:s ");
+
       $m=$row['start_at'];
       $nv=$row['start_at'];
 
 
       $i++;
       $demo="demo"+"$i";
-      echo $demo;
       $nr=mysqli_fetch_array($sq4);
       $nm=mysqli_fetch_array($sq5);
       $ns=mysqli_fetch_array($sq6);
@@ -240,6 +289,8 @@ $q3="SELECT * FROM rapl_oj_contest where cname='$nam' ORDER BY date_on DESC LIMI
       $hr=intval($min/60);
       $m=intval($min%60);
 
+
+
    ?>
       
     <script type="text/javascript">
@@ -255,36 +306,66 @@ $q3="SELECT * FROM rapl_oj_contest where cname='$nam' ORDER BY date_on DESC LIMI
    </script>
       
     <?php
-     echo("<br><br><h1 id=$demo></h1> <br><br>");
-     echo ("<div id=\"show\" style=\"display:none; margin-left:120px; margin-right:100px;\"><a class=\"btn btn-success\" href=\"contestproblem.php?name=$row[cname]\">Enter Now</a></div>");
+
+     $diff=strtotime($nv)-strtotime($current);
+     $current=strtotime($current);
      
-    
-  }
+    // echo "$current<br>";
+
+     //echo "$diff";
+
+     if($diff>0)
+     {
+         
+         header("Location:countdown.php");
+
+     }
+
+     echo("<div id=\"show\" style=\"display:none;\"><input type=\"submit\" class=\"btn btn-success\" value=\"Submit\"></div><br><br><br>");
+
+     echo("<div id=\"fin\"></div>");
+     
+
+
+     
+      /*echo(" <a href=\"save.php?name=$row[table_name]\">$row[table_name]</a><br><br>");
+        if($row['date_on']==$d && $seconds>=0 && $ss>=0 )
+        {
+             echo "<input type=\"submit\" class=\"btn btn-success\" value=\"Submit\"><br><br><br>";
+         }
+         else if($d>$row['date_on'] || ($d==$row['date_on'] && $t>$en))
+         {
+            echo "Contest Has Finished<br><br>";
+         }
+         else
+         {
+            echo " Contest Has Not Started Yet<br><br> ";
+         }*/
+    }
+
+
+
 
 ?>
 
 
-  
+</form><br><br>
+
+
 </div>
-<div class="col-sm-2">
+
+<div class="col-sm-4">
+
 </div>
 </div>
 </div>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
+</div><br><br><br>
+
+<?php require 'footer.php'; ?>
 
 
 
 
-<?php
-
-require_once("footer.php");
-
-?>
 </body>
+
 </html>
-
-

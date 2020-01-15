@@ -231,6 +231,7 @@ $row=mysqli_fetch_array($send);
              <tr><td><a href=\"setcontestproblem.php\">Create Contest Problem</a></td></tr> 
              <tr><td><a href=\"setproblem.php\">Create Archive Problem</a></td></tr> 
              
+             <tr><td><a href=\"notice.php\">Notice</a></td></tr>
              <tr><td><a href=\"announcement.php\">Announcement</a></td></tr>
             <tr><td><a href=\"createadmin.php\">Create Admin</a></td></tr>
             

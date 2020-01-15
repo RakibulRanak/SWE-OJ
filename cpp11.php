@@ -241,7 +241,7 @@ else if($_POST['src'])
 {
 
 
-    require_once("connection.php");
+    require_once("config.php");
     
 	$lang=$_POST['language'];
 	$source=$_POST['src'];
