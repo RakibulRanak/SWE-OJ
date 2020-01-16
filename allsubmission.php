@@ -74,6 +74,8 @@ if(isset($_SESSION['un']))
 
 
 error_reporting(0);
+
+
 if(isset($_POST['id']))
 {
   $cid=$_POST['id'];

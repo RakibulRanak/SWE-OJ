@@ -40,14 +40,14 @@ if(isset($_SESSION['un']))
 
 function call(d,val,st){
 
-//console.log(d);
-//console.log(val);
-//console.log(st);
+console.log(d);
+console.log(val);
+console.log(st);
 var countDownDate = new Date(d).getTime();
 var start =new Date(st).getTime();
 
 //console.log(start);
-
+//document.write("inside javascript1");
 var result;
 
 // Update the count down every 1 second
@@ -80,7 +80,7 @@ var x = setInterval(function() {
 
       //console.log(result);
 
-       document.getElementById(val).innerHTML = "Countdown : " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+       document.getElementById("demo").innerHTML = "Countdown : " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
     }
     else if(countDownDate>=now)
     {
@@ -139,15 +139,12 @@ var x = setInterval(function() {
 
 <?php require 'nav2.php'; ?>
 
-<div class="row log">
-<div class="col-sm-2">
-</div>
+<div class=" log">
 
-<div class="col-sm-7">
 <div class=""><h3 style="text-align: center;">Contest Countdown</h3></div>
-</div>
 
-<div class="col-sm-3">
+
+
   
 </div>
 
@@ -157,12 +154,12 @@ var x = setInterval(function() {
 
 
 <div class="row cspace">
-<div class="col-sm-3">
+
 
 </div>
 
 
-<div class="col-sm-7">
+
     
 
 <?php
@@ -170,18 +167,14 @@ var x = setInterval(function() {
 require_once("config.php");
 date_default_timezone_set("Asia/Dhaka");
 
-$nam = $_GET['name'];
+      $nam = $_GET['name'];
+      // echo $nam;
+      // echo "<br>";
 
-$q3="SELECT * FROM rapl_oj_contest where cname='$nam' ORDER BY date_on DESC LIMIT 0,1";
-    $sq3=mysqli_query($con,$q3);
+      $q3="SELECT * FROM rapl_oj_contest where cname='$nam' ORDER BY date_on DESC LIMIT 0,1";
+      $sq3=mysqli_query($con,$q3);
 
-        $q4="SELECT TIME_FORMAT(end_at,'%H') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-       $q5="SELECT TIME_FORMAT(end_at,'%i') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-        $q6="SELECT TIME_FORMAT(end_at,'%s') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
 
-      $sq4=mysqli_query($con,$q4);
-      $sq5=mysqli_query($con,$q5);
-      $sq6=mysqli_query($con,$q6);
       
       $i=0;
 
@@ -190,55 +183,9 @@ $q3="SELECT * FROM rapl_oj_contest where cname='$nam' ORDER BY date_on DESC LIMI
    
   while($row=mysqli_fetch_array($sq3))
     {
-      $d=date("Y-m-d");
-      $t=date("H:i:s");
-      $m=$row['start_at'];
+      
       $nv=$row['start_at'];
-
-
-      $i++;
-      $demo="demo"+"$i";
-     // echo $demo;
-      $nr=mysqli_fetch_array($sq4);
-      $nm=mysqli_fetch_array($sq5);
-      $ns=mysqli_fetch_array($sq6);
-      
-      $shr=$nr['end_at'];
-      $shm=$nm['end_at'];
-      $shs=$ns['end_at'];
-      $cur=date('H');
-      $curm=date('i');
-      $curs=date('s');
-
-      $h=$shr-$cur;
-      $mt=$shm-$curm;
-      $scnd=$shs-$curs;
-
-      if($scnd<0)
-      {
-         $scnd=$scnd+60;
-         $mt=$mt-1;
-      }
-
-      if($mt<0)
-      {
-        $mt=$mt+60;
-        $h=$h-1;
-      }
-
-      if($h<0)
-      {
-        $h=$h+24;
-      }
-      
       $en=$row['end_at'];
-
-      $seconds = strtotime($t) - strtotime($m);
-      $ss= strtotime($en) - strtotime($t);
-      $min=intval($seconds/60);
-      $sec=intval($seconds%60);
-      $hr=intval($min/60);
-      $m=intval($min%60);
 
    ?>
       
@@ -255,7 +202,8 @@ $q3="SELECT * FROM rapl_oj_contest where cname='$nam' ORDER BY date_on DESC LIMI
    </script>
       
     <?php
-     echo("<br><br><h1 id=$demo></h1> <br><br>");
+     // echo("<br><br><h1 id=$demo></h1> <br><br>");
+     echo("<br><br><center><h1 id=\"demo\"></h1> </center><br><br>");
      echo ("<div id=\"show\" style=\"display:none; margin-left:120px; margin-right:100px;\"><a class=\"btn btn-success\" href=\"contestproblem.php?name=$row[cname]\">Enter Now</a></div>");
      
     
