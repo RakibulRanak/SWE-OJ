@@ -100,7 +100,7 @@ var x = setInterval(function() {
         + minutes + "m " + seconds + "s ";
 
       //console.log(result);
-        document.getElementById(val).innerHTML = " Running.... : "+ days + "d " + hours + "h "
+        document.getElementById("demo").innerHTML = " Running.... : "+ days + "d " + hours + "h "
        + minutes + "m " + seconds + "s ";
 
        document.getElementById("show").style.display="block";
@@ -114,7 +114,7 @@ var x = setInterval(function() {
     else if (now>countDownDate) {
         clearInterval(x);
 
-        document.getElementById(val).innerHTML = "Status : Finished";
+        document.getElementById("demo").innerHTML = "Status : Finished";
     }
 
 
@@ -204,7 +204,7 @@ date_default_timezone_set("Asia/Dhaka");
     <?php
      // echo("<br><br><h1 id=$demo></h1> <br><br>");
      echo("<br><br><center><h1 id=\"demo\"></h1> </center><br><br>");
-     echo ("<div id=\"show\" style=\"display:none; margin-left:120px; margin-right:100px;\"><a class=\"btn btn-success\" href=\"contestproblem.php?name=$row[cname]\">Enter Now</a></div>");
+     echo ("<div id=\"show\" style=\"display:none; margin-left:46vw; margin-right:100px;\"><a class=\"btn btn-success\" href=\"contestproblem.php?name=$row[cname]\">Enter Now</a></div>");
      
     
   }

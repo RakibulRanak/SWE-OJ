@@ -4,6 +4,7 @@ session_start();
 date_default_timezone_set("Asia/Dhaka");
 
 $_SESSION['url'] = $_SERVER['REQUEST_URI'];
+//echo $_SESSION['url'];
 
 require_once("config.php");
 if(!isset($_SESSION['un']))
@@ -61,7 +62,11 @@ require_once("config.php");
         <div class=" log">
             <h3 style="text-align:center;">Contest Submission</h3><br>
 
+
             <?php
+            //echo $_SESSION['url'];
+
+//click submissions from contest dashboard
 
 if(isset($_GET['id']))
 {
@@ -89,7 +94,7 @@ if(isset($_GET['id']))
 
 
  $ci=$_POST['id'];
-
+//echo "hehe";
  $fowner="SELECT  owner from rapl_oj_contest where id='$ci'";
  $sendit=mysqli_query($con,$fowner);
  $frow=mysqli_fetch_array($sendit);
@@ -119,6 +124,8 @@ if(isset($_GET['id']))
    }
 }
 
+//click submissions from contest dashboard
+
  if(isset($_GET['id']))
  {
 
@@ -129,6 +136,7 @@ if(isset($_GET['id']))
  $sendit=mysqli_query($con,$fowner);
  $frow=mysqli_fetch_array($sendit);
  $owner=$frow['owner'];
+ //echo "Get";
 
  if($username==$owner)
  {
@@ -180,7 +188,9 @@ if(isset($_GET['id']))
 
 error_reporting(0);
 if(isset($_POST['id']))
-{
+{ 
+
+ //echo "post2";
   $cid=$_POST['id'];
   $uo=$_POST['result'];
   $pname=$_POST['pb'];
@@ -197,7 +207,7 @@ if(isset($_GET['id']) && !isset($_GET['show']))
   $conid=$_GET['id'];
    $ch=0;
    error_reporting(0);
-   $per_page=30;
+   $per_page=2;
 
   if(isset($_GET['page']))
   {
@@ -267,7 +277,9 @@ while($row=mysqli_fetch_array($sts))
   $total_page=ceil($total_rows/$per_page);
   $c="active";
 
-  echo "<div class=\"contain con\"><ul class=\"pagination\"><li><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a></li>";
+ 
+  //////
+  echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a>";
 
   for ($i=1; $i <$total_page ; $i++) {
       
@@ -279,11 +291,11 @@ while($row=mysqli_fetch_array($sts))
         {
           $c="";
         }
-    echo "<li class=\"$c\"><a href=\"contestsubmission.php?id=$conid&page=$i\">$i</a></li>";
+    echo "<a class=\"$c\" href=\"contestsubmission.php?id=$conid&page=$i\">$i</a>";
   }
+   echo "<a href=\"contestsubmission.php?id=$conid&page=$total_page\">Last Page</a></li></div>";
 
 
-  echo "<li><a href=\"contestsubmission.php?id=$conid&page=$total_page\">Last Page</a></li></ul></div>";
 
 
 }
@@ -296,7 +308,7 @@ if(isset($_GET['id']) && isset($_GET['show']))
   $suser=$_GET['show'];
    $ch=0;
    error_reporting(0);
-   $per_page=30;
+   $per_page=2;
 
   if(isset($_GET['page']))
   {
@@ -388,7 +400,24 @@ else
   $total_page=ceil($total_rows/$per_page);
   $c="active";
 
-  echo "<div class=\"contain con\"><ul class=\"pagination\"><li><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a></li>";
+  // echo "<div class=\"contain con\"><ul class=\"pagination\"><li><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a></li>";
+
+  // for ($i=1; $i <$total_page ; $i++) {
+      
+  //   if($page==$i)
+  //   {
+  //     $c="active";
+  //       }
+  //       else
+  //       {
+  //         $c="";
+  //       }
+  //   echo "<li class=\"$c\"><a href=\"contestsubmission.php?id=$conid&page=$i\">$i</a></li>";
+  // }
+
+
+  // echo "<li><a href=\"contestsubmission.php?id=$conid&page=$total_page\">Last Page</a></li></ul></div>";
+   echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a>";
 
   for ($i=1; $i <$total_page ; $i++) {
       
@@ -400,11 +429,9 @@ else
         {
           $c="";
         }
-    echo "<li class=\"$c\"><a href=\"contestsubmission.php?id=$conid&page=$i\">$i</a></li>";
+    echo "<a class=\"$c\" href=\"contestsubmission.php?id=$conid&page=$i\">$i</a>";
   }
-
-
-  echo "<li><a href=\"contestsubmission.php?id=$conid&page=$total_page\">Last Page</a></li></ul></div>";
+   echo "<a href=\"contestsubmission.php?id=$conid&page=$total_page\">Last Page</a></li></div>";
 
 
 }
@@ -415,7 +442,7 @@ if(isset($_POST['id']))
 {
 
   
-
+    echo "here";
     $sqlp="SELECT * FROM element WHERE pbid='$cid'";
 
     $sqp=mysqli_query($con,$sqlp);
@@ -509,6 +536,7 @@ $r4=mysqli_fetch_array($sq1);
 $ao=$r3['output'];
 $to=$r4['uoutput'];
 $conid=$r4['id'];
+header("Location:contestsubmission.php?id=$conid");
 $proname=$r4['pbname'];
 $count=0;
 $mpoint=0.00;
@@ -568,7 +596,7 @@ else
   }
 
 
-   $per_page=30;
+   $per_page=2;
 
   if(isset($_GET['page']))
   {
@@ -641,23 +669,39 @@ while($row=mysqli_fetch_array($sts))
   $total_page=ceil($total_rows/$per_page);
   $c="active";
 
-  echo "<div class=\"contain con\"><ul class=\"pagination\"><li><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a></li>";
+  // echo "<div class=\"contain con\"><ul class=\"pagination\"><li><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a></li>";
+
+  // for ($i=1; $i <$total_page ; $i++) {
+      
+  //   if($page==$i)
+  //   {
+  //     $c="active";
+  //   }
+  //       else
+  //       {
+  //         $c="";
+  //       }
+  //   echo "<li class=\"$c\"><a href=\"contestsubmission.php?id=$conid&page=$i\">$i</a></li>";
+  // }
+
+
+  // echo "<li><a href=\"contestsubmission.php?id=$conid&page=$total_page\">Last Page</a></li></ul></div>";
+
+ echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a>";
 
   for ($i=1; $i <$total_page ; $i++) {
       
     if($page==$i)
     {
       $c="active";
-    }
+        }
         else
         {
           $c="";
         }
-    echo "<li class=\"$c\"><a href=\"contestsubmission.php?id=$conid&page=$i\">$i</a></li>";
+    echo "<a class=\"$c\" href=\"contestsubmission.php?id=$conid&page=$i\">$i</a>";
   }
-
-
-  echo "<li><a href=\"contestsubmission.php?id=$conid&page=$total_page\">Last Page</a></li></ul></div>";
+   echo "<a href=\"contestsubmission.php?id=$conid&page=$total_page\">Last Page</a></li></div>";
 
 }
 ?>

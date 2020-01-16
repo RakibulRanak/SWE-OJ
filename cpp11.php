@@ -369,8 +369,10 @@ else if($_POST['src'])
     if($check==0 || $check==1)
     {
 
+
+    		$code=str_replace("'", "''", $code);
             $nsql="INSERT into code VALUES('$us','$code',NULL)";
-			$usql="UPDATE element SET uoutput='$output' WHERE pbid='$pid'";
+			$usql="UPDATE element SET uoutput='$output' WHERE pbid='$pid'";   //verdict update
 			$csql="SELECT uoutput FROM element WHERE pbid='$pid'";
 			$q3="SELECT id FROM code ORDER BY id DESC ";
 			$snq=mysqli_query($con,$nsql);
@@ -385,7 +387,15 @@ else if($_POST['src'])
 
 			$uo=$r2['uoutput'];
 			$ac=$row['output'];
-			$nid=$r4['id'];
+			$nid=$r4['id'];  //solution id of user
+
+
+			$quo="SELECT * FROM element WHERE pbid='$pid'";
+			$sq1=mysqli_query($con,$quo);
+			$r4=mysqli_fetch_array($sq1);
+
+			$conid=$r4['id'];
+
 
 
 
@@ -403,7 +413,7 @@ else if($_POST['src'])
             </div>
         </div>
     </div>
-    </div><br><br><br><br><br><br>
+    </div><br><br><br><br><br><br><br><br><br><br>
 
 
     <?php require 'footer.php'; ?>

@@ -354,7 +354,9 @@ else if($_POST['src'])
 
 
     if($check==0 || $check==1)
-    {
+    {		
+
+    	$code=str_replace("'", "''", $code);
 
             $nsql="INSERT into code VALUES('$us','$code',NULL)";
 			$usql="UPDATE element SET uoutput='$output' WHERE pbid='$pid'";
@@ -391,7 +393,7 @@ else if($_POST['src'])
             </div>
         </div>
     </div>
-    </div><br><br><br>
+    </div><br><br><br><br><br><br><br><br><br><br>
     <?php require 'footer.php'; ?>
 
 

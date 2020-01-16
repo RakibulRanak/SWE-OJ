@@ -31,10 +31,6 @@ if(isset($_SESSION['un']))
     <?php include 'linkers.php';?>
 
 
-
-
-
-
 </head>
 
 <body>
