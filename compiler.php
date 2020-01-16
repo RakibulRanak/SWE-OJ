@@ -40,28 +40,15 @@ if(isset($_SESSION['un']))
 
         <?php require 'nav2.php'; ?>
 
-        <div class="row log">
-            <div class="col-sm-10">
-                <div class="">
+        <div class=" log">
+        
                     <h3 style="text-align:center;">Online Compiler</h3>
-                </div>
-            </div>
-
-            <div class="col-sm-1">
-
-            </div>
-
-            <div class="col-sm-1">
-
-            </div>
-
-        </div>
+            
+         </div>
 
 
-
-
-        <div class="row cspace">
-            <div class="col-sm-8">
+        <div class="row" style="margin-left: 8vw ; margin-top: 3vh">
+            <div class="col-sm-8" style="margin-left: 11vw">
                 <div class="form-group">
                     <form action="compile.php" name="f2" method="POST">
                         <label for="language">Choose Language</label>
@@ -93,8 +80,6 @@ if(isset($_SESSION['un']))
 
 
 
-    </div>
-    </div>
     </div>
     <?php require 'footer.php'; ?>
 </body>

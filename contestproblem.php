@@ -211,7 +211,7 @@ require_once("config.php");
 
 date_default_timezone_set("Asia/Dhaka");
 
-//updateeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+//updateeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee from editcontestproblem
 
 if(isset($_POST['up']))
 {
@@ -234,6 +234,7 @@ if(isset($_POST['up']))
     if($supdate)
     {
        echo "<script>alert(\"Updated Successfully\");</script>";
+
 
     }
     else
@@ -292,7 +293,7 @@ echo "</tbody>
 
 }
 
-//delllllllllllllllllllllllllllllllllll
+//delllllllllllllllllllllllllllllllllll  from editcontestproblem
 
 
 if(isset($_POST['del']))
@@ -314,6 +315,7 @@ if(isset($_POST['del']))
     if($sdelete)
     {
        echo "<script>alert(\"Deleted Successfully\");</script>";
+
     }
 
      $q3="SELECT * FROM element WHERE cname='$contest'";
@@ -467,7 +469,7 @@ else
 
 }
 
-//contestproblems
+//contestproblems-page
 
 if(isset($_GET['name']))
 {
@@ -528,7 +530,6 @@ echo "<h3 style=\"text-align:center;\">Announcement</h3><br>";
    $query="SELECT des from announcement where cname='$n'";
    $send=mysqli_query($con,$query);
    $nrow=mysqli_num_rows($send);
-   var_dump($nrow);
    
    if($nrow>0)
    {
@@ -566,7 +567,7 @@ echo "<h3 style=\"text-align:center;\">Announcement</h3><br>";
 </div>
 
 
-
+<!-- danpasher dashboard!!!!!!!!!! -->
 
 <div class="col-sm-4">
 
@@ -585,6 +586,7 @@ echo "<h3 style=\"text-align:center;\">Announcement</h3><br>";
 if(isset($_GET['name']))
 {
   $n=$_GET['name'];
+  
   $q3="SELECT id FROM rapl_oj_contest WHERE cname='$n'";
 
     $r=mysqli_query($con,$q3);
@@ -592,6 +594,7 @@ if(isset($_GET['name']))
    $r1=mysqli_fetch_array($r);
 
    $conid=$r1['id'];
+   
 
    $sql="SELECT sname, SUM(status) As Solved, SUM(point) As Points FROM submission Where cid='$conid' GROUP BY sname ORDER BY Solved DESC , Points DESC";
 
@@ -715,8 +718,8 @@ if(isset($_GET['name']))
          header("Location:countdown.php?name=$n");
 
      }
-
-     echo("<div style=\"border:1px solid gray; padding:10px; border-radius:0px;\">Contest Name: <a href=\"contestproblem.php?name=$row[cname]\">$timerow[cname]</a><br><br>Contest Date: $timerow[date_on] <br><br>Start Time: $timerow[start_at]<br><br>End Time: $timerow[end_at] <br><br><div id=$demo></div> <br><br></div>");
+     
+     echo("<div style=\"border:1px solid gray; padding:10px; border-radius:0px;\">Contest Name: <a href=\"contestproblem.php?name=$n\">$timerow[cname]</a><br><br>Contest Date: $timerow[date_on] <br><br>Start Time: $timerow[start_at]<br><br>End Time: $timerow[end_at] <br><br><div id=$demo></div> <br><br></div>");
 
    
      

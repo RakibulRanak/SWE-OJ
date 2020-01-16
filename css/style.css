@@ -128,7 +128,7 @@
 .cspace
 {
 	margin-top: 50px;
-	margin-left:120px;
+	margin-left:14vw;
 	padding-right: 10px;
 
 }
@@ -187,6 +187,8 @@
      float:left;
      margin-top:20px;
      box-shadow: 2px 2px 2px 2px gray;
+     margin-left: 80px;
+     
 
 
 
@@ -397,13 +399,8 @@ pre {
    margin-left: 30px;
    margin-right: 20px;
 }
-.cspace
-{
-	margin-top: 50px;
-	margin-left:120px;
-	padding-right: 10px;
 
-}
+
 .lspace
 {
 	margin-left:1px;
@@ -470,12 +467,7 @@ pre {
 	padding-right:20px;
 }
 
-.cspace
-{
-	margin-top: 50px;
-	margin-left:80px;
-	padding-right: 10px;
-}
+
 .pbs
 {
 	margin-right:0px;
@@ -558,12 +550,6 @@ pre {
 	padding-right:8px;
 	font-size: 10px;
 }
-.cspace
-{
-	margin-top: 50px;
-	margin-left:30px;
-	padding-right: 10px;
-}
 
 .xm
 {
@@ -613,11 +599,8 @@ pre {
 	margin-right:20px;
 
 }
-.cspace
-{
-	margin-top: 50px;
-	margin-left:80px;
-}
+
+
 
 .lgspace
 {
@@ -675,11 +658,7 @@ pre {
 	padding-top:100px;
 	padding-right:10px;
 }
-.cspace
-{
-	margin-top: 70px;
-	margin-left:20px;
-}
+
 
 .lgspace
 {
@@ -763,11 +742,6 @@ pre {
 {
 	padding-right:2px;
 	font-size: 10px;
-}
-.cspace
-{
-	margin-top: 70px;
-	margin-left:0px;
 }
 
 .log

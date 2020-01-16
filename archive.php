@@ -38,9 +38,8 @@ if(isset($_SESSION['un']))
         </div>
 
         <div class="row cspace">
-            <div class="col-sm-1">
-            </div>
-            <div class="col-sm-9">
+          
+            <div class="col-sm-10">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>

@@ -58,7 +58,7 @@ require_once("config.php");
     <div class="main">
         <?php require 'nav2.php'; ?>
 
-        <div class="row log">
+        <div class=" log">
             <h3 style="text-align:center;">Contest Submission</h3><br>
 
             <?php
@@ -160,9 +160,8 @@ if(isset($_GET['id']))
 ?>
 
         <div class="row cspace">
-            <div class="col-sm-1">
-            </div>
-            <div class="col-sm-9">
+            
+            <div class="col-sm-10">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>

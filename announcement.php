@@ -79,7 +79,7 @@ $access=0;
 
 require_once("config.php");
 
-
+//create announcement from profile announcement
 
 if(isset($_POST['cr']))
 {
@@ -89,7 +89,6 @@ if(isset($_POST['cr']))
    $cid=$_POST['ci'];
    $cname=$_POST['cn'];
    $announcement=$_POST['an'];
-echo "hi";
 
  $fowner="SELECT  owner from rapl_oj_contest where cname='$cname'";
  $sendit=mysqli_query($con,$fowner);
@@ -108,44 +107,24 @@ echo "hi";
 
    if($access==1)
    {
-      echo "hi2";
-      echo $cid;
-      echo $cname;
-      echo $announcement;
      $query="INSERT INTO announcement(id,cname,des) VALUES('$cid','$cname','$announcement')";
      $send=mysqli_query($con,$query);
 
      if($send)
      {
-       echo "Submitted Successfully. <a href=\"announcement.php\">Check Here</a>";
-       echo "gd";
+       echo "<b>Submitted Successfully.</b> <br><br>";
+      // echo "gd";
      }
    }
    else
    {
-      // header("Location:announcement.php?fail=1");
-    echo "bal";
-   }
-
-
-   
-   
-  
- 
-
-}
-else
-{
-   $query="SELECT * from announcement";
-   $send=mysqli_query($con,$query);
-  
-   while($row=mysqli_fetch_array($send))
-   {
-       $aid=$row['aid'];
-       echo "<button class=\"btn btn-success\">$aid</button><button class=\"btn btn-primary\">$row[cname]</button> <div class=\"alert alert-info\">$row[des]</div><br>";
+       header("Location:announcement.php?fail=1");
+    //echo "bal";
    }
 
 }
+   
+//announcement delete from profile>announcement
 
 
 if(isset($_POST['up']))
@@ -179,7 +158,7 @@ if(isset($_POST['up']))
 
      if($send)
      {
-       echo "Deleted Successfully. <a href=\"announcement.php\">Check Here</a>";
+       echo "<b>Deleted Successfully.</b> <br><br>";
      }
   }
  else
@@ -187,6 +166,16 @@ if(isset($_POST['up']))
     header("Location:announcement.php?fail=1");
  }
 }
+
+$query="SELECT * from announcement";
+   $send=mysqli_query($con,$query);
+  
+   while($row=mysqli_fetch_array($send))
+   {
+       $aid=$row['aid'];
+       echo "<button class=\"btn btn-success\">$aid</button><button class=\"btn btn-primary\">$row[cname]</button> <div class=\"alert alert-info\">$row[des]</div><br>";
+   }
+
 
 
 

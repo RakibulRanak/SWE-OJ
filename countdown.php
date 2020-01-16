@@ -198,7 +198,7 @@ $q3="SELECT * FROM rapl_oj_contest where cname='$nam' ORDER BY date_on DESC LIMI
 
       $i++;
       $demo="demo"+"$i";
-      echo $demo;
+     // echo $demo;
       $nr=mysqli_fetch_array($sq4);
       $nm=mysqli_fetch_array($sq5);
       $ns=mysqli_fetch_array($sq6);

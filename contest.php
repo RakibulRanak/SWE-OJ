@@ -48,19 +48,15 @@ if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
       <?php require 'nav2.php'; ?>
 
 
-        <div class="row log">
-            <div class="col-sm-10">
-                <div class="ctm">
-                    <h3 style="text-align:center;">All Contest</h3>
-                </div>
-            </div>
-            <div class="col-sm-1">
+        <div class="log">
+            
+                
+               <h3 style="text-align:center;">All Contest</h3>
+              
+          
+        </div>
 
-            </div>
-
-            <div class="col-sm-1">
-
-            </div>
+            
 
         </div>
 

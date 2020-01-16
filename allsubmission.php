@@ -41,10 +41,10 @@ if(isset($_SESSION['un']))
     <div class="main">
         <?php require 'nav2.php'; ?>
 
-        <div class="row log">
+        <div class="log">
 
-            <div class="">
-                <h3 style="padding-left: 550px" ;>All Submission</h3>
+            <div style="text-align: center;">
+                <h3>All Submission</h3>
             </div>
 
         </div>
@@ -53,9 +53,8 @@ if(isset($_SESSION['un']))
 
 
         <div class="row cspace">
-            <div class="col-sm-1">
-            </div>
-            <div class="col-sm-9">
+            
+            <div class="col-sm-10">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>

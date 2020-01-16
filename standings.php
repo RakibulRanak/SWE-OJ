@@ -58,10 +58,11 @@ if(isset($_GET['id']))
 
 ?>
 
-        <div class="row log">
+        <div class=" log">
 
-            <div class="">
-                <h3 style="text-align:center;">Standings</h3>
+            <div style="text-align:center;">
+<!--                 <h3 style="text-align:center;">Standings</h3> -->
+                <h3>Standings</h3>
             </div><br>
             <h3 style="text-align:center;">
                 <?php echo "<a class=\"btn btn-primary\" href=\"contestproblem.php?name=$rhis[cname]\">$rhis[cname]</a>"; ?>
