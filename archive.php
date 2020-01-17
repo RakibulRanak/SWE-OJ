@@ -15,6 +15,19 @@ if(isset($_SESSION['un']))
 	$username=$_SESSION['un'];
 }
 
+require_once("config.php");
+$mysql="SELECT  status from user WHERE name='$username'";
+$snd=mysqli_query($con,$mysql);
+$arrow=mysqli_fetch_array($snd);
+
+$st=$arrow['status'];
+
+$access=0;
+if($st=="Teacher" || $st=="Developer")
+ {   
+      $access=1;
+ }
+
 ?>
 
 <!DOCTYPE html>
@@ -37,11 +50,11 @@ if(isset($_SESSION['un']))
             <h3>Problem Archive</h3>
         </div>
 
-        <div class="row cspace">
+        <div class=" cspace">
           
             <div class="col-sm-10">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -55,9 +68,83 @@ if(isset($_SESSION['un']))
 
                             <?php
 
-require_once("config.php");
+
 
 error_reporting(0);
+
+
+//update problem
+if(isset($_POST['up']))
+{
+   
+
+   
+    $pbid=$_POST['pid'];
+    $pnn=$_POST['pb'];
+    $des=$_POST['pdes'];
+    $au=$_POST['pauthor'];
+    $tc=$_POST['tc'];
+    $out=$_POST['out'];
+    $ptl=$_POST['tlimit'];
+
+     if($access==1)
+     {
+         $update="UPDATE archieve SET pbname='$pnn',pbdes='$des',pbauthor='$au',tc='$tc',output='$out',tlimit=$ptl WHERE id=$pbid";
+          $supdate=mysqli_query($con,$update);
+
+             if($supdate)
+              {
+                 echo "<script>alert(\"Updated Successfully\");</script>";
+                 //header("Location:archive.php");
+
+
+              }
+              else
+              {
+                 echo "<script>alert(\"Failed\");</script>";
+
+              }
+    }
+    if($access==0)
+    {
+      echo "<script>alert(\"Forbidden\");</script>";
+    }
+
+ 
+
+}
+
+//delllllllllllllllllllllllllllllllllll  problem
+
+
+if(isset($_POST['del']))
+{
+    $pbid=$_POST['pid'];
+    $pnn=$_POST['pb'];
+    $des=$_POST['pdes'];
+    $au=$_POST['pauthor'];
+    $tc=$_POST['tc'];
+    $out=$_POST['out'];
+    $ptl=$_POST['tlimit'];
+
+   if($access==1){
+      $delete="DELETE FROM archieve WHERE id=$pbid";
+      $sdelete=mysqli_query($con,$delete);
+      if($sdelete)
+      {
+      	echo "<script>alert(\"Successfully Deleted\");</script>";
+      }
+      //header("Location:archieve.php");
+    }
+
+    else if($access==0)
+    {
+       echo "<script>alert(\"Forbidden\");</script>";
+
+    }
+
+     
+}
 
 if(isset($_POST['pname']))
 {
@@ -118,7 +205,7 @@ while($row=mysqli_fetch_array($send))
          echo "
 
    
-	<tr><td>$row[id]</td><td><a href=\"description.php?id=$row[id]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-success btn-xs\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td></tr>";
+	<tr><td>$row[id]</td><td><a href=\"description.php?id=$row[id]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-success btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td></tr>";
 
 	}
 	else
@@ -127,7 +214,7 @@ while($row=mysqli_fetch_array($send))
          echo "
 
    
-	<tr><td>$row[id]</td><td><a href=\"description.php?id=$row[id]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-danger btn-xs\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td></tr>";
+	<tr><td>$row[id]</td><td><a href=\"description.php?id=$row[id]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-danger btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td></tr>";
 	}
 
 	

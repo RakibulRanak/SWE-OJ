@@ -13,6 +13,19 @@ if(isset($_SESSION['un']))
 {
 	$username=$_SESSION['un'];
 }
+require_once("config.php");
+$mysql="SELECT  status from user WHERE name='$username'";
+$snd=mysqli_query($con,$mysql);
+$arrow=mysqli_fetch_array($snd);
+
+$st=$arrow['status'];
+
+$access=0;
+ if($st=="Teacher" || $st=="Developer" )
+ {   
+      $access=1;
+ }
+
 
 ?>
 
@@ -44,7 +57,7 @@ if(isset($_SESSION['un']))
 
         <?php
 
-require_once("config.php");
+
 
 if(isset($_GET['id']))
 {
@@ -72,7 +85,17 @@ $row=mysqli_fetch_array($sq);
 echo "
 <div class=\"row log\">
 <div class=\"col-sm-10\">
-<div class=\"\"><h3 style=\"text-align:center;\">$row[pbname]</h3></div>
+<div class=\"\"><h3 style=\"text-align:center;\">$row[pbname]</h3></div>";
+
+
+if($access==1) 
+ {
+    echo "<center><a class=\"btn btn-success\" href=\"editarchiveproblem.php?id=$row[id]\">Edit</a></center>" ;
+}
+
+
+echo "
+
 </div>
 
 <div class=\"col-sm-1\">
@@ -105,7 +128,7 @@ echo "<a class=\"btn btn-success\" href=\"submit.php?id=$row[id]\">Submit Your C
 ?>
 
         <div class="col-sm-2">
-
+            
         </div>
     </div>
     </div>

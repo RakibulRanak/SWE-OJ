@@ -246,14 +246,6 @@ echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit:
       $q3="SELECT * FROM rapl_oj_contest WHERE id='$conid'";
       $sq3=mysqli_query($con,$q3);
 
-      $q4="SELECT TIME_FORMAT(end_at,'%H') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-      $q5="SELECT TIME_FORMAT(end_at,'%i') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-      $q6="SELECT TIME_FORMAT(end_at,'%s') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-
-
-      $sq4=mysqli_query($con,$q4);
-      $sq5=mysqli_query($con,$q5);
-      $sq6=mysqli_query($con,$q6);
       
       
       $i=0;
@@ -263,67 +255,18 @@ echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit:
    
   while($row=mysqli_fetch_array($sq3))
     {
-      $d=date("Y-m-d");
-     // var_dump($d);
-      $t=date("H:i:s");
-      echo "hi1";
-      var_dump($t);
+    
       $current=date("Y-m-d H:i:s ");
-      ///var_dump($current);
-
-      $m=$row['start_at'];
+     
       $nv=$row['start_at'];
-      var_dump($m);
-      //var_dump($nv);
-
+    
 
       $i++;
       $demo="demo".$i;
       //var_dump($demo);
       
-      $nr=mysqli_fetch_array($sq4);
-      $nm=mysqli_fetch_array($sq5);
-      $ns=mysqli_fetch_array($sq6);
-      
-      $shr=$nr['end_at'];
-      $shm=$nm['end_at'];
-      $shs=$ns['end_at'];
-      $cur=date('H');
-      $curm=date('i');
-      $curs=date('s');
-
-      $h=$shr-$cur;
-      $mt=$shm-$curm;
-      $scnd=$shs-$curs;
-
-      if($scnd<0)
-      {
-         $scnd=$scnd+60;
-         $mt=$mt-1;
-      }
-
-      if($mt<0)
-      {
-        $mt=$mt+60;
-        $h=$h-1;
-      }
-
-      if($h<0)
-      {
-        $h=$h+24;
-      }
-      
       $en=$row['end_at'];
-      var_dump($en);
-      var_dump(strtotime($t));
-      var_dump(strtotime($m));
-
-      $seconds = strtotime($t) - strtotime($m);
-      $ss= strtotime($en) - strtotime($t);
-      $min=intval($seconds/60);
-      $sec=intval($seconds%60);
-      $hr=intval($min/60);
-      $m=intval($min%60);
+     
 
 
 
@@ -393,17 +336,7 @@ echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit:
    $q3="SELECT * FROM rapl_oj_contest WHERE id='$conid'";
     $sq3=mysqli_query($con,$q3);
 
-      $q4="SELECT TIME_FORMAT(end_at,'%H') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-       $q5="SELECT TIME_FORMAT(end_at,'%i') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-        $q6="SELECT TIME_FORMAT(end_at,'%s') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-
-
-      $sq4=mysqli_query($con,$q4);
-      $sq5=mysqli_query($con,$q5);
-      $sq6=mysqli_query($con,$q6);
-      
-     
-     
+    
        $i=0;
 
 
@@ -411,56 +344,19 @@ echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit:
    
   while($row=mysqli_fetch_array($sq3))
     {
-      $d=date("Y-m-d");
-      $t=date("H:i:s");
+     
       $current=date("Y-m-d H:i:s ");
 
-      $m=$row['start_at'];
       $nv=$row['start_at'];
 
 
       $i++;
       $demo="demo".$i;
-      $nr=mysqli_fetch_array($sq4);
-      $nm=mysqli_fetch_array($sq5);
-      $ns=mysqli_fetch_array($sq6);
-      
-      $shr=$nr['end_at'];
-      $shm=$nm['end_at'];
-      $shs=$ns['end_at'];
-      $cur=date('H');
-      $curm=date('i');
-      $curs=date('s');
-
-      $h=$shr-$cur;
-      $mt=$shm-$curm;
-      $scnd=$shs-$curs;
-
-      if($scnd<0)
-      {
-         $scnd=$scnd+60;
-         $mt=$mt-1;
-      }
-
-      if($mt<0)
-      {
-        $mt=$mt+60;
-        $h=$h-1;
-      }
-
-      if($h<0)
-      {
-        $h=$h+24;
-      }
+     
       
       $en=$row['end_at'];
 
-      $seconds = strtotime($t) - strtotime($m);
-      $ss= strtotime($en) - strtotime($t);
-      $min=intval($seconds/60);
-      $sec=intval($seconds%60);
-      $hr=intval($min/60);
-      $m=intval($min%60);
+  
 
 
 
@@ -532,14 +428,7 @@ $cnt=$r1['cname'];
      $q3="SELECT * FROM rapl_oj_contest WHERE id='$conid'";
       $sq3=mysqli_query($con,$q3);
 
-      $q4="SELECT TIME_FORMAT(end_at,'%H') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-      $q5="SELECT TIME_FORMAT(end_at,'%i') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-      $q6="SELECT TIME_FORMAT(end_at,'%s') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-
-
-      $sq4=mysqli_query($con,$q4);
-      $sq5=mysqli_query($con,$q5);
-      $sq6=mysqli_query($con,$q6);
+   
       
 
       
@@ -551,58 +440,18 @@ $cnt=$r1['cname'];
    
   while($row=mysqli_fetch_array($sq3))
     {
-      $d=date("Y-m-d");
-      $t=date("H:i:s");
+      
       $current=date("Y-m-d H:i:s ");
 
-      $m=$row['start_at'];
+      
       $nv=$row['start_at'];
 
 
       $i++;
       $demo="demo".$i;
-      $nr=mysqli_fetch_array($sq4);
-      $nm=mysqli_fetch_array($sq5);
-      $ns=mysqli_fetch_array($sq6);
-      
-      $shr=$nr['end_at'];
-      $shm=$nm['end_at'];
-      $shs=$ns['end_at'];
-      $cur=date('H');
-      $curm=date('i');
-      $curs=date('s');
-
-      $h=$shr-$cur;
-      $mt=$shm-$curm;
-      $scnd=$shs-$curs;
-
-      if($scnd<0)
-      {
-         $scnd=$scnd+60;
-         $mt=$mt-1;
-      }
-
-      if($mt<0)
-      {
-        $mt=$mt+60;
-        $h=$h-1;
-      }
-
-      if($h<0)
-      {
-        $h=$h+24;
-      }
+     
       
       $en=$row['end_at'];
-
-      $seconds = strtotime($t) - strtotime($m);
-      $ss= strtotime($en) - strtotime($t);
-      $min=intval($seconds/60);
-      $sec=intval($seconds%60);
-      $hr=intval($min/60);
-      $m=intval($min%60);
-
-
 
    ?>
       

@@ -37,15 +37,13 @@ require_once("config.php");
 if(isset($_GET['id']))
 {
 
- $getcon="SELECT cname from element WHERE pbid='$pid'";
- $sendcon=mysqli_query($con,$getcon);
- $namerow=mysqli_fetch_array($sendcon);
- $coname=$namerow['cname'];
+ 
 
- $fowner="SELECT  owner from rapl_oj_contest where cname='$coname'";
+ $fowner="SELECT pbauthor from archieve WHERE id='$pid'";
  $sendit=mysqli_query($con,$fowner);
  $frow=mysqli_fetch_array($sendit);
- $owner=$frow['owner'];
+ $owner=$frow['pbauthor'];
+ //echo $owner;
 
  if($username==$owner)
  {
@@ -57,7 +55,7 @@ if(isset($_GET['id']))
  }
  else
  {
-     header("Location:contest.php");
+     header("Location:archive.php");
  }
 
 }
@@ -73,7 +71,7 @@ if(isset($_GET['id']))
     
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Set Problem</title>
+        <title>Edit Problem</title>
         <?php include 'linkers.php';?>
 
 
@@ -86,7 +84,7 @@ if(isset($_GET['id']))
 
 <div class="row log">
 <div class="col-sm-10">
-<div class=""><h3 style="text-align:center;">Set Problem</h3></div>
+<div class=""><h3 style="text-align:center;">Edit Problem</h3></div>
 </div>
 
 <div class="col-sm-1">
@@ -103,11 +101,11 @@ if(isset($_GET['id']))
 
 require_once("config.php");
 
-$fetch="SELECT * from element where pbid='$pid'";
+$fetch="SELECT * from archieve where id='$pid'";
 $sfetch=mysqli_query($con,$fetch);
 $erow=mysqli_fetch_array($sfetch);
-$name=$erow['cname'];
-$cid=$erow['id'];
+//$name=$erow['cname'];
+
 $pbname=$erow['pbname'];
 $pbdes=$erow['pbdes'];
 $pbauthor=$erow['pbauthor'];
@@ -115,16 +113,10 @@ $tc=$erow['tc'];
 $output=$erow['output'];
 $uoutput=$erow['uoutput'];
 $tlimit=$erow['tlimit'];
-$pbid=$erow['pbid'];
+$pbid=$erow['id'];
 
 
-    $q3="SELECT cname FROM rapl_oj_contest WHERE id='$cid'";
-
-    $r=mysqli_query($con,$q3);
-
-   $r1=mysqli_fetch_array($r);
-
-   $n=$r1['cname'];
+  
 
 
 
@@ -134,24 +126,23 @@ $pbid=$erow['pbid'];
     <div class="col-sm-8">
       <div class="form-group">
 
-        <form action="contestproblem.php?name=<?php echo $n;?> name="f2" method="POST">
+        <form action="archive.php "name="f2" method="POST">
 
-            <input type="hidden" name="ccid" class="form-control" value="<?php echo "$cid"; ?>"><br><br>
-            <input type="hidden" name="ci" class="form-control" value="<?php echo "$pid"; ?>"><br><br>
-            <input type="hidden" name="cnn" class="form-control" value="<?php echo "$name"; ?>"><br><br>
+          
+            <input type="hidden" name="pid" class="form-control" value="<?php echo "$pbid"; ?>"><br><br>
+        
             <label for="ta">Enter Problem Name</label>
-            <?php echo $n; ?>
             <input type="text" name="pb" class="form-control" value="<?php echo "$pbname"; ?>"><br><br>
             <label for="in">Enter Problem Description</label>
-            <textarea name="c1" class="form-control" rows="30" cols="80"><?php echo "$pbdes"; ?></textarea><br><br>
+            <textarea name="pdes" class="form-control" rows="30" cols="80"><?php echo "$pbdes"; ?></textarea><br><br>
             <label for="ta">Enter Problem Author</label>
-            <input type="text" name="c2" class="form-control" value="<?php echo "$pbauthor"; ?>"><br><br>
+            <input type="text" name="pauthor" class="form-control" value="<?php echo "$pbauthor"; ?>"><br><br>
             <label for="ta">Enter Time Limit</label>
-            <input type="text" name="tll" title="Only float is allowed (Ex:3.00)" placeholder="1.00" class="form-control" value="<?php echo "$tlimit"; ?>"><br><br>
+            <input type="text" name="tlimit" title="Only float is allowed (Ex:3.00)" placeholder="1.00" class="form-control" value="<?php echo "$tlimit"; ?>"><br><br>
             <b>Enter Test Cases</b><br>
-            <textarea class="form-control" name="c3" rows="30" cols="80"><?php echo "$tc"; ?></textarea><br><br>
+            <textarea class="form-control" name="tc" rows="30" cols="80"><?php echo "$tc"; ?></textarea><br><br>
             <b>Enter Output Of Test Cases</b><br>
-            <textarea class="form-control" name="c4" rows="30" cols="80"><?php echo "$output"; ?></textarea><br><br>
+            <textarea class="form-control" name="out" rows="30" cols="80"><?php echo "$output"; ?></textarea><br><br>
             <input type="submit" class="btn btn-success" name="up" value="Update">
             <input type="submit" class="btn btn-danger" name="del" value="Delete">
 

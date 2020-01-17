@@ -809,3 +809,11 @@ pre {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+*{
+	/*font-size: 15PX;*/
+}
+td {
+          
+            width: auto;
+            height: auto;
+   }
