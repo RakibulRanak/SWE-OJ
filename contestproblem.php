@@ -190,6 +190,7 @@ if(isset($_GET['name']))
      <th>Status</th>
      <th>Accepted/Submission</th>
      <th>Problem Setter</th>
+     <th id="show" style="display:none;">ADD</th>
     </tr>
     </thead>
     <tbody>
@@ -330,16 +331,20 @@ if(isset($_POST['cn']))
 if(isset($_GET['name']))
 {
     $n=$_GET['name'];
+   // echo "hhiii";
     $q3="SELECT * FROM element WHERE cname='$n'";
     $fcontest="SELECT id from rapl_oj_contest where cname='$n'";
     $sf=mysqli_query($con,$fcontest);
     $myrow=mysqli_fetch_array($sf);
 
     $r=mysqli_query($con,$q3);
-
+   $counter=0;
    while($row=mysqli_fetch_array($r))
    {
       //echo("<a href=\"details.php?id=$row[pbid]\"><div class=\"pb\">$row[pbname]</div></a><br>");
+    $counter++;
+     $temp="show".$counter;
+     //echo $temp;
       $problem_name=$row['pbname'];
       $cid=$myrow['id'];
 
@@ -364,7 +369,7 @@ if(isset($_GET['name']))
              echo "
 
        
-      <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-success btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td></tr>";
+      <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-success btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td><td><div class=\"btn btn-success btn-sm\" id=\"$temp\" style=\"display:none;\">Add</div></td></tr>";
 
       }
       else
@@ -374,7 +379,7 @@ if(isset($_GET['name']))
              echo "
 
        
-      <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-danger btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td></tr>";
+      <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-danger btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td> <td><div class=\"btn btn-success btn-sm\" id=\"$temp\" style=\"display:none;\">Add</div></td></tr>";
       }
       }
 
@@ -504,7 +509,42 @@ if(isset($_GET['name']))
     <?php
 
      $diff=strtotime($nv)-strtotime($current);
-     $current=strtotime($current);
+     //$current=strtotime($current);
+     $dd=strtotime($current)-strtotime($en);
+     // echo strtotime($current);
+     // echo "<br>";
+     // //echo $en;
+     //  echo strtotime($en);
+     // echo "<br>";
+     // echo $dd;
+     if($dd>0 && $access==1)
+     {
+       //echo "add";
+       ?>
+       <script>
+
+      
+       document.getElementById("show").style.display = "block";
+     
+       </script>
+       <?php
+         // document.getElementById("show1").style.display = "text";
+        for ($cc=1; $cc<=$counter ; $cc++) { 
+          $xxx="show".$cc;
+          //echo $xxx;
+          ?>
+        <script>
+          var xxx = "<?php echo $xxx ?>"; 
+             document.getElementById(xxx).style.display = "block";
+     
+       </script>
+       <?php
+
+        }
+       
+      
+
+     }
      
      if($diff>0 && $access==0)
      {
