@@ -4,6 +4,7 @@ session_start();
 
 require_once("config.php");
 
+
 if(!isset($_SESSION['un']))
 {
   header("Location:login.php");
@@ -14,11 +15,9 @@ if(isset($_SESSION['un']))
 }
 
 
-
-
 ?>
 
-
+ 
 <!DOCTYPE html>
 <html>
 
@@ -28,6 +27,7 @@ if(isset($_SESSION['un']))
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>All Submission</title>
+
     <?php include 'linkers.php';?>
 
 
@@ -41,6 +41,7 @@ if(isset($_SESSION['un']))
 
             <div style="text-align: center;">
                 <h3>All Submission</h3>
+              
             </div>
 
         </div>

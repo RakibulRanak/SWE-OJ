@@ -1,7 +1,19 @@
 <?php
 
+	
+	header("Cache-Control: no cache");
+	session_cache_limiter("private_no_expire");
+
+
+	// $hh=$_SERVER['HTTP_REFERER'];
+     //$hh=substr($hh,-17,17);
+//header("Location:submit.php?id=$pid");
+
 	$languageID=$_POST["language"];
-        error_reporting(0);
+
+	//echo "hi";
+    error_reporting(0);
+	
 	if($_FILES["file"]["name"]!="")
 	{
 		include "compilers/make.php";

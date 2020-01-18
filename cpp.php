@@ -307,7 +307,8 @@ else if($_POST['src'])
 	}
 	else if(!strpos($error,"error"))
 	{
-		echo "<pre>$error</pre>";
+		//echo "<pre>$error</pre>";
+		echo "<div> <pre>$error</pre></div>";
 		if(trim($input)=="")
 		{
 			$output=shell_exec($out);

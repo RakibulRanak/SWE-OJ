@@ -313,7 +313,8 @@ if(isset($_POST['cn']))
     if($access==1)
     {
 
-        $q2="INSERT into element  VALUES('$cid','$contest','$pn','$des','$au','$tc','$out','',NULL,'$ptl')";
+        $q2="INSERT into element  (`id`, `cname`, `pbname`, `pbdes`, `pbauthor`, `tc`, `output`, `uoutput`, 
+        `pbid`, `tlimit`) VALUES('$cid','$contest','$pn','$des','$au','$tc','$out','',NULL,'$ptl')";
         $sq2=mysqli_query($con,$q2);
         header("Location:contestproblem.php?name=$contest");
     }
@@ -348,7 +349,7 @@ if(isset($_GET['name']))
       $problem_name=$row['pbname'];
       $cid=$myrow['id'];
 
-
+      //echo "hhiii";
       $number="SELECT verdict from submission WHERE pbname='$row[pbname]' and sname='$username' and verdict='Accepted' AND cid='$cid'";
       $snumber=mysqli_query($con,$number);
       $tsol=mysqli_num_rows($snumber);
@@ -361,25 +362,113 @@ if(isset($_GET['name']))
       $tsub="SELECT COUNT(verdict) as sub from submission WHERE pbname='$row[pbname]' AND cid='$cid' GROUP BY pbname";
       $stsub=mysqli_query($con,$tsub);
       $ntsub=mysqli_fetch_array($stsub);
-
-
+      //echo "$row[cname]";
+  
       if($tsol>0)
-      {
+      { 
          $ver="Solved";
-             echo "
+
+             if("$row[sts]"==1)
+            {
+        
+                echo "
 
        
-      <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-success btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td><td><div class=\"btn btn-success btn-sm\" id=\"$temp\" style=\"display:none;\">Add</div></td></tr>";
+      <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-success btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td><td><div class=\"btn btn-primary btn-sm\" id=\"$temp\" style=\"display:none;\">Added</div></td></tr>";
+
+            }
+          else
+            {
+
+              echo "
+
+       
+      <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-success btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td><td>
+
+
+       
+
+            <form action=\"contoarc.php\" name=\"f2\" method=\"POST\">
+
+            <input type=\"hidden\" name=\"pbid\" class=\"form-control\" value=\"$row[pbid]\";>
+            <input type=\"hidden\" name=\"cname\" class=\"form-control\" value=\"$row[cname]\";>
+
+            <input type=\"hidden\" name=\"pn\" class=\"form-control\" value=\"$row[pbname]\";>
+
+            <input type=\"hidden\" name=\"pd\" class=\"form-control\" value=\"$row[pbdes]\";>
+            <input type=\"hidden\" name=\"author\" class=\"form-control\" value=\"$row[pbauthor]\";>
+           
+
+            <input type=\"hidden\" name=\"tc\" class=\"form-control\" value=\"$row[tc]\";>
+            <input type=\"hidden\" name=\"ac\" class=\"form-control\" value=\"$row[output]\";>
+            <input type=\"hidden\" name=\"ptl\" class=\"form-control\" value=\"$row[tlimit]\";>
+           
+            <input type=\"submit\" class=\"btn btn-success\" id=\"$temp\" name=\"up\" value=\"Add\">
+          
+
+
+
+
+       </form>
+       
+
+
+
+
+      </td></tr>";
+           }
 
       }
       else
       {
              $ver="Unsolved";
 
+             if("$row[sts]"==1)
+             {
+                echo "
+
+       
+      <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-danger btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td> <td><div class=\"btn btn-primary btn-sm\" id=\"$temp\" style=\"display:none;\">Added</div></td></tr>";
+             }
+             else{
+
              echo "
 
        
-      <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-danger btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td> <td><div class=\"btn btn-success btn-sm\" id=\"$temp\" style=\"display:none;\">Add</div></td></tr>";
+      <tr>
+      <td>$row[pbid]</td>
+      <td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td>
+      <td><div class=\"btn btn-danger btn-sm\">$ver</div></td>
+      <td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td>
+      <td>$row[pbauthor]</td> 
+      <td>
+
+
+        
+
+            <form action=\"contoarc.php\" name=\"f2\" method=\"POST\">
+
+            <input type=\"hidden\" name=\"pbid\" class=\"form-control\" value=\"$row[pbid]\";>
+            <input type=\"hidden\" name=\"cname\" class=\"form-control\" value=\"$row[cname]\";>
+
+            <input type=\"hidden\" name=\"pn\" class=\"form-control\" value=\"$row[pbname]\";>
+
+            <input type=\"hidden\" name=\"pd\" class=\"form-control\" value=\"$row[pbdes]\";>
+            <input type=\"hidden\" name=\"author\" class=\"form-control\" value=\"$row[pbauthor]\";>
+           
+
+            <input type=\"hidden\" name=\"tc\" class=\"form-control\" value=\"$row[tc]\";>
+            <input type=\"hidden\" name=\"ac\" class=\"form-control\" value=\"$row[output]\";>
+            <input type=\"hidden\" name=\"ptl\" class=\"form-control\" value=\"$row[tlimit]\";>
+           
+            <input type=\"submit\" class=\"btn btn-success\" id=\"$temp\" name=\"up\" value=\"Add\">
+          
+          </form>
+       
+      </td>
+    </tr>";
+
+    }
       }
       }
 
@@ -531,11 +620,14 @@ if(isset($_GET['name']))
          // document.getElementById("show1").style.display = "text";
         for ($cc=1; $cc<=$counter ; $cc++) { 
           $xxx="show".$cc;
+          $yyy="added".$cc;
           //echo $xxx;
           ?>
         <script>
           var xxx = "<?php echo $xxx ?>"; 
+          var yyy = "<?php echo $yyy ?>"; 
              document.getElementById(xxx).style.display = "block";
+              document.getElementById(yyy).style.display = "block";
      
        </script>
        <?php

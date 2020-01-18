@@ -142,7 +142,8 @@ $limit=$r4['tlimit'];
 	}
 	else
 	{
-		echo "<pre>$error</pre>";
+		//echo "<pre>$error</pre>";
+			echo "<div> <pre>$error</pre></div>";
 		$check=1;
 		$ce=1;
 			echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-6\"><div class=\"alert alert-danger\"><strong>Compilation Error Or Submit Failed!</strong> Back To Problem Description And Submit Code Again.</div></div><div class=\"col-sm-2\"></div></div><br>";
