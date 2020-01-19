@@ -23,6 +23,7 @@ if(isset($_SESSION['un']))
     
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
         <title>Home</title>
             <style>
       marquee{
