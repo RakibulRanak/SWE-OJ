@@ -195,7 +195,7 @@ if(isset($_POST['id']))
   $uo=$_POST['result'];
   $pname=$_POST['pb'];
   $nid=$_POST['mid'];
-  $conid=$r4['id'];
+ // $conid=$r4['id'];
   $result=$_POST['vd'];
   
 }
@@ -207,7 +207,7 @@ if(isset($_GET['id']) && !isset($_GET['show']))
   $conid=$_GET['id'];
    $ch=0;
    error_reporting(0);
-   $per_page=2;
+   $per_page=5;
 
   if(isset($_GET['page']))
   {
@@ -308,7 +308,7 @@ if(isset($_GET['id']) && isset($_GET['show']))
   $suser=$_GET['show'];
    $ch=0;
    error_reporting(0);
-   $per_page=2;
+   $per_page=5;
 
   if(isset($_GET['page']))
   {
@@ -391,7 +391,7 @@ else
    $tsolved=0;
 }
  
- //echo "<div class=\"alert alert-success\">$suser's Total Solved Problem= $tsolved</div>";
+
  echo "<div class=\"alert alert-success\">$suser's Total Submission=$detect</div>";
 
   $psql="SELECT * FROM submission WHERE cid='$conid' AND sname='$suser' ORDER BY sid DESC";
@@ -400,24 +400,7 @@ else
   $total_page=ceil($total_rows/$per_page);
   $c="active";
 
-  // echo "<div class=\"contain con\"><ul class=\"pagination\"><li><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a></li>";
-
-  // for ($i=1; $i <$total_page ; $i++) {
-      
-  //   if($page==$i)
-  //   {
-  //     $c="active";
-  //       }
-  //       else
-  //       {
-  //         $c="";
-  //       }
-  //   echo "<li class=\"$c\"><a href=\"contestsubmission.php?id=$conid&page=$i\">$i</a></li>";
-  // }
-
-
-  // echo "<li><a href=\"contestsubmission.php?id=$conid&page=$total_page\">Last Page</a></li></ul></div>";
-   echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a>";
+     echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a>";
 
   for ($i=1; $i <$total_page ; $i++) {
       
@@ -442,7 +425,9 @@ if(isset($_POST['id']))
 {
 
   
-    echo "here";
+    //echo "here";
+   // $hha=$_POST['id'];
+    //echo $hha;
     $sqlp="SELECT * FROM element WHERE pbid='$cid'";
 
     $sqp=mysqli_query($con,$sqlp);
@@ -451,14 +436,15 @@ if(isset($_POST['id']))
 
 
 
-   $conid=$rowp['id'];
+      $conid=$rowp['id'];
+      //contest id problem id got!!
 
-   $q3="SELECT * FROM rapl_oj_contest WHERE id='$conid'";
-    $sq3=mysqli_query($con,$q3);
+      $q3="SELECT * FROM rapl_oj_contest WHERE id='$conid'";
+      $sq3=mysqli_query($con,$q3);
 
       $q4="SELECT TIME_FORMAT(end_at,'%H') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-       $q5="SELECT TIME_FORMAT(end_at,'%i') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
-        $q6="SELECT TIME_FORMAT(end_at,'%s') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
+      $q5="SELECT TIME_FORMAT(end_at,'%i') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
+      $q6="SELECT TIME_FORMAT(end_at,'%s') end_at FROM rapl_oj_contest  ORDER BY date_on DESC";
 
 
       $sq4=mysqli_query($con,$q4);
@@ -521,187 +507,120 @@ if(isset($_POST['id']))
       $point=(200/$seconds)*$total_time;
       $cpoint=sprintf('%0.2f', $point);
 
-      //$h hour $mt miniute $scnd second
   
-      /*echo(" <a href=\"save.php?name=$row[table_name]\">$row[table_name]</a><br><br>");*/
-     }
-
-$query="SELECT output FROM element WHERE pbid='$cid'";
-$quo="SELECT * FROM element WHERE pbid='$cid'";
-$sq=mysqli_query($con,$query);
-$sq1=mysqli_query($con,$quo);
-$r3=mysqli_fetch_array($sq);
-$r4=mysqli_fetch_array($sq1);
-
-$ao=$r3['output'];
-$to=$r4['uoutput'];
-$conid=$r4['id'];
-header("Location:contestsubmission.php?id=$conid");
-$proname=$r4['pbname'];
-$count=0;
-$mpoint=0.00;
-$ignore=0;
-//var_dump($uo);
-//var_dump($ao);
-
-$checkq="SELECT * FROM submission WHERE pbname='$proname' AND cid='$conid' AND sname='$username' AND status='1'";
-$scheckq=mysqli_query($con,$checkq);
-$detect=mysqli_num_rows($scheckq);
-if($detect>=1)
-{
-   
-     $ignore=1;
-   
-}
-else
-{
-   $ignore=0;
-}
-
-  if($result!="lt")
-  {
-   
-    if($result=="e")
-    {
-      $result="Compilation Error";
-      $count=0;
-      $mpoint=$mpoint-5.00;
     }
-    else if(strcmp($uo,$ao)==0)
+
+    $query="SELECT output FROM element WHERE pbid='$cid'";
+    $quo="SELECT * FROM element WHERE pbid='$cid'";
+    $sq=mysqli_query($con,$query);
+    $sq1=mysqli_query($con,$quo);
+    $r3=mysqli_fetch_array($sq);
+    $r4=mysqli_fetch_array($sq1);
+
+    $ao=$r3['output'];
+    $to=$r4['uoutput'];
+    $conid=$r4['id'];
+    echo "kire";
+   
+    echo "mama";
+    $proname=$r4['pbname'];
+    $count=0;
+    $mpoint=0.00;
+    $ignore=0;
+    //var_dump($uo);
+    //var_dump($ao);
+
+    $checkq="SELECT * FROM submission WHERE pbname='$proname' AND cid='$conid' AND sname='$username' AND status='1'";
+    $scheckq=mysqli_query($con,$checkq);
+    $detect=mysqli_num_rows($scheckq);
+    if($detect>=1)
     {
-      //echo "Accepted";
-      $result="Accepted";
-      $count=1;
-      $mpoint=$point;
-    }
-    else if($result=="rte")
-    {
-      $result="Runtime Error";
-      $count=0;
-      $mpoint=$mpoint-5.00;
+       
+         $ignore=1;
+       
     }
     else
     {
-     //echo "Wrong Answer";
-      $result="Wrong Answer";
-      $count=0;
-      $mpoint=$mpoint-5.00;
+       $ignore=0;
     }
-  }
-  else
-  {
-     $result="Time Limit Exceed";
-     $count=0;
-     $mpoint=$mpoint-5.00;
-  }
 
-
-   $per_page=2;
-
-  if(isset($_GET['page']))
-  {
-    $page=$_GET['page'];
-  }
-  else
-  {
-    $page=1;
-  }
-
-  $start=($page-1)*$per_page;
-
-
-
-
-
-if($ignore==0)
-{
-   $sql="INSERT INTO submission VALUES('$nid','$username','$result','$pname','$conid','$count','$mpoint')";
-   $stq=mysqli_query($con,$sql);
-}
-else
-{
-   echo "
-<script type=\"text/javascript\">
-  alert('You have already got accepted!');
-</script>";
-}
-
-$show="SELECT * FROM submission WHERE cid='$conid' ORDER BY sid DESC limit $start,$per_page";
-
-$sts=mysqli_query($con,$show);
-
-/*$tsub="SELECT * FROM submission WHERE pbname='$proname' AND cid='$conid' AND sname='$username'";
-$stsub=mysqli_query($con,$tsub);
-$detect=mysqli_num_rows($stsub);*/
-
-
-while($row=mysqli_fetch_array($sts))
-{
-
-  if($row['verdict']=="Accepted")
-  {
-     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btn-success btn-sm\">$row[verdict]</div></td><td>$row[point]</td></tr>";
-  }
-  else if($row['verdict']=="Time Limit Exceed")
-  {
-     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btn-primary btn-sm\">$row[verdict]</div></td><td>$row[point]</td></tr>";
-  }
-  else if($row['verdict']=="Runtime Error")
-  {
-     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btn-warning btn-sm\">$row[verdict]</div></td><td>$row[point]</td></tr>";
-  }
-
-  else
-  {
-     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btn-danger btn-sm\">$row[verdict]</div></td><td>$row[point]</td></tr>";
-  }
-
-
-}
-
-   echo "</tbody>
-</table>
-</div>";
-  
-  $psql="SELECT * FROM submission WHERE cid='$conid' ORDER BY sid DESC";
-  $sn=mysqli_query($con,$psql);
-  $total_rows=mysqli_num_rows($sn);
-  $total_page=ceil($total_rows/$per_page);
-  $c="active";
-
-  // echo "<div class=\"contain con\"><ul class=\"pagination\"><li><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a></li>";
-
-  // for ($i=1; $i <$total_page ; $i++) {
-      
-  //   if($page==$i)
-  //   {
-  //     $c="active";
-  //   }
-  //       else
-  //       {
-  //         $c="";
-  //       }
-  //   echo "<li class=\"$c\"><a href=\"contestsubmission.php?id=$conid&page=$i\">$i</a></li>";
-  // }
-
-
-  // echo "<li><a href=\"contestsubmission.php?id=$conid&page=$total_page\">Last Page</a></li></ul></div>";
-
- echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a>";
-
-  for ($i=1; $i <$total_page ; $i++) {
-      
-    if($page==$i)
+    if($result!="lt")
     {
-      $c="active";
+     
+        if($result=="e")
+        {
+          $result="Compilation Error";
+          $count=0;
+          $mpoint=$mpoint-5.00;
+        }
+        else if(strcmp($uo,$ao)==0)
+        {
+          //echo "Accepted";
+          $result="Accepted";
+          $count=1;
+          $mpoint=$point;
+        }
+        else if($result=="rte")
+        {
+          $result="Runtime Error";
+          $count=0;
+          $mpoint=$mpoint-5.00;
         }
         else
         {
-          $c="";
+         //echo "Wrong Answer";
+          $result="Wrong Answer";
+          $count=0;
+          $mpoint=$mpoint-5.00;
         }
-    echo "<a class=\"$c\" href=\"contestsubmission.php?id=$conid&page=$i\">$i</a>";
-  }
-   echo "<a href=\"contestsubmission.php?id=$conid&page=$total_page\">Last Page</a></li></div>";
+    }
+    else
+    {
+       $result="Time Limit Exceed";
+       $count=0;
+       $mpoint=$mpoint-5.00;
+    }
+
+
+     $per_page=5;
+
+    if(isset($_GET['page']))
+    {
+      $page=$_GET['page'];
+    }
+    else
+    {
+      $page=1;
+    }
+
+    $start=($page-1)*$per_page;
+
+
+
+
+
+    if($ignore==0)
+    {
+       $sql="INSERT INTO submission VALUES('$nid','$username','$result','$pname','$conid','$count','$mpoint')";
+       $stq=mysqli_query($con,$sql);
+        header("Location:contestsubmission.php?id=$conid");
+        echo "
+    <script type=\"text/javascript\">
+      
+      window.location.href=\"contestsubmission.php?id=$conid\";
+    </script>";
+    }
+    else 
+    {
+       echo "
+    <script type=\"text/javascript\">
+      alert('You have already got accepted!');
+      window.location.href=\"contestsubmission.php?id=$conid\";
+    </script>";
+    }
+   
+    echo "mami";
+
 
 }
 ?>

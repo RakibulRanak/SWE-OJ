@@ -38,23 +38,39 @@ if(isset($_SESSION['un']))
  <script>
 // Set the date we're counting down to
 
-function call(d,val,st){
+function call(d,val,st ,xd){
 
-console.log(d);
-console.log(val);
-console.log(st);
+// console.log(d);
+// console.log(val);
+// console.log(st);
 var countDownDate = new Date(d).getTime();
 var start =new Date(st).getTime();
+ var nowserver=xd;
+ //document.write(nowserver + "<br>");
+ nowserver=  new Date(nowserver).getTime();
+ var nowclient = Math.floor(new Date().getTime());
+ var diff= nowserver-nowclient;
 
+
+//var now = new Date().getTime();
+//var now= new Date(now1).getTime();
 //console.log(start);
-//document.write("inside javascript1");
+//document.write(now + "<br>");
+// document.write(nowclient + "<br>");
+
+// document.write(nowserver+"<br>");
+
+// document.write(diff);
 var result;
+//diff=1000*diff;
 
 // Update the count down every 1 second
 var x = setInterval(function() {
 
     // Get todays date and time
     var now = new Date().getTime();
+    now+=diff;
+  
     
     // Find the distance between now an the count down date
     
@@ -186,6 +202,7 @@ date_default_timezone_set("Asia/Dhaka");
       
       $nv=$row['start_at'];
       $en=$row['end_at'];
+        //$current=date("Y-m-d H:i:s ");
 
    ?>
       
@@ -193,10 +210,12 @@ date_default_timezone_set("Asia/Dhaka");
     var end=<?php print json_encode($en);?>; 
     var val=<?php print json_encode($i);?>; 
     var nv=<?php print json_encode($nv);?>; 
+    var cur=<?php print json_encode(date("Y-m-d H:i:s "));?>;
 
     //console.log("Start" +nv);
+  
 
-    call(end,val,nv);
+    call(end,val,nv,cur);
 
 
    </script>

@@ -75,13 +75,19 @@ if(isset($_GET['name']))
       <script>
       // Set the date we're counting down to
 
-      function call(d,val,st){
+      function call(d,val,st,xd){
 
       //console.log(d);
       //console.log(val);
       //console.log(st);
       var countDownDate = new Date(d).getTime();
       var start =new Date(st).getTime();
+
+      var nowserver=xd;
+ //document.write(nowserver + "<br>");
+ nowserver=  new Date(nowserver).getTime();
+ var nowclient = Math.floor(new Date().getTime());
+ var diff= nowserver-nowclient;
 
       //console.log(start);
 
@@ -92,6 +98,7 @@ if(isset($_GET['name']))
 
           // Get todays date and time
           var now = new Date().getTime();
+          now+=diff;
           
           // Find the distance between now an the count down date
           
@@ -350,7 +357,7 @@ if(isset($_GET['name']))
       $cid=$myrow['id'];
 
       //echo "hhiii";
-      $number="SELECT verdict from submission WHERE pbname='$row[pbname]' and sname='$username' and verdict='Accepted' AND cid='$cid'";
+      $number="SELECT verdict from submission WHERE pbname='$row[pbname]'  and verdict='Accepted' AND cid='$cid'";
       $snumber=mysqli_query($con,$number);
       $tsol=mysqli_num_rows($snumber);
 
@@ -403,7 +410,7 @@ if(isset($_GET['name']))
             <input type=\"hidden\" name=\"ac\" class=\"form-control\" value=\"$row[output]\";>
             <input type=\"hidden\" name=\"ptl\" class=\"form-control\" value=\"$row[tlimit]\";>
            
-            <input type=\"submit\" class=\"btn btn-success\" id=\"$temp\" name=\"up\" value=\"Add\">
+            <input type=\"submit\" class=\"btn btn-success\" id=\"$temp\" style=\"display:none;\" name=\"up\" value=\"Add\">
           
 
 
@@ -461,7 +468,7 @@ if(isset($_GET['name']))
             <input type=\"hidden\" name=\"ac\" class=\"form-control\" value=\"$row[output]\";>
             <input type=\"hidden\" name=\"ptl\" class=\"form-control\" value=\"$row[tlimit]\";>
            
-            <input type=\"submit\" class=\"btn btn-success\" id=\"$temp\" name=\"up\" value=\"Add\">
+            <input type=\"submit\" class=\"btn btn-success\" id=\"$temp\" style=\"display:none;\"name=\"up\" value=\"Add\">
           
           </form>
        
@@ -587,10 +594,11 @@ if(isset($_GET['name']))
     var end=<?php print json_encode($en);?>; 
     var val=<?php print json_encode($i);?>; 
     var nv=<?php print json_encode($nv);?>; 
+    var cur=<?php print json_encode(date("Y-m-d H:i:s "));?>;
 
     //console.log("Start" +nv);
 
-    call(end,val,nv);
+    call(end,val,nv,cur);
 
 
    </script>

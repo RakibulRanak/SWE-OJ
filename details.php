@@ -91,13 +91,19 @@ if(isset($_GET['id']))
          <script>
 // Set the date we're counting down to
 
-function call(d,val,st){
+function call(d,val,st,xd){
 
-console.log(d);
-console.log(val);
-console.log(st);
+// console.log(d);
+// console.log(val);
+// console.log(st);
 var countDownDate = new Date(d).getTime();
 var start =new Date(st).getTime();
+
+var nowserver=xd;
+ //document.write(nowserver + "<br>");
+ nowserver=  new Date(nowserver).getTime();
+ var nowclient = Math.floor(new Date().getTime());
+ var diff= nowserver-nowclient;
 
 //console.log(start);
 
@@ -108,7 +114,8 @@ var x = setInterval(function() {
 
     // Get todays date and time
     var now = new Date().getTime();
-    console.log(now);
+    //console.log(now);
+    now+=diff;
     
     // Find the distance between now an the count down date
     
@@ -276,10 +283,11 @@ echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit:
     var end=<?php print json_encode($en);?>; 
     var val=<?php print json_encode($i);?>; 
     var nv=<?php print json_encode($nv);?>; 
+    var cur=<?php print json_encode(date("Y-m-d H:i:s "));?>;
 
     //console.log("Start" +nv);
 
-    call(end,val,nv);
+    call(end,val,nv,cur);
 
 
    </script>
