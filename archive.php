@@ -146,6 +146,7 @@ if(isset($_POST['del']))
      
 }
 //create new problem 
+
 if(isset($_POST['pname']))
 {
 	$pn=$_POST['pname'];

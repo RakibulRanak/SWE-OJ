@@ -63,61 +63,24 @@ if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
 
             <?php
 
-if(isset($_GET['user']))
-{
+// if(isset($_GET['user']))
+// {
 
-   $username=$data;
+//    $username=$data;
    
-}
-
-$ac="SELECT COUNT(verdict) AS verdict FROM submissions where verdict='Accepted' and sname='$us'";
-$wa="SELECT COUNT(verdict) AS verdict FROM submissions where verdict='Wrong Answer' and sname='$us'";
-$tle="SELECT COUNT(verdict) AS verdict FROM submissions where verdict='Time Limit Exceed' and sname='$us'";
-
-$s1=mysqli_query($con,$ac);
-$s2=mysqli_query($con,$wa);
-$s3=mysqli_query($con,$tle);
-
-
-$d=array();
-$result=array();
-
-
-foreach($s1 as $nac)
-{
-  $d[]=$nac;
-  //$i++;
-}
-
-
-foreach($s2 as $nwa)
-{
-  $d[]=$nwa;
-  //$i++;
-}
-
-foreach($s3 as $ntle)
-{
-  $d[]=$ntle;
-  //$i++;
-}
-
-
-json_encode($d);
-
-$dd=$d;
+// }
 
 
 ?>
 
         </div>
         <div class="">
-            <h3 style="text-align:center;"><?php  echo"$username's  Profile"; ?></h3>
+            <h3 style="text-align:center;"><?php  echo"$us's  Profile"; ?></h3>
         </div>
         <div style="padding-left: 42%">
 
           <?php
-            $sql = "SELECT * FROM `user` WHERE name = '$username'";
+            $sql = "SELECT * FROM `user` WHERE name = '$us'";
             $var=mysqli_query($con,$sql);
             $row=mysqli_fetch_array($var);
 
@@ -135,26 +98,33 @@ $dd=$d;
               }
           
           ?>
-          <div>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Change Photo</button>
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Select photo less than 2 MB</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
+           <?php
+            if($data==$_SESSION['un'])
+               echo"
+          <div>
+           
+                   <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#exampleModal\" data-whatever=\"@mdo\">Change Photo</button> 
+                    
+
+            <div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+              <div class=\"modal-dialog\" role=\"document\">
+                <div class=\"modal-content\">
+                  <div class=\"modal-header\">
+                    <h5 class=\"modal-title\" id=\"exampleModalLabel\">Select photo less than 2 MB</h5>
+                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+                      <span aria-hidden=\"true\">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">
-                    <form method="POST" action="photoupload.php" enctype="multipart/form-data">
-                      <div class="form-group">
+                  <div class=\"modal-body\">
+                    <form method=\"POST\" action=\"photoupload.php\" enctype=\"multipart/form-data\">
+                      <div class=\"form-group\">
                        
-                       <!--   <form method="POST" action="photoupload.php" enctype="multipart/form-data"> -->
-                           <input type="file" name="myimage">
+                       <!--   <form method=\"POST\" action=\"photoupload.php\" enctype=\"multipart/form-data\"> -->
+                           <input type=\"file\" name=\"myimage\">
+                           <input type=\"hidden\" name=\"us\" class=\"form-control\" value=\"$data\";>
         
-                        <input type="submit" name="submit_image" value="Upload">
+                        <input type=\"submit\" name=\"submit_image\" value=\"Upload\">
                           <!--  </form> -->
                       </div>
                       
@@ -163,14 +133,16 @@ $dd=$d;
                 
                 </div>
               </div>
-            </div>
+            </div> 
+            
 
-          </div>
+          </div> "
+          ?>
         </div>
 
         <?php
 
-$sql="SELECT * FROM user WHERE name='$username'";
+$sql="SELECT * FROM user WHERE name='$us'";
 $send=mysqli_query($con,$sql);
 $row=mysqli_fetch_array($send);
 
@@ -179,7 +151,7 @@ $row=mysqli_fetch_array($send);
         <div class="row cspace">
             <div class="col-sm-2">
             </div>
-            <div class="col-sm-6 pbs">
+            <div class="col-sm-5 pbs">
 
                 <div class="ym">
                     <div class="pc">Information</div>
@@ -204,7 +176,7 @@ $row=mysqli_fetch_array($send);
 
                         ?>
                         <tr class="info">
-                            <td><?php echo("<a href=\"allsubmission.php?name=$username\">My Submissions</a>") ?></td>
+                            <td><?php echo("<a href=\"allsubmission.php?name=$us\">Submissions</a>") ?></td>
                         </tr>
 
                     </table>
