@@ -46,8 +46,12 @@
               echo "<textarea id='div' class=\"form-control\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
 	}
 	else if(!strpos($error,"error"))
-	{
-		echo "<pre>$error</pre>";
+	{	
+
+		$error_message = htmlspecialchars($error);
+		echo "<pre>$error_message</pre>";
+		//echo "hi1";
+		//echo "<pre>$error</pre>";
 		if(trim($input)=="")
 		{
 			$output=shell_exec($out);
@@ -60,8 +64,12 @@
 		                echo "<textarea id='div' class=\"form-control\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
 	}
 	else
-	{
-		echo "<pre>$error</pre>";
+	{	
+
+		$error_message = htmlspecialchars($error);
+		echo "<pre>$error_message</pre>";
+		//echo "hi";
+		//echo "<pre>$error</pre>";
 		$check=1;
 	}
 	$executionEndTime = microtime(true);

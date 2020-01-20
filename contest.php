@@ -58,7 +58,7 @@ if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
 
             
 
-        </div>
+        
 
      <div class="row cspace">
             <div class="col-sm-2">

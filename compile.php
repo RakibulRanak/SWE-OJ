@@ -34,7 +34,7 @@ if(isset($_SESSION['un']))
  <?php require 'nav2.php'; ?>
 
 <div class="row log">
-<div class="col-sm-10">
+<div class="col-sm-12">
 <div class=""><h3 style="text-align:center;">Output</h3></div>
 </div>
 

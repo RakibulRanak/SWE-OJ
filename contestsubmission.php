@@ -582,18 +582,18 @@ if(isset($_POST['id']))
     }
 
 
-     $per_page=5;
+    //  $per_page=5;
 
-    if(isset($_GET['page']))
-    {
-      $page=$_GET['page'];
-    }
-    else
-    {
-      $page=1;
-    }
+    // if(isset($_GET['page']))
+    // {
+    //   $page=$_GET['page'];
+    // }
+    // else
+    // {
+    //   $page=1;
+    // }
 
-    $start=($page-1)*$per_page;
+    // $start=($page-1)*$per_page;
 
 
 
@@ -619,7 +619,7 @@ if(isset($_POST['id']))
     </script>";
     }
    
-    echo "mami";
+   // echo "mami";
 
 
 }

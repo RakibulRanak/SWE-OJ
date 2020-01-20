@@ -38,25 +38,25 @@ if(isset($_SESSION['un']))
     <div class="main">
         <?php require 'nav2.php'; ?>
 
-        <div class="row log">
-            <div class="col-sm-2">
+        <div class="row ">
+           <!--  <div class="col-sm-2">
 
-            </div>
+            </div> -->
 
-            <div class="col-sm-7">
+            <div class="col-sm-12">
                 <div class="">
                     <h3 style="text-align:center;">Code Compiler</h3>
                 </div>
             </div>
 
-            <div class="col-sm-3">
+       <!--      <div class="col-sm-3">
 
-            </div>
+            </div> -->
 
         </div>
 
         <div class="row cspace">
-            <div class="col-sm-8">
+            <div class="col-sm-10">
 
 
                 <?php
@@ -78,7 +78,7 @@ $r4=mysqli_fetch_array($si);
 
 $limit=$r4['tlimit'];
 
-//$input=$r4['tc'];
+
 
     $CC="g++";
 	$out="timeout 5s ./a.out";
@@ -94,8 +94,7 @@ $limit=$r4['tlimit'];
 	$tle=0;
 	$ce=0;
 
-	//if(trim($code)=="")
-	//die("The code area is empty");
+
 	
 	$file_code=fopen($filename_code,"w+");
 	fwrite($file_code,$code);
@@ -134,10 +133,13 @@ $limit=$r4['tlimit'];
 		
 		//echo "<pre>$output</pre>";
         //echo "<textarea id='div' class=\"form-control\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
-		       echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-6\"><div class=\"alert alert-success\"> <strong>Successfully Compiled!</strong> Click Below Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
+		       echo "<div class=\"row\"><div class=\"col-sm-3\"></div><div class=\"col-sm-12\"><div class=\"alert alert-success\"> <strong>Successfully Compiled!</strong> Click Below Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
 	}
 	else if(!strpos($error,"error"))
-	{
+	{	
+
+		//echo htmlspecialchars($str);
+		//echo "hhhhh";
 		echo "<pre>$error</pre>";
 		if(trim($input)=="")
 		{
@@ -153,15 +155,19 @@ $limit=$r4['tlimit'];
 
 		//echo "<pre>$output</pre>";
                 //echo "<textarea id='div' class=\"form-control\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
-				 echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-6\"><div class=\"alert alert-success\"><strong>Successfully Compiled!</strong> Click Below Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
+				 echo "<div class= \"row\"><div class=\"col-sm-3\"></div><div class=\"col-sm-12\"><div class=\"alert alert-success\"><strong>Successfully Compiled!</strong> Click Below Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
 	}
 	else
 	{
-		echo "<pre>$error</pre>";
+
+
+		$error_message = htmlspecialchars($error);
+		echo "<pre>$error_message</pre>";
+		//echo "<pre>$error</pre>";
 		$check=1;
 		$ce=1;
 
-		echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-6\"><div class=\"alert alert-danger\"><strong>Compilation Error Or Submit Failed!</strong> Back To Problem Description And Submit Code Again.</div></div><div class=\"col-sm-2\"></div></div><br>";
+		echo "<div class=\"row\"><div class=\"col-sm-3\"></div><div class=\"col-sm-12\"><div class=\"alert alert-danger\"><strong>Compilation Error Or Submit Failed!</strong> Back To Problem Description And Submit Code Again.</div></div><div class=\"col-sm-2\"></div></div><br>";
 	}
 	$executionEndTime = microtime(true);
 	$seconds = $executionEndTime - $executionStartTime;
@@ -219,7 +225,7 @@ $limit=$r4['tlimit'];
 	}
 	
 
-   echo "<center><div class=\"row\"><form action=\"allsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"vd\" value=\"$fr\"><input type=\"hidden\" name=\"il\" value=\"$seconds\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"></div></center>";
+   echo "<div class=\"\" style=\"margin-left:42%\"><form action=\"allsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"vd\" value=\"$fr\"><input type=\"hidden\" name=\"il\" value=\"$seconds\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success \" type=\"submit\" value=\"Submit Code\"></div>";
    
 
 }
@@ -303,12 +309,14 @@ else if($_POST['src'])
 		}
 		//echo "<pre>$output</pre>";
         //echo "<textarea id='div' class=\"form-control\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
-         echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-5\"><div class=\"alert alert-success\"><strong>Successfully Compiled!</strong> Click  Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
+         echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-12\"><div class=\"alert alert-success\"><strong>Successfully Compiled!</strong> Click  Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
 	}
 	else if(!strpos($error,"error"))
 	{
 		//echo "<pre>$error</pre>";
-		echo "<div> <pre>$error</pre></div>";
+		//echo "<div> <pre>$error</pre></div>";
+			$error_message = htmlspecialchars($error);
+		echo "<pre>$error_message</pre>";
 		if(trim($input)=="")
 		{
 			$output=shell_exec($out);
@@ -320,15 +328,17 @@ else if($_POST['src'])
 		}
 		//echo "<pre>$output</pre>";
                 //echo "<textarea id='div' class=\"form-control\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
-		 echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-5\"><div class=\"alert alert-success\"><strong>Successfully Compiled!</strong> Click  Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
+		 echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-12\"><div class=\"alert alert-success\"><strong>Successfully Compiled!</strong> Click  Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
 	}
 	else
 	{
-		echo "<pre>$error</pre>";
+		//echo "<pre>$error</pre>";
+			$error_message = htmlspecialchars($error);
+		echo "<pre>$error_message</pre>";
 		$check=1;
 		$ce=1;
 
-		echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-5\"><div class=\"alert alert-danger\"><strong>Compilation Error Or Submit Failed!</strong> Back To Problem Description And Submit Code Again.</div></div><div class=\"col-sm-2\"></div></div><br>";
+		echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-12\"><div class=\"alert alert-danger\"><strong>Compilation Error Or Submit Failed!</strong> Back To Problem Description And Submit Code Again.</div></div><div class=\"col-sm-2\"></div></div><br>";
 	}
 	$executionEndTime = microtime(true);
 	$seconds = $executionEndTime - $executionStartTime;
@@ -383,7 +393,7 @@ else if($_POST['src'])
     }
 
     
-     echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-5\"><form action=\"contestsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"vd\" value=\"$fr\"><input type=\"hidden\" name=\"il\" value=\"$seconds\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"> </div><div class=\"col-sm-3\"></div></div>";
+     echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-4\"><form action=\"contestsubmission.php\" method=\"POST\"><input type=\"hidden\" name=\"pb\" value=\"$pb\"><input type=\"hidden\" name=\"id\" value=\"$pid\"><input type=\"hidden\" name=\"mid\" value=\"$nid\"><input type=\"hidden\" name=\"vd\" value=\"$fr\"><input type=\"hidden\" name=\"il\" value=\"$seconds\"><textarea style=\"display:none\" name=\"result\" rows=\"10\" cols=\"10\">$output</textarea><input class=\"btn btn-success tm\" type=\"submit\" value=\"Submit Code\"> </div><div class=\"col-sm-3\"></div></div>";
 }
 
 ?>

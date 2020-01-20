@@ -164,24 +164,20 @@ var x = setInterval(function() {
 
 
 <div class="row log">
-<div class="col-sm-10">
-<div class=""><h3 style="text-align:center;">Submit Code</h3></div>
-</div>
-
-<div class="col-sm-1">
-
-</div>
-
-<div class="col-sm-1">
-  
-</div>
-
+<div class="col-sm-12">
+<center><h3 >Submit Code</h3></center>
 </div>
 
 
 
+</div>
+<br>
+<br>
 
-<div class="row cspace">
+
+
+<div class="row ">
+  <div class="col-sm-2"></div>
 <div class="col-sm-8">
 <div class="form-group">
 <form action="pcompile.php" name="f2" method="POST">

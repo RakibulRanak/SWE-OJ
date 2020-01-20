@@ -43,7 +43,9 @@
 	}
 	else if(!strpos($error,"error"))
 	{
-		echo "<pre>$error</pre>";
+		//echo "<pre>$error</pre>";
+		$error_message = htmlspecialchars($error);
+		echo "<pre>$error_message</pre>";
 		if(trim($input)=="")
 		{
 			$output=shell_exec($out);
@@ -58,7 +60,9 @@
 	}
 	else
 	{
-		echo "<pre>$error</pre>";
+		//echo "<pre>$error</pre>";
+		$error_message = htmlspecialchars($error);
+		echo "<pre>$error_message</pre>";
 		$check=1;
 	}
 	$executionEndTime = microtime(true);
