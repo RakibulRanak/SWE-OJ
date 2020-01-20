@@ -179,6 +179,7 @@ if(isset($_GET['id']))
                                 <th>Problem Name</th>
                                 <th>Verdict</th>
                                 <th>Points</th>
+                                <th>Time</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -251,19 +252,19 @@ while($row=mysqli_fetch_array($sts))
 
   if($row['verdict']=="Accepted")
   {
-     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btn-success btn-sm\">$row[verdict]</div></td><td>$row[point]</td></tr>";
+     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-success btn-sm\">$row[verdict]</div></td><td>$row[point]</td><td>$row[time]</td></tr>";
   }
   else if($row['verdict']=="Time Limit Exceed")
   {
-     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btn-primary btn-sm\">$row[verdict]</div></td><td>$row[point]</td></tr>";
+     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-primary btn-sm\">$row[verdict]</div></td><td>$row[point]</td><td>$row[time]</td></tr>";
   }
   else if($row['verdict']=="Runtime Error")
   {
-     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btn-warning btn-sm\">$row[verdict]</div></td><td>$row[point]</td></tr>";
+     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-warning btn-sm\">$row[verdict]</div></td><td>$row[point]</td><td>$row[time]</td></tr>";
   }
   else
   {
-     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btn-danger btn-sm\">$row[verdict]</div></td><td>$row[point]</td></tr>";
+     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-danger btn-sm\">$row[verdict]</div></td><td>$row[point]</td><td>$row[time]</td></tr>";
   }
 }
 
@@ -281,7 +282,7 @@ while($row=mysqli_fetch_array($sts))
   //////
   echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a>";
 
-  for ($i=1; $i <$total_page ; $i++) {
+  for ($i=2; $i <$total_page ; $i++) {
       
     if($page==$i)
     {
@@ -325,10 +326,13 @@ if(isset($_GET['id']) && isset($_GET['show']))
 
 
    $show="SELECT * FROM submission WHERE cid='$conid' AND sname='$suser' ORDER BY sid DESC limit $start,$per_page";
+   $show2="SELECT * FROM submission WHERE cid='$conid' AND sname='$suser'";
 
    
    $sts=mysqli_query($con,$show);
+   $sts2=mysqli_query($con,$show2);
    $detect=mysqli_num_rows($sts);
+    $detect2=mysqli_num_rows($sts2);
 
    $ts="SELECT DISTINCT sname, COUNT(verdict) AS verdict FROM ( SELECT * FROM submission where verdict='Accepted' AND cid='$conid' AND sname='$suser' GROUP BY pbname, sname)T1 GROUP BY sname";
 
@@ -361,20 +365,20 @@ while($row=mysqli_fetch_array($sts))
 
   if($row['verdict']=="Accepted")
   {
-     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btn-success btn-sm\">$row[verdict]</div></td><td>$row[point]</td></tr>";
+     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-success btn-sm\">$row[verdict]</div></td><td>$row[point]</td><td>$row[time]</td></tr>";
   }
   else if($row['verdict']=="Time Limit Exceed")
   {
-     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btn-primary btn-sm\">$row[verdict]</div></td><td>$row[point]</td></tr>";
+     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-primary btn-sm\">$row[verdict]</div></td><td>$row[point]</td><td>$row[time]</td></tr>";
   }
   else if($row['verdict']=="Runtime Error")
   {
-     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btn-warning btn-sm\">$row[verdict]</div></td><td>$row[point]</td></tr>";
+     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-warning btn-sm\">$row[verdict]</div></td><td>$row[point]</td><td>$row[time]</td></tr>";
   }
 
   else
   {
-     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btn-danger btn-sm\">$row[verdict]</div></td><td>$row[point]</td></tr>";
+     echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-danger btn-sm\">$row[verdict]</div></td><td>$row[point]</td><td>$row[time]</td></tr>";
   }
 }
 
@@ -392,17 +396,18 @@ else
 }
  
 
- echo "<div class=\"alert alert-success\">$suser's Total Submission=$detect</div>";
+ echo "<div class=\"alert alert-success\">$suser's Total Submission=$detect2</div>";
 
   $psql="SELECT * FROM submission WHERE cid='$conid' AND sname='$suser' ORDER BY sid DESC";
   $sn=mysqli_query($con,$psql);
   $total_rows=mysqli_num_rows($sn);
   $total_page=ceil($total_rows/$per_page);
   $c="active";
+  //echo "hi";
 
-     echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a>";
+     echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"contestsubmission.php?id=$conid&show=$suser&page=1\">First Page</a>";
 
-  for ($i=1; $i <$total_page ; $i++) {
+  for ($i=2; $i <$total_page ; $i++) {
       
     if($page==$i)
     {
@@ -412,9 +417,9 @@ else
         {
           $c="";
         }
-    echo "<a class=\"$c\" href=\"contestsubmission.php?id=$conid&page=$i\">$i</a>";
+    echo "<a class=\"$c\" href=\"contestsubmission.php?id=$conid&show=$suser&page=$i\">$i</a>";
   }
-   echo "<a href=\"contestsubmission.php?id=$conid&page=$total_page\">Last Page</a></li></div>";
+   echo "<a href=\"contestsubmission.php?id=$conid&show=$suser&page=$total_page\">Last Page</a></li></div>";
 
 
 }
@@ -520,9 +525,9 @@ if(isset($_POST['id']))
     $ao=$r3['output'];
     $to=$r4['uoutput'];
     $conid=$r4['id'];
-    echo "kire";
+    //echo "kire";
    
-    echo "mama";
+    //echo "mama";
     $proname=$r4['pbname'];
     $count=0;
     $mpoint=0.00;
@@ -600,8 +605,9 @@ if(isset($_POST['id']))
 
 
     if($ignore==0)
-    {
-       $sql="INSERT INTO submission VALUES('$nid','$username','$result','$pname','$conid','$count','$mpoint')";
+    {   
+      $t=date("Y-m-d H:i:s");
+       $sql="INSERT INTO submission VALUES('$nid','$username','$result','$pname','$conid','$count','$mpoint' ,'$t')";
        $stq=mysqli_query($con,$sql);
         header("Location:contestsubmission.php?id=$conid");
         echo "

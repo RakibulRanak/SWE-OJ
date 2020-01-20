@@ -74,7 +74,7 @@ $limit=$r4['tlimit'];
 //$input=$r4['tc'];
 
     $CC="g++ -std=c++11";
-	$out="timeout 5s ./a.out";
+	$out="timeout 4s ./a.out";
 	$code=$_POST["code"];
 	$input=$r4['tc'];
 	$filename_code="main.cpp";
@@ -167,6 +167,17 @@ $limit=$r4['tlimit'];
 	$executionEndTime = microtime(true);
 	$seconds = $executionEndTime - $executionStartTime;
 	$seconds = sprintf('%0.2f', $seconds);
+	$coutput=$output;
+	if(strlen($coutput)>100000)
+	{
+		// $check=2;
+		// echo "<script>
+  //   document.getElementById(\"hide2\").style.display = \"none\";
+  //   </script>";
+  //   echo "<pre>Output memory limit exceeded</pre>";
+		$coutput="System changes this output because of huge output file";
+
+	}
 	//echo "<pre>Compiled And Executed In: $seconds s</pre>";
     if($seconds>$limit)
 	{
@@ -199,7 +210,7 @@ $limit=$r4['tlimit'];
 		}
 
 
-		$usql="UPDATE archieve SET uoutput='$output' WHERE id='$pid'";
+		$usql="UPDATE archieve SET uoutput='$coutput' WHERE id='$pid'";
 
 		$csql="SELECT uoutput FROM archieve WHERE id='$pid'";
 
@@ -215,7 +226,7 @@ $limit=$r4['tlimit'];
 
 
 
-		$uo=$r2['uoutput'];
+		//$uo=$r2['uoutput'];
 		$ac=$row['output'];
 
 		//echo $uo;
@@ -267,7 +278,7 @@ else if($_POST['src'])
 
 
 	$CC="g++ -std=c++11";
-	$out="timeout 5s ./a.out";
+	$out="timeout 4s ./a.out";
 	$code=$_POST["src"];
 	$input=$r4['tc'];
 	$filename_code="main.cpp";
@@ -354,6 +365,17 @@ else if($_POST['src'])
 	$seconds = $executionEndTime - $executionStartTime;
 	$seconds = sprintf('%0.2f', $seconds);
 	//echo "<pre>Compiled And Executed In: $seconds s</pre>";
+	$coutput=$output;
+	if(strlen($coutput)>100000)
+	{
+		// $check=2;
+		// echo "<script>
+  //   document.getElementById(\"hide2\").style.display = \"none\";
+  //   </script>";
+  //   echo "<pre>Output memory limit exceeded</pre>";
+		$coutput="System changes this output because of huge output file";
+
+	}
     if($seconds>3)
 	{
 		$fr="lt";
@@ -380,7 +402,7 @@ else if($_POST['src'])
 
     		$code=str_replace("'", "''", $code);
             $nsql="INSERT into code VALUES('$us','$code',NULL)";
-			$usql="UPDATE element SET uoutput='$output' WHERE pbid='$pid'";   //verdict update
+			$usql="UPDATE element SET uoutput='$coutput' WHERE pbid='$pid'";   //verdict update
 			$csql="SELECT uoutput FROM element WHERE pbid='$pid'";
 			$q3="SELECT id FROM code ORDER BY id DESC ";
 			$snq=mysqli_query($con,$nsql);
@@ -393,7 +415,7 @@ else if($_POST['src'])
 
 
 
-			$uo=$r2['uoutput'];
+			//$uo=$r2['uoutput'];
 			$ac=$row['output'];
 			$nid=$r4['id'];  //solution id of user
 

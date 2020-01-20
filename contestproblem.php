@@ -357,7 +357,7 @@ if(isset($_GET['name']))
       $cid=$myrow['id'];
 
       //echo "hhiii";
-      $number="SELECT verdict from submission WHERE pbname='$row[pbname]'  and verdict='Accepted' AND cid='$cid'";
+      $number="SELECT verdict from submission WHERE pbname='$row[pbname]'  and verdict='Accepted' AND cid='$cid' AND sname ='$username'";
       $snumber=mysqli_query($con,$number);
       $tsol=mysqli_num_rows($snumber);
 

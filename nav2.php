@@ -16,7 +16,7 @@
                     <li class="space"><a href="logout.php"><i class="fa fa-power-off ispace"></i>Logout</a></li>
                     <li class="" style="margin-left: 16vw">
                     <form class="form-inline my-2 my-lg-0" action="usersearch.php" style="margin-left:15px name="f1" method="POST">
-                      <input class="form-control mr-sm-2" name="name" style="height: 15px ;margin-bottom: 5px " type="search" placeholder="@username">
+                      <input class="form-control mr-sm-2" name="name" style="height: 15px ;margin-bottom: 5px " type="search" placeholder="@username" required>
                   
                     <button type="submit" name="submit" class="btn"><i class="fas fa-search" style="color:white"></i></button>
                     </form>

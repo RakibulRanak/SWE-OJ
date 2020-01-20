@@ -102,7 +102,8 @@ if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
            <?php
             if($data==$_SESSION['un'])
                echo"
-          <div>
+          <div>   
+           
            
                    <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#exampleModal\" data-whatever=\"@mdo\">Change Photo</button> 
                     
@@ -121,7 +122,7 @@ if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
                       <div class=\"form-group\">
                        
                        <!--   <form method=\"POST\" action=\"photoupload.php\" enctype=\"multipart/form-data\"> -->
-                           <input type=\"file\" name=\"myimage\">
+                           <input type=\"file\"id=\"file\" name=\"myimage\">
                            <input type=\"hidden\" name=\"us\" class=\"form-control\" value=\"$data\";>
         
                         <input type=\"submit\" name=\"submit_image\" value=\"Upload\">
@@ -134,6 +135,16 @@ if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
                 </div>
               </div>
             </div> 
+             <script>
+              var uploadField = document.getElementById(\"file\");
+
+              uploadField.onchange = function() {
+                  if(this.files[0].size > 2000000){
+                     alert(\"File is too big!\");
+                     this.value = \"\";
+                  };
+              };
+            </script>
             
 
           </div> "

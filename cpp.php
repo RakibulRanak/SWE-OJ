@@ -81,7 +81,7 @@ $limit=$r4['tlimit'];
 
 
     $CC="g++";
-	$out="timeout 5s ./a.out";
+	$out="timeout 4s ./a.out";
 	$code=$_POST["code"];
 	$input=$r4['tc'];
 	$filename_code="main.cpp";
@@ -172,6 +172,17 @@ $limit=$r4['tlimit'];
 	$executionEndTime = microtime(true);
 	$seconds = $executionEndTime - $executionStartTime;
 	$seconds = sprintf('%0.2f', $seconds);
+		$coutput=$output;
+	if(strlen($coutput)>100000)
+	{
+		// $check=2;
+		// echo "<script>
+  //   document.getElementById(\"hide2\").style.display = \"none\";
+  //   </script>";
+  //   echo "<pre>Output memory limit exceeded</pre>";
+		$coutput="System changes this output because of huge output file";
+
+	}
 	//echo "<pre>Compiled And Executed In: $seconds s</pre>";
     if($seconds>$limit)
 	{
@@ -196,7 +207,7 @@ $limit=$r4['tlimit'];
 
 		$source=str_replace("'", "''", $source);
         $nsql="INSERT into codes VALUES('$us','$source',NULL)";
-		$usql="UPDATE archieve SET uoutput='$output' WHERE id='$pid'";
+		$usql="UPDATE archieve SET uoutput='$coutput' WHERE id='$pid'";
 		$csql="SELECT uoutput FROM archieve WHERE id='$pid'";
 		$q3="SELECT id FROM codes ORDER BY id DESC ";
 		$snq=mysqli_query($con,$nsql);
@@ -209,7 +220,7 @@ $limit=$r4['tlimit'];
 
 
 
-		$uo=$r2['uoutput'];
+		//$uo=$r2['uoutput'];
 		$ac=$row['output'];
 		$nid=$r4['id'];
 
@@ -256,7 +267,7 @@ else if($_POST['src'])
 
 
 	$CC="g++";
-	$out="timeout 5s ./a.out";
+	$out="timeout 4s ./a.out";
 	$code=$_POST["src"];
 	$input=$r4['tc'];
 	$filename_code="main.cpp";
@@ -344,6 +355,17 @@ else if($_POST['src'])
 	$seconds = $executionEndTime - $executionStartTime;
 	$seconds = sprintf('%0.2f', $seconds);
 	//echo "<pre>Compiled And Executed In: $seconds s</pre>";
+		$coutput=$output;
+	if(strlen($coutput)>100000)
+	{
+		// $check=2;
+		// echo "<script>
+  //   document.getElementById(\"hide2\").style.display = \"none\";
+  //   </script>";
+  //   echo "<pre>Output memory limit exceeded</pre>";
+		$coutput="System changes this output because of huge output file";
+
+	}
     if($seconds>$limit)
 	{
 		$fr="lt";
@@ -370,7 +392,7 @@ else if($_POST['src'])
     	$code=str_replace("'", "''", $code);
 
             $nsql="INSERT into code VALUES('$us','$code',NULL)";
-			$usql="UPDATE element SET uoutput='$output' WHERE pbid='$pid'";
+			$usql="UPDATE element SET uoutput='$coutput' WHERE pbid='$pid'";
 			$csql="SELECT uoutput FROM element WHERE pbid='$pid'";
 			$q3="SELECT id FROM code ORDER BY id DESC ";
 			$snq=mysqli_query($con,$nsql);
@@ -383,7 +405,7 @@ else if($_POST['src'])
 
 
 
-			$uo=$r2['uoutput'];
+			//$uo=$r2['uoutput'];
 			$ac=$row['output'];
 			$nid=$r4['id'];
 
