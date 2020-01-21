@@ -83,8 +83,8 @@ $row=mysqli_fetch_array($sq);
 
 
 echo "
-<div class=\"row log\">
-<div class=\"col-sm-10\">
+<div class=\"container \">
+<div class=\"col-sm-12 upore\">
 <div class=\"\"><h3 style=\"text-align:center;\">$row[pbname]</h3></div>";
 
 
@@ -98,23 +98,17 @@ echo "
 
 </div>
 
-<div class=\"col-sm-1\">
 
-</div>
-
-<div class=\"col-sm-1\">
-  
-</div>
 
 </div>";
 
 
 echo "
 
-<div class=\"row cspace\">
-<div class=\"col-sm-10\">
+<div class=\"autto container\">
+<div class=\"col-sm-12\">
 <p>Time Limit: $row[tlimit] Seconds</p><br><br>
-<b>Problem Description</b><br><br><textarea class=\"form-control\" rows=\"30\" cols=\"100\" readonly>$row[pbdes]</textarea><br>";
+<b>Problem Description</b><br><br><textarea class=\"form-control rb\" rows=\"30\" cols=\"100\" readonly>$row[pbdes]</textarea><br>";
 
 echo "<b>Problem Setter : <a class=\"blue\" href=\"profile.php?user=$row[pbauthor]\">$row[pbauthor]</a></b><br><br>";
 
@@ -127,9 +121,7 @@ echo "<a class=\"btn btn-success\" href=\"submit.php?id=$row[id]\">Submit Your C
 
 ?>
 
-        <div class="col-sm-2">
-            
-        </div>
+       
     </div>
     </div>
     </div><br><br><br>

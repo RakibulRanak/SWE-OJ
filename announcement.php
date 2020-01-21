@@ -54,25 +54,19 @@ $access=0;
 
 
 
-<div class="row log">
-<div class="col-sm-10">
+<div class="">
+<div class="col-sm-12 upore">
 <div class=""><h3 style="text-align:center;">Announcement</h3></div>
 </div>
 
-<div class="col-sm-1">
 
-</div>
-
-<div class="col-sm-1">
-  
-</div>
 
 </div>
 
 
 
 
-<div class="row cspace">
+<div class="row container-fluid autto upore">
 <div class="col-sm-7">
 
 <?php
@@ -190,16 +184,16 @@ if($st=="Teacher" || $st=="Developer" || $st=="Problem Setter")
 {
 ?>
 
-<div class="col-sm-5">
+<div class="col-sm-5 upore autto">
 <div class="form-group">
 <legend>Create Announcement</legend>
 <form action="<?php echo $_SERVER['PHP_SELF']?>" name="f2" method="POST">
 <label for="ta">Enter Your Contest ID</label>
-<input type="text" name="ci" class="form-control" required><br><br>
+<input type="text" name="ci" class="form-control rb" required><br><br>
 <label for="ta">Enter Your Contest Name</label>
-<input type="text" name="cn" class="form-control" required><br><br>
+<input type="text" name="cn" class="form-control rb" required><br><br>
 <label for="in">Enter Announcement Description</label>
-<textarea name="an" class="form-control" rows="10" cols="60" required></textarea><br><br>
+<textarea name="an" class="form-control rb" rows="10" cols="60" required></textarea><br><br>
 <input type="submit" name="cr" class="btn btn-success" value="Create Announcement">
 <br><br>
 
@@ -209,9 +203,9 @@ if($st=="Teacher" || $st=="Developer" || $st=="Problem Setter")
   
 <legend>Delete Announcement</legend>
 <label for="ta">Enter Announcement Number</label>
-<input type="text" name="ann" class="form-control"><br><br>
+<input type="text" name="ann" class="form-control rb"><br><br>
 <label for="ta">Enter Contest Name</label>
-<input type="text" name="con" class="form-control" required><br><br>
+<input type="text" name="con" class="form-control rb" required><br><br>
 <input type="submit" name="up" class="btn btn-danger" value="Delete">
 
 

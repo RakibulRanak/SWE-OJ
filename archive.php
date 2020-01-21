@@ -45,14 +45,14 @@ if($st=="Teacher" || $st=="Developer")
 <body>
     <div class="main">
         <?php require 'nav2.php'; ?>
-<br>
-        <div style="text-align:center" ;>
+
+        <div class="upore"style="text-align:center" ;>
             <h3>Problem Archive</h3>
         </div>
 
-        <div class=" cspace">
+        <div class=" container upore">
           
-            <div class="col-sm-10">
+            <div class="autto col-sm-12 upore">
                 <div class="table-responsive">
                     <table class="table-dark table  table-striped table-hover">
                         <thead>

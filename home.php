@@ -32,6 +32,27 @@ if(isset($_SESSION['un']))
       color: #DA310D;
       font-family: sans-serif;
       }
+      .scrolling-text {
+        margin-top: 70px;
+        position: absolute;
+      }
+      .home-text {
+        margin-top: 60px;
+        height: 100%;
+        width: 100vw;
+        position: absolute;
+        backdrop-filter: blur(10px) brightness(60%);
+      }
+      .welcome {
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -75%);
+        font-size: 65px;
+        text-align: center;
+      }
     </style>
           <?php include 'linkers.php';?>
 
@@ -55,21 +76,9 @@ while($row=mysqli_fetch_array($sts))
 ?>
  
  
- 	<div style="background-image: url('Images/sust.jpg');  background-size: 100% 100%; height: 800px">
- 		<br>
- 		<br>
- 		<br>
- 		<br>
- 		    <marquee direction="left" scrollamount="12"><?php echo $ann ; ?></marquee>
- 			<br>
- 		<br>
- 		<br>
- 		<br>
- 			<br>
- 		<br>
- 		
- <h1 align="center"><b>Welcome to SWE OJ !</b></h1>
-
+ 	<div style="background-image: url('Images/sust.jpg');  background-size: cover; filter:blur(0.8); height: 101vh">
+  <div class="home-text"><h1 class="welcome">Welcome to SWE OJ !</h1></div>
+  <marquee class="scrolling-text" direction="left" scrollamount="12"><?php echo $ann ; ?></marquee>
 
 </div>
 

@@ -43,13 +43,13 @@
 			
 		}
 		//echo "<pre>$output</pre>";
-              echo "<textarea id='div' class=\"form-control\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
+              echo "<textarea id='div' class=\"form-control rb\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
 	}
 	else if(!strpos($error,"error"))
 	{	
 
 		$error_message = htmlspecialchars($error);
-		echo "<pre>$error_message</pre>";
+		echo "<pre class=\"rb\">$error_message</pre>";
 		//echo "hi1";
 		//echo "<pre>$error</pre>";
 		if(trim($input)=="")
@@ -61,13 +61,13 @@
 			$out=$out." < ".$filename_in;
 			$output=shell_exec($out);
 		}
-		                echo "<textarea id='div' class=\"form-control\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
+		                echo "<textarea id='div' class=\"form-control rb\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
 	}
 	else
 	{	
 
 		$error_message = htmlspecialchars($error);
-		echo "<pre>$error_message</pre>";
+		echo "<pre class=\"rb\">$error_message</pre>";
 		//echo "hi";
 		//echo "<pre>$error</pre>";
 		$check=1;
@@ -75,23 +75,23 @@
 	$executionEndTime = microtime(true);
 	$seconds = $executionEndTime - $executionStartTime;
 	$seconds = sprintf('%0.2f', $seconds);
-	echo "<pre>Compiled And Executed In: $seconds s</pre>";
+	echo "<pre class=\"rb\">Compiled And Executed In: $seconds s</pre>";
 
     if($check==1)
 	{
-		echo "<pre>Verdict : CE</pre>";
+		echo "<pre class=\"rb\">Verdict : CE</pre>";
 	}
 	else if($check==0 && $seconds>3)
 	{
-		echo "<pre>Verdict : TLE</pre>";
+		echo "<pre class=\"rb\">Verdict : TLE</pre>";
 	}
 	else if(trim($output)=="")
 	{
-		echo "<pre>Verdict : Run Time Error</pre>";
+		echo "<pre class=\"rb\">Verdict : Run Time Error</pre>";
 	}
 	else if($check==0)
 	{
-		echo "<pre>Verdict : AC</pre>";
+		echo "<pre class=\"rb\">Verdict : AC</pre>";
 	}
 
     exec("rm $filename_code");

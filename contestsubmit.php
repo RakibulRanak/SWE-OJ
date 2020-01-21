@@ -184,7 +184,7 @@ var x = setInterval(function() {
 <label for="language">Choose Language</label>
 
 
-<select class="form-control" name="language">
+<select class="form-control rb" name="language">
 <option value="c">C</option>
 <option value="cpp">C++</option>
 <option value="cpp11">C++11</option>
@@ -211,7 +211,7 @@ var x = setInterval(function() {
  ?>
 
 <label for="ta">Write Your Code</label>
-<textarea class="form-control" name="src" rows="10" cols="50"></textarea><br><br>
+<textarea class="form-control rb" name="src" rows="10" cols="50"></textarea><br><br>
 <input type="hidden" name='pbn' value="<?php echo $r1['pbname']; ?>">
 <!--<input type="submit" class="btn btn-success" value="Submit"><br><br><br>-->
 

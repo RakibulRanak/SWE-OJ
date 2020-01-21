@@ -57,8 +57,17 @@
   color: white;
   border: 1px solid #4CAF50;
 }
+    
 
-.paginationr a:hover:not(.active) {background-color: #ddd;}
+
+.paginationr a:hover:not(.active) {
+
+
+  background-color: red;
+/*  color: white;*/
+    text-decoration: none;
+
+}
 
 .paginationr a:first-child {
   border-top-left-radius: 5px;
@@ -94,6 +103,7 @@
 }
 .rowbts{
   margin-right: -25px;
+  
   margin-left: -25px;
 }
 .image-box {
@@ -159,3 +169,24 @@ table {
   color: blue;
     text-decoration: none;
 }
+.rb{
+  border:solid 2px black;
+}
+.marg{
+  display: inline-block;
+
+}
+.autto
+{
+  margin: 0 auto;
+}
+.upore{
+  padding-top:30px;
+}
+
+.paginationr > a
+{
+    background-color: white;
+    color: #5A4181;
+}
+

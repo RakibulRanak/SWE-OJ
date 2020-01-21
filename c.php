@@ -128,13 +128,13 @@ $limit=$r4['tlimit'];
 			$output=shell_exec($out);
 		}
 
-		         echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-12\"><div class=\"alert alert-success\"><strong>Successfully Compiled!</strong> Click Below Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
+		         echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-12\"><div class=\"alert alert-success rb\"><strong>Successfully Compiled!</strong> Click Below Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
 	}
 	else if(!strpos($error,"error"))
 	{
 		//echo "<pre>$error</pre>";
 		$error_message = htmlspecialchars($error);
-		echo "<pre>$error_message</pre>";
+		echo "<pre class=\"rb\">$error_message</pre>";
 		if(trim($input)=="")
 		{
 			$output=shell_exec($out);
@@ -145,17 +145,17 @@ $limit=$r4['tlimit'];
 			$output=shell_exec($out);
 		}
 
-				 echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-12\"><div class=\"alert alert-success\"><strong>Successfully Compiled!</strong> Click Below Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
+				 echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-12\"><div class=\"alert alert-success rb\"><strong>Successfully Compiled!</strong> Click Below Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
 	}
 	else
 	{
 		//echo "<pre>$error</pre>";
 			//echo "<div> <pre>$error</pre></div>";
 		$error_message = htmlspecialchars($error);
-		echo "<pre>$error_message</pre>";
+		echo "<pre class=\"rb\">$error_message</pre>";
 		$check=1;
 		$ce=1;
-			echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-12\"><div class=\"alert alert-danger\"><strong>Compilation Error Or Submit Failed!</strong> Back To Problem Description And Submit Code Again.</div></div><div class=\"col-sm-2\"></div></div><br>";
+			echo "<div class=\"row\"><div class=\"col-sm-4\"></div><div class=\"col-sm-12\"><div class=\"alert alert-danger rb\"><strong>Compilation Error Or Submit Failed!</strong> Back To Problem Description And Submit Code Again.</div></div><div class=\"col-sm-2\"></div></div><br>";
 	}
 	$executionEndTime = microtime(true);
 	$seconds = $executionEndTime - $executionStartTime;
@@ -291,13 +291,13 @@ else if($_POST['src'])
 			$output=shell_exec($out);
 		}
 	
-         echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-12\"><div class=\"alert alert-success\"><strong>Successfully Compiled!</strong> Click  Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
+         echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-12\"><div class=\"alert alert-success rb\"><strong>Successfully Compiled!</strong> Click  Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
 	}
 	else if(!strpos($error,"error"))
 	{
 		//echo "<pre>$error</pre>";
 		$error_message = htmlspecialchars($error);
-		echo "<pre>$error_message</pre>";
+		echo "<pre class=\"rb\">$error_message</pre>";
 		if(trim($input)=="")
 		{
 			$output=shell_exec($out);
@@ -308,17 +308,17 @@ else if($_POST['src'])
 			$output=shell_exec($out);
 		}
 		
-		 echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-12\"><div class=\"alert alert-success\"><strong>Successfully Compiled!</strong> Click  Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
+		 echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-12\"><div class=\"alert alert-success rb\"><strong>Successfully Compiled!</strong> Click  Submit Button To Submit.</div></div><div class=\"col-sm-2\"></div></div><br>";
 	}
 	else
 	{
 		//echo "<pre>$error</pre>";
 		$error_message = htmlspecialchars($error);
-		echo "<pre>$error_message</pre>";
+		echo "<pre class=\"rb\">$error_message</pre>";
 		$check=1;
 		$ce=1;
 
-		echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-12\"><div class=\"alert alert-danger\"><strong>Compilation Error Or Submit Failed!</strong> Back To Problem Description And Submit Code Again.</div></div><div class=\"col-sm-2\"></div></div><br>";
+		echo "<div class=\"row\"><div class=\"col-sm-5\"></div><div class=\"col-sm-12\"><div class=\"alert alert-danger rb\"><strong>Compilation Error Or Submit Failed!</strong> Back To Problem Description And Submit Code Again.</div></div><div class=\"col-sm-2\"></div></div><br>";
 	}
 	$executionEndTime = microtime(true);
 	$seconds = $executionEndTime - $executionStartTime;

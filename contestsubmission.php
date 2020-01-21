@@ -280,9 +280,9 @@ while($row=mysqli_fetch_array($sts))
 
  
   //////
-  echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a>";
+  echo "<div style=\"text-align:center\"><div class=\"paginationr upore\"><a href=\"contestsubmission.php?id=$conid&page=1\">First Page</a>";
 
-  for ($i=2; $i <$total_page ; $i++) {
+  for ($i=1; $i <$total_page ; $i++) {
       
     if($page==$i)
     {
@@ -405,9 +405,9 @@ else
   $c="active";
   //echo "hi";
 
-     echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"contestsubmission.php?id=$conid&show=$suser&page=1\">First Page</a>";
+     echo "<div style=\"text-align:center\"><div class=\"paginationr upore\"><a href=\"contestsubmission.php?id=$conid&show=$suser&page=1\">First Page</a>";
 
-  for ($i=2; $i <$total_page ; $i++) {
+  for ($i=1; $i <$total_page ; $i++) {
       
     if($page==$i)
     {

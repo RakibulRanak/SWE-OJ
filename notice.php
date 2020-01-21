@@ -59,26 +59,20 @@ $access=0;
 
 
 
-<div class="row log">
-<div class="col-sm-10">
+<div class="container">
+<div class="col-sm-10 autto upore">
 <div class=""><h3 style="text-align:center;">Notice</h3></div>
 </div>
 
-<div class="col-sm-1">
 
-</div>
-
-<div class="col-sm-1">
-  
-</div>
 
 </div>
 
 
 
 
-<div class="row cspace">
-<div class="col-sm-7">
+<div class="row container-fluid">
+<div class="col-sm-6 autto upore">
 
 <?php
 
@@ -208,7 +202,7 @@ if($st=="Teacher" || $st=="Developer" || $st=="Problem Setter")
 {
 ?>
 
-<div class="col-sm-5">
+<div class="col-sm-5 upore">
 <div class="form-group">
 <legend>Create Notice</legend>
 <form action="<?php echo $_SERVER['PHP_SELF']?>" name="f2" method="POST">
@@ -225,7 +219,7 @@ if($st=="Teacher" || $st=="Developer" || $st=="Problem Setter")
         });
     </script>
 <label for="in">Enter Notice Description</label>
-<textarea name="an" class="form-control" rows="10" cols="60" required></textarea><br><br>
+<textarea name="an" class="form-control rb" rows="10" cols="60" required></textarea><br><br>
 <input type="submit" name="cr" class="btn btn-success" value="Create Notice">
 <br><br>
 
@@ -235,7 +229,7 @@ if($st=="Teacher" || $st=="Developer" || $st=="Problem Setter")
   
 <legend>Delete Notice</legend>
 <label for="ta">Enter Notice id</label>
-<input type="number" name="id" class="form-control"><br><br>
+<input type="number" name="id" class="form-control rb"><br><br>
 <input type="submit" name="up" class="btn btn-danger" value="Delete">
 <input type="submit" name="up2" class="btn btn-danger" value="Delete All">
 

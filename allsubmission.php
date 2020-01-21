@@ -48,7 +48,7 @@ a:hover {
     <div class="main">
         <?php require 'nav2.php'; ?>
 
-        <div class="log">
+        <div class="upore">
 
             <div style="text-align: center;">
                 <h3>All Submission</h3>
@@ -60,9 +60,9 @@ a:hover {
 
 
 
-        <div class="row cspace">
+        <div class="container upore">
             
-            <div class="col-sm-10">
+            <div class="col-sm-12 autto upore">
                 <div class="table-responsive">
                     <table class="table-dark table table-striped table-hover">
                         <thead>
@@ -158,7 +158,7 @@ while($row=mysqli_fetch_array($sts))
   $total_page=ceil($total_rows/$per_page);
   $c="active";
 
-    echo "<div style=\"text-align:center\"><div class=\"paginationr\"><a href=\"allsubmission.php?page=1\">First Page</a>";
+    echo "<div style=\"text-align:center\"><div class=\"paginationr upore\"><a href=\"allsubmission.php?page=1\">First Page</a>";
 
   for ($i=1; $i <$total_page ; $i++) {
       

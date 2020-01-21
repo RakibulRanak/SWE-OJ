@@ -33,7 +33,7 @@ if(isset($_SESSION['un']))
 
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
     <div class="main">
 
 
@@ -53,7 +53,7 @@ if(isset($_SESSION['un']))
                     <form action="compile.php" name="f2" method="POST">
                         <label for="language">Choose Language</label>
 
-                        <select class="form-control" name="language">
+                        <select class="form-control" style="border:solid 2px black;" name="language">
                             <option value="c">C</option>
                             <option value="cpp">C++</option>
                             <option value="cpp11">C++11</option>
@@ -63,9 +63,9 @@ if(isset($_SESSION['un']))
                         </select><br><br>
 
                         <label for="ta">Write Your Code</label>
-                        <textarea class="form-control" name="code" rows="10" cols="50"></textarea><br><br>
+                        <textarea class="form-control" name="code" style="border:solid 2px black;" rows="10" cols="50"></textarea><br><br>
                         <label for="in">Enter Your Input</label>
-                        <textarea class="form-control" name="input" rows="10" cols="50"></textarea><br><br>
+                        <textarea class="form-control" name="input" style="border:solid 2px black;" rows="10" cols="50"></textarea><br><br>
                         <input type="submit" class="btn btn-success" value="Run Code"><br><br><br>
 
 

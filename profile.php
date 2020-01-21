@@ -51,11 +51,14 @@ if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Profile</title>
     <?php include 'linkers.php';?>
+    <style type="text/css">
+      
+    </style>
 
 </head>
 
-<body>
-    <div class="main">
+<body style="overflow-x: hidden;">
+    <div class="main" >
         <?php require 'nav2.php'; ?>
 
 
@@ -89,11 +92,11 @@ if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
           
               if($image_name==""){
         
-                echo "<img src=\"profile2.jpg\"width=\"200\" height=\"200\">";
+                echo "<img  style=\"border:solid 2px black;\" src=\"profile2.jpg\"width=\"200\" height=\"200\">";
               }
               else
               {
-                        echo "<img src='users/".$row['photo']."'width=\"200\" height=\"200\">";                  
+                        echo "<img style=\"border:solid 2px black;\" src='users/".$row['photo']."'width=\"200\" height=\"200\">";                  
 
               }
           

@@ -59,7 +59,7 @@ if(isset($_GET['id']))
 
 ?>
 
-        <div class=" log">
+        <div class=" upore">
 
             <div style="text-align:center;">
 <!--                 <h3 style="text-align:center;">Standings</h3> -->
@@ -73,10 +73,9 @@ if(isset($_GET['id']))
 
 
 
-        <div class="row cspace">
-            <div class="col-sm-1">
-            </div>
-            <div class="col-sm-9">
+        <div class="container upore">
+           
+            <div class="col-sm-10 autto upore">
                 <div class="table-responsive">
                     <table class="table-dark table table-striped table-hover">
                         <thead>
@@ -122,9 +121,7 @@ if(isset($_GET['id']))
 ?>
                 </div>
 
-                <div class="col-sm-2">
-
-                </div>
+                
             </div>
         </div>
     </div><br><br><br>

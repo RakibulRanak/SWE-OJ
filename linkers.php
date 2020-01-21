@@ -33,6 +33,9 @@ body {background-color: powderblue;}
 a:hover {
   color: yellow;
   }
+  body{
+    overflow-x: hidden;
+  }
 
 /*a:link{color:inherit;}*/
 </style>

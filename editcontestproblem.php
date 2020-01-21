@@ -84,20 +84,14 @@ if(isset($_GET['id']))
 
 
 
-<div class="row log">
-<div class="col-sm-10">
+
+<div class="upore">
 <div class=""><h3 style="text-align:center;">Set Problem</h3></div>
 </div>
 
-<div class="col-sm-1">
 
-</div>
 
-<div class="col-sm-1">
-  
-</div>
 
-</div>
 
 <?php
 
@@ -130,9 +124,9 @@ $pbid=$erow['pbid'];
 
 ?>
 
-  <div class="row cspace">
-    <div class="col-sm-8">
-      <div class="form-group">
+  <div class="container ">
+    <div class="col-sm-10 autto ">
+      <div class="form-group ">
 
         <form action="contestproblem.php?name=<?php echo $n;?> name="f2" method="POST">
 
@@ -141,17 +135,17 @@ $pbid=$erow['pbid'];
             <input type="hidden" name="cnn" class="form-control" value="<?php echo "$name"; ?>"><br><br>
             <label for="ta">Enter Problem Name</label>
             <?php echo $n; ?>
-            <input type="text" name="pb" class="form-control" value="<?php echo "$pbname"; ?>"><br><br>
+            <input type="text" name="pb" class="form-control rb" value="<?php echo "$pbname"; ?>"><br><br>
             <label for="in">Enter Problem Description</label>
-            <textarea name="c1" class="form-control" rows="30" cols="80"><?php echo "$pbdes"; ?></textarea><br><br>
+            <textarea name="c1" class="form-control rb" rows="20" cols="60"><?php echo "$pbdes"; ?></textarea><br><br>
             <label for="ta">Enter Problem Author</label>
-            <input type="text" name="c2" class="form-control" value="<?php echo "$pbauthor"; ?>"><br><br>
+            <input type="text" name="c2" class="form-control rb" value="<?php echo "$pbauthor"; ?>"><br><br>
             <label for="ta">Enter Time Limit</label>
-            <input type="text" name="tll" title="Only float is allowed (Ex:3.00)" placeholder="1.00" class="form-control" value="<?php echo "$tlimit"; ?>"><br><br>
+            <input type="text" name="tll" title="Only float is allowed (Ex:3.00)" placeholder="1.00" class="form-control rb" value="<?php echo "$tlimit"; ?>"><br><br>
             <b>Enter Test Cases</b><br>
-            <textarea class="form-control" name="c3" rows="30" cols="80"><?php echo "$tc"; ?></textarea><br><br>
+            <textarea class="form-control rb" name="c3" rows="20" cols="60"><?php echo "$tc"; ?></textarea><br><br>
             <b>Enter Output Of Test Cases</b><br>
-            <textarea class="form-control" name="c4" rows="30" cols="80"><?php echo "$output"; ?></textarea><br><br>
+            <textarea class="form-control rb" name="c4" rows="20" cols="60"><?php echo "$output"; ?></textarea><br><br>
             <input type="submit" class="btn btn-success" name="up" value="Update">
             <input type="submit" class="btn btn-danger" name="del" value="Delete">
 
@@ -181,9 +175,7 @@ $pbid=$erow['pbid'];
     </div>
 </div>
 
-<div class="col-sm-4">
 
-</div>
 </div>
 </div><br><br><br>
 

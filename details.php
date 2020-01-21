@@ -246,7 +246,7 @@ $r1=mysqli_fetch_array($sq3);
   $cnt=$r1['cname'];
 
 
-echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit: $r1[tlimit] Seconds<br><br> Problem Details<br><br><textarea class=\"form-control\" rows=\"30\" cols=\"95\" readonly>$r1[pbdes]</textarea><br><br>Problem Setter: $r1[pbauthor]<br><br>");
+echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit: $r1[tlimit] Seconds<br><br> Problem Details<br><br><textarea class=\"form-control rb\" rows=\"30\" cols=\"95\" readonly>$r1[pbdes]</textarea><br><br>Problem Setter: $r1[pbauthor]<br><br>");
 
       $conid=$r1['id'];
 
@@ -334,7 +334,7 @@ $sq3=mysqli_query($con,$q3);
 $r1=mysqli_fetch_array($sq3);
 
 
-echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit: $r1[tlimit] Seconds<br><br> Problem Details<br><br><textarea class=\"form-control\" rows=\"30\" cols=\"95\" readonly>$r1[pbdes]</textarea><br><br>Problem Setter: $r1[pbauthor]<br><br>");
+echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit: $r1[tlimit] Seconds<br><br> Problem Details<br><br><textarea class=\"form-control rb\" rows=\"30\" cols=\"95\" readonly>$r1[pbdes]</textarea><br><br>Problem Setter: $r1[pbauthor]<br><br>");
 
  
 
@@ -499,7 +499,7 @@ $cnt=$r1['cname'];
     
     echo("<center><h2 id=\"demo\" class=\"btn btn-primary btn-lg\"></h2></center><br><br>"); 
      
-    echo("<div class=\"xmm\">Contest Name: <a href=\"contestproblem.php?name=$row[cname]\">$row[cname]</a><br><br>Contest Date: $row[date_on] <br><br>Start Time: $row[start_at]<br><br>End Time: $row[end_at] <br><br><br><br></div>");
+    echo("<div class=\"xmm\">Contest Name: <a class=\"blue\"href=\"contestproblem.php?name=$row[cname]\">$row[cname]</a><br><br>Contest Date: $row[date_on] <br><br>Start Time: $row[start_at]<br><br>End Time: $row[end_at] <br><br><br><br></div>");
 
 
     }
@@ -534,7 +534,7 @@ else
 
       echo("<center><h2 id=\"demo\" class=\"btn btn-primary btn-lg\"></h2></center><br><br>"); 
      
-     echo("<div class=\"xmm\">Contest Name: <a href=\"contestproblem.php?name=$r8[cname]\">$oc[cname]</a><br><br>Contest Date: $oc[date_on] <br><br>Start Time: $oc[start_at]<br><br>End Time: $oc[end_at] <br><br></div>");
+     echo("<div class=\"xmm\">Contest Name: <a class=\"blue\" href=\"contestproblem.php?name=$r8[cname]\">$oc[cname]</a><br><br>Contest Date: $oc[date_on] <br><br>Start Time: $oc[start_at]<br><br>End Time: $oc[end_at] <br><br></div>");
   }
 
 }

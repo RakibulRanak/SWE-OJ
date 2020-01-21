@@ -49,14 +49,14 @@ if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
     <div class="main">
       <?php require 'nav2.php'; ?>
 
-      <div style="text-align:center" ;>
+      <div class="upore"style="text-align:center" ;>
             <h3>All Contest</h3>
         </div>
 
-        <div class=" cspace">
+        <div class="container">
           
-            <div class="col-sm-10">
-                <div class="table-responsive">
+            <div class="col-sm-12 autto upore">
+                <div class="upore table-responsive">
                     <table class="table-dark table  table-striped table-hover">
                         <thead>
                             <tr>

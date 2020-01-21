@@ -66,28 +66,23 @@ else
 
 
 
-        <div class="row log">
-            <div class="col-sm-10">
+        <div class="log">
+            <div class="col-sm-12">
                 <div class="">
                     <h3 style="text-align:center;">Create New Contest</h3>
                 </div>
             </div>
 
-            <div class="col-sm-1">
-
-            </div>
-
-            <div class="col-sm-1">
-
-            </div>
+            
 
         </div>
 
 
 
 
-        <div class="row cspace">
-            <div class="col-sm-8">
+        <div class="marg">
+            <div class=""</div>
+            <div class="col-sm-8 marg">
 
 
 
@@ -95,11 +90,11 @@ else
                     <form action="contest.php" name="f2" method="POST">
 
                         <label for="ta">Enter Your Contest ID</label>
-                        <input type="text" name="ci" class="form-control"><br><br>
+                        <input type="text" name="ci" class="form-control rb"><br><br>
                         <label for="ta">Enter Your Contest Name</label>
-                        <input type="text" name="cn" class="form-control"><br><br>
+                        <input type="text" name="cn" class="form-control rb"><br><br>
                         <label for="ta">Enter Contest Date</label>
-                        <div class="input-group date form_datetime2 " data-date="2017-06-15T05:25:07Z"
+                        <div class="input-group date form_datetime2 rb" data-date="2017-06-15T05:25:07Z"
                             data-date-format=" yyyy-mm-dd " data-link-field="dtp_input1">
                             <input type='text' name="cd" class="form-control" readonly class="form_datetime2" />
 
@@ -111,7 +106,7 @@ else
 
                         <div class="input-group date form_datetime" data-date="2017-06-15T05:25:07Z"
                             data-date-format=" yyyy-mm-dd hh:ii:ss " data-link-field="dtp_input1">
-                            <input type='text' name="ct" class="form-control" readonly class="form_datetime" />
+                            <input type='text' name="ct" class="form-control rb" readonly class="form_datetime" />
 
                             <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                             <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
@@ -123,7 +118,7 @@ else
 
                         <div class="input-group date form_datetime1" data-date="2017-06-15T05:25:07Z"
                             data-date-format=" yyyy-mm-dd hh:ii:ss " data-link-field="dtp_input1">
-                            <input type='text' name="ce" class="form-control" readonly class="form_datetime1" />
+                            <input type='text' name="ce" class="form-control rb" readonly class="form_datetime1" />
 
                             <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                             <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
@@ -140,9 +135,9 @@ else
                 </div>
             </div>
 
-            <div class="col-sm-4">
+        <!--     <div class="col-sm-4">
 
-            </div>
+            </div> -->
         </div>
     </div><br><br><br>
 

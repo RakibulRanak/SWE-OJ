@@ -62,44 +62,38 @@ else
 
 
 
-        <div class="row log">
-            <div class="col-sm-10">
+        <div class="">
+            <div class="col-sm-12 upore">
                 <div class="">
                     <h3 style="text-align:center;">Create New Problem</h3>
                 </div>
             </div>
 
-            <div class="col-sm-1">
-
-            </div>
-
-            <div class="col-sm-1">
-
-            </div>
+            
 
         </div>
 
 
 
 
-        <div class="row cspace">
-            <div class="col-sm-8">
+        <div class="container">
+            <div class="col-sm-10 autto upore">
                 <div class="form-group">
                     <form action="archive.php" name="f2" method="POST">
 
                         <label for="ta">Enter Your Problem Name</label>
-                        <input type="text" name="pname" class="form-control"><br><br>
+                        <input type="text" name="pname" class="form-control rb"><br><br>
                         <label for="in">Enter Problem Description</label>
-                        <textarea name="description" class="form-control" rows="30" cols="80"></textarea><br><br>
+                        <textarea name="description" class="form-control rb" rows="30" cols="80"></textarea><br><br>
                         <label for="ta">Enter Problem Author</label>
-                        <input type="text" name="c2" class="form-control"><br><br>
+                        <input type="text" name="c2" class="form-control rb"><br><br>
                         <label for="ta">Enter Time Limit</label>
                         <input type="text" name="tll" title="Only float is allowed (Ex:3.00)" placeholder="1.00"
-                            class="form-control"><br><br>
+                            class="form-control rb"><br><br>
                         <b>Enter Test Cases</b><br>
-                        <textarea class="form-control" name="case" rows="30" cols="80"></textarea><br><br>
+                        <textarea class="form-control rb" name="case" rows="30" cols="80"></textarea><br><br>
                         <b>Enter Output Of Test Cases</b><br>
-                        <textarea class="form-control" name="result" rows="30" cols="80"></textarea><br><br>
+                        <textarea class="form-control rb" name="result" rows="30" cols="80"></textarea><br><br>
                         <input type="submit" class="btn btn-success" value="Create Problem">
 
 

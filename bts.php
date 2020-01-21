@@ -43,7 +43,7 @@ if(isset($_SESSION['un']))
 
         <div class="credit-header"> Developed By: </div>
         
-        <div class="developper container" style="background: #FFFFFF; min-height: 340px;"> 
+        <div class="container" style="background: #FFFFFF; min-height: 340px;"> 
             <div class="rowbts row"> 
                 <div class="col-md-6 text-center " style="width: 50%;display: inline-block;"> 
                     <img class="image-box" src="Images/ranak.jpg" alt="Farhad"> 

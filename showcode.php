@@ -59,28 +59,21 @@ if(isset($_SESSION['un']))
     <div class="main">
         <?php require 'nav2.php'; ?>
 
-        <div class="row log">
-            <div class="col-sm-10">
+        <
+            <div class="upore">
                 <div class="">
                     <h3 style="text-align:center;">Show Code</h3>
                 </div>
-            </div>
+            
 
-            <div class="col-sm-1">
-
-            </div>
-
-            <div class="col-sm-1">
-
-            </div>
 
         </div>
 
 
 
 
-        <div class="row cspace">
-            <div class="col-sm-8">
+        <div class="container upore ">
+            <div class="col-sm-10 autto upore">
 
                 <?php
 
@@ -104,7 +97,7 @@ echo "Submitted By : $data<br><br>";
 
 while($row=mysqli_fetch_array($sq))
 {
-	echo("Submit Id: $row[id]<br><br><textarea id='div' class=\"form-control\" rows=\"50\" cols=\"40\">$row[source_code]</textarea>");
+	echo("Submit Id: $row[id]<br><br><textarea id='div' class=\"form-control rb\" rows=\"30\" cols=\"40\">$row[source_code]</textarea>");
 }
 
 
@@ -114,9 +107,7 @@ while($row=mysqli_fetch_array($sq))
 
             </div>
 
-            <div class="col-sm-4">
-
-            </div>
+            
         </div>
     </div>
     </div><br><br><br>
