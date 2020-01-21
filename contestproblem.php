@@ -189,7 +189,7 @@ if(isset($_GET['name']))
 <h2><div id="tc"></div></h2>
 
 <div class="table-responsive">
-    <table class="table table-striped table-hover">
+    <table class="table-dark table table-striped table-hover">
     <thead>
     <tr>
      <th>ID</th>
@@ -381,7 +381,7 @@ if(isset($_GET['name']))
                 echo "
 
        
-      <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-success btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td><td><div class=\"btn btn-primary btn-sm\" id=\"$temp\" style=\"display:none;\">Added</div></td></tr>";
+      <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btnn2 btn-success btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td><td><div class=\"btn btn-primary btn-sm\" id=\"$temp\" style=\"display:none;\">Added</div></td></tr>";
 
             }
           else
@@ -390,7 +390,7 @@ if(isset($_GET['name']))
               echo "
 
        
-      <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-success btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td><td>
+      <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btnn2 btn-success btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td><td>
 
 
        
@@ -410,7 +410,7 @@ if(isset($_GET['name']))
             <input type=\"hidden\" name=\"ac\" class=\"form-control\" value=\"$row[output]\";>
             <input type=\"hidden\" name=\"ptl\" class=\"form-control\" value=\"$row[tlimit]\";>
            
-            <input type=\"submit\" class=\"btn btn-success\" id=\"$temp\" style=\"display:none;\" name=\"up\" value=\"Add\">
+            <input type=\"submit\" class=\"btn btn-sm btn-success\" id=\"$temp\" style=\"display:none;\" name=\"up\" value=\"Add\">
           
 
 
@@ -435,7 +435,7 @@ if(isset($_GET['name']))
                 echo "
 
        
-      <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btn-danger btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td> <td><div class=\"btn btn-primary btn-sm\" id=\"$temp\" style=\"display:none;\">Added</div></td></tr>";
+      <tr><td>$row[pbid]</td><td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td><td><div class=\"btn btnn2 btn-danger btn-sm\">$ver</div></td><td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td><td>$row[pbauthor]</td> <td><div class=\"btn btn-primary btn-sm\" id=\"$temp\" style=\"display:none;\">Added</div></td></tr>";
              }
              else{
 
@@ -445,7 +445,7 @@ if(isset($_GET['name']))
       <tr>
       <td>$row[pbid]</td>
       <td><a href=\"details.php?id=$row[pbid]\"><div class=\"\">$row[pbname]</div></a></td>
-      <td><div class=\"btn btn-danger btn-sm\">$ver</div></td>
+      <td><div class=\"btn btnn2 btn-danger btn-sm\">$ver</div></td>
       <td><progress id=\"myProgress\" value=\"$sol[verdict]\" max=\"$ntsub[sub]\"></progress> $sol[verdict]/$ntsub[sub]</td>
       <td>$row[pbauthor]</td> 
       <td>
@@ -468,7 +468,7 @@ if(isset($_GET['name']))
             <input type=\"hidden\" name=\"ac\" class=\"form-control\" value=\"$row[output]\";>
             <input type=\"hidden\" name=\"ptl\" class=\"form-control\" value=\"$row[tlimit]\";>
            
-            <input type=\"submit\" class=\"btn btn-success\" id=\"$temp\" style=\"display:none;\"name=\"up\" value=\"Add\">
+            <input type=\"submit\" class=\"btn btn-sm btn-success\" id=\"$temp\" style=\"display:none;\"name=\"up\" value=\"Add\">
           
           </form>
        
@@ -653,7 +653,9 @@ if(isset($_GET['name']))
 
      }
      
-     echo("<div style=\"border:1px solid gray; padding:10px; border-radius:0px;\">Contest Name: <a href=\"contestproblem.php?name=$n\">$timerow[cname]</a><br><br>Contest Date: $timerow[date_on] <br><br>Start Time: $timerow[start_at]<br><br>End Time: $timerow[end_at] <br><br><div id=\"demo\"></div> <br><br></div>");
+     echo("<div style=\"border:1px solid gray; padding:10px; border-radius:0px;\"><h4>$timerow[cname]</h4><br><br>Contest Date: $timerow[date_on] <br><br>Start Time: $timerow[start_at]<br><br>End Time: $timerow[end_at] <br><br><div id=\"demo\"></div> <br><br></div>");
+
+
 
   
     }

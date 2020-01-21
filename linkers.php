@@ -24,5 +24,16 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 </script>
+    <style>
+body {background-color: powderblue;}
+       a {
+    color: white;
+    text-decoration: none;
+}
+a:hover {
+  color: yellow;
+  }
 
+/*a:link{color:inherit;}*/
+</style>
 <!--    <link rel="icon" type="image/png" href="img/xxx.png"> -->

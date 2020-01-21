@@ -241,7 +241,7 @@
 	border-radius:0px;
 	text-decoration: none;
 	text-align: center;
-	background-color: #449D44;
+	background-color: navy;
 	color:white;
 }
 
@@ -809,11 +809,3 @@ pre {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-*{
-	/*font-size: 15PX;*/
-}
-td {
-          
-            width: auto;
-            height: auto;
-   }

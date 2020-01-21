@@ -78,7 +78,7 @@ if(isset($_GET['id']))
             </div>
             <div class="col-sm-9">
                 <div class="table-responsive">
-                    <table class="table table-striped table-hover">
+                    <table class="table-dark table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>Rank</th>

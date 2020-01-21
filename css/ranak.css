@@ -151,3 +151,11 @@
 table {
  /*table-layout:fixed;*/
 }
+.btnn2 {
+    width: 80px;
+}
+.blue{
+
+  color: blue;
+    text-decoration: none;
+}

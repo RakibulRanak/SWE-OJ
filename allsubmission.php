@@ -30,6 +30,16 @@ if(isset($_SESSION['un']))
     <title>All Submission</title>
 
     <?php include 'linkers.php';?>
+    <style>
+    a {
+    color: white;
+    text-decoration: none;
+}
+a:hover {
+  color: yellow;
+  }
+</style>
+
 
 
 </head>
@@ -54,7 +64,7 @@ if(isset($_SESSION['un']))
             
             <div class="col-sm-10">
                 <div class="table-responsive">
-                    <table class="table table-striped table-hover">
+                    <table class="table-dark table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>ID</th>

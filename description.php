@@ -116,7 +116,7 @@ echo "
 <p>Time Limit: $row[tlimit] Seconds</p><br><br>
 <b>Problem Description</b><br><br><textarea class=\"form-control\" rows=\"30\" cols=\"100\" readonly>$row[pbdes]</textarea><br>";
 
-echo "<b>Problem Setter : <a href=\"profile.php?user=$row[pbauthor]\">$row[pbauthor]</a></b><br><br>";
+echo "<b>Problem Setter : <a class=\"blue\" href=\"profile.php?user=$row[pbauthor]\">$row[pbauthor]</a></b><br><br>";
 
 
 echo "<a class=\"btn btn-success\" href=\"submit.php?id=$row[id]\">Submit Your Code</a></div>";

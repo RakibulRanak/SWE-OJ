@@ -171,7 +171,7 @@ if(isset($_GET['id']))
             
             <div class="col-sm-10">
                 <div class="table-responsive">
-                    <table class="table table-striped table-hover">
+                    <table class="table-dark table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -535,7 +535,8 @@ if(isset($_POST['id']))
     //var_dump($uo);
     //var_dump($ao);
 
-    $checkq="SELECT * FROM submission WHERE pbname='$proname' AND cid='$conid' AND sname='$username' AND status='1'";
+    $checkq="SELECT * FROM submission WHERE pbname='$proname' AND cid='$conid' AND 
+    sname='$username' AND status='1'";
     $scheckq=mysqli_query($con,$checkq);
     $detect=mysqli_num_rows($scheckq);
     if($detect>=1)

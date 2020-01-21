@@ -164,11 +164,11 @@ $row=mysqli_fetch_array($send);
             </div>
             <div class="col-sm-5 pbs">
 
-                <div class="ym">
+                <div class="">
                     <div class="pc">Information</div>
 
 
-                    <table class="table table-striped table-hover">
+                    <table class="table-dark table table-striped table-hover">
                         <tr class="success">
                             <td>Name : <?php echo("$row[name]") ?></td>
                         </tr>
@@ -203,11 +203,11 @@ $row=mysqli_fetch_array($send);
      if($data==$_SESSION['un']  && $admin==1)
      {
 
-    echo "  <div class=\"ym\">
+    echo "  <div class=\"\">
         <div class=\"pc\">Dashboard</div>
   
    
-           <table class=\"table table-striped table-hover\" >
+           <table class=\"table-dark table table-striped table-hover\" >
             
            
              <tr><td><a href=\"setcontest.php\">Create Contest</a></td></tr>
