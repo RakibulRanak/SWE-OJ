@@ -80,9 +80,9 @@ else
 
 
 
-        <div class="marg">
-            <div class=""</div>
-            <div class="col-sm-8 marg">
+        <div class="">
+            <div class="container"</div>
+            <div class="col-sm-10 autto">
 
 
 

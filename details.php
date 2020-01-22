@@ -322,6 +322,11 @@ echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit:
 
 //sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss////////////////////////////
 
+
+
+
+
+
 if(isset($_GET['name']) && isset($_GET['cod']))
 {
   $des=$_GET['name'];
@@ -374,10 +379,11 @@ echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit:
     var end=<?php print json_encode($en);?>; 
     var val=<?php print json_encode($i);?>; 
     var nv=<?php print json_encode($nv);?>; 
+    var cur=<?php print json_encode(date("Y-m-d H:i:s "));?>;
 
     //console.log("Start" +nv);
 
-    call(end,val,nv);
+    call(end,val,nv,cur);
 
 
    </script>

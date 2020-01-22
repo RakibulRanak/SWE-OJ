@@ -1,9 +1,16 @@
 <?php
-$CC = "g++";
+if ($languageID == "c") {
+	//echo "c";
+	$CC = "gcc";
+	$filename_code = "main.c";
+} else {
+	//echo "c na";
+	$CC = "g++";
+	$filename_code = "main.cpp";
+}
 $out = "timeout 5s ./a.out";
 $code = $_POST["code"];
 $input = $_POST["input"];
-$filename_code = "main.cpp";
 $filename_in = "input.txt";
 $filename_error = "error.txt";
 $executable = "a.out";
@@ -37,14 +44,11 @@ if (trim($error) == "") {
 		$output = shell_exec($out);
 
 	}
-	//echo "<pre>$output</pre>";
 	echo "<textarea id='div' class=\"form-control rb\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
 } else if (!strpos($error, "error")) {
 
 	$error_message = htmlspecialchars($error);
 	echo "<pre class=\"rb\">$error_message</pre>";
-	//echo "hi1";
-	//echo "<pre>$error</pre>";
 	if (trim($input) == "") {
 		$output = shell_exec($out);
 	} else {
@@ -56,8 +60,6 @@ if (trim($error) == "") {
 
 	$error_message = htmlspecialchars($error);
 	echo "<pre class=\"rb\">$error_message</pre>";
-	//echo "hi";
-	//echo "<pre>$error</pre>";
 	$check = 1;
 }
 $executionEndTime = microtime(true);
