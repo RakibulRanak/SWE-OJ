@@ -214,12 +214,10 @@ if ($data == $_SESSION['un'] && $admin == 1) {
 
                 </div>
 
-                <div class="col-sm-4">
 
-                </div>
             </div>
         </div>
-    </div><br><br><br>
+    </div>
 
     <?php require 'footer.php';?>
 </body>

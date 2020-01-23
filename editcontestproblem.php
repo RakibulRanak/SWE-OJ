@@ -1,67 +1,56 @@
 <?php
 
 session_start();
-require_once("config.php");
+require_once "config.php";
 
 $_SESSION['url'] = $_SERVER['REQUEST_URI'];
-if(!isset($_SESSION["un"]))
-{
+if (!isset($_SESSION["un"])) {
 	header("Location:login.php");
 }
 
-if(isset($_SESSION['un']))
-{
-	$username=$_SESSION['un'];
+if (isset($_SESSION['un'])) {
+	$username = $_SESSION['un'];
 }
 
-$mysql="SELECT  status from user WHERE name='$username'";
-$snd=mysqli_query($con,$mysql);
-$arrow=mysqli_fetch_array($snd);
+$mysql = "SELECT  status from user WHERE name='$username'";
+$snd = mysqli_query($con, $mysql);
+$arrow = mysqli_fetch_array($snd);
 
-$st=$arrow['status'];
+$st = $arrow['status'];
 
-$access=0;
+$access = 0;
 
-if(isset($_GET['id']))
-{
-    $pid=$_GET['id'];
+if (isset($_GET['id'])) {
+	$pid = $_GET['id'];
 }
-
 
 ?>
 
 <?php
 
-require_once("config.php");
+require_once "config.php";
 
-if(isset($_GET['id']))
-{
+if (isset($_GET['id'])) {
 
- $getcon="SELECT cname from element WHERE pbid='$pid'";
- $sendcon=mysqli_query($con,$getcon);
- $namerow=mysqli_fetch_array($sendcon);
- $coname=$namerow['cname'];
+	$getcon = "SELECT cname from contestproblems WHERE pbid='$pid'";
+	$sendcon = mysqli_query($con, $getcon);
+	$namerow = mysqli_fetch_array($sendcon);
+	$coname = $namerow['cname'];
 
- $fowner="SELECT  owner from rapl_oj_contest where cname='$coname'";
- $sendit=mysqli_query($con,$fowner);
- $frow=mysqli_fetch_array($sendit);
- $owner=$frow['owner'];
+	$fowner = "SELECT  owner from contest where cname='$coname'";
+	$sendit = mysqli_query($con, $fowner);
+	$frow = mysqli_fetch_array($sendit);
+	$owner = $frow['owner'];
 
- if($username==$owner)
- {
-      $access=1;
- }
- else if($st=="Teacher" || $st=="Developer")
- {   
-      $access=1;
- }
- else
- {
-     header("Location:contest.php");
- }
+	if ($username == $owner) {
+		$access = 1;
+	} else if ($st == "Teacher" || $st == "Developer") {
+		$access = 1;
+	}if ($access == 0) {
+		header("Location:contest.php");
+	}
 
 }
- 
 
 ?>
 
@@ -69,8 +58,8 @@ if(isset($_GET['id']))
 <!DOCTYPE html>
 <html>
 <head>
-  
-    
+
+
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Set Problem</title>
@@ -80,7 +69,7 @@ if(isset($_GET['id']))
 </head>
 <body>
 <div class="main">
- <?php require 'nav2.php'; ?>
+ <?php require 'nav2.php';?>
 
 
 
@@ -95,32 +84,29 @@ if(isset($_GET['id']))
 
 <?php
 
-require_once("config.php");
+require_once "config.php";
 
-$fetch="SELECT * from element where pbid='$pid'";
-$sfetch=mysqli_query($con,$fetch);
-$erow=mysqli_fetch_array($sfetch);
-$name=$erow['cname'];
-$cid=$erow['id'];
-$pbname=$erow['pbname'];
-$pbdes=$erow['pbdes'];
-$pbauthor=$erow['pbauthor'];
-$tc=$erow['tc'];
-$output=$erow['output'];
-$uoutput=$erow['uoutput'];
-$tlimit=$erow['tlimit'];
-$pbid=$erow['pbid'];
+$fetch = "SELECT * from contestproblems where pbid='$pid'";
+$sfetch = mysqli_query($con, $fetch);
+$erow = mysqli_fetch_array($sfetch);
+$name = $erow['cname'];
+$cid = $erow['id'];
+$pbname = $erow['pbname'];
+$pbdes = $erow['pbdes'];
+$pbauthor = $erow['pbauthor'];
+$tc = $erow['tc'];
+$output = $erow['output'];
+$uoutput = $erow['uoutput'];
+$tlimit = $erow['tlimit'];
+$pbid = $erow['pbid'];
 
+$q3 = "SELECT cname FROM contest WHERE id='$cid'";
 
-    $q3="SELECT cname FROM rapl_oj_contest WHERE id='$cid'";
+$r = mysqli_query($con, $q3);
 
-    $r=mysqli_query($con,$q3);
+$r1 = mysqli_fetch_array($r);
 
-   $r1=mysqli_fetch_array($r);
-
-   $n=$r1['cname'];
-
-
+$n = $r1['cname'];
 
 ?>
 
@@ -128,7 +114,7 @@ $pbid=$erow['pbid'];
     <div class="col-sm-10 autto ">
       <div class="form-group ">
 
-        <form action="contestproblem.php?name=<?php echo $n;?> name="f2" method="POST">
+        <form action="contestproblem.php?id=<?php echo $cid; ?> name="f2" method="POST">
 
             <input type="hidden" name="ccid" class="form-control" value="<?php echo "$cid"; ?>"><br><br>
             <input type="hidden" name="ci" class="form-control" value="<?php echo "$pid"; ?>"><br><br>
@@ -156,19 +142,18 @@ $pbid=$erow['pbid'];
 
         <?php
 
-        if(isset($_GET['fail']))
-        {
+if (isset($_GET['fail'])) {
 
-        ?>
+	?>
 
         <script type="text/javascript">alert("You Are Not Owner Of This Contest . Only Owner Can Add Problems");</script>
 
 
         <?php
 
-          }
+}
 
-        ?>
+?>
 
 
 
@@ -179,7 +164,7 @@ $pbid=$erow['pbid'];
 </div>
 </div><br><br><br>
 
-<?php require 'footer.php'; ?>
+<?php require 'footer.php';?>
 </body>
 </html>
 

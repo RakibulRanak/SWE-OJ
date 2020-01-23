@@ -1,47 +1,37 @@
 <?php
 
 session_start();
-require_once("config.php");
-
+require_once "config.php";
 
 $_SESSION['url'] = $_SERVER['REQUEST_URI'];
-if(!isset($_SESSION["un"]))
-{
-  header("Location:login.php");
+if (!isset($_SESSION["un"])) {
+	header("Location:login.php");
 }
 
-if(isset($_SESSION['un']))
-{
-  $username=$_SESSION['un'];
+if (isset($_SESSION['un'])) {
+	$username = $_SESSION['un'];
 }
 
+$mysql = "SELECT  status from user WHERE name='$username'";
+$snd = mysqli_query($con, $mysql);
+$arrow = mysqli_fetch_array($snd);
 
-$mysql="SELECT  status from user WHERE name='$username'";
-$snd=mysqli_query($con,$mysql);
-$arrow=mysqli_fetch_array($snd);
+$st = $arrow['status'];
 
-$st=$arrow['status'];
-
-
-$access=0;
-
-
-
-
-
+$access = 0;
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-  
-    
+
+
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Announcement</title>
         <?php include 'linkers.php';?>
-      
+
 
 
 
@@ -71,107 +61,79 @@ $access=0;
 
 <?php
 
-require_once("config.php");
+require_once "config.php";
 
 //create announcement from profile announcement
 
-if(isset($_POST['cr']))
-{
+if (isset($_POST['cr'])) {
 
-   
+	$cid = $_POST['ci'];
+	$cname = $_POST['cn'];
+	$announcement = $_POST['an'];
 
-   $cid=$_POST['ci'];
-   $cname=$_POST['cn'];
-   $announcement=$_POST['an'];
+	$fowner = "SELECT  owner from contest where cname='$cname'";
+	$sendit = mysqli_query($con, $fowner);
+	$frow = mysqli_fetch_array($sendit);
+	$owner = $frow['owner'];
 
- $fowner="SELECT  owner from rapl_oj_contest where cname='$cname'";
- $sendit=mysqli_query($con,$fowner);
- $frow=mysqli_fetch_array($sendit);
- $owner=$frow['owner'];
+	if ($username == $owner) {
+		$access = 1;
+	} else if ($st == "Teacher" || $st == "Developer") {
+		$access = 1;
+	}
 
- if($username==$owner)
- {
-      $access=1;
- }
- else if($st=="Teacher" || $st=="Developer")
- {   
-      $access=1;
- }
+	if ($access == 1) {
+		$query = "INSERT INTO announcement(id,cname,des) VALUES('$cid','$cname','$announcement')";
+		$send = mysqli_query($con, $query);
 
-
-   if($access==1)
-   {
-     $query="INSERT INTO announcement(id,cname,des) VALUES('$cid','$cname','$announcement')";
-     $send=mysqli_query($con,$query);
-
-     if($send)
-     {
-       echo "<b>Submitted Successfully.</b> <br><br>";
-      // echo "gd";
-     }
-   }
-   else
-   {
-       header("Location:announcement.php?fail=1");
-    //echo "bal";
-   }
+		if ($send) {
+			echo "<b>Submitted Successfully.</b> <br><br>";
+			// echo "gd";
+		}
+	} else {
+		header("Location:announcement.php?fail=1");
+		//echo "bal";
+	}
 
 }
-   
+
 //announcement delete from profile>announcement
 
+if (isset($_POST['up'])) {
 
-if(isset($_POST['up']))
-{
+	$aid = $_POST['ann'];
+	$cont = $_POST['con'];
 
-  
+	$fowner = "SELECT  owner from contest where cname='$cont'";
+	$sendit = mysqli_query($con, $fowner);
+	$frow = mysqli_fetch_array($sendit);
+	$owner = $frow['owner'];
 
-   $aid=$_POST['ann'];
-   $cont=$_POST['con'];
-   
+	if ($username == $owner) {
+		$access = 1;
+	} else if ($st == "Teacher" || $st == "Developer") {
+		$access = 1;
+	}
 
- $fowner="SELECT  owner from rapl_oj_contest where cname='$cont'";
- $sendit=mysqli_query($con,$fowner);
- $frow=mysqli_fetch_array($sendit);
- $owner=$frow['owner'];
+	if ($access == 1) {
+		$query = "DELETE FROM announcement WHERE aid='$aid'";
+		$send = mysqli_query($con, $query);
 
- if($username==$owner)
- {
-      $access=1;
- }
- else if($st=="Teacher" || $st=="Developer")
- {   
-      $access=1;
- }
-
-
-   if($access==1)
-   {
-     $query="DELETE FROM announcement WHERE aid='$aid'";
-     $send=mysqli_query($con,$query);
-
-     if($send)
-     {
-       echo "<b>Deleted Successfully.</b> <br><br>";
-     }
-  }
- else
- {
-    header("Location:announcement.php?fail=1");
- }
+		if ($send) {
+			echo "<b>Deleted Successfully.</b> <br><br>";
+		}
+	} else {
+		header("Location:announcement.php?fail=1");
+	}
 }
 
-$query="SELECT * from announcement";
-   $send=mysqli_query($con,$query);
-  
-   while($row=mysqli_fetch_array($send))
-   {
-       $aid=$row['aid'];
-       echo "<button class=\"btn btn-success\">$aid</button><button class=\"btn btn-primary\">$row[cname]</button> <div class=\"alert alert-info\">$row[des]</div><br>";
-   }
+$query = "SELECT * from announcement";
+$send = mysqli_query($con, $query);
 
-
-
+while ($row = mysqli_fetch_array($send)) {
+	$aid = $row['aid'];
+	echo "<button class=\"btn btn-success\">$aid</button><button class=\"btn btn-primary\">$row[cname]</button> <div class=\"alert alert-info\">$row[des]</div><br>";
+}
 
 ?>
 
@@ -180,14 +142,13 @@ $query="SELECT * from announcement";
 
 <?php
 
-if($st=="Teacher" || $st=="Developer" || $st=="Problem Setter")
-{
-?>
+if ($st == "Teacher" || $st == "Developer" || $st == "Problem Setter") {
+	?>
 
 <div class="col-sm-5 upore autto">
 <div class="form-group">
 <legend>Create Announcement</legend>
-<form action="<?php echo $_SERVER['PHP_SELF']?>" name="f2" method="POST">
+<form action="<?php echo $_SERVER['PHP_SELF'] ?>" name="f2" method="POST">
 <label for="ta">Enter Your Contest ID</label>
 <input type="text" name="ci" class="form-control rb" required><br><br>
 <label for="ta">Enter Your Contest Name</label>
@@ -199,8 +160,8 @@ if($st=="Teacher" || $st=="Developer" || $st=="Problem Setter")
 
 </form>
 
-<form action="<?php echo $_SERVER['PHP_SELF']?>" name="f3" method="POST">
-  
+<form action="<?php echo $_SERVER['PHP_SELF'] ?>" name="f3" method="POST">
+
 <legend>Delete Announcement</legend>
 <label for="ta">Enter Announcement Number</label>
 <input type="text" name="ann" class="form-control rb"><br><br>
@@ -221,9 +182,8 @@ if($st=="Teacher" || $st=="Developer" || $st=="Problem Setter")
 <?php
 }
 
-if(isset($_GET['fail']))
-{
-   echo "<script>alert(\"You Are Not Owner Of This Contest. Only Owner Can Control Announcement\");</script>";
+if (isset($_GET['fail'])) {
+	echo "<script>alert(\"You Are Not Owner Of This Contest. Only Owner Can Control Announcement\");</script>";
 }
 ?>
 

@@ -204,15 +204,15 @@ if (isset($_POST['up'])) {
 	$tc = $_POST['c3'];
 	$out = $_POST['c4'];
 	$ptl = $_POST['tll'];
+	//echo $cid;
 
 	if ($access == 1) {
 		$update = "UPDATE contestproblems SET pbname='$pn',pbdes='$des',pbauthor='$au',tc='$tc',output='$out',tlimit=$ptl WHERE pbid=$pbid";
 		$supdate = mysqli_query($con, $update);
 
 		if ($supdate) {
-			echo "<script>alert(\"Updated Successfully\");</script>";
-			header("Location:contestproblem.php?name=$contest");
-
+			//echo "<script>alert(\"Updated Successfully\");</script>";
+			header("Location:contestproblem.php?id=$cid");
 		} else {
 			echo "<script>alert(\"Failed\");</script>";
 
@@ -241,7 +241,7 @@ if (isset($_POST['del'])) {
 	if ($access == 1) {
 		$delete = "DELETE FROM contestproblems WHERE pbid=$pbid";
 		$sdelete = mysqli_query($con, $delete);
-		header("Location:contestproblem.php?name=$contest");
+		header("Location:contestproblem.php?id=$cid");
 	} else if ($access == 0) {
 		echo "<script>alert(\"Forbidden\");</script>";
 
@@ -252,7 +252,7 @@ if (isset($_POST['del'])) {
 // CREATE PROBLEM FROM SETCONTESTPROBLEM.PHP
 if (isset($_POST['new'])) {
 
-	//$contest = $_POST['cn'];
+	$contest = $_POST['cn'];
 	$cid = $_POST['ci'];
 	$pn = $_POST['pb'];
 	$des = $_POST['c1'];
@@ -274,11 +274,12 @@ if (isset($_POST['new'])) {
 	} else {
 		$access = 0;
 	}
+	echo $contest;
 
 	if ($access == 1) {
 
-		$q2 = "INSERT into contestproblems  (`id`, `pbname`, `pbdes`, `pbauthor`, `tc`, `output`, `uoutput`,
-        `pbid`, `tlimit`) VALUES('$cid','$pn','$des','$au','$tc','$out','',NULL,'$ptl')";
+		$q2 = "INSERT into contestproblems  (`id`,`cname`, `pbname`, `pbdes`, `pbauthor`, `tc`, `output`, `uoutput`,
+        `pbid`, `tlimit`) VALUES('$cid','$contest','$pn','$des','$au','$tc','$out','',NULL,'$ptl')";
 		$sq2 = mysqli_query($con, $q2);
 		header("Location:contestproblem.php?id=$cid");
 	} else {
@@ -463,7 +464,7 @@ if (isset($_GET['id'])) {
   <?php if ($access == 1) {
 	echo "
   <div class=\"col-sm-12\"><h3 style=\"text-align:center;\">
-                <a class=\"btn btn-primary\" href=\"setcontestproblem.php?id=$cid\">Add Problems</a></h3></</div> ";
+                <a class=\"btn btn-primary\" href=\"setcontestproblem.php?id=$cid\">+</a></h3></</div> ";
 
 }?>
 

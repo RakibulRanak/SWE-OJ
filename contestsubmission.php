@@ -338,7 +338,7 @@ if (isset($_POST['id'])) {
 	//echo "here";
 	// $hha=$_POST['id'];
 	//echo $hha;
-	$sqlp = "SELECT * FROM element WHERE pbid='$cid'";
+	$sqlp = "SELECT * FROM contestproblems WHERE pbid='$cid'";
 
 	$sqp = mysqli_query($con, $sqlp);
 
@@ -407,8 +407,8 @@ if (isset($_POST['id'])) {
 
 	}
 
-	$query = "SELECT output FROM element WHERE pbid='$cid'";
-	$quo = "SELECT * FROM element WHERE pbid='$cid'";
+	$query = "SELECT output FROM contestproblems WHERE pbid='$cid'";
+	$quo = "SELECT * FROM contestproblems WHERE pbid='$cid'";
 	$sq = mysqli_query($con, $query);
 	$sq1 = mysqli_query($con, $quo);
 	$r3 = mysqli_fetch_array($sq);

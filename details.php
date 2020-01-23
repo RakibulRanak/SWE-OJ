@@ -2,74 +2,63 @@
 
 ob_start();
 session_start();
-require_once("config.php");
+require_once "config.php";
 
 $_SESSION['url'] = $_SERVER['REQUEST_URI'];
 
-if(!isset($_SESSION['un']))
-{
-  header("Location:login.php");
+if (!isset($_SESSION['un'])) {
+	header("Location:login.php");
 }
-if(isset($_SESSION['un']))
-{
-  $username=$_SESSION['un'];
+if (isset($_SESSION['un'])) {
+	$username = $_SESSION['un'];
 }
 
-$mysql="SELECT  status from user WHERE name='$username'";
-$snd=mysqli_query($con,$mysql);
-$arrow=mysqli_fetch_array($snd);
+$mysql = "SELECT  status from user WHERE name='$username'";
+$snd = mysqli_query($con, $mysql);
+$arrow = mysqli_fetch_array($snd);
 
-$st=$arrow['status'];
+$st = $arrow['status'];
 
-$access=0;
+$access = 0;
 
-if(isset($_GET['id']))
-{
-    $pid=$_GET['id'];
+if (isset($_GET['id'])) {
+	$pid = $_GET['id'];
 }
-
 
 ?>
 
 <?php
 
- require_once("config.php");
+require_once "config.php";
 
-if(isset($_GET['id']))
-{
+if (isset($_GET['id'])) {
 
- $getcon="SELECT cname from element WHERE pbid='$pid'";
- $sendcon=mysqli_query($con,$getcon);
- $namerow=mysqli_fetch_array($sendcon);
- $coname=$namerow['cname'];
+	$getcon = "SELECT cname from contestproblems WHERE pbid='$pid'";
+	$sendcon = mysqli_query($con, $getcon);
+	$namerow = mysqli_fetch_array($sendcon);
+	$coname = $namerow['cname'];
 
- $fowner="SELECT  owner from rapl_oj_contest where cname='$coname'";
- $sendit=mysqli_query($con,$fowner);
- $frow=mysqli_fetch_array($sendit);
- $owner=$frow['owner'];
+	$fowner = "SELECT  owner from contest where cname='$coname'";
+	$sendit = mysqli_query($con, $fowner);
+	$frow = mysqli_fetch_array($sendit);
+	$owner = $frow['owner'];
 
- if($username==$owner)
- {
-      $access=1;
- }
- else if($st=="Teacher" || $st=="Developer")
- {   
-      $access=1;
- }
- else
- {
-     $access=0;
- }
+	if ($username == $owner) {
+		$access = 1;
+	} else if ($st == "Teacher" || $st == "Developer") {
+		$access = 1;
+	} else {
+		$access = 0;
+	}
 }
- 
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-  
-    
+
+
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Contest</title>
@@ -85,13 +74,13 @@ if(isset($_GET['id']))
         <script src="js/vendor/jquery-1.12.0.min.js"></script>
         <script src="bootstrap-3.3.7/js/bootstrap.min.js" </script>
         <script src="bootstrap-3.3.7/js/bootstrap.js" </script> -->
-        <?php require 'linkers.php'; ?>
+        <?php require 'linkers.php';?>
 
 
          <script>
 // Set the date we're counting down to
 
-function call(d,val,st,xd){
+function call(d,st,xd){
 
 // console.log(d);
 // console.log(val);
@@ -116,12 +105,12 @@ var x = setInterval(function() {
     var now = new Date().getTime();
     //console.log(now);
     now+=diff;
-    
+
     // Find the distance between now an the count down date
-    
-    
-   
-   
+
+
+
+
 
     if(start>now)
     {
@@ -135,7 +124,7 @@ var x = setInterval(function() {
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 
-      // Output the result in an element with id="demo"
+      // Output the result in an contestproblems with id="demo"
       var result=days + "d " + hours + "h "
       + minutes + "m " + seconds + "s ";
 
@@ -146,7 +135,7 @@ var x = setInterval(function() {
     else if(countDownDate>=now)
     {
 
-       
+
         var distance = countDownDate - now;
 
         // Time calculations for days, hours, minutes and seconds
@@ -155,8 +144,8 @@ var x = setInterval(function() {
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-         
-        // Output the result in an element with id="demo"
+
+        // Output the result in an contestproblems with id="demo"
         var result=days + "d " + hours + "h "
         + minutes + "m " + seconds + "s ";
 
@@ -173,8 +162,8 @@ var x = setInterval(function() {
 
 
     }
-    
-    // If the count down is over, write some text 
+
+    // If the count down is over, write some text
     else if (now>countDownDate) {
         clearInterval(x);
 
@@ -186,7 +175,7 @@ var x = setInterval(function() {
     }
 
 
-    
+
 }, 1000);
 
   return x;
@@ -203,7 +192,7 @@ var x = setInterval(function() {
 </head>
 <body>
 <div class="main">
-<?php require 'nav2.php'; ?>
+<?php require 'nav2.php';?>
 
 
 <div class="row log">
@@ -216,7 +205,7 @@ var x = setInterval(function() {
 </div>
 
 <div class="col-sm-1">
-  
+
 </div>
 
 </div>
@@ -227,158 +216,115 @@ var x = setInterval(function() {
 
 <?php
 
-require_once("config.php");
+require_once "config.php";
 
 date_default_timezone_set("Asia/Dhaka");
 
-if(isset($_GET['id']))
-{
-   $des=$_GET['id'];
-   //echo $des;
+if (isset($_GET['id'])) {
+	$des = $_GET['id'];
+	//echo $des;
 
+	$q3 = "SELECT * FROM contestproblems WHERE pbid='$des'";
 
-$q3="SELECT * FROM element WHERE pbid='$des'";
+	$sq3 = mysqli_query($con, $q3);
 
-$sq3=mysqli_query($con,$q3);
+	$r1 = mysqli_fetch_array($sq3);
 
-$r1=mysqli_fetch_array($sq3);
+	$cnt = $r1['cname'];
 
-  $cnt=$r1['cname'];
+	echo ("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit: $r1[tlimit] Seconds<br><br> Problem Details<br><br><textarea class=\"form-control rb\" rows=\"30\" cols=\"95\" readonly>$r1[pbdes]</textarea><br><br>Problem Setter: $r1[pbauthor]<br><br>");
 
+	$conid = $r1['id'];
 
-echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit: $r1[tlimit] Seconds<br><br> Problem Details<br><br><textarea class=\"form-control rb\" rows=\"30\" cols=\"95\" readonly>$r1[pbdes]</textarea><br><br>Problem Setter: $r1[pbauthor]<br><br>");
+	$q3 = "SELECT * FROM contest WHERE id='$conid'";
+	$sq3 = mysqli_query($con, $q3);
 
-      $conid=$r1['id'];
+	while ($row = mysqli_fetch_array($sq3)) {
 
-      $q3="SELECT * FROM rapl_oj_contest WHERE id='$conid'";
-      $sq3=mysqli_query($con,$q3);
+		$current = date("Y-m-d H:i:s ");
 
-      
-      
-      $i=0;
+		$nv = $row['start_at'];
 
+		//var_dump($demo);
 
-      
-   
-  while($row=mysqli_fetch_array($sq3))
-    {
-    
-      $current=date("Y-m-d H:i:s ");
-     
-      $nv=$row['start_at'];
-    
+		$en = $row['end_at'];
 
-      $i++;
-      $demo="demo".$i;
-      //var_dump($demo);
-      
-      $en=$row['end_at'];
-     
+		?>
 
-
-
-   ?>
-      
     <script type="text/javascript">
-    var end=<?php print json_encode($en);?>; 
-    var val=<?php print json_encode($i);?>; 
-    var nv=<?php print json_encode($nv);?>; 
+    var end=<?php print json_encode($en);?>;
+
+    var nv=<?php print json_encode($nv);?>;
     var cur=<?php print json_encode(date("Y-m-d H:i:s "));?>;
 
     //console.log("Start" +nv);
 
-    call(end,val,nv,cur);
+    call(end,nv,cur);
 
 
    </script>
-      
+
     <?php
 
-     $diff=strtotime($nv)-strtotime($current);
-     $current=strtotime($current);
-     
-    // echo "$current<br>";
+		$diff = strtotime($nv) - strtotime($current);
+		$current = strtotime($current);
 
-     //echo "$diff";
+		// echo "$current<br>";
 
-     if($diff>0 && $access==0)
-     {
-         
-         header("Location:countdown.php?name=$cnt");
+		//echo "$diff";
 
-     }
+		if ($diff > 0 && $access == 0) {
 
-     echo("<div id=\"show\" style=\"display:none;\"><a class=\"btn btn-success\" href=\"contestsubmit.php?id=$r1[pbid]\">Submit Your Code</a></div>");
-     
-     echo "<div id=\"fin\"></div><br><br>";
-     
+			header("Location:countdown.php?id=$conid");
 
+		}
 
-    }
+		echo ("<div id=\"show\" style=\"display:none;\"><a class=\"btn btn-success\" href=\"contestsubmit.php?id=$r1[pbid]\">Submit Your Code</a></div>");
 
+		echo "<div id=\"fin\"></div><br><br>";
 
+	}
 
 }
 
 //sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss////////////////////////////
 
+if (isset($_GET['name']) && isset($_GET['cod'])) {
+	$des = $_GET['name'];
+	$cod = $_GET['cod'];
 
+	$q3 = "SELECT * FROM contestproblems WHERE pbname='$des' AND id='$cod'";
 
+	$sq3 = mysqli_query($con, $q3);
 
+	$r1 = mysqli_fetch_array($sq3);
 
+	echo ("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit: $r1[tlimit] Seconds<br><br> Problem Details<br><br><textarea class=\"form-control rb\" rows=\"30\" cols=\"95\" readonly>$r1[pbdes]</textarea><br><br>Problem Setter: $r1[pbauthor]<br><br>");
 
-if(isset($_GET['name']) && isset($_GET['cod']))
-{
-  $des=$_GET['name'];
-  $cod=$_GET['cod'];
+	$conid = $r1['id'];
 
-  $q3="SELECT * FROM element WHERE pbname='$des' AND id='$cod'";
+	$q3 = "SELECT * FROM contest WHERE id='$conid'";
+	$sq3 = mysqli_query($con, $q3);
 
-$sq3=mysqli_query($con,$q3);
+	$i = 0;
 
-$r1=mysqli_fetch_array($sq3);
+	while ($row = mysqli_fetch_array($sq3)) {
 
+		$current = date("Y-m-d H:i:s ");
 
-echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit: $r1[tlimit] Seconds<br><br> Problem Details<br><br><textarea class=\"form-control rb\" rows=\"30\" cols=\"95\" readonly>$r1[pbdes]</textarea><br><br>Problem Setter: $r1[pbauthor]<br><br>");
+		$nv = $row['start_at'];
 
- 
+		$i++;
+		$demo = "demo" . $i;
 
-  $conid=$r1['id'];
+		$en = $row['end_at'];
 
+		?>
 
-   $q3="SELECT * FROM rapl_oj_contest WHERE id='$conid'";
-    $sq3=mysqli_query($con,$q3);
-
-    
-       $i=0;
-
-
-      
-   
-  while($row=mysqli_fetch_array($sq3))
-    {
-     
-      $current=date("Y-m-d H:i:s ");
-
-      $nv=$row['start_at'];
-
-
-      $i++;
-      $demo="demo".$i;
-     
-      
-      $en=$row['end_at'];
-
-  
-
-
-
-   ?>
-      
     <script type="text/javascript">
-    var end=<?php print json_encode($en);?>; 
-    var val=<?php print json_encode($i);?>; 
-    var nv=<?php print json_encode($nv);?>; 
+    var end=<?php print json_encode($en);?>;
+    var val=<?php print json_encode($i);?>;
+    var nv=<?php print json_encode($nv);?>;
     var cur=<?php print json_encode(date("Y-m-d H:i:s "));?>;
 
     //console.log("Start" +nv);
@@ -387,32 +333,27 @@ echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit:
 
 
    </script>
-      
+
     <?php
 
-     $diff=strtotime($nv)-strtotime($current);
-     $current=strtotime($current);
-     
-    // echo "$current<br>";
+		$diff = strtotime($nv) - strtotime($current);
+		$current = strtotime($current);
 
-     //echo "$diff";
+		// echo "$current<br>";
 
-     if($diff>0)
-     {
-         
-         header("Location:countdown.php?name=$des");
+		//echo "$diff";
 
-     }
+		if ($diff > 0) {
 
-     echo("<div id=\"show\" style=\"display:none;\"><a class=\"btn btn-success\" href=\"contestsubmit.php?id=$r1[pbid]\">Submit Your Code</a></div>");
-     
-     echo "<div id=\"fin\"></div><br><br>";
-     
+			header("Location:countdown.php?id=$conid");
 
-    }
+		}
 
-     
-     
+		echo ("<div id=\"show\" style=\"display:none;\"><a class=\"btn btn-success\" href=\"contestsubmit.php?id=$r1[pbid]\">Submit Your Code</a></div>");
+
+		echo "<div id=\"fin\"></div><br><br>";
+
+	}
 
 }
 //////////////////////////ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss//////
@@ -423,56 +364,36 @@ echo("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit:
 
 <?php
 
-if(isset($_GET['id']))
-{
-   $des=$_GET['id'];
+if (isset($_GET['id'])) {
+	$des = $_GET['id'];
 
-$q3="SELECT * FROM element WHERE pbid='$des'";
+	$q3 = "SELECT * FROM contestproblems WHERE pbid='$des'";
 
-$sq3=mysqli_query($con,$q3);
+	$sq3 = mysqli_query($con, $q3);
 
-$r1=mysqli_fetch_array($sq3);
+	$r1 = mysqli_fetch_array($sq3);
 
+	$cnt = $r1['cname'];
 
-$cnt=$r1['cname'];
+	$conid = $r1['id'];
 
-  $conid=$r1['id'];
+	$q3 = "SELECT * FROM contest WHERE id='$conid'";
+	$sq3 = mysqli_query($con, $q3);
 
-  
-     $q3="SELECT * FROM rapl_oj_contest WHERE id='$conid'";
-      $sq3=mysqli_query($con,$q3);
+	while ($row = mysqli_fetch_array($sq3)) {
 
-   
-      
+		$current = date("Y-m-d H:i:s ");
 
-      
-      
-       $i=0;
+		$nv = $row['start_at'];
 
+		$en = $row['end_at'];
 
-      
-   
-  while($row=mysqli_fetch_array($sq3))
-    {
-      
-      $current=date("Y-m-d H:i:s ");
+		?>
 
-      
-      $nv=$row['start_at'];
-
-
-      $i++;
-      $demo="demo".$i;
-     
-      
-      $en=$row['end_at'];
-
-   ?>
-      
     <script type="text/javascript">
-    var end=<?php print json_encode($en);?>; 
-    var val=<?php print json_encode($i);?>; 
-    var nv=<?php print json_encode($nv);?>; 
+    var end=<?php print json_encode($en);?>;
+    var val=<?php print json_encode($i);?>;
+    var nv=<?php print json_encode($nv);?>;
 
     //console.log("Start" +nv);
 
@@ -480,71 +401,56 @@ $cnt=$r1['cname'];
 
 
    </script>
-      
+
     <?php
 
-     $diff=strtotime($nv)-strtotime($current);
-     $current=strtotime($current);
-     
-    // echo "$current<br>";
+		$diff = strtotime($nv) - strtotime($current);
+		$current = strtotime($current);
 
-     //echo "$diff";
+		// echo "$current<br>";
 
-     if($diff>0 && $access==0)
-     {
-         
-         header("Location:countdown.php?name=$cnt");
+		//echo "$diff";
 
-     }
+		if ($diff > 0 && $access == 0) {
 
-     
-    if($access==1) 
-    {
-       echo "<center><a class=\"btn btn-success\" href=\"editcontestproblem.php?id=$pid\">Edit</a></center>" ;
-    }
-    
-    echo("<center><h2 id=\"demo\" class=\"btn btn-primary btn-lg\"></h2></center><br><br>"); 
-     
-    echo("<div class=\"xmm\">Contest Name: <a class=\"blue\"href=\"contestproblem.php?name=$row[cname]\">$row[cname]</a><br><br>Contest Date: $row[date_on] <br><br>Start Time: $row[start_at]<br><br>End Time: $row[end_at] <br><br><br><br></div>");
+			header("Location:countdown.php?id=$conid");
 
+		}
 
-    }
+		if ($access == 1) {
+			echo "<center><a class=\"btn btn-success\" href=\"editcontestproblem.php?id=$pid\">Edit</a></center>";
+		}
 
+		echo ("<center><h2 id=\"demo\" class=\"btn btn-primary btn-lg\"></h2></center><br><br>");
 
-}
-else
-{
-   if(isset($_GET['name']) && isset($_GET['cod']))
-   {
+		echo ("<div class=\"xmm\">Contest Name: <a class=\"blue\"href=\"contestproblem.php?id=$row[id]\">$row[cname]</a><br><br>Contest Date: $row[date_on] <br><br>Start Time: $row[start_at]<br><br>End Time: $row[end_at] <br><br><br><br></div>");
 
-      $des=$_GET['name'];
-      $cod=$_GET['cod'];
+	}
 
+} else {
+	if (isset($_GET['name']) && isset($_GET['cod'])) {
 
-      $q10="SELECT * FROM element WHERE pbname='$des' AND id='$cod'";
+		$des = $_GET['name'];
+		$cod = $_GET['cod'];
 
-      $sq10=mysqli_query($con,$q10);
- 
+		$q10 = "SELECT * FROM contestproblems WHERE pbname='$des' AND id='$cod'";
 
-      $r8=mysqli_fetch_array($sq10);
+		$sq10 = mysqli_query($con, $q10);
 
-      $conid=$r1['id'];
+		$r8 = mysqli_fetch_array($sq10);
 
+		$conid = $r1['id'];
 
-     $q12="SELECT * FROM rapl_oj_contest WHERE id='$conid'";
-      $sq12=mysqli_query($con,$q12);
-      $oc=mysqli_fetch_array($sq12);
+		$q12 = "SELECT * FROM contest WHERE id='$conid'";
+		$sq12 = mysqli_query($con, $q12);
+		$oc = mysqli_fetch_array($sq12);
 
+		echo ("<center><h2 id=\"demo\" class=\"btn btn-primary btn-lg\"></h2></center><br><br>");
 
-
-
-      echo("<center><h2 id=\"demo\" class=\"btn btn-primary btn-lg\"></h2></center><br><br>"); 
-     
-     echo("<div class=\"xmm\">Contest Name: <a class=\"blue\" href=\"contestproblem.php?name=$r8[cname]\">$oc[cname]</a><br><br>Contest Date: $oc[date_on] <br><br>Start Time: $oc[start_at]<br><br>End Time: $oc[end_at] <br><br></div>");
-  }
+		echo ("<div class=\"xmm\">Contest Name: <a class=\"blue\" href=\"contestproblem.php?id=$r8[id]\">$oc[cname]</a><br><br>Contest Date: $oc[date_on] <br><br>Start Time: $oc[start_at]<br><br>End Time: $oc[end_at] <br><br></div>");
+	}
 
 }
-
 
 ?>
 </div>
@@ -554,7 +460,7 @@ else
 
 <?php
 
-require_once("footer.php");
+require_once "footer.php";
 
 ?>
 

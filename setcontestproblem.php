@@ -28,6 +28,11 @@ if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
 if (isset($_GET['id'])) {
 	$cid = $_GET['id'];
 
+	$getcon = "SELECT cname from contest WHERE id='$cid'";
+	$sendcon = mysqli_query($con, $getcon);
+	$namerow = mysqli_fetch_array($sendcon);
+	$cname = $namerow['cname'];
+
 	$fowner = "SELECT  owner from contest where id='$cid'";
 	$sendit = mysqli_query($con, $fowner);
 	$frow = mysqli_fetch_array($sendit);
@@ -93,7 +98,8 @@ if (isset($_GET['id'])) {
                     <form action="contestproblem.php" name="f2" method="POST">
                        <!--  <input type=\"hidden\" name=\"pbid\" class=\"form-control\" value=\"$row[pbid]\";> -->
                         <!-- <label for="ta">Enter Your Contest ID</label> -->
-                        <input type="hidden"name="ci" class="form-control" value="<?php echo $cid ?>"><br><br>
+                        <input type="hidden"name="ci" class="form-control" value="<?php echo $cid; ?>">
+                        <input type="hidden" name="cn" class="form-control" value="<?php echo $cname; ?>">
                         <!-- <label for="ta">Enter Your Contest Name</label>
                         <input type="text" name="cn" class="form-control rb"><br><br> -->
                         <label for="ta">Enter Problem Name</label>

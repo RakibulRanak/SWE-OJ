@@ -226,7 +226,7 @@ if ($_POST['code']) {
 	$tle = 0;
 	$ce = 0;
 
-	$isql = "SELECT * FROM element WHERE pbid='$pid'";
+	$isql = "SELECT * FROM contestproblems WHERE pbid='$pid'";
 	$si = mysqli_query($con, $isql);
 	$r4 = mysqli_fetch_array($si);
 
@@ -260,7 +260,7 @@ if ($_POST['code']) {
 	exec("chmod -R 777 $executable");
 	$error = file_get_contents($filename_error);
 
-	$sql = "SELECT output FROM element WHERE pbid='$pid'";
+	$sql = "SELECT output FROM contestproblems WHERE pbid='$pid'";
 	$sq = mysqli_query($con, $sql);
 	$row = mysqli_fetch_array($sq);
 
@@ -328,8 +328,8 @@ if ($_POST['code']) {
 
 		$code = str_replace("'", "''", $code);
 		$nsql = "INSERT into code VALUES('$us','$code',NULL)";
-		$usql = "UPDATE element SET uoutput='$coutput' WHERE pbid='$pid'"; //verdict update
-		$csql = "SELECT uoutput FROM element WHERE pbid='$pid'";
+		$usql = "UPDATE contestproblems SET uoutput='$coutput' WHERE pbid='$pid'"; //verdict update
+		$csql = "SELECT uoutput FROM contestproblems WHERE pbid='$pid'";
 		$q3 = "SELECT id FROM code ORDER BY id DESC ";
 		$snq = mysqli_query($con, $nsql);
 		$snd = mysqli_query($con, $usql);
@@ -342,7 +342,7 @@ if ($_POST['code']) {
 		$ac = $row['output'];
 		$nid = $r4['id']; //solution id of user
 
-		$quo = "SELECT * FROM element WHERE pbid='$pid'";
+		$quo = "SELECT * FROM contestproblems WHERE pbid='$pid'";
 		$sq1 = mysqli_query($con, $quo);
 		$r4 = mysqli_fetch_array($sq1);
 
