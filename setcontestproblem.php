@@ -1,37 +1,48 @@
 <?php
 
 session_start();
-require_once("config.php");
+require_once "config.php";
 
 $_SESSION['url'] = $_SERVER['REQUEST_URI'];
-if(!isset($_SESSION["un"]))
-{
+if (!isset($_SESSION["un"])) {
 	header("Location:login.php");
 }
 
-if(isset($_SESSION['un']))
-{
-	$username=$_SESSION['un'];
+if (isset($_SESSION['un'])) {
+	$username = $_SESSION['un'];
 }
 
-$mysql="SELECT  status from user WHERE name='$username'";
-$snd=mysqli_query($con,$mysql);
-$arrow=mysqli_fetch_array($snd);
+$mysql = "SELECT  status from user WHERE name='$username'";
+$snd = mysqli_query($con, $mysql);
+$arrow = mysqli_fetch_array($snd);
 
-$st=$arrow['status'];
+$st = $arrow['status'];
 
-$access=0;
+$access = 0;
 
-if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
-{
-   $access=1;
+if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
+	$access = 1;
+} else {
+	header("Location:home.php");
 }
-else
-{
-    header("Location:home.php");
+if (isset($_GET['id'])) {
+	$cid = $_GET['id'];
+
+	$fowner = "SELECT  owner from contest where id='$cid'";
+	$sendit = mysqli_query($con, $fowner);
+	$frow = mysqli_fetch_array($sendit);
+	$owner = $frow['owner'];
+
+	if ($username == $owner) {
+		$access = 1;
+	} else if ($st == "Teacher" || $st == "Developer") {
+		$access = 1;
+	} else {
+		$access = 0;
+	}
+} else {
+	header("Location:contest.php");
 }
-
-
 
 ?>
 
@@ -58,7 +69,7 @@ else
 
 <body>
     <div class="main">
-        <?php require 'nav2.php'; ?>
+        <?php require 'nav2.php';?>
 
 
 
@@ -80,25 +91,25 @@ else
             <div class="col-sm-10 upore autto">
                 <div class="form-group">
                     <form action="contestproblem.php" name="f2" method="POST">
-
-                        <label for="ta">Enter Your Contest ID</label>
-                        <input type="text" name="ci" class="form-control rb"><br><br>
-                        <label for="ta">Enter Your Contest Name</label>
-                        <input type="text" name="cn" class="form-control rb"><br><br>
+                       <!--  <input type=\"hidden\" name=\"pbid\" class=\"form-control\" value=\"$row[pbid]\";> -->
+                        <!-- <label for="ta">Enter Your Contest ID</label> -->
+                        <input type="hidden"name="ci" class="form-control" value="<?php echo $cid ?>"><br><br>
+                        <!-- <label for="ta">Enter Your Contest Name</label>
+                        <input type="text" name="cn" class="form-control rb"><br><br> -->
                         <label for="ta">Enter Problem Name</label>
-                        <input type="text" name="pb" class="form-control rb"><br><br>
+                        <input type="text" name="pb" class="form-control rb" required><br><br>
                         <label for="in">Enter Problem Description</label>
-                        <textarea name="c1" class="form-control rb" rows="30" cols="80"></textarea><br><br>
+                        <textarea name="c1" class="form-control rb" rows="30" cols="80" required></textarea><br><br>
                         <label for="ta">Enter Problem Author</label>
-                        <input type="text" name="c2" class="form-control rb"><br><br>
+                        <input type="text" name="c2" class="form-control rb" required><br><br>
                         <label for="ta">Enter Time Limit</label>
                         <input type="text" name="tll" title="Only float is allowed (Ex:3.00)" placeholder="1.00"
-                            class="form-control rb"><br><br>
+                            class="form-control rb" value="1" ><br><br>
                         <b>Enter Test Cases</b><br>
-                        <textarea class="form-control rb" name="c3" rows="30" cols="80"></textarea><br><br>
+                        <textarea class="form-control rb" name="c3" rows="30" cols="80" required></textarea><br><br>
                         <b>Enter Output Of Test Cases</b><br>
-                        <textarea class="form-control rb" name="c4" rows="30" cols="80"></textarea><br><br>
-                        <input type="submit" class="btn btn-success" value="Create Problem">
+                        <textarea class="form-control rb" name="c4" rows="30" cols="80" required></textarea><br><br>
+                        <input type="submit" name="new" class="btn btn-success" value="Create Problem">
 
 
 
@@ -107,10 +118,9 @@ else
 
                     <?php
 
-if(isset($_GET['fail']))
-{
+if (isset($_GET['fail'])) {
 
-?>
+	?>
 
                     <script type="text/javascript">
                     alert("You Are Not Owner Of This Contest . Only Owner Can Add Problems");
@@ -119,9 +129,9 @@ if(isset($_GET['fail']))
 
                     <?php
 
-   }
+}
 
-  ?>
+?>
 
 
 
@@ -134,7 +144,7 @@ if(isset($_GET['fail']))
         </div>
     </div><br><br><br>
 
-    <?php require 'footer.php'; ?>
+    <?php require 'footer.php';?>
 
 </body>
 

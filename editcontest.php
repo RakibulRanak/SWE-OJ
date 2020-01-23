@@ -21,9 +21,9 @@ $st = $arrow['status'];
 
 $access = 0;
 
-if (isset($_GET['name'])) {
+if (isset($_GET['id'])) {
 
-	$coname = $_GET['name'];
+	$cid = $_GET['id'];
 
 }
 
@@ -33,7 +33,7 @@ if (isset($_GET['name'])) {
 
 require_once "config.php";
 
-$fowner = "SELECT  owner from rapl_oj_contest where cname='$coname'";
+$fowner = "SELECT  owner from contest where id='$cid'";
 $sendit = mysqli_query($con, $fowner);
 $frow = mysqli_fetch_array($sendit);
 $owner = $frow['owner'];
@@ -96,11 +96,11 @@ if ($username == $owner) {
 
 require_once "config.php";
 
-$fetch = "SELECT * from rapl_oj_contest where cname='$coname'";
+$fetch = "SELECT * from contest where id='$cid'";
 $sfetch = mysqli_query($con, $fetch);
 $erow = mysqli_fetch_array($sfetch);
 $name = $erow['cname'];
-$id = $erow['id'];
+$id = $cid;
 $start = $erow['start_at'];
 $end = $erow['end_at'];
 $date = $erow['date_on'];

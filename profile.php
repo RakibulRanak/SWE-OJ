@@ -1,42 +1,36 @@
 <?php
 
 session_start();
-require_once("config.php");
+require_once "config.php";
 
 $_SESSION['url'] = $_SERVER['REQUEST_URI'];
 
-if(!isset($_SESSION["un"]))
-{
-  header("Location:login.php");
+if (!isset($_SESSION["un"])) {
+	header("Location:login.php");
 }
 
-if(isset($_SESSION['un']))
-{
-  $username=$_SESSION['un'];
-
-}
-
-if(isset($_GET['user']))
-{
-  $data=$_GET['user'];
-  $us=$_GET['user'];
-
+if (isset($_SESSION['un'])) {
+	$username = $_SESSION['un'];
 
 }
 
-$admin=0;
+if (isset($_GET['user'])) {
+	$data = $_GET['user'];
+	$us = $_GET['user'];
 
-$mysql="SELECT  status from user WHERE name='$username'";
-$snd=mysqli_query($con,$mysql);
-$arrow=mysqli_fetch_array($snd);
-
-$st=$arrow['status'];
-
-if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
-{
-   $admin=1;
 }
 
+$admin = 0;
+
+$mysql = "SELECT  status from user WHERE name='$username'";
+$snd = mysqli_query($con, $mysql);
+$arrow = mysqli_fetch_array($snd);
+
+$st = $arrow['status'];
+
+if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
+	$admin = 1;
+}
 
 ?>
 
@@ -52,64 +46,54 @@ if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
     <title>Profile</title>
     <?php include 'linkers.php';?>
     <style type="text/css">
-      
+
     </style>
 
 </head>
 
 <body style="overflow-x: hidden;">
     <div class="main" >
-        <?php require 'nav2.php'; ?>
+        <?php require 'nav2.php';?>
 
 
-        <div class="row log">
+        <div class="upore">
 
             <?php
-
-// if(isset($_GET['user']))
-// {
-
-//    $username=$data;
-   
-// }
-
 
 ?>
 
         </div>
-        <div class="">
-            <h3 style="text-align:center;"><?php  echo"$us's  Profile"; ?></h3>
+        <div class="autto col-sm-1">
+            <h3><?php echo "$us"; ?></h3>
         </div>
-        <div style="padding-left: 42%">
+        <div class="container">
+        <div class="autto col-sm-2 upore">
 
           <?php
-            $sql = "SELECT * FROM `user` WHERE name = '$us'";
-            $var=mysqli_query($con,$sql);
-            $row=mysqli_fetch_array($var);
+$sql = "SELECT * FROM `user` WHERE name = '$us'";
+$var = mysqli_query($con, $sql);
+$row = mysqli_fetch_array($var);
 
-            
-              $image_name=$row['photo'];
-          
-              if($image_name==""){
-        
-                echo "<img  style=\"border:solid 2px black;\" src=\"profile2.jpg\"width=\"200\" height=\"200\">";
-              }
-              else
-              {
-                        echo "<img style=\"border:solid 2px black;\" src='users/".$row['photo']."'width=\"200\" height=\"200\">";                  
+$image_name = $row['photo'];
 
-              }
-          
-          ?>
+if ($image_name == "") {
+
+	echo "<img  style=\"border:solid 2px black;\" src=\"profile2.jpg\"width=\"200\" height=\"200\">";
+} else {
+	echo "<img style=\"border:solid 2px black;\" src='users/" . $row['photo'] . "'width=\"200\" height=\"200\">";
+
+}
+
+?>
 
            <?php
-            if($data==$_SESSION['un'])
-               echo"
-          <div>   
-           
-           
-                   <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#exampleModal\" data-whatever=\"@mdo\">Change Photo</button> 
-                    
+if ($data == $_SESSION['un']) {
+	echo "
+          <div>
+
+
+                   <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#exampleModal\" data-whatever=\"@mdo\">Change Photo</button>
+
 
             <div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
               <div class=\"modal-dialog\" role=\"document\">
@@ -123,21 +107,21 @@ if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
                   <div class=\"modal-body\">
                     <form method=\"POST\" action=\"photoupload.php\" enctype=\"multipart/form-data\">
                       <div class=\"form-group\">
-                       
+
                        <!--   <form method=\"POST\" action=\"photoupload.php\" enctype=\"multipart/form-data\"> -->
                            <input type=\"file\"id=\"file\" name=\"myimage\">
                            <input type=\"hidden\" name=\"us\" class=\"form-control\" value=\"$data\";>
-        
+
                         <input type=\"submit\" name=\"submit_image\" value=\"Upload\">
                           <!--  </form> -->
                       </div>
-                      
+
                     </form>
                   </div>
-                
+
                 </div>
               </div>
-            </div> 
+            </div>
              <script>
               var uploadField = document.getElementById(\"file\");
 
@@ -148,24 +132,26 @@ if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
                   };
               };
             </script>
-            
+
 
           </div> "
-          ?>
+	;
+}
+?>
         </div>
+      </div>
 
         <?php
 
-$sql="SELECT * FROM user WHERE name='$us'";
-$send=mysqli_query($con,$sql);
-$row=mysqli_fetch_array($send);
+$sql = "SELECT * FROM user WHERE name='$us'";
+$send = mysqli_query($con, $sql);
+$row = mysqli_fetch_array($send);
 
 ?>
 
-        <div class="row cspace">
-            <div class="col-sm-2">
-            </div>
-            <div class="col-sm-5 pbs">
+        <div class="upore container">
+
+            <div class="upore col-sm-8 autto ">
 
                 <div class="">
                     <div class="pc">Information</div>
@@ -173,60 +159,58 @@ $row=mysqli_fetch_array($send);
 
                     <table class="table-dark table table-striped table-hover">
                         <tr class="success">
-                            <td>Name : <?php echo("$row[name]") ?></td>
+                            <td>Name : <?php echo ("$row[name]") ?></td>
                         </tr>
                         <tr class="info">
-                            <td>Email : <?php echo("$row[email]") ?></td>
+                            <td>Email : <?php echo ("$row[email]") ?></td>
                         </tr>
                         <tr class="danger">
-                            <td>Occupation : <?php echo("$row[status]") ?></td>
+                            <td>Occupation : <?php echo ("$row[status]") ?></td>
                         </tr>
                         <?php
 
-                       if($data==$_SESSION['un'])
-                       {
-                          echo "<tr class=\"warning\"><td><a href=\"edit.php?name=$username\">Edit Profile</a></td></tr>";
-                       }
+if ($data == $_SESSION['un']) {
+	echo "<tr class=\"warning\"><td><a href=\"edit.php?name=$username\">Edit Profile</a></td></tr>";
+}
 
-                        ?>
+?>
                         <tr class="info">
-                            <td><?php echo("<a href=\"allsubmission.php?name=$us\">Submissions</a>") ?></td>
+                            <td><?php echo ("<a href=\"allsubmission.php?name=$us\">Submissions</a>") ?></td>
                         </tr>
 
                     </table>
                 </div>
-               
+
 
                 <br><br>
 
-                
+
 
         <?php
 
-     if($data==$_SESSION['un']  && $admin==1)
-     {
+if ($data == $_SESSION['un'] && $admin == 1) {
 
-    echo "  <div class=\"\">
+	echo "  <div class=\"\">
         <div class=\"pc\">Dashboard</div>
-  
-   
+
+
            <table class=\"table-dark table table-striped table-hover\" >
-            
-           
+
+
              <tr><td><a href=\"setcontest.php\">Create Contest</a></td></tr>
-             <tr><td><a href=\"setcontestproblem.php\">Create Contest Problem</a></td></tr> 
-             <tr><td><a href=\"setproblem.php\">Create Archive Problem</a></td></tr> 
-             
+
+             <tr><td><a href=\"setproblem.php\">Create Archive Problem</a></td></tr>
+
              <tr><td><a href=\"notice.php\">Notice</a></td></tr>
              <tr><td><a href=\"announcement.php\">Announcement</a></td></tr>
             <tr><td><a href=\"createadmin.php\">Create Admin</a></td></tr>
-            
-            
+
+
             </table>
   </div>";
-          
-     }
-   ?>
+
+}
+?>
 
                 </div>
 
@@ -237,7 +221,7 @@ $row=mysqli_fetch_array($send);
         </div>
     </div><br><br><br>
 
-    <?php require 'footer.php'; ?>
+    <?php require 'footer.php';?>
 </body>
 
 </html>
