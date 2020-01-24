@@ -46,6 +46,12 @@ if ($st == "Teacher" || $st == "Developer") {
         <div class="upore"style="text-align:center" ;>
             <h3>Problem Archive</h3>
         </div>
+        <?php if ($access == 1) {
+	echo "
+ 				 <div class=\"col-sm-12\"><h3 style=\"text-align:center;\">
+                <a class=\"btn btn-primary\" href=\"setproblem.php\">+</a></h3></div> ";
+
+}?>
 
         <div class=" container upore">
 
@@ -152,7 +158,7 @@ if (isset($_GET['page'])) {
 
 $start = ($page - 1) * $per_page;
 
-$show = "SELECT * FROM archieve limit $start,$per_page"; //start from 0 index
+$show = "SELECT * FROM archieve ORDER BY id DESC limit $start,$per_page"; //start from 0 index
 $send = mysqli_query($con, $show);
 
 while ($row = mysqli_fetch_array($send)) {

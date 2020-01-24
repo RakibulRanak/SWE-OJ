@@ -1,39 +1,31 @@
 <?php
 
 session_start();
-require_once("config.php");
+require_once "config.php";
 
 $_SESSION['url'] = $_SERVER['REQUEST_URI'];
 
-if(!isset($_SESSION["un"]))
-{
+if (!isset($_SESSION["un"])) {
 	header("Location:login.php");
 }
 
-if(isset($_SESSION['un']))
-{
-	$username=$_SESSION['un'];
+if (isset($_SESSION['un'])) {
+	$username = $_SESSION['un'];
 }
 
-$mysql="SELECT  status from user WHERE name='$username'";
-$snd=mysqli_query($con,$mysql);
-$arrow=mysqli_fetch_array($snd);
+$mysql = "SELECT  status from user WHERE name='$username'";
+$snd = mysqli_query($con, $mysql);
+$arrow = mysqli_fetch_array($snd);
 
-$st=$arrow['status'];
+$st = $arrow['status'];
 
-$access=0;
+$access = 0;
 
-if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
-{
-   $access=1;
+if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
+	$access = 1;
+} else {
+	header("Location:home.php");
 }
-else
-{
-    header("Location:home.php");
-}
-
-
-
 
 ?>
 
@@ -58,7 +50,7 @@ else
 
 <body>
     <div class="main">
-        <?php require 'nav2.php'; ?>
+        <?php require 'nav2.php';?>
 
 
 
@@ -69,7 +61,7 @@ else
                 </div>
             </div>
 
-            
+
 
         </div>
 
@@ -88,7 +80,7 @@ else
                         <label for="ta">Enter Problem Author</label>
                         <input type="text" name="c2" class="form-control rb"><br><br>
                         <label for="ta">Enter Time Limit</label>
-                        <input type="text" name="tll" title="Only float is allowed (Ex:3.00)" placeholder="1.00"
+                        <input type="text" name="tll" title="Only float is allowed (Ex:3.00)" value="1.0" placeholder="1.00"
                             class="form-control rb"><br><br>
                         <b>Enter Test Cases</b><br>
                         <textarea class="form-control rb" name="case" rows="30" cols="80"></textarea><br><br>
@@ -111,7 +103,7 @@ else
     </div><br><br><br>
 
 
-    <?php require 'footer.php'; ?>
+    <?php require 'footer.php';?>
 
 </body>
 

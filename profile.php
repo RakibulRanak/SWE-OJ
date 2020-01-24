@@ -267,9 +267,6 @@ if ($data == $_SESSION['un'] && $admin == 1) {
            <table class=\"table-dark table table-striped table-hover\" >
 
 
-             <tr><td><a href=\"setcontest.php\">Create Contest</a></td></tr>
-
-             <tr><td><a href=\"setproblem.php\">Create Archive Problem</a></td></tr>
 
              <tr><td><a href=\"notice.php\">Notice</a></td></tr>
             <tr><td><a href=\"createadmin.php\">Create Admin</a></td></tr>

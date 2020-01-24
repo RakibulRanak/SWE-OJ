@@ -75,7 +75,7 @@ if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
 
         <div class="">
             <div class="container"</div>
-            <div class="col-sm-10 autto">
+            <div class="col-sm-6 upore autto">
 
 
 
@@ -86,7 +86,7 @@ if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
                         <label for="ta">Enter Your Contest Name</label>
                         <input type="text" name="cn" class="form-control rb"><br><br>
                         <label for="ta">Enter Contest Date</label>
-                        <div class="input-group date form_datetime2 rb" data-date="2017-06-15T05:25:07Z"
+                        <div class="input-group date form_datetime2 rb" data-date=""
                             data-date-format=" yyyy-mm-dd " data-link-field="dtp_input1">
                             <input type='text' name="cd" class="form-control" readonly class="form_datetime2" />
 
@@ -96,7 +96,7 @@ if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
                         <label for="ta">Enter Contest Start Time</label>
                         <!--<input type="text" name="ct" class="form-control"><br><br>-->
 
-                        <div class="input-group date form_datetime" data-date="2017-06-15T05:25:07Z"
+                        <div class="input-group date form_datetime" data-date=""
                             data-date-format=" yyyy-mm-dd hh:ii:ss " data-link-field="dtp_input1">
                             <input type='text' name="ct" class="form-control rb" readonly class="form_datetime" />
 
@@ -108,7 +108,7 @@ if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
                         <!--<input type="text" name="ce" class="form-control"><br><br>-->
 
 
-                        <div class="input-group date form_datetime1" data-date="2017-06-15T05:25:07Z"
+                        <div class="input-group date form_datetime1" data-date=""
                             data-date-format=" yyyy-mm-dd hh:ii:ss " data-link-field="dtp_input1">
                             <input type='text' name="ce" class="form-control rb" readonly class="form_datetime1" />
 

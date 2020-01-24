@@ -38,6 +38,7 @@ if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
     <title>Contest</title>
     <?php include 'linkers.php';?>
 
+
 </head>
 
 <body>
@@ -47,11 +48,18 @@ if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
       <div class="upore"style="text-align:center" ;>
             <h3>All Contest</h3>
         </div>
+        <?php if ($access == 1) {
+	echo "
+  <div class=\"col-sm-12\"><h3 style=\"text-align:center;\">
+                <a class=\"btn btn-primary\" href=\"setcontest.php\">+</a></h3></div> ";
+
+}?>
 
         <div class="container">
 
             <div class="col-sm-12 autto upore">
                 <div class="upore table-responsive">
+                	<input class="form-control rb" id="myInput" type="text" placeholder="Search..">
                     <table class="table-dark table  table-striped table-hover">
                         <thead>
                             <tr>
@@ -64,7 +72,7 @@ if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="myTable">
 
                             <?php
 
@@ -135,7 +143,7 @@ if (isset($_POST['delete'])) {
 	}
 }
 
-$q3 = "SELECT * FROM contest ORDER BY date_on DESC";
+$q3 = "SELECT * FROM contest ORDER BY id DESC";
 $sq3 = mysqli_query($con, $q3);
 
 while ($row = mysqli_fetch_array($sq3)) {
@@ -179,6 +187,16 @@ echo "</tbody>
 </div></div></div><br><br>";
 
 ?>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 
             </div>
             <div class="col-sm-4">

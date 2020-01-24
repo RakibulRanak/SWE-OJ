@@ -109,7 +109,7 @@ $date = $erow['date_on'];
 
 
         <div class=" container">
-            <div class="col-sm-10 autto">
+            <div class="col-sm-6 autto">
 
 
 
@@ -120,9 +120,9 @@ $date = $erow['date_on'];
                         <label for="ta">Enter Your Contest Name</label>
                         <input type="text" name="ucn" class="form-control rb" value="<?php echo "$name"; ?>"><br><br>
                         <label for="ta">Enter Contest Date</label>
-                        <div class="input-group date form_datetime2 col-md-5" style="padding: 0"data-date="2017-06-15T05:25:07Z"
+                        <div class="input-group date form_datetime2 rb" style="padding: 0"data-date=""
                             data-date-format=" yyyy-mm-dd " data-link-field="dtp_input1">
-                            <input type='text' name="ucd" class="form-control rb" value="<?php echo "$date"; ?>" readonly
+                            <input type='text' name="ucd" class="form-control " value="<?php echo "$date"; ?>" readonly
                                 class="form_datetime2" />
 
                             <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
@@ -131,9 +131,9 @@ $date = $erow['date_on'];
                         <label for="ta">Enter Contest Start Time</label>
                         <!--<input type="text" name="ct" class="form-control"><br><br>-->
 
-                        <div class="input-group date form_datetime col-md-5 "style="padding: 0" data-date="2017-06-15T05:25:07Z"
+                        <div class="input-group date form_datetime rb "style="padding: 0" data-date=""
                             data-date-format=" yyyy-mm-dd hh:ii:ss " data-link-field="dtp_input1">
-                            <input type='text' name="uct" class="form-control rb" value="<?php echo "$start"; ?>" readonly
+                            <input type='text' name="uct" class="form-control " value="<?php echo "$start"; ?>" readonly
                                 class="form_datetime" />
 
                             <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
@@ -144,7 +144,7 @@ $date = $erow['date_on'];
                         <!--<input type="text" name="ce" class="form-control"><br><br>-->
 
 
-                        <div class="input-group date form_datetime1 col-md-5 rb" data-date="2017-06-15T05:25:07Z" style="padding: 0"
+                        <div class="input-group date form_datetime1 rb" data-date="" style="padding: 0"
                             data-date-format=" yyyy-mm-dd hh:ii:ss " data-link-field="dtp_input1">
                             <input type='text' name="uce" class="form-control" value="<?php echo "$end"; ?>" readonly
                                 class="form_datetime1" />
