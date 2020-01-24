@@ -20,6 +20,31 @@ $st = $arrow['status'];
 
 $access = 0;
 
+if (isset($_GET['id'])) {
+
+	$cid = $_GET['id'];
+	//echo "hiiii"
+
+	$fowner = "SELECT  owner from contest where id='$cid'";
+	$sendit = mysqli_query($con, $fowner);
+	$frow = mysqli_fetch_array($sendit);
+	$owner = $frow['owner'];
+
+	if ($username == $owner) {
+		$access = 1;
+	} else if ($st == "Teacher" || $st == "Developer") {
+		$access = 1;
+	}
+
+	if ($access == 0) {
+
+		//echo "<b>Deleted Successfully.</b> <br><br>";
+		//header("Location:contestproblem.php?id=$cid");
+		header("Location:announcement.php?fail=1");
+
+	}
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -44,20 +69,8 @@ $access = 0;
 
 
 
-<div class="">
-<div class="col-sm-12 upore">
-<div class=""><h3 style="text-align:center;">Announcement</h3></div>
-</div>
 
 
-
-</div>
-
-
-
-
-<div class="row container-fluid autto upore">
-<div class="col-sm-7">
 
 <?php
 
@@ -68,10 +81,10 @@ require_once "config.php";
 if (isset($_POST['cr'])) {
 
 	$cid = $_POST['ci'];
-	$cname = $_POST['cn'];
+	//$cname = $_POST['cn'];
 	$announcement = $_POST['an'];
 
-	$fowner = "SELECT  owner from contest where cname='$cname'";
+	$fowner = "SELECT  owner from contest where id='$cid'";
 	$sendit = mysqli_query($con, $fowner);
 	$frow = mysqli_fetch_array($sendit);
 	$owner = $frow['owner'];
@@ -83,11 +96,12 @@ if (isset($_POST['cr'])) {
 	}
 
 	if ($access == 1) {
-		$query = "INSERT INTO announcement(id,cname,des) VALUES('$cid','$cname','$announcement')";
+		$query = "INSERT INTO announcement(id,des) VALUES('$cid','$announcement')";
 		$send = mysqli_query($con, $query);
 
 		if ($send) {
 			echo "<b>Submitted Successfully.</b> <br><br>";
+			header("Location:contestproblem.php?id=$cid");
 			// echo "gd";
 		}
 	} else {
@@ -99,12 +113,13 @@ if (isset($_POST['cr'])) {
 
 //announcement delete from profile>announcement
 
-if (isset($_POST['up'])) {
+if (isset($_GET['aid']) && isset($_GET['id'])) {
 
-	$aid = $_POST['ann'];
-	$cont = $_POST['con'];
+	$aid = $_GET['aid'];
+	$cid = $_GET['id'];
+	//echo "hiiii"
 
-	$fowner = "SELECT  owner from contest where cname='$cont'";
+	$fowner = "SELECT  owner from contest where id='$cid'";
 	$sendit = mysqli_query($con, $fowner);
 	$frow = mysqli_fetch_array($sendit);
 	$owner = $frow['owner'];
@@ -121,46 +136,49 @@ if (isset($_POST['up'])) {
 
 		if ($send) {
 			echo "<b>Deleted Successfully.</b> <br><br>";
+			header("Location:contestproblem.php?id=$cid");
 		}
 	} else {
 		header("Location:announcement.php?fail=1");
 	}
 }
 
-$query = "SELECT * from announcement";
-$send = mysqli_query($con, $query);
-
-while ($row = mysqli_fetch_array($send)) {
-	$aid = $row['aid'];
-	echo "<button class=\"btn btn-success\">$aid</button><button class=\"btn btn-primary\">$row[cname]</button> <div class=\"alert alert-info\">$row[des]</div><br>";
-}
-
 ?>
+<?php
+//echo $cid;
+
+if ($st == "Teacher" || $st == "Developer" || $st == "Problem Setter") {
+	?>
+<div class="">
+<div class="col-sm-12 upore">
+<div class=""><h3 style="text-align:center;">Create Announcement</h3></div>
+</div>
+
 
 
 </div>
 
-<?php
 
-if ($st == "Teacher" || $st == "Developer" || $st == "Problem Setter") {
-	?>
 
-<div class="col-sm-5 upore autto">
+
+<div class="row container-fluid autto upore">
+<div class="col-sm-6 upore autto">
 <div class="form-group">
-<legend>Create Announcement</legend>
+<!-- <legend>Create Announcement</legend> -->
 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" name="f2" method="POST">
-<label for="ta">Enter Your Contest ID</label>
-<input type="text" name="ci" class="form-control rb" required><br><br>
-<label for="ta">Enter Your Contest Name</label>
-<input type="text" name="cn" class="form-control rb" required><br><br>
+
+<input type="hidden" name="ci" class="form-control " value="<?php echo $cid ?>"><br><br>
+<!-- <label for="ta">Enter Your Contest Name</label>
+<input type="text" name="cn" class="form-control rb" required><br><br> -->
 <label for="in">Enter Announcement Description</label>
 <textarea name="an" class="form-control rb" rows="10" cols="60" required></textarea><br><br>
 <input type="submit" name="cr" class="btn btn-success" value="Create Announcement">
+
 <br><br>
 
 </form>
 
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" name="f3" method="POST">
+<!-- <form action="<?php echo $_SERVER['PHP_SELF'] ?>" name="f3" method="POST">
 
 <legend>Delete Announcement</legend>
 <label for="ta">Enter Announcement Number</label>
@@ -172,7 +190,7 @@ if ($st == "Teacher" || $st == "Developer" || $st == "Problem Setter") {
 
 
 
-</form>
+</form> -->
 
 
 </div>
@@ -189,7 +207,7 @@ if (isset($_GET['fail'])) {
 
 
 </div>
-</div><br><br><br>
+</div>
 <?php include 'footer.php';?>
 
 

@@ -166,7 +166,14 @@ if (isset($_GET['id'])) {
 </div>
 <div class="row">
 <div class="col-sm-8">
-<div class=""><h3 style="text-align:center;">Contest Problems</h3></div><br><br>
+<div class=""><h3 style="text-align:center;">Contest Problems</h3></div>
+ <?php if ($access == 1) {
+	echo "
+  <div class=\"col-sm-12\"><h3 style=\"text-align:center;\">
+                <a class=\"btn btn-primary\" href=\"setcontestproblem.php?id=$cid\">+</a></h3></div> ";
+
+}?>
+<br>
 
 <h2><div id="tc"></div></h2>
 
@@ -427,19 +434,37 @@ if (isset($_GET['id'])) {
 </table>
 </div><br><br>";
 
-	echo "<h3 style=\"text-align:center;\">Announcement</h3><br>";
-	$query = "SELECT des from announcement where id='$cid'";
+	echo "<div><h3 style=\"text-align:center;\">Announcement</h3>";
+	if ($access == 1) {
+
+		echo "
+  <h3 style=\"text-align:center;\">
+                <a class=\"btn btn-primary\" href=\"announcement.php?id=$cid\">+</a></h3> ";
+
+	}
+	echo "<br></div>";
+	$query = "SELECT * from announcement where id='$cid'";
 	$send = mysqli_query($con, $query);
 	$nrow = mysqli_num_rows($send);
 
 	if ($nrow > 0) {
 
 		while ($arow = mysqli_fetch_array($send)) {
-			echo "<div id=\"fn\" class=\"alert alert-info\">$arow[des]</div><br>";
-		}
 
+			echo "<div class=\"container row \">";
+			echo "<div id=\"fn\" class=\"alert alert-info col-sm-11\">$arow[des]</div>";
+			if ($access == 1) {
+
+				echo "
+  <div class=\"col-sm-1\"><h3 style=\"text-align:center;\">
+                <a class=\"btn btn-primary\" href=\"announcement.php?id=$cid&aid=$arow[aid]\">-</a></h3></div> ";
+
+			}
+			echo '<br></div>';
+		}
+///
 		echo "<script>
-    document.getElementById(\"an\").innerHTML = \"$nrow New Announcement</a>\";
+    document.getElementById(\"an\").innerHTML = \"$nrow Announcements</a>\";
     </script>";
 
 	} else {
@@ -461,12 +486,7 @@ if (isset($_GET['id'])) {
 <!-- danpasher dashboard!!!!!!!!!! -->
 
 <div class="col-sm-4">
-  <?php if ($access == 1) {
-	echo "
-  <div class=\"col-sm-12\"><h3 style=\"text-align:center;\">
-                <a class=\"btn btn-primary\" href=\"setcontestproblem.php?id=$cid\">+</a></h3></</div> ";
 
-}?>
 
 
 <?php echo ("<center><h2 id=\"demo\" class=\"btn btn-primary btn-lg\"></h2></center><br>"); ?>
@@ -587,7 +607,8 @@ if (isset($_GET['id'])) {
 
 
 </div>
-
+<br>
+<br>
 <?php
 
 require_once "footer.php";

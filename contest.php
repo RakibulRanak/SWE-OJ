@@ -58,6 +58,7 @@ if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
                                 <th>ID</th>
                                 <th>Contest Name</th>
                                 <th>Status</th>
+                                <th>Owner</th>
                                 <th>Start Time</th>
                                 <th>End Time</th>
                                 <th></th>
@@ -164,12 +165,12 @@ while ($row = mysqli_fetch_array($sq3)) {
 		echo "
 
 
-  <tr><td>$row[id]</td><td><a href=\"contestproblem.php?id=$row[id]\">$row[cname]</a></td><td><button type=\"button\" class=\"$hh btnn2 btn-sm\">$status</button> </td><td>$row[start_at]</td><td> $row[end_at]</td><td><a class=\"btn btn-sm btn-primary\" href=\"editcontest.php?id=$row[id]\">Edit</a></td></tr>";
+  <tr><td>$row[id]</td><td><a href=\"contestproblem.php?id=$row[id]\">$row[cname]</a></td><td><button type=\"button\" class=\"$hh btnn2 btn-sm\">$status</button> </td><td> <a href=profile.php?user=RakibulRanak>$row[owner]</a></td><td>$row[start_at]</td><td> $row[end_at]</td><td><a class=\"btn btn-sm btn-primary\" href=\"editcontest.php?id=$row[id]\">Edit</a></td></tr>";
 	} else {
 		echo "
 
 
-  <tr><td>$row[id]</td><td><a href=\"contestproblem.php?id=$row[id]\">$row[cname]</a></td><td><button type=\"button\" class=\"$hh btnn2 btn-sm\">$status</button>    </td><td>$row[start_at]</td><td> $row[end_at]</td></tr>";
+  <tr><td>$row[id]</td><td><a href=\"contestproblem.php?id=$row[id]\">$row[cname]</a></td><td><button type=\"button\" class=\"$hh btnn2 btn-sm\">$status</button>    </td><td><a href=profile.php?user=RakibulRanak>$row[owner]</a></td><td>$row[start_at]</td><td> $row[end_at]</td></tr>";
 	}
 
 }

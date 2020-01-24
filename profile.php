@@ -48,6 +48,37 @@ if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
     <style type="text/css">
 
     </style>
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Verdict', 'Total'],
+          ['CE',     ce],
+          ['WA',      wa],
+          ['RE',  re],
+          ['AC', ac],
+          ['TLE',    tle]
+          //    ['Verdict', 'Total'],
+          // ['CE',     10],
+          // ['WA',      20],
+          // ['RE',  30],
+          // ['AC', 10],
+          // ['TLE',    50]
+        ]);
+
+        var options = {
+          title: 'Verdicts'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
 
 </head>
 
@@ -139,7 +170,46 @@ if ($data == $_SESSION['un']) {
 }
 ?>
         </div>
-      </div>
+
+
+<!-- //here
+
+
+ -->
+ <?php
+$ac = "SELECT verdict FROM submissions where verdict='Accepted' and sname='$us'";
+$wa = "SELECT verdict FROM submissions where verdict='Wrong Answer' and sname='$us'";
+$tle = "SELECT verdict FROM submissions where verdict='Time Limit Exceed' and sname='$us'";
+$re = "SELECT verdict FROM submissions where verdict='Runtime Error' and sname='$us'";
+$ce = "SELECT verdict FROM submissions where verdict='Compilation Error' and sname='$us'";
+
+$ac = mysqli_query($con, $ac);
+$wa = mysqli_query($con, $wa);
+$tle = mysqli_query($con, $tle);
+$re = mysqli_query($con, $re);
+$ce = mysqli_query($con, $ce);
+
+$ac = mysqli_num_rows($ac);
+$wa = mysqli_num_rows($wa);
+$tle = mysqli_num_rows($tle);
+$re = mysqli_num_rows($re);
+$ce = mysqli_num_rows($ce);
+
+//echo $ac
+?>
+<script type="text/javascript">
+  var ac= <?php print json_encode($ac);?>;
+   var wa= <?php print json_encode($wa);?>;
+    var tle= <?php print json_encode($tle);?>;
+     var re= <?php print json_encode($re);?>;
+      var ce= <?php print json_encode($ce);?>;
+
+</script>
+
+
+
+ <div id="piechart"class="autto upore" style="width: 400px; height: 300px;"></div> </div>
+
 
         <?php
 
@@ -202,7 +272,6 @@ if ($data == $_SESSION['un'] && $admin == 1) {
              <tr><td><a href=\"setproblem.php\">Create Archive Problem</a></td></tr>
 
              <tr><td><a href=\"notice.php\">Notice</a></td></tr>
-             <tr><td><a href=\"announcement.php\">Announcement</a></td></tr>
             <tr><td><a href=\"createadmin.php\">Create Admin</a></td></tr>
 
 
@@ -218,6 +287,10 @@ if ($data == $_SESSION['un'] && $admin == 1) {
             </div>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
 
     <?php require 'footer.php';?>
 </body>
