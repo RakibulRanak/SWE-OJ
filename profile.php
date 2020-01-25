@@ -61,7 +61,8 @@ if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
           ['WA',      wa],
           ['RE',  re],
           ['AC', ac],
-          ['TLE',    tle]
+          ['TLE',    tle],
+          ['No Submission',ns]
           //    ['Verdict', 'Total'],
           // ['CE',     10],
           // ['WA',      20],
@@ -194,6 +195,10 @@ $wa = mysqli_num_rows($wa);
 $tle = mysqli_num_rows($tle);
 $re = mysqli_num_rows($re);
 $ce = mysqli_num_rows($ce);
+$ns = 0;
+if ($ac + $wa + $tle + $re + $ce == 0) {
+	$ns = 1;
+}
 
 //echo $ac
 ?>
@@ -203,6 +208,7 @@ $ce = mysqli_num_rows($ce);
     var tle= <?php print json_encode($tle);?>;
      var re= <?php print json_encode($re);?>;
       var ce= <?php print json_encode($ce);?>;
+       var ns= <?php print json_encode($ns);?>;
 
 </script>
 
