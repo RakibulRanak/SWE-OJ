@@ -1,16 +1,14 @@
 <?php
 
 session_start();
-require_once("config.php");
+require_once "config.php";
 
-if(!isset($_SESSION["un"]))
-{
-  header("Location:login.php");
+if (!isset($_SESSION["un"])) {
+	header("Location:login.php");
 }
 
-if(isset($_SESSION['un']))
-{
-  $username=$_SESSION['un'];
+if (isset($_SESSION['un'])) {
+	$username = $_SESSION['un'];
 }
 
 ?>
@@ -19,8 +17,8 @@ if(isset($_SESSION['un']))
 <!DOCTYPE html>
 <html>
 <head>
-  
-    
+
+
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
@@ -60,30 +58,29 @@ if(isset($_SESSION['un']))
 <body onload="set()">
 <div>
 
- <?php require 'nav2.php'; 
+ <?php require 'nav2.php';
 
-require_once("config.php");
-$show="SELECT * FROM notice ORDER BY exdate ASC";
+require_once "config.php";
+$show = "SELECT * FROM notice ORDER BY exdate ASC";
 
-$sts=mysqli_query($con,$show);
-$ann="";
-while($row=mysqli_fetch_array($sts))
-{
-	$ann.=$row['des'];
-	$ann.=str_repeat("&nbsp;", 10);
+$sts = mysqli_query($con, $show);
+$ann = "";
+while ($row = mysqli_fetch_array($sts)) {
+	$ann .= $row['des'];
+	$ann .= str_repeat("&nbsp;", 10);
 
 }
 ?>
- 
- 
+
+
  	<div style="background-image: url('Images/sust.jpg');  background-size: cover; filter:blur(0.8); height: 101vh">
   <div class="home-text"><h1 class="welcome">Welcome to SWE OJ !</h1></div>
-  <marquee class="scrolling-text" direction="left" scrollamount="12"><?php echo $ann ; ?></marquee>
+  <marquee class="scrolling-text" direction="left" scrollamount="12"><?php echo $ann; ?></marquee>
 
 </div>
 
 
-<?php require 'footer.php'; ?>
+<?php require 'footer.php';?>
 
 </body>
 </html>

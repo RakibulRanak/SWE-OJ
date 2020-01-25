@@ -149,14 +149,30 @@
             </div>
         </form>
 
+
         <?php
-if(isset($_GET['value']))
-{
-   
-   echo "<div class=\"alert alert-danger\">
-  <strong>Sign up Failed!</strong>  Username already exists!!
+if (isset($_GET['fail'])) {
+	$number = 0;
+	$number = $_GET['fail'];
+	if ($number == 1) {
+
+		echo "<div class=\"alert alert-danger\"style=\"text-align:center; padding-right:65px; color:white\">
+  <strong><h1>Sign up Failed!</h1></strong>  Username already exists!!
    </div><br>";
-    
+	}
+
+}
+if (isset($_GET['success'])) {
+	$number = 0;
+
+	$number = $_GET['success'];
+	if ($number == 1) {
+
+		echo "<div class=\"alert alert-danger\"style=\"text-align:center; padding-right:65px; color:white\">
+  <strong><h1>Sign up Successfull!</h1></strong> !!
+   </div><br>";
+	}
+
 }
 
 ?>

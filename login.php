@@ -2,23 +2,17 @@
 
 session_start();
 
-if(isset($_SESSION["un"]))
-{
-  header("Location:home.php");
+if (isset($_SESSION["un"])) {
+	header("Location:home.php");
 }
 
-if(isset($_SESSION['url']))
-{
-     $url=$_SESSION['url'];
-               
+if (isset($_SESSION['url'])) {
+	$url = $_SESSION['url'];
+
+} else {
+	$url = "home.php";
+
 }
-else
-{
-      $url="home.php";
-               
-}      
-
-
 
 ?>
 
@@ -29,6 +23,8 @@ else
     <meta charset="UTF-8">
     <title>Login Form with Glass Effect</title>
     <style type="text/css">
+
+
     body {
         background-image: url('bg1.jpg');
         background-size: cover;
@@ -145,25 +141,25 @@ else
             <!-- <label for="password">Password</label> -->
             <input type="password" class="form-control" name="ps" placeholder="Enter Password"> <br><br>
             <div class="cc">
-                <input type="hidden" class="form-control" name="uri" value="<?php echo("$url");?>">
+                <input type="hidden" class="form-control" name="uri" value="<?php echo ("$url"); ?>">
                 <input type="submit" value="Login"><br>
                 <li class="Ranak"> <a href="signup.php" style="text-decoration: none"> Sign Up</a></li>
             </div>
         </form><!-- close form -->
+
+
         <?php
 
-if(isset($_GET['value']))
-{
-   
-   echo "<div class=\"alert alert-danger\">
-  <strong>Sign in Failed!</strong>  Wrong Username And Password
+if (isset($_GET['value'])) {
+
+	echo "<div class=\"alert alert-danger\ style=\"text-align:center; color:white\">
+  <strong><h1 style=\"color:white\">Sign in Failed!</h1></strong> <h3 style=\"color:white\"> Wrong Username And Password</h2>
    </div><br>";
-    
+
 }
 
-
 ?>
-    </div><!-- close aa -->
+    <!-- close aa -->
 </body>
 
 </html>

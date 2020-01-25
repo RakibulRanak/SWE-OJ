@@ -1,63 +1,42 @@
 <?php
 
 session_start();
-require_once("config.php");
+require_once "config.php";
 
- 
-$uname=$_POST['un'];
-$pw=$_POST['ps'];
-$url=$_POST['uri'];
-$pw=md5($pw);
+$uname = $_POST['un'];
+$pw = $_POST['ps'];
+$url = $_POST['uri'];
+$pw = md5($pw);
 
+$lq = "SELECT * FROM `user` WHERE name='$uname' AND pass='$pw'";
 
-$lq="SELECT * FROM `user` WHERE name='$uname' AND pass='$pw'";
+$sq = mysqli_query($con, $lq);
 
-$sq=mysqli_query($con,$lq);
+$row = mysqli_fetch_array($sq);
 
+if (!empty($row)) {
 
-$row=mysqli_fetch_array($sq);
+	if ($uname == $row[name] && $row[pass] == $pw) {
 
+		$_SESSION = array();
 
+		$_SESSION['un'] = $row[name];
+		$_SESSION['ps'] = $row[pass];
 
-if(!empty($row))
-{
-	
+		header("Location: $url");
 
-	if($uname==$row[name] && $row[pass]==$pw)
-	{
-       
-       
-           $_SESSION=array();
-
-           $_SESSION['un']=$row[name];
-            $_SESSION['ps']=$row[pass];
-            
-
-            header("Location: $url");
-
-            
-
-
-
-	}
-	else
-	{
-		 header("Location:login.php?value=fail");
-         echo '<script language="javascript">';
-		 echo 'alert("Wrong Username And Password")';
-		  echo '</script>';
+	} else {
+		header("Location:login.php?value=fail");
+		echo '<script language="javascript">';
+		echo 'alert("Wrong Username And Password")';
+		echo '</script>';
 	}
 
-
+} else {
+	header("Location:login.php?value=fail");
+	echo '<script language="javascript">';
+	echo 'alert("Wrong Username And Password")';
+	echo '</script>';
 }
-else
-{
-	 header("Location:login.php?value=fail");
-		  echo '<script language="javascript">';
-		 echo 'alert("Wrong Username And Password")';
-		  echo '</script>';
-}
-
-
 
 ?>

@@ -2,11 +2,12 @@
 
 //$host="192.168.31.159";
 //$host="10.100.172.35";
+
 $host = 'localhost';
 $user = "root";
 $pass = "";
 $db = "sweoj";
-
+$mysqli = NEW MySQLi($host, $user, $pass, $db);
 //$con=mysqli_connect("localhost",$user,$pass,$db);
 $con = mysqli_connect($host, $user, $pass, $db);
 
