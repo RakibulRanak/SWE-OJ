@@ -10,7 +10,7 @@ $pass = $_POST['password'];
 $pass = $mysqli->real_escape_string($pass);
 $password = md5($pass);
 
-$query = "INSERT into user(name,pass,status,email) VALUES('$user','$password','user','$email')";
+$query = "INSERT into user(name,pass,status,email) VALUES('$user','$password','$user','$email')";
 $sq = mysqli_query($con, $query);
 
 if ($sq) {
