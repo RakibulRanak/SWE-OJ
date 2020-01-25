@@ -12,7 +12,7 @@
                      <li class="space"><a href="<?php echo "allsubmission.php" ?>"><i class="far fa-paper-plane ispace"></i>Submissions</a></li>
                     <!--    <li class="space"><a href="#"><i class="fa fa-check-square ispace"></i>Debug</a></li> -->
                     <li class="space"><a href="profile.php?user=<?php echo ("$username"); ?>"><i
-                                class="fa fa-user ispace"></i><?php echo ("$username"); ?></a></li>
+                                class="fa fa-user ispace"></i> <?php echo ("$username"); ?></a></li>
                     <li class="space"><a href="logout.php"><i class="fa fa-power-off ispace"></i>Logout</a></li>
                     <li class="" style="position:absolute ;right:0px; top:5px">
 

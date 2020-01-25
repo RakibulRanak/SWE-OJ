@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+ob_start();
+
 require_once "config.php";
 
 $_SESSION['url'] = $_SERVER['REQUEST_URI'];
@@ -72,9 +74,7 @@ if (isset($_GET['id'])) {
 
 
 
-<?php
-
-require_once "config.php";
+<?php require_once "config.php";
 
 //create announcement from profile announcement
 
@@ -100,7 +100,7 @@ if (isset($_POST['cr'])) {
 		$send = mysqli_query($con, $query);
 
 		if ($send) {
-			echo "<b>Submitted Successfully.</b> <br><br>";
+			//echo "<b>Submitted Successfully.</b> <br><br>";
 			header("Location:contestproblem.php?id=$cid");
 			// echo "gd";
 		}

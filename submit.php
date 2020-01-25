@@ -1,17 +1,15 @@
 <?php
 
 session_start();
-require_once("config.php");
+require_once "config.php";
 
 $_SESSION['url'] = $_SERVER['REQUEST_URI'];
 
-if(!isset($_SESSION['un']))
-{
+if (!isset($_SESSION['un'])) {
 	header("Location:login.php");
 }
-if(isset($_SESSION['un']))
-{
-	$username=$_SESSION['un'];
+if (isset($_SESSION['un'])) {
+	$username = $_SESSION['un'];
 }
 ?>
 
@@ -19,25 +17,22 @@ if(isset($_SESSION['un']))
 
 <?php
 
-$c=0;
+$c = 0;
 
-if(isset($_GET['id']))
-{
-   $problemid=$_GET['id'];
-   $c=1;
+if (isset($_GET['id'])) {
+	$problemid = $_GET['id'];
+	$c = 1;
 }
 
-$sql="SELECT * FROM archieve WHERE id='$problemid' ";
+$sql = "SELECT * FROM archieve WHERE id='$problemid' ";
 
-$sq=mysqli_query($con,$sql);
+$sq = mysqli_query($con, $sql);
 
-$row=mysqli_fetch_array($sq);
+$row = mysqli_fetch_array($sq);
 //echo $row['output'];
 // sleep(10);
 
-
-
-//echo "<textarea  style=\"display:none;\" name=\"in\" 
+//echo "<textarea  style=\"display:none;\" name=\"in\"
 
 ?>
 
@@ -62,7 +57,7 @@ $row=mysqli_fetch_array($sq);
 
 <body style="overflow-x: hidden;">
     <div class="main">
-        <?php require 'nav2.php'; ?>
+        <?php require 'nav2.php';?>
 
 
         <div class="row log">
@@ -89,6 +84,7 @@ $row=mysqli_fetch_array($sq);
                             <option value="c">C</option>
                             <option value="cpp">C++</option>
                             <option value="cpp11">C++11</option>
+                           <!--  <option value="java">Java</option> -->
 
 
 
@@ -96,19 +92,16 @@ $row=mysqli_fetch_array($sq);
 
                         <?php
 
-    if($c==1)
-    {
-       //echo "<input type=\"hidden\" name=\"pbn\" value=\"$problem\">";
-    	echo "<input type=\"hidden\" name=\"id\" value=\"$problemid\">";
-    }
-    else
-    {
-    	echo"<label for=\"pp\">Enter Problem ID</label><br>";
-    	//echo "<input class=\"form-control\" type=\"text\" name=\"pbn\">";
-    	echo "<input class=\"form-control rb\" type=\"text\" name=\"id\">";
-    }
+if ($c == 1) {
+	//echo "<input type=\"hidden\" name=\"pbn\" value=\"$problem\">";
+	echo "<input type=\"hidden\" name=\"id\" value=\"$problemid\">";
+} else {
+	echo "<label for=\"pp\">Enter Problem ID</label><br>";
+	//echo "<input class=\"form-control\" type=\"text\" name=\"pbn\">";
+	echo "<input class=\"form-control rb\" type=\"text\" name=\"id\">";
+}
 
- ?>
+?>
 
                         <label for="ta">Write Your Code</label>
                         <textarea class="form-control rb" name="code" rows="10" cols="50"></textarea><br><br>
@@ -128,7 +121,7 @@ $row=mysqli_fetch_array($sq);
         </div>
     </div><br><br><br>
 
-    <?php require 'footer.php'; ?>
+    <?php require 'footer.php';?>
 
 </body>
 

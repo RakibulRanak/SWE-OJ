@@ -510,7 +510,7 @@ if (isset($_GET['id'])) {
 
 	//$conid = $r1['id'];
 
-	$sql = "SELECT sname, SUM(status) As Solved, SUM(point) As Points FROM submission Where cid='$cid' GROUP BY sname ORDER BY Solved DESC , Points DESC";
+	$sql = "SELECT sname, SUM(status) As Solved, SUM(penalty) As penalty FROM submission Where cid='$cid' GROUP BY sname ORDER BY Solved DESC , penalty ASC";
 
 	$send = mysqli_query($con, $sql);
 	$i = 0;

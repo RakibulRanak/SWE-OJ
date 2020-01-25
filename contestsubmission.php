@@ -149,7 +149,7 @@ if (isset($_GET['id'])) {
                                 <th>Name</th>
                                 <th>Problem Name</th>
                                 <th>Verdict</th>
-                                <th>Points</th>
+                                <th>Penalty</th>
                                 <th>Time</th>
                             </tr>
                         </thead>
@@ -190,7 +190,7 @@ if (isset($_GET['id']) && !isset($_GET['show'])) {
 
 	$sts = mysqli_query($con, $show);
 
-	$sql = "SELECT sname, SUM(status) As Solved, SUM(point) As Points FROM submission Where cid='$conid' GROUP BY sname ORDER BY Solved DESC , Points DESC";
+	$sql = "SELECT sname, SUM(status) As Solved, SUM(penalty) As penalty FROM submission Where cid='$conid' GROUP BY sname ORDER BY Solved DESC , penalty ASC";
 
 	$send = mysqli_query($con, $sql);
 	$i = 0;
@@ -206,13 +206,13 @@ if (isset($_GET['id']) && !isset($_GET['show'])) {
 	while ($row = mysqli_fetch_array($sts)) {
 
 		if ($row['verdict'] == "Accepted") {
-			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-success btn-sm\">$row[verdict]</div></td><td>$row[point]</td><td>$row[time]</td></tr>";
+			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-success btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
 		} else if ($row['verdict'] == "Time Limit Exceed") {
-			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-primary btn-sm\">$row[verdict]</div></td><td>$row[point]</td><td>$row[time]</td></tr>";
+			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-primary btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
 		} else if ($row['verdict'] == "Runtime Error") {
-			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-warning btn-sm\">$row[verdict]</div></td><td>$row[point]</td><td>$row[time]</td></tr>";
+			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-warning btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
 		} else {
-			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-danger btn-sm\">$row[verdict]</div></td><td>$row[point]</td><td>$row[time]</td></tr>";
+			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-danger btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
 		}
 	}
 
@@ -273,7 +273,7 @@ if (isset($_GET['id']) && isset($_GET['show'])) {
 
 	$tsolved = $solved['verdict'];
 
-	$sql = "SELECT sname, SUM(status) As Solved, SUM(point) As Points FROM submission Where cid='$conid' GROUP BY sname ORDER BY Solved DESC , Points DESC";
+	$sql = "SELECT sname, SUM(status) As Solved, SUM(penalty) As penalty FROM submission Where cid='$conid' GROUP BY sname ORDER BY Solved DESC , penalty ASC";
 
 	$send = mysqli_query($con, $sql);
 	$i = 0;
@@ -289,13 +289,13 @@ if (isset($_GET['id']) && isset($_GET['show'])) {
 	while ($row = mysqli_fetch_array($sts)) {
 
 		if ($row['verdict'] == "Accepted") {
-			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-success btn-sm\">$row[verdict]</div></td><td>$row[point]</td><td>$row[time]</td></tr>";
+			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-success btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
 		} else if ($row['verdict'] == "Time Limit Exceed") {
-			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-primary btn-sm\">$row[verdict]</div></td><td>$row[point]</td><td>$row[time]</td></tr>";
+			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-primary btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
 		} else if ($row['verdict'] == "Runtime Error") {
-			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-warning btn-sm\">$row[verdict]</div></td><td>$row[point]</td><td>$row[time]</td></tr>";
+			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-warning btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
 		} else {
-			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-danger btn-sm\">$row[verdict]</div></td><td>$row[point]</td><td>$row[time]</td></tr>";
+			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-danger btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
 		}
 	}
 
@@ -350,60 +350,60 @@ if (isset($_POST['id'])) {
 	$q3 = "SELECT * FROM contest WHERE id='$conid'";
 	$sq3 = mysqli_query($con, $q3);
 
-	$q4 = "SELECT TIME_FORMAT(end_at,'%H') end_at FROM contest  ORDER BY date_on DESC";
-	$q5 = "SELECT TIME_FORMAT(end_at,'%i') end_at FROM contest  ORDER BY date_on DESC";
-	$q6 = "SELECT TIME_FORMAT(end_at,'%s') end_at FROM contest  ORDER BY date_on DESC";
+	// $q4 = "SELECT TIME_FORMAT(end_at,'%H') end_at FROM contest  ORDER BY date_on DESC";
+	// $q5 = "SELECT TIME_FORMAT(end_at,'%i') end_at FROM contest  ORDER BY date_on DESC";
+	// $q6 = "SELECT TIME_FORMAT(end_at,'%s') end_at FROM contest  ORDER BY date_on DESC";
 
-	$sq4 = mysqli_query($con, $q4);
-	$sq5 = mysqli_query($con, $q5);
-	$sq6 = mysqli_query($con, $q6);
+	// $sq4 = mysqli_query($con, $q4);
+	// $sq5 = mysqli_query($con, $q5);
+	// $sq6 = mysqli_query($con, $q6);
 
 	while ($rowp = mysqli_fetch_array($sq3)) {
-		$d = date("Y-m-d");
+		// $d = date("Y-m-d");
 		$t = date("Y-m-d H:i:s");
-		$m = $rowp['start_at'];
+		$start = $rowp['start_at'];
 
-		$nr = mysqli_fetch_array($sq4);
-		$nm = mysqli_fetch_array($sq5);
-		$ns = mysqli_fetch_array($sq6);
+		// $nr = mysqli_fetch_array($sq4);
+		// $nm = mysqli_fetch_array($sq5);
+		// $ns = mysqli_fetch_array($sq6);
 
-		$shr = $nr['end_at'];
-		$shm = $nm['end_at'];
-		$shs = $ns['end_at'];
-		$cur = date('H');
-		$curm = date('i');
-		$curs = date('s');
+		// $shr = $nr['end_at'];
+		// $shm = $nm['end_at'];
+		// $shs = $ns['end_at'];
+		// $cur = date('H');
+		// $curm = date('i');
+		// $curs = date('s');
 
-		$h = $shr - $cur;
-		$mt = $shm - $curm;
-		$scnd = $shs - $curs;
+		// $h = $shr - $cur;
+		// $mt = $shm - $curm;
+		// $scnd = $shs - $curs;
 
-		if ($scnd < 0) {
-			$scnd = $scnd + 60;
-			$mt = $mt - 1;
-		}
+		// if ($scnd < 0) {
+		// 	$scnd = $scnd + 60;
+		// 	$mt = $mt - 1;
+		// }
 
-		if ($mt < 0) {
-			$mt = $mt + 60;
-			$h = $h - 1;
-		}
+		// if ($mt < 0) {
+		// 	$mt = $mt + 60;
+		// 	$h = $h - 1;
+		// }
 
-		if ($h < 0) {
-			$h = $h + 24;
-		}
+		// if ($h < 0) {
+		// 	$h = $h + 24;
+		// }
 
-		$en = $rowp['end_at'];
+		//$en = $rowp['end_at'];
 
-		$seconds = strtotime($en) - strtotime($m);
-		$ss = strtotime($en) - strtotime($t);
-		$min = intval($seconds / 60);
-		$sec = intval($seconds % 60);
-		$hr = intval($min / 60);
-		$m = intval($min % 60);
+		//$seconds = strtotime($en) - strtotime($m);
+		$ss = strtotime($t) - strtotime($start);
+		//$mincon = intval($seconds / 60);
+		$minow = intval($ss / 60);
 
-		$total_time = (($h * 60 + $mt) * 60) + $scnd;
-		$point = (200 / $seconds) * $total_time;
-		$cpoint = sprintf('%0.2f', $point);
+		//$total_time = (($h * 60 + $mt) * 60) + $scnd;
+		//$point = (200 / $s) * $total_time;
+		//$cpoint = sprintf('%0.2f', $point);
+		$penalty = $minow;
+		echo $penalty;
 
 	}
 
@@ -434,6 +434,7 @@ if (isset($_POST['id'])) {
 	if ($detect >= 1) {
 
 		$ignore = 1;
+		//etay dhuka mane agei AC hoiise
 
 	} else {
 		$ignore = 0;
@@ -444,40 +445,36 @@ if (isset($_POST['id'])) {
 		if ($result == "e") {
 			$result = "Compilation Error";
 			$count = 0;
-			$mpoint = $mpoint - 5.00;
+			//$mpoint = $mpoint - 5.00;
 		} else if (strcmp($uo, $ao) == 0) {
 			//echo "Accepted";
 			$result = "Accepted";
 			$count = 1;
-			$mpoint = $point;
+			$mpoint = $penalty;
+
+			//1st AC ...
+
+			$checkq = "SELECT * FROM submission WHERE pbname='$proname' AND cid='$conid' AND
+    sname='$username' AND status='0'";
+			$scheckq = mysqli_query($con, $checkq);
+			$detect = mysqli_num_rows($scheckq);
+			$mpoint += 10 * $detect;
+
 		} else if ($result == "rte") {
 			$result = "Runtime Error";
 			$count = 0;
-			$mpoint = $mpoint - 5.00;
+			//$mpoint = $mpoint - 5.00;
 		} else {
 			//echo "Wrong Answer";
 			$result = "Wrong Answer";
 			$count = 0;
-			$mpoint = $mpoint - 5.00;
+			//$mpoint = $mpoint - 5.00;
 		}
 	} else {
 		$result = "Time Limit Exceed";
 		$count = 0;
-		$mpoint = $mpoint - 5.00;
+		//$mpoint = $mpoint - 5.00;
 	}
-
-	//  $per_page=5;
-
-	// if(isset($_GET['page']))
-	// {
-	//   $page=$_GET['page'];
-	// }
-	// else
-	// {
-	//   $page=1;
-	// }
-
-	// $start=($page-1)*$per_page;
 
 	if ($ignore == 0) {
 		$t = date("Y-m-d H:i:s");

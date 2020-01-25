@@ -74,7 +74,7 @@ if (isset($_GET['id'])) {
                                 <th>Rank</th>
                                 <th>Name</th>
                                 <th>Total Solved</th>
-                                <th>Total Points</th>
+                                <th>Total penalty</th>
                                 <th>Submission</th>
                             </tr>
                         </thead>
@@ -87,13 +87,13 @@ if (isset($_GET['id'])) {
 if (isset($_GET['id'])) {
 	$conid = $_GET['id'];
 
-	$sql = "SELECT sname, SUM(status) As Solved, SUM(point) As Points FROM submission Where cid='$conid' GROUP BY sname ORDER BY Solved DESC , Points DESC";
+	$sql = "SELECT sname, SUM(status) As Solved, SUM(penalty) As penalty FROM submission Where cid='$conid' GROUP BY sname ORDER BY Solved DESC , penalty ASC";
 
 	$send = mysqli_query($con, $sql);
 	$i = 0;
 	while ($row = mysqli_fetch_array($send)) {
 		$i++;
-		echo "<tr><td>$i</td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td>$row[Solved]</td><td>$row[Points]</td><td><a href=\"contestsubmission.php?id=$conid&show=$row[sname]\"><div class=\"btn btn-primary btn-sm\">Show</td></tr>";
+		echo "<tr><td>$i</td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td>$row[Solved]</td><td>$row[penalty]</td><td><a href=\"contestsubmission.php?id=$conid&show=$row[sname]\"><div class=\"btn btn-primary btn-sm\">Show</td></tr>";
 	}
 
 	echo "</tbody>

@@ -342,7 +342,7 @@ if ($_POST['code']) {
             </div>
         </div>
     </div>
-    </div><br><br><br><br><br><br><br><br><br><br>
+    </div>
     <?php require 'footer.php';?>
 
 
