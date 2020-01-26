@@ -65,9 +65,12 @@ $pass = $row['pass'];
    <form action="update.php" method="POST">
 
    <label for="ta">Email</label>
-   <input type="text" name="email" value="<?php echo ("$row[email]") ?>" class="form-control rb"><br><br>
-   <label for="ta">Change Password</label>
-   <input type="password" name="status" value="<?php echo ("$pass") ?>" class="form-control rb"><br><br>
+   <input type="text" name="email" value="<?php echo ("$row[email]") ?>" class="form-control rb" required><br><br>
+   <label for="ta">Current Password</label>
+   <input type="password" name="statusold" value=""placeholder="Current Password" class="form-control rb" required><br><br>
+   <label for="ta">New Password</label>
+
+   <input type="password" name="statusnew" value=""placeholder="New Password" class="form-control rb"><br><br>
    <input type="submit" class="btn btn-success" value="Update">
 
    </form>

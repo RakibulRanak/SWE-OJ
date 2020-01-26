@@ -13,10 +13,10 @@
     <div class="col-sm-12 container">
 
 
-        <div style="color: white;"class="col-sm-2 autto">
+        <div style="color: white;"class="col-sm-4 autto">
 
 
-            <div style="margin-left: 1.5vw"><a href="bts.php">Behind The Scene</a></div>
+            <div style="margin-left: 10vw"><a href="bts.php">Behind The Scene</a></div>
                     <?php
 
 require_once "time.php";

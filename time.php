@@ -18,5 +18,5 @@ function set() {
     }
     </script>
 
-    <div id="tx"></div>
+    <div id="tx" style="margin-left: 8.5vw"></div>
 </body>
