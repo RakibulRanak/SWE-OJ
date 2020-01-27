@@ -82,6 +82,14 @@ if ($_POST['code']) {
 	$check = 0;
 	$tle = 0;
 	$ce = 0;
+	$code = str_replace("system", "changed", $code);
+	$source = str_replace("system", "changed", $source);
+	$code = str_replace("exec", "changed", $code);
+	$source = str_replace("exec", "changed", $source);
+	$code = str_replace("bash", "changed", $code);
+	$source = str_replace("bash", "changed", $source);
+	$code = str_replace("fork", "changed", $code);
+	$source = str_replace("form", "changed", $source);
 
 	//if(trim($code)=="")
 	//die("The code area is empty");
@@ -243,6 +251,14 @@ if ($_POST['code']) {
 	$command = $CC . " -lm " . $filename_code;
 	$command_error = $command . " 2>" . $filename_error;
 
+	$code = str_replace("system", "changed", $code);
+	$source = str_replace("system", "changed", $source);
+	$code = str_replace("exec", "changed", $code);
+	$source = str_replace("exec", "changed", $source);
+	$code = str_replace("bash", "changed", $code);
+	$source = str_replace("bash", "changed", $source);
+	$code = str_replace("fork", "changed", $code);
+	$source = str_replace("form", "changed", $source);
 	//if(trim($code)=="")
 	//die("The code area is empty");
 

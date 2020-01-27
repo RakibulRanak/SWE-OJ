@@ -231,8 +231,21 @@ if (isset($_GET['id'])) {
 	$r1 = mysqli_fetch_array($sq3);
 
 	$cnt = $r1['cname'];
+	$str = "$r1[pbdes]";
+	$key = "<br>";
 
-	echo ("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit: $r1[tlimit] Seconds<br><br> Problem Details<br><br><textarea class=\"form-control rb\" rows=\"30\" cols=\"95\" readonly>$r1[pbdes]</textarea><br><br>Problem Setter: $r1[pbauthor]<br><br>");
+	echo "Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit: $r1[tlimit] Seconds<br><br> Problem Details<br><br>";
+	if (strpos($str, $key) == true) {
+		echo "
+		<div id=\"\" class=\"rb\"style=\"height: 600px; width: 950px ;background-color:white !important; overflow: scroll;padding:20px; line-height: 200%;\">
+      <h6>$str</h6>
+    </div>";
+	} else {
+		echo "
+		<textarea class=\"form-control rb\" rows=\"30\" cols=\"95\" readonly>$r1[pbdes]</textarea>";
+	}
+
+	echo "<br><br>Problem Setter: $r1[pbauthor]<br><br>";
 
 	$conid = $r1['id'];
 
@@ -287,76 +300,6 @@ if (isset($_GET['id'])) {
 
 }
 
-//sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss////////////////////////////
-
-if (isset($_GET['name']) && isset($_GET['cod'])) {
-	$des = $_GET['name'];
-	$cod = $_GET['cod'];
-
-	$q3 = "SELECT * FROM contestproblems WHERE pbname='$des' AND id='$cod'";
-
-	$sq3 = mysqli_query($con, $q3);
-
-	$r1 = mysqli_fetch_array($sq3);
-
-	echo ("Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit: $r1[tlimit] Seconds<br><br> Problem Details<br><br><textarea class=\"form-control rb\" rows=\"30\" cols=\"95\" readonly>$r1[pbdes]</textarea><br><br>Problem Setter: $r1[pbauthor]<br><br>");
-
-	$conid = $r1['id'];
-
-	$q3 = "SELECT * FROM contest WHERE id='$conid'";
-	$sq3 = mysqli_query($con, $q3);
-
-	$i = 0;
-
-	while ($row = mysqli_fetch_array($sq3)) {
-
-		$current = date("Y-m-d H:i:s ");
-
-		$nv = $row['start_at'];
-
-		$i++;
-		$demo = "demo" . $i;
-
-		$en = $row['end_at'];
-
-		?>
-
-    <script type="text/javascript">
-    var end=<?php print json_encode($en);?>;
-    var val=<?php print json_encode($i);?>;
-    var nv=<?php print json_encode($nv);?>;
-    var cur=<?php print json_encode(date("Y-m-d H:i:s "));?>;
-
-    //console.log("Start" +nv);
-
-    call(end,val,nv,cur);
-
-
-   </script>
-
-    <?php
-
-		$diff = strtotime($nv) - strtotime($current);
-		$current = strtotime($current);
-
-		// echo "$current<br>";
-
-		//echo "$diff";
-
-		if ($diff > 0) {
-
-			header("Location:countdown.php?id=$conid");
-
-		}
-
-		echo ("<div id=\"show\" style=\"display:none;\"><a class=\"btn btn-success\" href=\"contestsubmit.php?id=$r1[pbid]\">Submit Your Code</a></div>");
-
-		echo "<div id=\"fin\"></div><br><br>";
-
-	}
-
-}
-//////////////////////////ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss//////
 ?>
 
 </div>
@@ -392,12 +335,13 @@ if (isset($_GET['id'])) {
 
     <script type="text/javascript">
     var end=<?php print json_encode($en);?>;
-    var val=<?php print json_encode($i);?>;
+    //var val=<?php print json_encode($i);?>;
     var nv=<?php print json_encode($nv);?>;
+    var cur=<?php print json_encode(date("Y-m-d H:i:s "));?>;
 
     //console.log("Start" +nv);
 
-    call(end,val,nv);
+    call(end,nv,cur);
 
 
    </script>
@@ -406,10 +350,6 @@ if (isset($_GET['id'])) {
 
 		$diff = strtotime($nv) - strtotime($current);
 		$current = strtotime($current);
-
-		// echo "$current<br>";
-
-		//echo "$diff";
 
 		if ($diff > 0 && $access == 0) {
 
@@ -425,29 +365,6 @@ if (isset($_GET['id'])) {
 
 		echo ("<div class=\"xmm\">Contest Name: <a class=\"blue\"href=\"contestproblem.php?id=$row[id]\">$row[cname]</a><br><br>Contest Date: $row[date_on] <br><br>Start Time: $row[start_at]<br><br>End Time: $row[end_at] <br><br><br><br></div>");
 
-	}
-
-} else {
-	if (isset($_GET['name']) && isset($_GET['cod'])) {
-
-		$des = $_GET['name'];
-		$cod = $_GET['cod'];
-
-		$q10 = "SELECT * FROM contestproblems WHERE pbname='$des' AND id='$cod'";
-
-		$sq10 = mysqli_query($con, $q10);
-
-		$r8 = mysqli_fetch_array($sq10);
-
-		$conid = $r1['id'];
-
-		$q12 = "SELECT * FROM contest WHERE id='$conid'";
-		$sq12 = mysqli_query($con, $q12);
-		$oc = mysqli_fetch_array($sq12);
-
-		echo ("<center><h2 id=\"demo\" class=\"btn btn-primary btn-lg\"></h2></center><br><br>");
-
-		echo ("<div class=\"xmm\">Contest Name: <a class=\"blue\" href=\"contestproblem.php?id=$r8[id]\">$oc[cname]</a><br><br>Contest Date: $oc[date_on] <br><br>Start Time: $oc[start_at]<br><br>End Time: $oc[end_at] <br><br></div>");
 	}
 
 }

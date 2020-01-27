@@ -206,13 +206,13 @@ if (isset($_GET['id']) && !isset($_GET['show'])) {
 	while ($row = mysqli_fetch_array($sts)) {
 
 		if ($row['verdict'] == "Accepted") {
-			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-success btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
+			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?id=$row[pbid]\">$row[pbname]</a></td><td><div class=\"btn btnn btn-success btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
 		} else if ($row['verdict'] == "Time Limit Exceed") {
-			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-primary btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
+			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?id=$row[pbid]\">$row[pbname]</a></td><td><div class=\"btn btnn btn-primary btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
 		} else if ($row['verdict'] == "Runtime Error") {
-			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-warning btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
+			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?id=$row[pbid]\">$row[pbname]</a></td><td><div class=\"btn btnn btn-warning btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
 		} else {
-			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-danger btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
+			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?id=$row[pbid]\">$row[pbname]</a></td><td><div class=\"btn btnn btn-danger btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
 		}
 	}
 
@@ -289,13 +289,13 @@ if (isset($_GET['id']) && isset($_GET['show'])) {
 	while ($row = mysqli_fetch_array($sts)) {
 
 		if ($row['verdict'] == "Accepted") {
-			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-success btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
+			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?id=$row[pbid]\">$row[pbname]</a></td><td><div class=\"btn btnn btn-success btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
 		} else if ($row['verdict'] == "Time Limit Exceed") {
-			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-primary btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
+			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?id=$row[pbid]\">$row[pbname]</a></td><td><div class=\"btn btnn btn-primary btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
 		} else if ($row['verdict'] == "Runtime Error") {
-			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-warning btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
+			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?id=$row[pbid]\">$row[pbname]</a></td><td><div class=\"btn btnn btn-warning btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
 		} else {
-			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?name=$row[pbname]&cod=$conid\">$row[pbname]</a></td><td><div class=\"btn btnn btn-danger btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
+			echo "<tr><td><a class=\"$link\" href=\"$lnk?id=$row[sid]&nm=$row[sname]&cn=$ci\">$row[sid]</a></td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td><a href=\"details.php?id=$row[pbid]\">$row[pbname]</a></td><td><div class=\"btn btnn btn-danger btn-sm\">$row[verdict]</div></td><td>$row[penalty]</td><td>$row[time]</td></tr>";
 		}
 	}
 
@@ -427,7 +427,7 @@ if (isset($_POST['id'])) {
 	//var_dump($uo);
 	//var_dump($ao);
 
-	$checkq = "SELECT * FROM submission WHERE pbname='$proname' AND cid='$conid' AND
+	$checkq = "SELECT * FROM submission WHERE pbid='$cid' AND cid='$conid' AND
     sname='$username' AND status='1'";
 	$scheckq = mysqli_query($con, $checkq);
 	$detect = mysqli_num_rows($scheckq);
@@ -453,8 +453,9 @@ if (isset($_POST['id'])) {
 			$mpoint = $penalty;
 
 			//1st AC ...
+			//$cid =problem id! lame hoise jdio...
 
-			$checkq = "SELECT * FROM submission WHERE pbname='$proname' AND cid='$conid' AND
+			$checkq = "SELECT * FROM submission WHERE pbid='$cid' AND cid='$conid' AND
     sname='$username' AND status='0'";
 			$scheckq = mysqli_query($con, $checkq);
 			$detect = mysqli_num_rows($scheckq);
@@ -478,7 +479,7 @@ if (isset($_POST['id'])) {
 
 	if ($ignore == 0) {
 		$t = date("Y-m-d H:i:s");
-		$sql = "INSERT INTO submission VALUES('$nid','$username','$result','$pname','$conid','$count','$mpoint' ,'$t')";
+		$sql = "INSERT INTO submission VALUES('$nid','$username','$result','$cid','$pname','$conid','$count','$mpoint' ,'$t')";
 		$stq = mysqli_query($con, $sql);
 		header("Location:contestsubmission.php?id=$conid");
 		echo "
