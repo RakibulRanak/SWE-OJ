@@ -16,6 +16,10 @@
 <link rel="stylesheet" href="css/ranak.css">
 <link rel="stylesheet" href="css/style.css">
 
+<script id="MathJax-script" async src="MathJax-3.0.0/es5/latest.js?config=TeX-AMS_HTML"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML"></script>
+ <script src="ckeditor/ckeditor.js" type="text/javascript"></script>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

@@ -45,6 +45,7 @@ if ($st == "Teacher" || $st == "Developer") {
 
 
 
+
 </head>
 
 <body>
@@ -92,18 +93,18 @@ echo "
 <p>Time Limit: $row[tlimit] Seconds</p><br><br>
 <b>Problem Description</b><br><br>";
 
-if (strpos($str, $key) == true) {
-	echo "
+// if (strpos($str, $key) == true) {
+echo "
 
-<div id=\"\" class=\"rb\"style=\"height: 600px; width: 1100px ;background-color:white !important; overflow: scroll;padding:20px; line-height: 200%;\">
+<div id=\"\" class=\"rb math-tex\"style=\"height: 600px; width: 1100px ;background-color:white !important; overflow: scroll;padding:20px; line-height: 200%;\">
       <h6>$str</h6>
     </div> ";
-} else {
-	echo "
+// } else {
+// 	echo "
 
-        <textarea class=\"form-control rb\" rows=\"30\" cols=\"100\" readonly>$row[pbdes]</textarea>
-    ";
-}
+//         <textarea class=\"form-control rb\" rows=\"30\" cols=\"100\" readonly>$row[pbdes]</textarea>
+//     ";
+// }
 
 echo "
 <br>

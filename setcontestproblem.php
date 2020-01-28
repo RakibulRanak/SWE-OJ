@@ -91,7 +91,13 @@ if (isset($_GET['id'])) {
 
 
 
-
+        <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+    </script>
         <div class="container">
             <div class="col-sm-10 upore autto">
                 <div class="form-group">
@@ -105,7 +111,7 @@ if (isset($_GET['id'])) {
                         <label for="ta">Enter Problem Name</label>
                         <input type="text" name="pb" class="form-control rb" required><br><br>
                         <label for="in">Enter Problem Description</label>
-                        <textarea name="c1" class="form-control rb" rows="30" cols="80" required></textarea><br><br>
+                        <textarea name="editor" class="form-control rb" rows="30" cols="80" required></textarea><br><br>
                         <label for="ta">Enter Problem Author</label>
                         <input type="text" name="c2" class="form-control rb" required><br><br>
                         <label for="ta">Enter Time Limit</label>
@@ -121,6 +127,15 @@ if (isset($_GET['id'])) {
 
 
                     </form>
+                    <script>
+                                      CKEDITOR.replace('editor', {
+                                      extraPlugins: 'mathjax',
+                                      mathJaxLib: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML',
+                                      height: 325
+                                    }, 'article_content', {
+                                            removeButtons: 'Source',
+                                        });
+                                  </script>
 
                     <?php
 

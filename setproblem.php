@@ -39,6 +39,8 @@ if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Set Problem</title>
     <?php include 'linkers.php';?>
+    <!-- <script id="MathJax-script" async src="MathJax-3.0.0/es5/latest.js?config=TeX-AMS_HTML"></script>  --><!-- mathjax -->
+     <script src="ckeditor/ckeditor.js" type="text/javascript"></script>
 
 
 
@@ -72,11 +74,30 @@ if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
             <div class="col-sm-10 autto upore">
                 <div class="form-group">
                     <form action="archive.php" name="f2" method="POST">
+                        <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+    </script>
+
 
                         <label for="ta">Enter Your Problem Name</label>
                         <input type="text" name="pname" class="form-control rb"><br><br>
                         <label for="in">Enter Problem Description</label>
-                        <textarea name="description" class="form-control rb" rows="30" cols="80"></textarea><br><br>
+
+                        <textarea class="ckeditor"name="editor" class="form-control rb" rows="30" cols="80" contenteditable="true"></textarea><br><br>
+
+                         <script>
+                                      CKEDITOR.replace('editor', {
+                                      extraPlugins: 'mathjax',
+                                      mathJaxLib: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML',
+                                      height: 325
+                                    }, 'article_content', {
+                                            removeButtons: 'Source',
+                                        });
+                                  </script>
                         <label for="ta">Enter Problem Author</label>
                         <input type="text" name="c2" class="form-control rb"><br><br>
                         <label for="ta">Enter Time Limit</label>

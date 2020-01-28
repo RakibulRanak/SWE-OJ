@@ -21,14 +21,26 @@ if (isset($_POST['up'])) {
 	$pbid = $_POST['pbid'];
 	$cid = $_POST['cid'];
 	$pn = $_POST['pn'];
-	$pd = $_POST['pd'];
-	$author = $_POST['author'];
+	// $pd = $_POST['pd'];
+	// $author = $_POST['author'];
 
-	$tc = $_POST['tc'];
-	$ac = $_POST['ac'];
-	$ptl = $_POST['ptl'];
+	// $tc = $_POST['tc'];
+	// $ac = $_POST['ac'];
+	// $ptl = $_POST['ptl'];
 
 	//echo $cname;
+	$cc = "SELECT * FROM contestproblems WHERE pbid = '$pbid'";
+	$cc2 = mysqli_query($con, $cc);
+	$row = mysqli_fetch_array($cc2);
+
+	$pd = $row[pbdes];
+	$pd = str_replace("'", "''", $pd);
+	$pd = str_replace('\\', '\\\\', str_replace('\\\\', '\\', $pd));
+	$author = $row[pbauthor];
+
+	$tc = $row[tc];
+	$ac = $row[output];
+	$ptl = $row[tlimit];
 
 } else {
 	header("Location:home.php");

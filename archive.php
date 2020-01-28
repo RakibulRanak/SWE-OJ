@@ -78,7 +78,9 @@ if (isset($_POST['up'])) {
 
 	$pbid = $_POST['pid'];
 	$pnn = $_POST['pb'];
-	$des = $_POST['pdes'];
+	$des = $_POST['editor'];
+	$des = str_replace("'", "''", $des);
+	$des = str_replace('\\', '\\\\', str_replace('\\\\', '\\', $des));
 	$au = $_POST['pauthor'];
 	$tc = $_POST['tc'];
 	$out = $_POST['out'];
@@ -109,7 +111,7 @@ if (isset($_POST['up'])) {
 if (isset($_POST['del'])) {
 	$pbid = $_POST['pid'];
 	$pnn = $_POST['pb'];
-	$des = $_POST['pdes'];
+	$des = $_POST['editor'];
 	$au = $_POST['pauthor'];
 	$tc = $_POST['tc'];
 	$out = $_POST['out'];
@@ -132,8 +134,9 @@ if (isset($_POST['del'])) {
 
 if (isset($_POST['pname'])) {
 	$pn = $_POST['pname'];
-	$pd = $_POST['description'];
+	$pd = $_POST['editor'];
 	$pd = str_replace("'", "''", $pd);
+	$pd = str_replace('\\', '\\\\', str_replace('\\\\', '\\', $pd));
 	$author = $_POST['c2'];
 	$tc = $_POST['case'];
 	$ac = $_POST['result'];

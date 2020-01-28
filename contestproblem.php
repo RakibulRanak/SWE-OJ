@@ -206,7 +206,9 @@ if (isset($_POST['up'])) {
 	$cid = $_POST['ccid'];
 	$pbid = $_POST['ci'];
 	$pn = $_POST['pb'];
-	$des = $_POST['c1'];
+	$des = $_POST['editor'];
+	$des = str_replace("'", "''", $des);
+	$des = str_replace('\\', '\\\\', str_replace('\\\\', '\\', $des));
 	$au = $_POST['c2'];
 	$tc = $_POST['c3'];
 	$out = $_POST['c4'];
@@ -238,7 +240,7 @@ if (isset($_POST['del'])) {
 	$cid = $_POST['ccid'];
 	$pbid = $_POST['ci'];
 	$pn = $_POST['pb'];
-	$des = $_POST['c1'];
+	$des = $_POST['editor'];
 	$au = $_POST['c2'];
 	$tc = $_POST['c3'];
 	$out = $_POST['c4'];
@@ -262,7 +264,10 @@ if (isset($_POST['new'])) {
 	$contest = $_POST['cn'];
 	$cid = $_POST['ci'];
 	$pn = $_POST['pb'];
-	$des = $_POST['c1'];
+	$des = $_POST['editor'];
+	$des = str_replace("'", "''", $des);
+	$des = str_replace('\\', '\\\\', str_replace('\\\\', '\\', $des));
+
 	$au = $_POST['c2'];
 	$tc = $_POST['c3'];
 	$out = $_POST['c4'];
@@ -356,13 +361,7 @@ if (isset($_GET['id'])) {
 
             <input type=\"hidden\" name=\"pn\" class=\"form-control\" value=\"$row[pbname]\";>
 
-            <input type=\"hidden\" name=\"pd\" class=\"form-control\" value=\"$row[pbdes]\";>
-            <input type=\"hidden\" name=\"author\" class=\"form-control\" value=\"$row[pbauthor]\";>
 
-
-            <input type=\"hidden\" name=\"tc\" class=\"form-control\" value=\"$row[tc]\";>
-            <input type=\"hidden\" name=\"ac\" class=\"form-control\" value=\"$row[output]\";>
-            <input type=\"hidden\" name=\"ptl\" class=\"form-control\" value=\"$row[tlimit]\";>
 
             <input type=\"submit\" class=\"btn btn-sm btn-success\" id=\"$temp\" style=\"display:none;\" name=\"up\" value=\"Add\">
 
@@ -411,13 +410,7 @@ if (isset($_GET['id'])) {
 
             <input type=\"hidden\" name=\"pn\" class=\"form-control\" value=\"$row[pbname]\";>
 
-            <input type=\"hidden\" name=\"pd\" class=\"form-control\" value=\"$row[pbdes]\";>
-            <input type=\"hidden\" name=\"author\" class=\"form-control\" value=\"$row[pbauthor]\";>
 
-
-            <input type=\"hidden\" name=\"tc\" class=\"form-control\" value=\"$row[tc]\";>
-            <input type=\"hidden\" name=\"ac\" class=\"form-control\" value=\"$row[output]\";>
-            <input type=\"hidden\" name=\"ptl\" class=\"form-control\" value=\"$row[tlimit]\";>
 
             <input type=\"submit\" class=\"btn btn-sm btn-success\" id=\"$temp\" style=\"display:none;\"name=\"up\" value=\"Add\">
 

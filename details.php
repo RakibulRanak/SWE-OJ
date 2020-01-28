@@ -235,15 +235,15 @@ if (isset($_GET['id'])) {
 	$key = "<br>";
 
 	echo "Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit: $r1[tlimit] Seconds<br><br> Problem Details<br><br>";
-	if (strpos($str, $key) == true) {
-		echo "
-		<div id=\"\" class=\"rb\"style=\"height: 600px; width: 950px ;background-color:white !important; overflow: scroll;padding:20px; line-height: 200%;\">
+	// if (strpos($str, $key) == true) {
+	echo "
+		<div id=\"\" class=\"rb math-tex\"style=\"height: 600px; width: 55vw ;background-color:white !important; overflow: scroll;padding:20px; line-height: 200%;\">
       <h6>$str</h6>
     </div>";
-	} else {
-		echo "
-		<textarea class=\"form-control rb\" rows=\"30\" cols=\"95\" readonly>$r1[pbdes]</textarea>";
-	}
+	// } else {
+	// 	echo "
+	// 	<textarea class=\"form-control rb\" rows=\"30\" cols=\"95\" readonly>$r1[pbdes]</textarea>";
+	// }
 
 	echo "<br><br>Problem Setter: $r1[pbauthor]<br><br>";
 

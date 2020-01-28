@@ -114,6 +114,14 @@ $n = $r1['cname'];
     <div class="col-sm-10 autto ">
       <div class="form-group ">
 
+        <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+    </script>
+
         <form action="contestproblem.php?id=<?php echo $cid; ?> name="f2" method="POST">
 
             <input type="hidden" name="ccid" class="form-control" value="<?php echo "$cid"; ?>"><br><br>
@@ -123,7 +131,7 @@ $n = $r1['cname'];
             <?php echo $n; ?>
             <input type="text" name="pb" class="form-control rb" value="<?php echo "$pbname"; ?>"><br><br>
             <label for="in">Enter Problem Description</label>
-            <textarea name="c1" class="form-control rb" rows="20" cols="60"><?php echo "$pbdes"; ?></textarea><br><br>
+            <textarea name="editor" class="form-control rb" rows="20" cols="60"><?php echo "$pbdes"; ?></textarea><br><br>
             <label for="ta">Enter Problem Author</label>
             <input type="text" name="c2" class="form-control rb" value="<?php echo "$pbauthor"; ?>"><br><br>
             <label for="ta">Enter Time Limit</label>
@@ -139,7 +147,15 @@ $n = $r1['cname'];
 
 
        </form>
-
+<script>
+                                      CKEDITOR.replace('editor', {
+                                      extraPlugins: 'mathjax',
+                                      mathJaxLib: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML',
+                                      height: 325
+                                    }, 'article_content', {
+                                            removeButtons: 'Source',
+                                        });
+                                  </script>
         <?php
 
 if (isset($_GET['fail'])) {
