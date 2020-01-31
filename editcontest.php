@@ -104,6 +104,7 @@ $id = $cid;
 $start = $erow['start_at'];
 $end = $erow['end_at'];
 $date = $erow['date_on'];
+$pass = $erow['pass'];
 
 ?>
 
@@ -152,7 +153,10 @@ $date = $erow['date_on'];
                             <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                             <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                         </div><br><br>
-                        <br><br>
+                        <label for="ta">Set Contest Password</label>
+                        <input type="text" name="pass" class="form-control rb" value="<?php echo "$pass"; ?>" ><br><br>
+
+
 
                         <input type="submit" name="update" class="btn btn-success" value="Update Contest">
                         <input type="submit" name="delete" class="btn btn-danger" value="Delete">

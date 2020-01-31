@@ -33,7 +33,7 @@ require_once "config.php";
 
 if (isset($_GET['id'])) {
 
-	$getcon = "SELECT cname from contestproblems WHERE pbid='$pid'";
+	$getcon = "SELECT * from contestproblems WHERE pbid='$pid'";
 	$sendcon = mysqli_query($con, $getcon);
 	$namerow = mysqli_fetch_array($sendcon);
 	$coname = $namerow['cname'];
@@ -43,12 +43,26 @@ if (isset($_GET['id'])) {
 	$frow = mysqli_fetch_array($sendit);
 	$owner = $frow['owner'];
 
+	$conid = $namerow['id'];
+	$mycon = "SELECT * from contest WHERE id='$conid'";
+	$sendcon = mysqli_query($con, $mycon);
+	$rhis = mysqli_fetch_array($sendcon);
+
+	//$owner = $rhis['owner'];
+	$passdb = $rhis['pass'];
+
 	if ($username == $owner) {
 		$access = 1;
 	} else if ($st == "Teacher" || $st == "Developer") {
 		$access = 1;
 	} else {
 		$access = 0;
+	}
+	if ($passdb != NULL && $access == 0) {
+		if (!isset($_SESSION["con" . $conid])) {
+			header("Location:countdown.php?id=$conid");
+		}
+
 	}
 }
 
@@ -62,18 +76,7 @@ if (isset($_GET['id'])) {
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Contest</title>
-       <!--  <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="icon" type="image/png" href="img/ruet.png">
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-        <script src="js/vendor/jquery-1.12.0.min.js"></script>
-        <script src="bootstrap-3.3.7/js/bootstrap.min.js" </script>
-        <script src="bootstrap-3.3.7/js/bootstrap.js" </script> -->
+
         <?php require 'linkers.php';?>
 
 
@@ -82,9 +85,6 @@ if (isset($_GET['id'])) {
 
 function call(d,st,xd){
 
-// console.log(d);
-// console.log(val);
-// console.log(st);
 var countDownDate = new Date(d).getTime();
 var start =new Date(st).getTime();
 
@@ -232,7 +232,6 @@ if (isset($_GET['id'])) {
 
 	$cnt = $r1['cname'];
 	$str = "$r1[pbdes]";
-	$key = "<br>";
 
 	echo "Problem Name: $r1[pbname]<br><br> Problem ID: $r1[pbid]<br><br>Time Limit: $r1[tlimit] Seconds<br><br> Problem Details<br><br>";
 	// if (strpos($str, $key) == true) {

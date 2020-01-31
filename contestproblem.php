@@ -28,11 +28,12 @@ require_once "config.php";
 if (isset($_GET['id'])) {
 	$cid = $_GET['id'];
 
-	$fowner = "SELECT  owner from contest where id='$cid'";
+	$fowner = "SELECT  * from contest where id='$cid'";
 	$sendit = mysqli_query($con, $fowner);
 	$frow = mysqli_fetch_array($sendit);
 	$owner = $frow['owner'];
-
+	$passdb = $frow['pass'];
+	//echo "<script>console.log('xd: " . $cid . "' );</script>";
 	if ($username == $owner) {
 		$access = 1;
 	} else if ($st == "Teacher" || $st == "Developer") {
@@ -40,6 +41,14 @@ if (isset($_GET['id'])) {
 	} else {
 		$access = 0;
 	}
+
+	if ($passdb != NULL && $access == 0) {
+		if (!isset($_SESSION["con" . $cid])) {
+			header("Location:countdown.php?id=$cid");
+		}
+
+	}
+
 } else {
 	header("Location:contest.php");
 }
@@ -168,7 +177,8 @@ if (isset($_GET['id'])) {
 <div class="col-sm-8">
 <div class=""><h3 style="text-align:center;">Contest Problems</h3></div>
  <?php if ($access == 1) {
-	echo "
+	//var_dump($_SESSION[$cid]);
+	echo "<br>
   <div class=\"col-sm-12\"><h3 style=\"text-align:center;\">
                 <a class=\"btn btn-primary\" href=\"setcontestproblem.php?id=$cid\">+</a></h3></div> ";
 
@@ -304,23 +314,14 @@ if (isset($_POST['new'])) {
 
 if (isset($_GET['id'])) {
 	$cid = $_GET['id'];
-	// echo "hhiii";
 	$q3 = "SELECT * FROM contestproblems WHERE id='$cid'";
-	//$fcontest = "SELECT id from contest where cname='$n'";
-	//$sf = mysqli_query($con, $fcontest);
-	//$myrow = mysqli_fetch_array($sf);
 
 	$r = mysqli_query($con, $q3);
 	$counter = 0;
 	while ($row = mysqli_fetch_array($r)) {
-		//echo("<a href=\"details.php?id=$row[pbid]\"><div class=\"pb\">$row[pbname]</div></a><br>");
 		$counter++;
 		$temp = "show" . $counter;
-		//echo $temp;
 		$problem_name = $row['pbname'];
-		//$cid = $myrow['id'];
-
-		//echo "hhiii";
 		$number = "SELECT verdict from submission WHERE pbname='$row[pbname]'  and verdict='Accepted' AND cid='$cid' AND sname ='$username'";
 		$snumber = mysqli_query($con, $number);
 		$tsol = mysqli_num_rows($snumber);
@@ -332,7 +333,6 @@ if (isset($_GET['id'])) {
 		$tsub = "SELECT COUNT(verdict) as sub from submission WHERE pbname='$row[pbname]' AND cid='$cid' GROUP BY pbname";
 		$stsub = mysqli_query($con, $tsub);
 		$ntsub = mysqli_fetch_array($stsub);
-		//echo "$row[cname]";
 
 		if ($tsol > 0) {
 			$ver = "Solved";
@@ -501,8 +501,6 @@ if (isset($_GET['id'])) {
 
 	$r1 = mysqli_fetch_array($r);
 
-	//$conid = $r1['id'];
-
 	$sql = "SELECT sname, SUM(status) As Solved, SUM(penalty) As penalty FROM submission Where cid='$cid' GROUP BY sname ORDER BY Solved DESC , penalty ASC";
 
 	$send = mysqli_query($con, $sql);
@@ -523,8 +521,6 @@ if (isset($_GET['id'])) {
 
 	$q3 = "SELECT * FROM contest WHERE id='$conid'";
 	$sq3 = mysqli_query($con, $q3);
-
-	//$i = 0;
 
 	while ($timerow = mysqli_fetch_array($sq3)) {
 

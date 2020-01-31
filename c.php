@@ -78,14 +78,14 @@ if ($_POST['code']) {
 
 //$input=$r4['tc'];
 
-	$CC = "gcc";
-	$out = "timeout 4s ./a.out";
+	$CC = "gcc -o " . $username;
+	$out = "timeout 4s ./" . $username;
 	$code = $_POST["code"];
 	$input = $r4['tc'];
-	$filename_code = "main.c";
-	$filename_in = "input.txt";
-	$filename_error = "error.txt";
-	$executable = "a.out";
+	$filename_code = $username . "main.c";
+	$filename_in = $username . "input.txt";
+	$filename_error = $username . "error.txt";
+	$executable = $username;
 	$command = $CC . " -lm " . $filename_code;
 	$command_error = $command . " 2>" . $filename_error;
 	$check = 0;
@@ -220,14 +220,14 @@ if ($_POST['code']) {
 
 	$limit = $r4['tlimit'];
 
-	$CC = "gcc";
-	$out = "timeout 4s ./a.out";
+	$CC = "gcc -o " . $username;
+	$out = "timeout 4s ./" . $username;
 	$code = $_POST["src"];
 	$input = $r4['tc'];
-	$filename_code = "main.c";
-	$filename_in = "input.txt";
-	$filename_error = "error.txt";
-	$executable = "a.out";
+	$filename_code = $username . "main.c";
+	$filename_in = $username . "input.txt";
+	$filename_error = $username . "error.txt";
+	$executable = $username;
 	$command = $CC . " -lm " . $filename_code;
 	$command_error = $command . " 2>" . $filename_error;
 

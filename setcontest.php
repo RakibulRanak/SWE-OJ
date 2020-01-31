@@ -115,6 +115,8 @@ if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
                             <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                             <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                         </div><br><br>
+                        <label for="ta">Set Contest Password</label>
+                        <input type="text" name="pass" class="form-control rb"><br><br>
                         <br><br>
 
 

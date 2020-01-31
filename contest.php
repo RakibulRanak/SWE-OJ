@@ -69,6 +69,7 @@ if ($st == "Teacher" || $st == "Problem Setter" || $st == "Developer") {
                                 <th>Owner</th>
                                 <th>Start Time</th>
                                 <th>End Time</th>
+                                <th>Privacy</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -89,6 +90,7 @@ if (isset($_POST['cn'])) {
 	$start = $_POST['ct'];
 	$end = $_POST['ce'];
 	$owner = $username;
+	$pass = $_POST['pass'];
 	//substr($owner ,0, -1);
 	//$start .=":00";
 	//$end .=":00";
@@ -97,7 +99,7 @@ if (isset($_POST['cn'])) {
 	// echo $start;
 	// echo $end;
 
-	$q1 = "INSERT into contest ( `cname`, `start_at`, `end_at`, `date_on`, `owner`) VALUES('$contest','$start','$end','$date','$owner')";
+	$q1 = "INSERT into contest ( `cname`, `start_at`, `end_at`, `date_on`, `owner` ,`pass`) VALUES('$contest','$start','$end','$date','$owner','$pass')";
 	$q3 = "SELECT * FROM contest ORDER BY date_on DESC";
 
 	$sq2 = mysqli_query($con, $q1);
@@ -117,8 +119,9 @@ if (isset($_POST['update'])) {
 	$date = $_POST['ucd'];
 	$start = $_POST['uct'];
 	$end = $_POST['uce'];
+	$pass = $_POST['pass'];
 
-	$eft = "UPDATE contest SET cname='$contest',start_at='$start',end_at='$end',date_on='$date' WHERE  id=$cid";
+	$eft = "UPDATE contest SET cname='$contest',start_at='$start',end_at='$end',date_on='$date',pass='$pass' WHERE  id=$cid";
 
 	$sft = mysqli_query($con, $eft);
 
@@ -167,18 +170,22 @@ while ($row = mysqli_fetch_array($sq3)) {
 		$status = "Upcoming";
 		$hh = "btn btn-danger";
 	}
+	$privacy = "fas fa-lock-open";
+	if ($row['pass'] != NULL) {
+		$privacy = "fas fa-lock";
+	}
 //echo "$status.\"<br>\"";
 
 	if ($access == 1) {
 		echo "
 
 
-  <tr><td>$row[id]</td><td><a href=\"contestproblem.php?id=$row[id]\">$row[cname]</a></td><td><button type=\"button\" class=\"$hh btnn2 btn-sm\">$status</button> </td><td> <a href=profile.php?user=RakibulRanak>$row[owner]</a></td><td>$row[start_at]</td><td> $row[end_at]</td><td><a class=\"btn btn-sm btn-primary\" href=\"editcontest.php?id=$row[id]\">Edit</a></td></tr>";
+  <tr><td>$row[id]</td><td><a href=\"contestproblem.php?id=$row[id]\">$row[cname]</a></td><td><button type=\"button\" class=\"$hh btnn2 btn-sm\">$status</button> </td><td> <a href=profile.php?user=RakibulRanak>$row[owner]</a></td><td>$row[start_at]</td><td> $row[end_at]</td><td><i class=\"$privacy\"></i></td><td><a class=\"btn btn-sm btn-primary\" href=\"editcontest.php?id=$row[id]\">Edit</a></td></tr>";
 	} else {
 		echo "
 
 
-  <tr><td>$row[id]</td><td><a href=\"contestproblem.php?id=$row[id]\">$row[cname]</a></td><td><button type=\"button\" class=\"$hh btnn2 btn-sm\">$status</button>    </td><td><a href=profile.php?user=RakibulRanak>$row[owner]</a></td><td>$row[start_at]</td><td> $row[end_at]</td></tr>";
+  <tr><td>$row[id]</td><td><a href=\"contestproblem.php?id=$row[id]\">$row[cname]</a></td><td><button type=\"button\" class=\"$hh btnn2 btn-sm\">$status</button>    </td><td><a href=profile.php?user=RakibulRanak>$row[owner]</a></td><td>$row[start_at]</td><td> $row[end_at]</td><td><i class=\"$privacy\"></i></td></tr>";
 	}
 
 }

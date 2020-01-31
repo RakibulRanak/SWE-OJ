@@ -69,14 +69,14 @@ if ($_POST['code']) {
 
 //$input=$r4['tc'];
 
-	$CC = "g++ -std=c++11";
-	$out = "timeout 4s ./a.out";
+	$CC = "g++ -o " . $username . " -std=c++11";
+	$out = "timeout 4s ./" . $username;
 	$code = $_POST["code"];
 	$input = $r4['tc'];
-	$filename_code = "main.cpp";
-	$filename_in = "input.txt";
-	$filename_error = "error.txt";
-	$executable = "a.out";
+	$filename_code = $username . "main.cpp";
+	$filename_in = $username . "input.txt";
+	$filename_error = $username . "error.txt";
+	$executable = $username;
 	$command = $CC . " -lm " . $filename_code;
 	$command_error = $command . " 2>" . $filename_error;
 	$check = 0;
@@ -240,14 +240,24 @@ if ($_POST['code']) {
 
 	$limit = $r4['tlimit'];
 
-	$CC = "g++ -std=c++11";
-	$out = "timeout 4s ./a.out";
+	// $CC = "g++ -std=c++11";
+	// $out = "timeout 4s ./a.out";
+	// $code = $_POST["src"];
+	// $input = $r4['tc'];
+	// $filename_code = "main.cpp";
+	// $filename_in = "input.txt";
+	// $filename_error = "error.txt";
+	// $executable = "a.out";
+
+	$CC = "g++ -o " . $username . " -std=c++11";
+	$out = "timeout 4s ./" . $username;
 	$code = $_POST["src"];
 	$input = $r4['tc'];
-	$filename_code = "main.cpp";
-	$filename_in = "input.txt";
-	$filename_error = "error.txt";
-	$executable = "a.out";
+	$filename_code = $username . "main.cpp";
+	$filename_in = $username . "input.txt";
+	$filename_error = $username . "error.txt";
+	$executable = $username;
+
 	$command = $CC . " -lm " . $filename_code;
 	$command_error = $command . " 2>" . $filename_error;
 

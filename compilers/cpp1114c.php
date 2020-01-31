@@ -1,19 +1,21 @@
 <?php
 if ($languageID == "c") {
 	//echo "c";
-	$CC = "gcc";
-	$filename_code = "main.c";
+	$CC = "gcc -o " . $username;
+	$filename_code = $username . "main.c";
+} else if ($languageID == "cpp") {
+	$CC = "g++ -o " . $username;
+	$filename_code = $username . "main.cpp";
 } else {
-	//echo "c na";
-	$CC = "g++";
-	$filename_code = "main.cpp";
+	$CC = "g++ -o " . $username . " -std=c++11";
+	$filename_code = $username . "main.cpp";
 }
-$out = "timeout 5s ./a.out";
+$out = "timeout 5s ./" . $username;
 $code = $_POST["code"];
 $input = $_POST["input"];
-$filename_in = "input.txt";
-$filename_error = "error.txt";
-$executable = "a.out";
+$filename_in = $username . "input.txt";
+$filename_error = $username . "error.txt";
+$executable = $username;
 $command = $CC . " -lm " . $filename_code;
 $command_error = $command . " 2>" . $filename_error;
 $check = 0;

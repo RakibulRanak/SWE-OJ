@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+ob_start();
 date_default_timezone_set("Asia/Dhaka");
 
 $_SESSION['url'] = $_SERVER['REQUEST_URI'];
@@ -69,8 +70,23 @@ if (isset($_GET['id'])) {
 	$mycon = "SELECT * from contest WHERE id='$conid'";
 	$sendcon = mysqli_query($con, $mycon);
 	$rhis = mysqli_fetch_array($sendcon);
+	$owner = $rhis['owner'];
+	$passdb = $rhis['pass'];
+
+	if ($username == $owner) {
+		$access = 1;
+	} else if ($st == "Teacher" || $st == "Developer") {
+		$access = 1;
+	}
 
 	echo "<center><a class=\"btn btn-primary\" href=\"contestproblem.php?id=$conid\">$rhis[cname]</a></center>";
+
+	if ($passdb != NULL && $access == 0) {
+		if (!isset($_SESSION["con" . $conid])) {
+			header("Location:countdown.php?id=$conid");
+		}
+
+	}
 
 }
 
@@ -89,11 +105,18 @@ if (isset($_POST['id'])) {
 	$sendit = mysqli_query($con, $fowner);
 	$frow = mysqli_fetch_array($sendit);
 	$owner = $frow['owner'];
+	$passdb = $frow['pass'];
 
 	if ($username == $owner) {
 		$access = 1;
 	} else if ($st == "Teacher" || $st == "Developer") {
 		$access = 1;
+	}
+	if ($passdb != NULL && $access == 0) {
+		if (!isset($_SESSION["con" . $ci])) {
+			header("Location:countdown.php?id=$ci");
+		}
+
 	}
 
 	if ($access == 1) {
@@ -350,58 +373,15 @@ if (isset($_POST['id'])) {
 	$q3 = "SELECT * FROM contest WHERE id='$conid'";
 	$sq3 = mysqli_query($con, $q3);
 
-	// $q4 = "SELECT TIME_FORMAT(end_at,'%H') end_at FROM contest  ORDER BY date_on DESC";
-	// $q5 = "SELECT TIME_FORMAT(end_at,'%i') end_at FROM contest  ORDER BY date_on DESC";
-	// $q6 = "SELECT TIME_FORMAT(end_at,'%s') end_at FROM contest  ORDER BY date_on DESC";
-
-	// $sq4 = mysqli_query($con, $q4);
-	// $sq5 = mysqli_query($con, $q5);
-	// $sq6 = mysqli_query($con, $q6);
-
 	while ($rowp = mysqli_fetch_array($sq3)) {
-		// $d = date("Y-m-d");
+
 		$t = date("Y-m-d H:i:s");
 		$start = $rowp['start_at'];
 
-		// $nr = mysqli_fetch_array($sq4);
-		// $nm = mysqli_fetch_array($sq5);
-		// $ns = mysqli_fetch_array($sq6);
-
-		// $shr = $nr['end_at'];
-		// $shm = $nm['end_at'];
-		// $shs = $ns['end_at'];
-		// $cur = date('H');
-		// $curm = date('i');
-		// $curs = date('s');
-
-		// $h = $shr - $cur;
-		// $mt = $shm - $curm;
-		// $scnd = $shs - $curs;
-
-		// if ($scnd < 0) {
-		// 	$scnd = $scnd + 60;
-		// 	$mt = $mt - 1;
-		// }
-
-		// if ($mt < 0) {
-		// 	$mt = $mt + 60;
-		// 	$h = $h - 1;
-		// }
-
-		// if ($h < 0) {
-		// 	$h = $h + 24;
-		// }
-
-		//$en = $rowp['end_at'];
-
-		//$seconds = strtotime($en) - strtotime($m);
 		$ss = strtotime($t) - strtotime($start);
-		//$mincon = intval($seconds / 60);
+
 		$minow = intval($ss / 60);
 
-		//$total_time = (($h * 60 + $mt) * 60) + $scnd;
-		//$point = (200 / $s) * $total_time;
-		//$cpoint = sprintf('%0.2f', $point);
 		$penalty = $minow;
 		echo $penalty;
 

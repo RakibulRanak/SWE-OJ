@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+ob_start();
 
 require_once "config.php";
 
@@ -12,6 +13,13 @@ if (!isset($_SESSION['un'])) {
 if (isset($_SESSION['un'])) {
 	$username = $_SESSION['un'];
 }
+$mysql = "SELECT  status from user WHERE name='$username'";
+$snd = mysqli_query($con, $mysql);
+$arrow = mysqli_fetch_array($snd);
+
+$st = $arrow['status'];
+
+$access = 0;
 
 ?>
 
@@ -45,6 +53,25 @@ if (isset($_GET['id'])) {
 	$mycon = "SELECT * from contest WHERE id='$conid'";
 	$sendcon = mysqli_query($con, $mycon);
 	$rhis = mysqli_fetch_array($sendcon);
+
+	$owner = $rhis['owner'];
+	$passdb = $rhis['pass'];
+
+	if ($username == $owner) {
+		$access = 1;
+	} else if ($st == "Teacher" || $st == "Developer") {
+		$access = 1;
+	}
+
+	if ($passdb != NULL && $access == 0) {
+		if (!isset($_SESSION["con" . $conid])) {
+			header("Location:countdown.php?id=$conid");
+		}
+
+	}
+
+} else {
+	header("Location:contest.php");
 
 }
 

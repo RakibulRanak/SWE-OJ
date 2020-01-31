@@ -102,11 +102,16 @@ var x = setInterval(function() {
         var result=days + "d " + hours + "h "
         + minutes + "m " + seconds + "s ";
 
+
+       // const show = document.getElementById("show")
+       // if(show) show.style.display="block";
+       document.getElementById("show").style.display="block";
+
+
       //console.log(result);
         document.getElementById("demo").innerHTML = " Running.... : "+ days + "d " + hours + "h "
        + minutes + "m " + seconds + "s ";
 
-       document.getElementById("show").style.display="block";
 
 
 
@@ -118,6 +123,8 @@ var x = setInterval(function() {
         clearInterval(x);
 
         document.getElementById("demo").innerHTML = "Status : Finished";
+        document.getElementById("show").style.display="block";
+
     }
 
 
@@ -201,8 +208,31 @@ while ($row = mysqli_fetch_array($sq3)) {
 
     <?php
 // echo("<br><br><h1 id=$demo></h1> <br><br>");
-	echo ("<br><br><center><h1 id=\"demo\"></h1> </center><br><br>");
-	echo ("<div id=\"show\" style=\"display:none; margin-left:46vw; margin-right:100px;\"><a class=\"btn btn-success\" href=\"contestproblem.php?id=$cid\">Enter Now</a></div>");
+	$fetch = "SELECT * from contest where id='$cid'";
+	$sfetch = mysqli_query($con, $fetch);
+	$erow = mysqli_fetch_array($sfetch);
+	$pass = $erow['pass'];
+	if ($pass != NULL) {
+		//echo "hi";
+		//SE_name($cid);
+		//print_r($_SESSION);
+
+		echo ("<br><br><center><h1 id=\"demo\"></h1> </center><br><br>");
+
+		echo '<div id ="show" style="display:none"><form class="form-horizontal" method="post" action="contestaccess.php?id=' . $cid . '"><div class="form-group autto col-sm-3">
+
+      <input type="pass" class="form-control" name="pass" placeholder="Password" required>
+    <button type="submit" class="btn btn-success">Enter password</button>
+  </div></form></div>';
+		if (isset($_GET['fail'])) {
+
+			echo '<div class="autto col-sm-4 upore" style="text-align:center;color:red">Wrong password.Try again</div>';
+		}
+	} else {
+
+		echo ("<br><br><center><h1 id=\"demo\"></h1> </center><br><br>");
+		echo ("<div id=\"show\" style=\"display:none; margin-left:46vw; margin-right:100px;\"><a class=\"btn btn-success\" href=\"contestproblem.php?id=$cid\">Enter Now</a></div>");
+	}
 
 }
 

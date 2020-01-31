@@ -12,17 +12,20 @@ if (!isset($_SESSION['un'])) {
 if (isset($_SESSION['un'])) {
 	$username = $_SESSION['un'];
 }
-?>
+$mysql = "SELECT  status from user WHERE name='$username'";
+$snd = mysqli_query($con, $mysql);
+$arrow = mysqli_fetch_array($snd);
 
-
-
-<?php
+$st = $arrow['status'];
 
 $c = 0;
+$access = 0;
 
 if (isset($_GET['id'])) {
 	$problemid = $_GET['id'];
 	$c = 1;
+} else {
+	header("Location:contest.php");
 }
 
 $sql = "SELECT * FROM contestproblems WHERE pbid='$problemid' ";
@@ -30,6 +33,25 @@ $sql = "SELECT * FROM contestproblems WHERE pbid='$problemid' ";
 $sq = mysqli_query($con, $sql);
 
 $r1 = mysqli_fetch_array($sq);
+$conid = $r1['id'];
+$mycon = "SELECT * from contest WHERE id='$conid'";
+$sendcon = mysqli_query($con, $mycon);
+$rhis = mysqli_fetch_array($sendcon);
+
+$owner = $rhis['owner'];
+$passdb = $rhis['pass'];
+if ($username == $owner) {
+	$access = 1;
+} else if ($st == "Teacher" || $st == "Developer") {
+	$access = 1;
+}
+
+if ($passdb != NULL && $access == 0) {
+	if (!isset($_SESSION["con" . $conid])) {
+		header("Location:countdown.php?id=$conid");
+	}
+
+}
 
 //echo "<textarea  style=\"display:none;\" name=\"in\"
 
@@ -203,7 +225,7 @@ if ($c == 1) {
 ?>
 
 <label for="ta">Write Your Code</label>
-<textarea class="form-control rb" name="src" rows="10" cols="50"></textarea><br><br>
+<textarea class="form-control rb" name="src" rows="10" cols="50" required></textarea><br><br>
 <input type="hidden" name='pbn' value="<?php echo $r1['pbname']; ?>">
 <!--<input type="submit" class="btn btn-success" value="Submit"><br><br><br>-->
 
@@ -253,7 +275,7 @@ while ($row = mysqli_fetch_array($sq3)) {
 
 	if ($diff > 0) {
 
-		header("Location:countdown.php");
+		header("Location:countdown.php?id=$conid");
 
 	}
 

@@ -6,6 +6,9 @@ session_cache_limiter("private_no_expire");
 // $hh=$_SERVER['HTTP_REFERER'];
 //$hh=substr($hh,-17,17);
 //header("Location:submit.php?id=$pid");
+if (!isset($_POST["language"])) {
+	header("Location:contest.php");
+}
 
 $languageID = $_POST["language"];
 
