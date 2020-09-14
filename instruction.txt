@@ -1,5 +1,9 @@
-1.install xampp
-2.install g++
+1.install xampp particular version
+  download installer from drive
+  ->sudo chmod +x xampp-linux-x64-7.3.0-0-installer.run
+  ->sudo ./xampp-linux-x64-7.3.0-0-installer.run
+  
+2.install g++ if not installed
 3.copy the project inside /opt/lampp/htdocs/  (sudo mv  /home/rakibulranak/Downloads/sweoj /opt/lampp/htdocs/ )
 4. Change permission (sudo chmod -R 777  /opt/lampp/htdocs/sweoj/ )
 5 Solve g++ problem in xampp ( sudo mv /opt/lampp/lib/libstdc++.so.6 /opt/lampp/lib/libstdc++.so.6.orig )
