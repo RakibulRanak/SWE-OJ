@@ -2,6 +2,7 @@
   download installer from drive
   ->sudo chmod +x xampp-linux-x64-7.3.0-0-installer.run
   ->sudo ./xampp-linux-x64-7.3.0-0-installer.run
+  ->sudo /opt/lampp/lampp start
   
 2.install g++ if not installed
 3.copy the project inside /opt/lampp/htdocs/  (sudo mv  /home/rakibulranak/Downloads/sweoj /opt/lampp/htdocs/ )
