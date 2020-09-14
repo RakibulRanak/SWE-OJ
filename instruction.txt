@@ -1,7 +1,7 @@
 1.install xampp
 2.install g++
 3.copy the project inside /opt/lampp/htdocs/  (sudo mv  /home/rakibulranak/Downloads/sweoj /opt/lampp/htdocs/ )
-4. Change permission (sudo chmod 777  /opt/lampp/htdocs/sweoj/ )
+4. Change permission (sudo chmod -R 777  /opt/lampp/htdocs/sweoj/ )
 5 Solve g++ problem in xampp ( sudo mv /opt/lampp/lib/libstdc++.so.6 /opt/lampp/lib/libstdc++.so.6.orig )
 6.import database creating a new database named sweoj
 7. for ngrok- sudo npm i -g ngrok --unsafe-perm=true --allow-root
