@@ -17,7 +17,7 @@ Bootstrap , Font-awesome , Ckeditor , Math-jax Plugin , Google developer tools ,
 * A home page containing live notices.
 * An online compiler (gcc,g++,g++11,javac) to run code with/without input and show output.
 * A problem archive containing problems.
-* A contest page containg all the contests (open/closed) and their status (upcoming/running/ended)
+* A contest page containing all the contests (open/closed) and their status (upcoming/running/ended)
 * A submission page showing all the submissions of users with verdicts and time of submissions,CPU time of submissions.
 * A profile containing profile picture and other information of a user.It also contains a pie chart of the summary of       verdicts of the user.
 ***
